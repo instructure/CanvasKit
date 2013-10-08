@@ -19,4 +19,12 @@
     [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CKUser class] context:course success:success failure:failure];
 }
 
++ (void)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKCourse *)course success:(void(^)(CKPagedResponse *))success failure:(void(^)(NSError *error))failure
+{
+    NSString *path = [course.path stringByAppendingPathComponent:@"search_users"];
+    NSDictionary *params = @{@"search_term": searchTerm};
+    
+    [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:params modelClass:[CKUser class] context:course success:success failure:failure];
+}
+
 @end
