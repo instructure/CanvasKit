@@ -1,0 +1,22 @@
+
+  {
+  "all_day": true,
+  "all_day_date": "2013-09-18",
+  "created_at": "2013-09-18T08:57:31-06:00",
+  "end_at": "2013-09-18T00:00:00-06:00",
+  "id": 1194491,
+  "location_address": "300 E Super Cool Dr",
+  "location_name": "The Bat Cave",
+  "start_at": "2013-09-18T00:00:00-06:00",
+  "title": "Testing",
+  "updated_at": "2013-09-18T08:57:31-06:00",
+  "workflow_state": "active",
+  "description": "Secret Meeting of Super Persons",
+  "context_code": "user_4621806",
+  "child_events_count": 0,
+  "parent_event_id": 1,
+  "hidden": false,
+  "child_events": [],
+  "url": "https://mobiledev.instructure.com/api/v1/calendar_events/1194491",
+  "html_url": "https://mobiledev.instructure.com/calendar?event_id=1194491&include_contexts=user_4621806#7b2273686f77223a2267726f75705f757365725f34363231383036227d"
+  }

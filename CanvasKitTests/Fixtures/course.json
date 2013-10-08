@@ -1,0 +1,15 @@
+{
+    "account_id": 1,
+    "course_code": "iOS_101",
+    "default_view": "wiki",
+    "id": 1,
+    "name": "Beginning iOS Development",
+    "start_at": "2010-12-02T00:00:00-07:00",
+    "end_at": "2010-14-02T00:00:00-07:00",
+    "public_syllabus": false,
+    "storage_quota_mb": 500,
+    "apply_assignment_group_weights": true,
+    "calendar": {
+    "ics": "https://mobiledev.instructure.com/feeds/calendars/course_56093f00-e060-012d-6ee9-4040654c8f83.ics"
+    }
+}

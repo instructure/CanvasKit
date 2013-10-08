@@ -1,0 +1,9 @@
+platform :ios, '7.0'
+
+pod 'CanvasKit', :path => '../CanvasKit.podspec'
+pod 'ReactiveCocoa'
+
+
+target 'CanvasKit 2.0 ExampleTests' do
+    pod 'KIF', '~> 2.0'
+end

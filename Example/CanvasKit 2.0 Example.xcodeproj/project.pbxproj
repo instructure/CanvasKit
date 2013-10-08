@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12D554F47CEA4F53AF7B07E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A598496DB6C4533B058C82E /* libPods.a */; };
+		49D26192482543A8B2FCEE44 /* libPods-CanvasKit 2.0 ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BC05471F3F458D939D25BD /* libPods-CanvasKit 2.0 ExampleTests.a */; };
+		BD158FFD17E90A9B008887E3 /* TableViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD158FFC17E90A9B008887E3 /* TableViews.storyboard */; };
+		BD15900017E90BD8008887E3 /* CKTodoItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FFF17E90BD8008887E3 /* CKTodoItemsTableViewController.m */; };
+		BD15900117E90BDC008887E3 /* CKTodoItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FFF17E90BD8008887E3 /* CKTodoItemsTableViewController.m */; };
+		BD99E78217E8B61E00AEC79C /* utah.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD99E78117E8B61E00AEC79C /* utah.jpg */; };
+		BD99E78517E8BAA900AEC79C /* CKCoursesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99E78417E8BAA900AEC79C /* CKCoursesTableViewController.m */; };
+		BD99E78817E8C74B00AEC79C /* CKAssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99E78717E8C74B00AEC79C /* CKAssignmentsTableViewController.m */; };
+		BD99E78B17E8C82900AEC79C /* CKCourseDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99E78A17E8C82900AEC79C /* CKCourseDetailsTableViewController.m */; };
+		BDB4B8CF17E25AFA0097D4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8CE17E25AFA0097D4AC /* Foundation.framework */; };
+		BDB4B8D117E25AFA0097D4AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8D017E25AFA0097D4AC /* CoreGraphics.framework */; };
+		BDB4B8D317E25AFA0097D4AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8D217E25AFA0097D4AC /* UIKit.framework */; };
+		BDB4B8D917E25AFA0097D4AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDB4B8D717E25AFA0097D4AC /* InfoPlist.strings */; };
+		BDB4B8DB17E25AFA0097D4AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B8DA17E25AFA0097D4AC /* main.m */; };
+		BDB4B8DF17E25AFA0097D4AC /* CKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B8DE17E25AFA0097D4AC /* CKAppDelegate.m */; };
+		BDB4B8E217E25AFA0097D4AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB4B8E017E25AFA0097D4AC /* Main.storyboard */; };
+		BDB4B8E517E25AFA0097D4AC /* CKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B8E417E25AFA0097D4AC /* CKViewController.m */; };
+		BDB4B8E717E25AFA0097D4AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB4B8E617E25AFA0097D4AC /* Images.xcassets */; };
+		BDB4B8EE17E25AFA0097D4AC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8ED17E25AFA0097D4AC /* XCTest.framework */; };
+		BDB4B8EF17E25AFA0097D4AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8CE17E25AFA0097D4AC /* Foundation.framework */; };
+		BDB4B8F017E25AFA0097D4AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B8D217E25AFA0097D4AC /* UIKit.framework */; };
+		BDB4B8F817E25AFA0097D4AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDB4B8F617E25AFA0097D4AC /* InfoPlist.strings */; };
+		BDB4B91717E370A50097D4AC /* CKUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B91617E370A50097D4AC /* CKUserDetailsViewController.m */; };
+		BDF67B1117EA546C008AE5F5 /* CKLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF67B1017EA546C008AE5F5 /* CKLoginTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDB4B8F117E25AFA0097D4AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDB4B8C317E25AFA0097D4AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDB4B8CA17E25AFA0097D4AC;
+			remoteInfo = "CanvasKit 2.0 Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		53461077FA8140EEB04F7257 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		5A598496DB6C4533B058C82E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		82BC05471F3F458D939D25BD /* libPods-CanvasKit 2.0 ExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKit 2.0 ExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD156ECDC82A44F086FF3D06 /* Pods-CanvasKit 2.0 ExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKit 2.0 ExampleTests.xcconfig"; path = "Pods/Pods-CanvasKit 2.0 ExampleTests.xcconfig"; sourceTree = "<group>"; };
+		BD158FFC17E90A9B008887E3 /* TableViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TableViews.storyboard; sourceTree = "<group>"; };
+		BD158FFE17E90BD8008887E3 /* CKTodoItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTodoItemsTableViewController.h; sourceTree = "<group>"; };
+		BD158FFF17E90BD8008887E3 /* CKTodoItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTodoItemsTableViewController.m; sourceTree = "<group>"; };
+		BD99E78117E8B61E00AEC79C /* utah.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = utah.jpg; sourceTree = "<group>"; };
+		BD99E78317E8BAA900AEC79C /* CKCoursesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCoursesTableViewController.h; sourceTree = "<group>"; };
+		BD99E78417E8BAA900AEC79C /* CKCoursesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCoursesTableViewController.m; sourceTree = "<group>"; };
+		BD99E78617E8C74B00AEC79C /* CKAssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAssignmentsTableViewController.h; sourceTree = "<group>"; };
+		BD99E78717E8C74B00AEC79C /* CKAssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKAssignmentsTableViewController.m; sourceTree = "<group>"; };
+		BD99E78917E8C82900AEC79C /* CKCourseDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCourseDetailsTableViewController.h; sourceTree = "<group>"; };
+		BD99E78A17E8C82900AEC79C /* CKCourseDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCourseDetailsTableViewController.m; sourceTree = "<group>"; };
+		BDB4B8CB17E25AFA0097D4AC /* CanvasKit 2.0 Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CanvasKit 2.0 Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB4B8CE17E25AFA0097D4AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BDB4B8D017E25AFA0097D4AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BDB4B8D217E25AFA0097D4AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BDB4B8D617E25AFA0097D4AC /* CanvasKit 2.0 Example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CanvasKit 2.0 Example-Info.plist"; sourceTree = "<group>"; };
+		BDB4B8D817E25AFA0097D4AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDB4B8DA17E25AFA0097D4AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDB4B8DC17E25AFA0097D4AC /* CanvasKit 2.0 Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CanvasKit 2.0 Example-Prefix.pch"; sourceTree = "<group>"; };
+		BDB4B8DD17E25AFA0097D4AC /* CKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKAppDelegate.h; sourceTree = "<group>"; };
+		BDB4B8DE17E25AFA0097D4AC /* CKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKAppDelegate.m; sourceTree = "<group>"; };
+		BDB4B8E117E25AFA0097D4AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BDB4B8E317E25AFA0097D4AC /* CKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKViewController.h; sourceTree = "<group>"; };
+		BDB4B8E417E25AFA0097D4AC /* CKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKViewController.m; sourceTree = "<group>"; };
+		BDB4B8E617E25AFA0097D4AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BDB4B8EC17E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CanvasKit 2.0 ExampleTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB4B8ED17E25AFA0097D4AC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BDB4B8F517E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CanvasKit 2.0 ExampleTests-Info.plist"; sourceTree = "<group>"; };
+		BDB4B8F717E25AFA0097D4AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDB4B91517E370A50097D4AC /* CKUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUserDetailsViewController.h; sourceTree = "<group>"; };
+		BDB4B91617E370A50097D4AC /* CKUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKUserDetailsViewController.m; sourceTree = "<group>"; };
+		BDF67B1017EA546C008AE5F5 /* CKLoginTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKLoginTests.m; sourceTree = "<group>"; };
+		BDF67B1417EA5840008AE5F5 /* libPods-CanvasKit 2.0 ExampleTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-CanvasKit 2.0 ExampleTests-KIF.a"; path = "Pods/build/Debug-iphoneos/libPods-CanvasKit 2.0 ExampleTests-KIF.a"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDB4B8C817E25AFA0097D4AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB4B8D117E25AFA0097D4AC /* CoreGraphics.framework in Frameworks */,
+				BDB4B8D317E25AFA0097D4AC /* UIKit.framework in Frameworks */,
+				BDB4B8CF17E25AFA0097D4AC /* Foundation.framework in Frameworks */,
+				12D554F47CEA4F53AF7B07E4 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDB4B8E917E25AFA0097D4AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB4B8EE17E25AFA0097D4AC /* XCTest.framework in Frameworks */,
+				BDB4B8F017E25AFA0097D4AC /* UIKit.framework in Frameworks */,
+				BDB4B8EF17E25AFA0097D4AC /* Foundation.framework in Frameworks */,
+				49D26192482543A8B2FCEE44 /* libPods-CanvasKit 2.0 ExampleTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDB4B8C217E25AFA0097D4AC = {
+			isa = PBXGroup;
+			children = (
+				BDB4B8D417E25AFA0097D4AC /* CanvasKit 2.0 Example */,
+				BDB4B8F317E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests */,
+				BDB4B8CD17E25AFA0097D4AC /* Frameworks */,
+				BDB4B8CC17E25AFA0097D4AC /* Products */,
+				53461077FA8140EEB04F7257 /* Pods.xcconfig */,
+				BD156ECDC82A44F086FF3D06 /* Pods-CanvasKit 2.0 ExampleTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		BDB4B8CC17E25AFA0097D4AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDB4B8CB17E25AFA0097D4AC /* CanvasKit 2.0 Example.app */,
+				BDB4B8EC17E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDB4B8CD17E25AFA0097D4AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDF67B1417EA5840008AE5F5 /* libPods-CanvasKit 2.0 ExampleTests-KIF.a */,
+				BDB4B8CE17E25AFA0097D4AC /* Foundation.framework */,
+				BDB4B8D017E25AFA0097D4AC /* CoreGraphics.framework */,
+				BDB4B8D217E25AFA0097D4AC /* UIKit.framework */,
+				BDB4B8ED17E25AFA0097D4AC /* XCTest.framework */,
+				5A598496DB6C4533B058C82E /* libPods.a */,
+				82BC05471F3F458D939D25BD /* libPods-CanvasKit 2.0 ExampleTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDB4B8D417E25AFA0097D4AC /* CanvasKit 2.0 Example */ = {
+			isa = PBXGroup;
+			children = (
+				BD99E78117E8B61E00AEC79C /* utah.jpg */,
+				BDB4B8DD17E25AFA0097D4AC /* CKAppDelegate.h */,
+				BDB4B8DE17E25AFA0097D4AC /* CKAppDelegate.m */,
+				BDB4B8E017E25AFA0097D4AC /* Main.storyboard */,
+				BD158FFC17E90A9B008887E3 /* TableViews.storyboard */,
+				BDB4B8E317E25AFA0097D4AC /* CKViewController.h */,
+				BDB4B8E417E25AFA0097D4AC /* CKViewController.m */,
+				BDB4B91517E370A50097D4AC /* CKUserDetailsViewController.h */,
+				BDB4B91617E370A50097D4AC /* CKUserDetailsViewController.m */,
+				BDB4B8E617E25AFA0097D4AC /* Images.xcassets */,
+				BDB4B8D517E25AFA0097D4AC /* Supporting Files */,
+				BD99E78317E8BAA900AEC79C /* CKCoursesTableViewController.h */,
+				BD99E78417E8BAA900AEC79C /* CKCoursesTableViewController.m */,
+				BD99E78617E8C74B00AEC79C /* CKAssignmentsTableViewController.h */,
+				BD99E78717E8C74B00AEC79C /* CKAssignmentsTableViewController.m */,
+				BD99E78917E8C82900AEC79C /* CKCourseDetailsTableViewController.h */,
+				BD99E78A17E8C82900AEC79C /* CKCourseDetailsTableViewController.m */,
+				BD158FFE17E90BD8008887E3 /* CKTodoItemsTableViewController.h */,
+				BD158FFF17E90BD8008887E3 /* CKTodoItemsTableViewController.m */,
+			);
+			path = "CanvasKit 2.0 Example";
+			sourceTree = "<group>";
+		};
+		BDB4B8D517E25AFA0097D4AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDB4B8D617E25AFA0097D4AC /* CanvasKit 2.0 Example-Info.plist */,
+				BDB4B8D717E25AFA0097D4AC /* InfoPlist.strings */,
+				BDB4B8DA17E25AFA0097D4AC /* main.m */,
+				BDB4B8DC17E25AFA0097D4AC /* CanvasKit 2.0 Example-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDB4B8F317E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDF67B0F17EA543E008AE5F5 /* KIF Tests */,
+				BDB4B8F417E25AFA0097D4AC /* Supporting Files */,
+			);
+			path = "CanvasKit 2.0 ExampleTests";
+			sourceTree = "<group>";
+		};
+		BDB4B8F417E25AFA0097D4AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDB4B8F517E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests-Info.plist */,
+				BDB4B8F617E25AFA0097D4AC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDF67B0F17EA543E008AE5F5 /* KIF Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BDF67B1017EA546C008AE5F5 /* CKLoginTests.m */,
+			);
+			name = "KIF Tests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDB4B8CA17E25AFA0097D4AC /* CanvasKit 2.0 Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDB4B8FD17E25AFA0097D4AC /* Build configuration list for PBXNativeTarget "CanvasKit 2.0 Example" */;
+			buildPhases = (
+				75B1696EE90149FDA82EDA7F /* Check Pods Manifest.lock */,
+				BDB4B8C717E25AFA0097D4AC /* Sources */,
+				BDB4B8C817E25AFA0097D4AC /* Frameworks */,
+				BDB4B8C917E25AFA0097D4AC /* Resources */,
+				3A8355B8AB3A4B9CA4DE3310 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CanvasKit 2.0 Example";
+			productName = "CanvasKit 2.0 Example";
+			productReference = BDB4B8CB17E25AFA0097D4AC /* CanvasKit 2.0 Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BDB4B8EB17E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDB4B90017E25AFA0097D4AC /* Build configuration list for PBXNativeTarget "CanvasKit 2.0 ExampleTests" */;
+			buildPhases = (
+				80E8FE2ABFB24E60A97D3270 /* Check Pods Manifest.lock */,
+				BDB4B8E817E25AFA0097D4AC /* Sources */,
+				BDB4B8E917E25AFA0097D4AC /* Frameworks */,
+				BDB4B8EA17E25AFA0097D4AC /* Resources */,
+				0DE38AD4106647E7B9682005 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDB4B8F217E25AFA0097D4AC /* PBXTargetDependency */,
+			);
+			name = "CanvasKit 2.0 ExampleTests";
+			productName = "CanvasKit 2.0 ExampleTests";
+			productReference = BDB4B8EC17E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests.octest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDB4B8C317E25AFA0097D4AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CK;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Instructure;
+				TargetAttributes = {
+					BDB4B8EB17E25AFA0097D4AC = {
+						TestTargetID = BDB4B8CA17E25AFA0097D4AC;
+					};
+				};
+			};
+			buildConfigurationList = BDB4B8C617E25AFA0097D4AC /* Build configuration list for PBXProject "CanvasKit 2.0 Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BDB4B8C217E25AFA0097D4AC;
+			productRefGroup = BDB4B8CC17E25AFA0097D4AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDB4B8CA17E25AFA0097D4AC /* CanvasKit 2.0 Example */,
+				BDB4B8EB17E25AFA0097D4AC /* CanvasKit 2.0 ExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDB4B8C917E25AFA0097D4AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD158FFD17E90A9B008887E3 /* TableViews.storyboard in Resources */,
+				BDB4B8E717E25AFA0097D4AC /* Images.xcassets in Resources */,
+				BD99E78217E8B61E00AEC79C /* utah.jpg in Resources */,
+				BDB4B8D917E25AFA0097D4AC /* InfoPlist.strings in Resources */,
+				BDB4B8E217E25AFA0097D4AC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDB4B8EA17E25AFA0097D4AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB4B8F817E25AFA0097D4AC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DE38AD4106647E7B9682005 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-CanvasKit 2.0 ExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A8355B8AB3A4B9CA4DE3310 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75B1696EE90149FDA82EDA7F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		80E8FE2ABFB24E60A97D3270 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDB4B8C717E25AFA0097D4AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD15900017E90BD8008887E3 /* CKTodoItemsTableViewController.m in Sources */,
+				BDB4B8DF17E25AFA0097D4AC /* CKAppDelegate.m in Sources */,
+				BDB4B8DB17E25AFA0097D4AC /* main.m in Sources */,
+				BDB4B91717E370A50097D4AC /* CKUserDetailsViewController.m in Sources */,
+				BD99E78517E8BAA900AEC79C /* CKCoursesTableViewController.m in Sources */,
+				BD99E78817E8C74B00AEC79C /* CKAssignmentsTableViewController.m in Sources */,
+				BDB4B8E517E25AFA0097D4AC /* CKViewController.m in Sources */,
+				BD99E78B17E8C82900AEC79C /* CKCourseDetailsTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDB4B8E817E25AFA0097D4AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD15900117E90BDC008887E3 /* CKTodoItemsTableViewController.m in Sources */,
+				BDF67B1117EA546C008AE5F5 /* CKLoginTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDB4B8F217E25AFA0097D4AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDB4B8CA17E25AFA0097D4AC /* CanvasKit 2.0 Example */;
+			targetProxy = BDB4B8F117E25AFA0097D4AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BDB4B8D717E25AFA0097D4AC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDB4B8D817E25AFA0097D4AC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BDB4B8E017E25AFA0097D4AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDB4B8E117E25AFA0097D4AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BDB4B8F617E25AFA0097D4AC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDB4B8F717E25AFA0097D4AC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BDB4B8FB17E25AFA0097D4AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BDB4B8FC17E25AFA0097D4AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BDB4B8FE17E25AFA0097D4AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53461077FA8140EEB04F7257 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Prefix.pch";
+				INFOPLIST_FILE = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BDB4B8FF17E25AFA0097D4AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53461077FA8140EEB04F7257 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Prefix.pch";
+				INFOPLIST_FILE = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BDB4B90117E25AFA0097D4AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD156ECDC82A44F086FF3D06 /* Pods-CanvasKit 2.0 ExampleTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CanvasKit 2.0 Example.app/CanvasKit 2.0 Example";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CanvasKit 2.0 ExampleTests/CanvasKit 2.0 ExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BDB4B90217E25AFA0097D4AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD156ECDC82A44F086FF3D06 /* Pods-CanvasKit 2.0 ExampleTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CanvasKit 2.0 Example.app/CanvasKit 2.0 Example";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CanvasKit 2.0 Example/CanvasKit 2.0 Example-Prefix.pch";
+				INFOPLIST_FILE = "CanvasKit 2.0 ExampleTests/CanvasKit 2.0 ExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDB4B8C617E25AFA0097D4AC /* Build configuration list for PBXProject "CanvasKit 2.0 Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDB4B8FB17E25AFA0097D4AC /* Debug */,
+				BDB4B8FC17E25AFA0097D4AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDB4B8FD17E25AFA0097D4AC /* Build configuration list for PBXNativeTarget "CanvasKit 2.0 Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDB4B8FE17E25AFA0097D4AC /* Debug */,
+				BDB4B8FF17E25AFA0097D4AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDB4B90017E25AFA0097D4AC /* Build configuration list for PBXNativeTarget "CanvasKit 2.0 ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDB4B90117E25AFA0097D4AC /* Debug */,
+				BDB4B90217E25AFA0097D4AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDB4B8C317E25AFA0097D4AC /* Project object */;
+}
