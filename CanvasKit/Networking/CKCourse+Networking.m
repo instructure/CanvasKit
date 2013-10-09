@@ -20,39 +20,4 @@
     [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:params modelClass:[CKCourse class] context:nil success:success failure:failure];
 }
 
-- (void)fetchCourseUsersWithSuccess:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure
-{
-    NSString *path = [[self path] stringByAppendingString:@"users"];
-    
-    [[CKClient sharedClient] GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *users = [[NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKUser class]] transformedValue:responseObject];
-        if (success) {
-            success(users);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-    
-}
-
-- (void)searchUsersMatchingString:(NSString *)matchingString success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure
-{
-    NSString *path = [[self path] stringByAppendingPathComponent:@"search_users"];
-    NSDictionary *params = @{@"search_term": matchingString};
-    
-    [[CKClient sharedClient] GET:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *users = [[NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKUser class]] transformedValue:responseObject];
-        if (success) {
-            success(users);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-
-}
-
 @end
