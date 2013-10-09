@@ -15,7 +15,4 @@
 
 + (void)fetchCoursesForCurrentUserWithSuccess:(void (^)(CKPagedResponse *response))success failure:(void (^)(NSError *error))failure;
 
-- (void)fetchCourseUsersWithSuccess:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure;
-- (void)searchUsersMatchingString:(NSString *)matchingString success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure;
-
 @end
