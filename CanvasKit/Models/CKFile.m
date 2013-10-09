@@ -15,22 +15,13 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"size": @"size"
-                               ,@"contentType": @"content-type"
-                               ,@"url": @"url"
-                               ,@"displayName": @"display_name"
-                               ,@"createdAt": @"created_at"
-                               ,@"updatedAt": @"updated_at"
-                               ,@"locked": @"locked"
-                               ,@"hidden": @"hidden"
-                               ,@"lockAt": @"lock_at"
-                               ,@"unlockAt": @"unlock_at"
-                               ,@"lockedForUser": @"locked_for_user"
-                               ,@"lockInfo": @"lock_info"
-                               ,@"lockExplanation": @"lock_explanation"
-                               ,@"hiddenForUser": @"hidden_for_user"
-                               ,@"thumbnailURL": @"thumbnail_url"
-                               };
+       @"contentType": @"content-type",
+       @"name": @"display_name",
+       @"createdAt": @"created_at",
+       @"updatedAt": @"updated_at",
+       @"hiddenForUser": @"hidden_for_user",
+       @"thumbnailURL": @"thumbnail_url"
+    };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }

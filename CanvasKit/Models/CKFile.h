@@ -6,40 +6,48 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import "CKModel.h"
+#import "CKLockableModel.h"
 
-@interface CKFile : CKModel
+@interface CKFile : CKLockableModel
 
+/**
+ The size of the file in bytes.
+ */
 @property (nonatomic) NSInteger size;
 
+/**
+ The HTTP content type of the media.
+ */
 @property (nonatomic, strong) NSString *contentType;
 
-@property (nonatomic, strong) NSString *displayName;
+/**
+ The name of the file. Ex: file.txt
+ */
+@property (nonatomic, strong) NSString *name;
 
-@property (nonatomic, strong) NSString *fileName;
-
+/**
+ The download URL for this file in Canvas.
+ */
 @property (nonatomic, strong) NSURL *url;
 
+/**
+ The date the file was created.
+ */
 @property (nonatomic, strong) NSDate *createdAt;
 
+/**
+ The date the file was last modified.
+ */
 @property (nonatomic, strong) NSDate *updatedAt;
 
-@property (nonatomic, getter = isLocked) BOOL locked;
-
-@property (nonatomic, getter = isHidden) BOOL hidden;
-
-@property (nonatomic, getter = isLockedForUser) BOOL lockedForUser;
-
-@property (nonatomic, strong) NSDictionary *lockInfo;
-
-@property (nonatomic, strong) NSString *lockExplanation;
-
+/**
+ If the file should be hidden from the current user.
+ */
 @property (nonatomic, getter = isHiddenForUser) BOOL hiddenForUser;
 
+/**
+ The URL of the thumbnail for the file.
+ */
 @property (nonatomic, strong) NSURL *thumbnailURL;
-
-@property (nonatomic, strong) NSDate *lockAt;
-
-@property (nonatomic, strong) NSDate *unlockAt;
 
 @end
