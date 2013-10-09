@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241437491804A59300047474 /* CKQuiz+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 241437481804A59300047474 /* CKQuiz+Networking.m */; };
+		2414374C1804B9E500047474 /* CKQuiz+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2414374B1804B9E500047474 /* CKQuiz+NetworkingSpec.m */; };
+		2414374D1805ACF700047474 /* CKQuiz+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 241437481804A59300047474 /* CKQuiz+Networking.m */; };
 		2472D26B17E3BF4C0035E10E /* CKPage+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8057D2E917E25B85002AAED2 /* CKPage+Networking.m */; };
 		24B91A7D17FCA84500D5FF60 /* CKQuiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D5435F17FCA4DA0056096D /* CKQuiz.m */; };
 		24B91A8017FCB01800D5FF60 /* CKISO8601DateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B91A7F17FCB01800D5FF60 /* CKISO8601DateMatcher.m */; };
@@ -176,6 +179,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		241437471804A59300047474 /* CKQuiz+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKQuiz+Networking.h"; sourceTree = "<group>"; };
+		241437481804A59300047474 /* CKQuiz+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKQuiz+Networking.m"; sourceTree = "<group>"; };
+		2414374B1804B9E500047474 /* CKQuiz+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKQuiz+NetworkingSpec.m"; sourceTree = "<group>"; };
 		24B91A7E17FCB01800D5FF60 /* CKISO8601DateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISO8601DateMatcher.h; sourceTree = "<group>"; };
 		24B91A7F17FCB01800D5FF60 /* CKISO8601DateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISO8601DateMatcher.m; sourceTree = "<group>"; };
 		24D5435C17FCA4B90056096D /* quiz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quiz.json; sourceTree = "<group>"; };
@@ -481,6 +487,8 @@
 				80061C1717FDFC3100A8CDFF /* CKGroup+Networking.m */,
 				800B2F0117FE39570069D0CC /* CKModuleItem+Networking.h */,
 				800B2F0217FE39570069D0CC /* CKModuleItem+Networking.m */,
+				241437471804A59300047474 /* CKQuiz+Networking.h */,
+				241437481804A59300047474 /* CKQuiz+Networking.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -505,6 +513,7 @@
 				496C9A0A17E1080F00E5DB70 /* CKClient+TestingClient.h */,
 				496C9A0B17E1080F00E5DB70 /* CKClient+TestingClient.m */,
 				80A07D7817E42653001B9EE4 /* CKModule+NetworkingSpec.m */,
+				2414374B1804B9E500047474 /* CKQuiz+NetworkingSpec.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -910,6 +919,7 @@
 				80538A2717DD1A20009095F2 /* CKUser.m in Sources */,
 				805E1E6117EA334F0055EA0C /* CKPagedResponse.m in Sources */,
 				BD661D9F17E78772004210DD /* CKClient.m in Sources */,
+				241437491804A59300047474 /* CKQuiz+Networking.m in Sources */,
 				BD15900C17EA0679008887E3 /* CKCalendarEvent+Networking.m in Sources */,
 				BDF67B3317EBA378008AE5F5 /* CKFile.m in Sources */,
 				808A0DC617CBCADA0000654F /* NSValueTransformer+CKPredefinedTransformerAdditions.m in Sources */,
@@ -961,6 +971,7 @@
 				800B2F0617FE3B970069D0CC /* CKModuleItem+NetworkingSpec.m in Sources */,
 				809A664117EB8D5A005C5855 /* CKPagedResponse.m in Sources */,
 				8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */,
+				2414374C1804B9E500047474 /* CKQuiz+NetworkingSpec.m in Sources */,
 				BDB4B92517E3BA760097D4AC /* CKModel.m in Sources */,
 				809E7A0817F0DE0800180557 /* NSHTTPURLResponse+Pagination.m in Sources */,
 				BD158FF717E8F0B5008887E3 /* CKTodoItem.m in Sources */,
@@ -990,6 +1001,7 @@
 				BD99E77C17E8ABD200AEC79C /* CKFavorite.m in Sources */,
 				BDFB334317E78C35000C6C13 /* CKLoginViewController.m in Sources */,
 				80F1E0E317FB6BDE005E71E1 /* CKGroupSpec.m in Sources */,
+				2414374D1805ACF700047474 /* CKQuiz+Networking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
