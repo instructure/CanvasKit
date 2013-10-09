@@ -35,11 +35,6 @@ describe(@"A CKUser", ^{
             [[[CKClient sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CKUser fetchUsersMatchingSearchTerm:@"sheldon" course:course success:nil failure:nil];
         });
-        it(@"should call the CKClient helper method with the search_term parameter", ^{
-            NSDictionary *parameters = @{@"search_term": @"sheldon"};
-            [[[CKClient sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:any(), parameters, any(), any(), any(), any()];
-            [CKUser fetchUsersMatchingSearchTerm:@"sheldon" course:course success:nil failure:nil];
-        });
     });
 });
 

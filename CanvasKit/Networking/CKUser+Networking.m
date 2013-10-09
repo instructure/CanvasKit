@@ -15,16 +15,17 @@
 + (void)fetchUsersForCourse:(CKCourse *)course success:(void (^)(CKPagedResponse *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"users"];
+    NSDictionary *parameters = @{@"include": @[@"avatar_url"]};
     
-    [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CKUser class] context:course success:success failure:failure];
+    [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CKUser class] context:course success:success failure:failure];
 }
 
 + (void)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKCourse *)course success:(void(^)(CKPagedResponse *))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"search_users"];
-    NSDictionary *params = @{@"search_term": searchTerm};
+    NSDictionary *parameters = @{@"search_term": searchTerm, @"include": @[@"avatar_url"]};
     
-    [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:params modelClass:[CKUser class] context:course success:success failure:failure];
+    [[CKClient sharedClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CKUser class] context:course success:success failure:failure];
 }
 
 @end
