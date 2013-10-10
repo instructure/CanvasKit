@@ -82,6 +82,9 @@
 		80C7D9F017CEDC4300915729 /* lock_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D9EF17CEDC4300915729 /* lock_info.json */; };
 		80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
 		80E06FC71805F4FB009CD10B /* CKFileSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FC61805F4FB009CD10B /* CKFileSpec.m */; };
+		80E06FCD1806152F009CD10B /* CKFile+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */; };
+		80E06FD018061587009CD10B /* CKFile+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCF18061587009CD10B /* CKFile+Networking.m */; };
+		80E06FD11806158E009CD10B /* CKFile+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCF18061587009CD10B /* CKFile+Networking.m */; };
 		80E3C09A17C6EFAE0056EA62 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E3C09917C6EFAE0056EA62 /* Helpers.m */; };
 		80F1E0E117FB6BBE005E71E1 /* CKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F1E0E017FB6BBE005E71E1 /* CKGroup.m */; };
 		80F1E0E317FB6BDE005E71E1 /* CKGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F1E0E217FB6BDE005E71E1 /* CKGroupSpec.m */; };
@@ -282,6 +285,9 @@
 		80C8470F17E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"; sourceTree = "<group>"; };
 		80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.m"; sourceTree = "<group>"; };
 		80E06FC61805F4FB009CD10B /* CKFileSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKFileSpec.m; sourceTree = "<group>"; };
+		80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKFile+NetworkingSpec.m"; sourceTree = "<group>"; };
+		80E06FCE18061587009CD10B /* CKFile+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKFile+Networking.h"; sourceTree = "<group>"; };
+		80E06FCF18061587009CD10B /* CKFile+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKFile+Networking.m"; sourceTree = "<group>"; };
 		80E3C09817C6EFAE0056EA62 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		80E3C09917C6EFAE0056EA62 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		80F1E0DF17FB6BBE005E71E1 /* CKGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKGroup.h; sourceTree = "<group>"; };
@@ -501,6 +507,8 @@
 				241437481804A59300047474 /* CKQuiz+Networking.m */,
 				804904BD18048B7B00BB8978 /* CKUser+Networking.h */,
 				804904BE18048B7B00BB8978 /* CKUser+Networking.m */,
+				80E06FCE18061587009CD10B /* CKFile+Networking.h */,
+				80E06FCF18061587009CD10B /* CKFile+Networking.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -520,6 +528,7 @@
 		8024E1A117C6B3620031E0F4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */,
 				809876E7180493E4001D01BC /* CKUser+NetworkingSpec.m */,
 				80A8BE6417FF5C15002ED94E /* CKCourse+NetworkingSpec.m */,
 				800B2F0517FE3B970069D0CC /* CKModuleItem+NetworkingSpec.m */,
@@ -932,6 +941,7 @@
 				80F1E0E117FB6BBE005E71E1 /* CKGroup.m in Sources */,
 				80785A0E17E1365700339A06 /* CKModule.m in Sources */,
 				BDB4B91D17E3B9DC0097D4AC /* CKLockInfo.m in Sources */,
+				80E06FD018061587009CD10B /* CKFile+Networking.m in Sources */,
 				80538A2717DD1A20009095F2 /* CKUser.m in Sources */,
 				805E1E6117EA334F0055EA0C /* CKPagedResponse.m in Sources */,
 				BD661D9F17E78772004210DD /* CKClient.m in Sources */,
@@ -964,8 +974,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				804904C018048B7F00BB8978 /* CKUser+Networking.m in Sources */,
+				80E06FCD1806152F009CD10B /* CKFile+NetworkingSpec.m in Sources */,
 				80C63B8C17FCA1C700DEB92A /* CKClientSpec.m in Sources */,
 				BDB4B92E17E3BA760097D4AC /* CKCourse.m in Sources */,
+				80E06FD11806158E009CD10B /* CKFile+Networking.m in Sources */,
 				2472D26B17E3BF4C0035E10E /* CKPage+Networking.m in Sources */,
 				80A8BE6517FF5C15002ED94E /* CKCourse+NetworkingSpec.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKSubmission.m in Sources */,
