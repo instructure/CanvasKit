@@ -11,6 +11,7 @@
 #import <CKCourse.h>
 #import <CKCourse+Networking.h>
 #import "CKCourseDetailsTableViewController.h"
+#import <CKPagedResponse.h>
 
 @interface CKCoursesTableViewController ()
 
@@ -37,8 +38,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.courses = [NSMutableArray array];
-    [CKCourse fetchCoursesForUser:[CKLocalUser sharedUser] success:^(NSArray *courses) {
-        self.courses = [NSMutableArray arrayWithArray:courses];
+    
+    [CKCourse fetchCoursesForCurrentUserWithSuccess:^(CKPagedResponse *response) {
+        self.courses = [NSMutableArray arrayWithArray:response.items];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get courses" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

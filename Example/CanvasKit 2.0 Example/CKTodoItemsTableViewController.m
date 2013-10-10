@@ -9,6 +9,7 @@
 #import "CKTodoItemsTableViewController.h"
 #import <CKTodoItem.h>
 #import <CKTodoItem+Networking.h>
+#import <CKPagedResponse.h>
 
 @interface CKTodoItemsTableViewController ()
 
@@ -41,19 +42,23 @@
     
     
     if (self.course) {
-        [CKTodoItem fetchTodoItemsForCourse:self.course success:^(NSArray *todoItems) {
-            self.todoItems = [NSMutableArray arrayWithArray:todoItems];
+        
+        [CKTodoItem fetchTodoItemsForCourse:self.course success:^(CKPagedResponse *pagedResponse) {
+            self.todoItems = [NSMutableArray arrayWithArray:pagedResponse.items];
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            
+            NSLog(@"Error fetching the todo items for a course: %@", self.course);
         }];
+        
     } else {
-        [CKTodoItem fetchTodoItemsForCurrentUserWithSuccess:^(NSArray *todoItems) {
-            self.todoItems = [NSMutableArray arrayWithArray:todoItems];
+        
+        [CKTodoItem fetchTodoItemsForCurrentUserWithSuccess:^(CKPagedResponse *pagedResponse) {
+            self.todoItems = [NSMutableArray arrayWithArray:pagedResponse.items];
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            
+            NSLog(@"Error fetching todo items for current user");
         }];
+        
     }
     
 }

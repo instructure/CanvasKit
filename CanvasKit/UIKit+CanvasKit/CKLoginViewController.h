@@ -11,7 +11,7 @@
 typedef void (^CKOAuthSuccessBlock)(void);
 typedef void (^CKOAuthFailureBlock)(NSError *error);
 
-@interface CKLoginViewController : UIViewController <UIWebViewDelegate>
+@interface CKLoginViewController : UIViewController
 
 @property (nonatomic, strong) UIWebView *webView;
 
@@ -25,7 +25,12 @@ typedef void (^CKOAuthFailureBlock)(NSError *error);
  */
 @property (nonatomic, strong) CKOAuthFailureBlock oauthFailureBlock;
 
-- (id)initWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+/**
+ Domain used for authentication
+ */
+@property (nonatomic, strong) NSString *domain;
+
+- (id)initWithDomain:(NSString *)domain success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 - (void)cancelOAuth;
 
 
