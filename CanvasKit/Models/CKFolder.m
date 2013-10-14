@@ -10,30 +10,37 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "NSValueTransformer+CKPredefinedTransformerAdditions.h"
 
+@interface CKFolder ()
+
+/**
+ The API URL for accessing a listing of all folders in this folder.
+ */
+@property (nonatomic, strong) NSURL *foldersURL;
+
+/**
+ The API URL for accessing a listing of all files in this folder.
+ */
+@property (nonatomic, strong) NSURL *filesURL;
+
+@end
+
 @implementation CKFolder
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"contextType": @"context_type"
-                               ,@"contextID": @"context_id"
-                               ,@"filesCount": @"files_count"
-                               ,@"position": @"position"
-                               ,@"updatedAt": @"updated_at"
-                               ,@"foldersURL": @"folders_url"
-                               ,@"filesURL": @"files_url"
-                               ,@"fullName": @"full_name"
-                               ,@"lockAt": @"lock_at"
-                               ,@"foldersCount": @"folders_count"
-                               ,@"name": @"name"
-                               ,@"parentFolderID": @"parent_folder_id"
-                               ,@"createdAt": @"created_at"
-                               ,@"unlockAt": @"unlock_at"
-                               ,@"hidden": @"hidden"
-                               ,@"hiddenForUser": @"hidden_for_user"
-                               ,@"locked": @"locked"
-                               ,@"lockedForUser": @"locked_for_user"
-                               };
+        @"filesCount": @"files_count",
+        @"updatedAt": @"updated_at",
+        @"foldersURL": @"folders_url",
+        @"filesURL": @"files_url",
+        @"fullName": @"full_name",
+        @"lockAt": @"lock_at",
+        @"foldersCount": @"folders_count",
+        @"parentFolderID": @"parent_folder_id",
+        @"createdAt": @"created_at",
+        @"unlockAt": @"unlock_at",
+        @"hiddenForUser": @"hidden_for_user"
+    };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }

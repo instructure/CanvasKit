@@ -6,44 +6,55 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import "CKModel.h"
+#import "CKLockableModel.h"
 
-@interface CKFolder : CKModel
+@interface CKFolder : CKLockableModel
 
-@property (nonatomic, strong) NSString *contextType;
-
-@property (nonatomic, strong) NSString *contextID;
-
+/**
+ The number of files in this folder.
+ */
 @property (nonatomic) NSInteger filesCount;
 
-@property (nonatomic) NSInteger position;
+/**
+ The number of folders in this folder.
+ */
+@property (nonatomic) NSInteger foldersCount;
 
-@property (nonatomic, strong) NSDate *updatedAt;
-
-@property (nonatomic, strong) NSURL *foldersURL;
-
-@property (nonatomic, strong) NSURL *filesURL;
-
-@property (nonatomic, strong) NSString *fullName;
-
-@property (nonatomic, strong) NSDate *lockAt;
-
-@property (nonatomic) NSInteger *foldersCount;
-
-@property (nonatomic, strong) NSString *name;
-
-@property (nonatomic, strong) NSString *parentFolderID;
-
+/**
+ The date the folder was created.
+ */
 @property (nonatomic, strong) NSDate *createdAt;
 
-@property (nonatomic, strong) NSDate *unlockAt;
+/**
+ The date this folder was last updated.
+ */
+@property (nonatomic, strong) NSDate *updatedAt;
 
-@property (nonatomic, getter = isHidden) BOOL hidden;
+/**
+ The name of the folder.
+ */
+@property (nonatomic, strong) NSString *name;
 
+/**
+ The full path of the folder from the root.
+ 
+ @note Example: "course files/11folder"
+ */
+@property (nonatomic, strong) NSString *fullName;
+
+/**
+ The date after which the folder will be locked.
+ */
+@property (nonatomic, strong) NSDate *lockAt;
+
+/**
+ The ID of the folder's parent folder.
+ */
+@property (nonatomic, strong) NSString *parentFolderID;
+
+/**
+ If this folder should be hidden from this user.
+ */
 @property (nonatomic, getter = isHiddenForUser) BOOL hiddenForUser;
-
-@property (nonatomic, getter = isLocked) BOOL locked;
-
-@property (nonatomic, getter = isLockedForUser) BOOL lockedForUser;
 
 @end
