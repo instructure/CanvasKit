@@ -34,15 +34,17 @@
 
 - (IBAction)loginButtonPressed:(id)sender
 {
-    static NSString *ClientID = @"Your client ID";
-    static NSString *SharedSecret = @"Your shared secret here";
-    static NSString *Domain = @"school.instructure.com";
+    static NSString *ClientID = nil; // Your Client ID
+    static NSString *SharedSecret = nil; // Your shared secret here
+    static NSString *Domain = nil; // @"school.instructure.com" (Optional)
     
-    [CanvasKit prepareWithClientID:ClientID sharedSecret:SharedSecret domain:Domain];
+    [CanvasKit prepareWithClientID:ClientID sharedSecret:SharedSecret];
     
-    [[CKLocalUser sharedUser] performLoginWithSuccess:^{
+    [[CKLocalUser sharedUser] performLoginWithDomain:Domain success:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self performSegueWithIdentifier:@"UserDetails" sender:sender];
     } failure:^(NSError *error) {
+        [self dismissViewControllerAnimated:YES completion:nil];
         switch (error.code) {
             case kCKErrorCodeUserCancelledOAuth:
                 [self showErrorAlertWithMessage:@"You must login to proceed."];

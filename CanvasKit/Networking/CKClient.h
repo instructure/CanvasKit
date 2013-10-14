@@ -16,7 +16,6 @@
 
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *sharedSecret;
-@property (nonatomic, strong) NSString *domain;
 @property (nonatomic, strong) NSString *keyChainId;
 
 /**
