@@ -35,7 +35,7 @@
 
 #pragma mark - JSON API Helpers
 
-- (void)fetchModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKContext>)context success:(void (^)(CKModel *))success failure:(void (^)(NSError *))failure
+- (void)fetchModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKContext>)context success:(void (^)(CKModel *model))success failure:(void (^)(NSError *error))failure
 {
     NSAssert([modelClass isSubclassOfClass:[CKModel class]], @"modelClass must be a subclass of CKModel");
     
@@ -57,7 +57,7 @@
 
 #pragma mark - Paginated JSON API Helpers
 
-- (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKContext>)context success:(void (^)(CKPagedResponse *))success failure:(void (^)(NSError *))failure
+- (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKContext>)context success:(void (^)(CKPagedResponse *response))success failure:(void (^)(NSError *error))failure
 {
     NSAssert([modelClass isSubclassOfClass:[CKModel class]], @"Can only fetch CKModels");
 

@@ -20,7 +20,7 @@ describe(@"A CKModule", ^{
     
     context(@"when fetching a single module", ^{
         NSString *testPath = @"/api/v1/courses/123/modules/1";
-        [[CKClient sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CKClient sharedClient] returnResponseObject:@{} forPath:testPath];
         
         it(@"should call the CKClient helper method with the correct path", ^{
             [[[CKClient sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
