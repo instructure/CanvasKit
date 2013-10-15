@@ -23,6 +23,6 @@
  @warning CanvasKit must be prepared for OAuth2 before this method is called.
  @see CanvasKit.h
  */
-- (void)performLoginWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+- (void)performLoginWithDomain:(NSString *)domain success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
 @end

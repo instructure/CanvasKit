@@ -19,8 +19,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[CKClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://mobiledev.instructure.com/"]];
-        [_sharedClient setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-        [_sharedClient setResponseSerializer:[AFHTTPResponseSerializer serializer]];
+        [_sharedClient setRequestSerializer:[AFJSONRequestSerializer serializer]];
+        [_sharedClient setResponseSerializer:[AFJSONResponseSerializer serializer]];
     });
 
     return _sharedClient;
