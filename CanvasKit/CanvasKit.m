@@ -9,6 +9,7 @@
 #import "CanvasKit.h"
 
 #import "CKClient.h"
+#import "CKClient+Keychain.h"
 
 @implementation CanvasKit
 
@@ -21,6 +22,7 @@
     CKClient *sharedClient = [CKClient sharedClient];
     [sharedClient setClientId:aClientId];
     [sharedClient setSharedSecret:aSharedSecret];
+    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKKeychainAuthTokenKey]];
 }
 
 + (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret keyChainId:(NSString *)aKeyChainId
@@ -29,6 +31,7 @@
     
     CKClient *sharedClient = [CKClient sharedClient];
     [sharedClient setKeyChainId:aKeyChainId];
+    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKKeychainAuthTokenKey]];
 }
 
 @end

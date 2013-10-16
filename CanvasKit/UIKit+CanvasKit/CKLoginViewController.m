@@ -14,6 +14,7 @@
 #import <FXKeychain/FXKeychain.h>
 #import <AFHTTPRequestOperation.h>
 #import "Mantle.h"
+#import "CKClient+Keychain.h"
 
 @interface CKLoginViewController () <UIWebViewDelegate>
 
@@ -104,8 +105,7 @@
     
     [client POST:@"/login/oauth2/token" parameters:@{@"client_id":client.clientId, @"client_secret": client.sharedSecret, @"code": code} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        FXKeychain *keyChain = [[FXKeychain alloc] initWithService:[CKClient sharedClient].keyChainId accessGroup:[CKClient sharedClient].keyChainId];
-        [keyChain setObject:responseObject[@"access_token"] forKey:kCKKeychainAuthTokenKey];
+        [[CKClient sharedClient].keychain setObject:responseObject[@"access_token"] forKey:kCKKeychainAuthTokenKey];
         [[CKClient sharedClient] setAuthToken:responseObject[@"access_token"]];
         
         CKLocalUser *newUser = [MTLJSONAdapter modelOfClass:[CKLocalUser class] fromJSONDictionary:responseObject[@"user"] error:nil];

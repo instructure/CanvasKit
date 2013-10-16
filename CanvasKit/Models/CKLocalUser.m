@@ -8,9 +8,8 @@
 
 #import "CKLocalUser.h"
 #import "CanvasKit.h"
-#import "CKClient.h"
 #import "CKLoginViewController.h"
-#import <FXKeychain/FXKeychain.h>
+#import "CKClient+Keychain.h"
 
 @implementation CKLocalUser
 
@@ -26,8 +25,7 @@
 
 - (BOOL)isLoggedIn
 {
-    FXKeychain *keyChain = [[FXKeychain alloc] initWithService:[CKClient sharedClient].keyChainId accessGroup:[CKClient sharedClient].keyChainId];
-    return [[keyChain objectForKey:kCKKeychainAuthTokenKey] boolValue];
+    return [[CKClient sharedClient].keychain objectForKey:kCKKeychainAuthTokenKey] != nil;
 }
 
 - (NSString *)path
