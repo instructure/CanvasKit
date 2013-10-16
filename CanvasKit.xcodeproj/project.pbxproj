@@ -35,7 +35,6 @@
 		499B4A3417F22C9F00E211C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 499B4A3317F22C9F00E211C9 /* AppDelegate.m */; };
 		499B4A3617F22C9F00E211C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499B4A3517F22C9F00E211C9 /* Images.xcassets */; };
 		49A53A09180C9C800070AA01 /* CKClient+Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A53A08180C9C800070AA01 /* CKClient+Keychain.m */; };
-		49BEE68618074A4D00DF7D9D /* CKPagedResponseSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BEE68518074A4D00DF7D9D /* CKPagedResponseSpec.m */; };
 		49D211F717E22326006359A7 /* submission_array.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D211F617E22326006359A7 /* submission_array.json */; };
 		80061C1817FDFC3100A8CDFF /* CKGroup+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80061C1717FDFC3100A8CDFF /* CKGroup+Networking.m */; };
 		80061C1C17FE05F300A8CDFF /* CKGroup+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80061C1B17FE05F300A8CDFF /* CKGroup+NetworkingSpec.m */; };
@@ -226,7 +225,6 @@
 		499B4A3517F22C9F00E211C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		49A53A07180C9C800070AA01 /* CKClient+Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKClient+Keychain.h"; sourceTree = "<group>"; };
 		49A53A08180C9C800070AA01 /* CKClient+Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKClient+Keychain.m"; sourceTree = "<group>"; };
-		49BEE68518074A4D00DF7D9D /* CKPagedResponseSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPagedResponseSpec.m; sourceTree = "<group>"; };
 		49D211F617E22326006359A7 /* submission_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission_array.json; sourceTree = "<group>"; };
 		7A7373B900534292A61BF551 /* libPods-CanvasKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80061C1617FDFC3100A8CDFF /* CKGroup+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKGroup+Networking.h"; sourceTree = "<group>"; };
@@ -553,7 +551,6 @@
 				80A07D7817E42653001B9EE4 /* CKModule+NetworkingSpec.m */,
 				2414374B1804B9E500047474 /* CKQuiz+NetworkingSpec.m */,
 				2479F8E4180D871400C700C6 /* CKService+NetworkingSpec.m */,
-				49BEE68518074A4D00DF7D9D /* CKPagedResponseSpec.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1055,7 +1052,6 @@
 				BDFB334317E78C35000C6C13 /* CKLoginViewController.m in Sources */,
 				80F1E0E317FB6BDE005E71E1 /* CKGroupSpec.m in Sources */,
 				2414374D1805ACF700047474 /* CKQuiz+Networking.m in Sources */,
-				49BEE68618074A4D00DF7D9D /* CKPagedResponseSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
