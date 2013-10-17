@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSString *consumerKey;
 
 /**
- The date timestamp it was created
+ The date created
  */
 @property (nonatomic, strong) NSDate *createdAt;
 
@@ -36,7 +36,7 @@
 @property (nonatomic) NSString *name;
 
 /**
-  Timestamp of last update
+  Date of last update
  */
 @property (nonatomic, strong) NSDate *updatedAt;
 
@@ -56,12 +56,12 @@
 @property (nonatomic) NSDictionary *customFields;
 
 /**
-  Appears to return similar values as privacyLevel "anonymous", "name_only", "public"
+  The state of the workflow
  */
 @property (nonatomic) NSString *workflowState;
 
 /**
- A url probably for help from the vendor of the tool
+ A url for vendor help
  */
 @property (nonatomic, strong) NSURL *vendorHelpLink;
 
