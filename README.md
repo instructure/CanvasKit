@@ -1,6 +1,6 @@
 ## CanvasKit by Instructure iOS
 
-CanvasKit is a library that will help you integrate your own third party app with [Canvas by Instructure](https://canvas.instructure.com/).
+CanvasKit is a library that will help you integrate your own third party app with [Canvas by Instructure](https://instructure.com/).
 
 CanvasKit is built on the [Canvas API](https://canvas.instructure.com/doc/api/index.html). CanvasKit is designed to allow for great flexibility while providing an easy to use interface. You can use CanvasKit to build apps for open source versions of Canvas as well as instances hosted by Instructure.
 
@@ -26,7 +26,7 @@ pod "CanvasKit", "~> 2.0"
 
 ## 2.0
 
-CanvasKit 2.0 is a major refactor from the previous version of CanvasKit. Until now CanvasKit has only been used on internal projects at [Instrucutre](http://www.instructure.com/). One of our major goals of the recent refactor was to make CanvasKit open source and easy to use for third party developers.
+CanvasKit 2.0 is a major refactor from the previous version of CanvasKit. Until now CanvasKit has only been used on internal projects at [Instructure](http://www.instructure.com/). One of our major goals of the recent refactor was to make CanvasKit open source and easy to use for third party developers.
 
 ## Usage
 
@@ -43,18 +43,18 @@ Once you have your Client ID and Shared Secret you can start using CanvasKit. So
 ### User Authentication
 
 
-#### CKLocalUser
+#### CK2LocalUser
 
-CanvasKit uses the concept of a 'Local User', or the user currently using the device. `CKLocalUser` is a singleton, giving you access to the current user anywhere in your application by calling:
+CanvasKit uses the concept of a 'Local User', or the user currently using the device. `CK2LocalUser` is a singleton, giving you access to the current user anywhere in your application by calling:
 
 ```objc
-[CKLocalUser sharedInstance]
+[CK2LocalUser sharedInstance]
 ```
 
 Before you can use any other CanvasKit methods to access the Canvas LMS API you must authenticate the current user. CanvasKit makes this easy by handling the OAuth 2 authentication flow for you. All you have to do is call the following method to prompt the user to authenticate.
 
 ```objc
-[[CKLocalUser sharedInstance] performLoginWithDomain:@"yourschooldomain" success:^{
+[[CK2LocalUser sharedInstance] performLoginWithDomain:@"yourschooldomain" success:^{
     [self dismissViewControllerAnimated:YES completion:nil];
     // Success the user was authenticated
 } failure:^(NSError *error) {
@@ -70,20 +70,20 @@ Once authentication succeeds, an authentication token will be added to your appl
 ```objc
 [CanvasKit prepareWithClientID:@"yourclientid" sharedSecret:@"yoursharedsecret" keyChainId:@"yourkeychainid"];
 ```
-The authentication token will remain in the keychain until you logout the `CKLocalUser`.
+The authentication token will remain in the keychain until you logout the `CK2LocalUser`.
 
 ```objc
-[[CKLocalUser sharedInstance] logout];
+[[CK2LocalUser sharedInstance] logout];
 ```
 
 ### Accessing the API
 
 #### Architecture Overview
 
-CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CKCourse class and envoke one of the networking methods. For example:
+CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CK2Course class and envoke one of the networking methods. For example:
 
 ```objc
-[CKCourse fetchCoursesForCurrentUserWithSuccess:^(CKPagedResponse *response) {
+[CK2Course fetchCoursesForCurrentUserWithSuccess:^(CK2PagedResponse *response) {
     // Success fetching courses
 } failure:^(NSError *error) {
     // Failed to fetch courses
@@ -92,8 +92,50 @@ CanvasKit includes classes for many of the objects found in the Canvas LMS. Alon
 
 Each networking method begins with 'fetch' making it easy for you to see all available options with Xcode auto-complete.
 
-#### `CKPagedResponse` and Pagination
+#### Pagination
 
-You will notice that each success block will return a `CKPagedResponse` object. All of our API endpoints are treated as if they were paginated. 
+For performance reasons, many of the Canvas API endpoints that return lists of items do not return all items at once—they instead return chunks (pages) of items. As you need more items in the list, you can request more pages. More information on the specific implementation details for pagination can be found in the [API Pagination Documentation](https://canvas.instructure.com/doc/api/file.pagination.html), but fortunately CanvasKit abstracts most of this away from you with `CK2PagedResponse`.
+
+The `CK2PagedResponse` provides you with three important things:
+
+1. `items` - the list of items returned by the API
+2. `isLastPage` - tells you if you there are more pages to grab
+3. `- fetchNextPageWithSuccess:failure:` - fetches the next CK2PagedResponse
+
+So, how might this work? Let's look at an example where we want to fetch the assignments for a course (assuming we already have the course object)
+
+```objc
+- (void)loadMoreAssignmentsWithCompletion:(void (^)())completion
+{
+    // if we haven't fetched any data yet, fetch the first page
+    if (!self.currentPage) {
+        [CK2Assignment fetchAssignmentsForCourse:self.course withSuccess:^(CK2PagedResponse *pagedResponse) {
+            self.currentPage = pagedResponse;
+            [self.assignments addObjectsFromArray:pagedResponse.items];
+            
+            if (completion) {
+                completion();
+            }
+        } failure:^(NSError *error) {
+            // handle error
+        }];
+    }
+    // if we've alread fetched some data, but we haven't fetched the last page yet, fetch more data
+    else if (!self.currentPage.isLastPage) {
+        [self.currentPage fetchNextPageWithSuccess:^(CK2PagedResponse *pagedResponse) {
+            self.currentPage = pagedResponse;
+            [self.assignments addObjectsFromArray:pagedResponse.items];
+            
+            if (completion) {
+                completion();
+            }
+        } failure:^(NSError *error) {
+            // handle error
+        }];
+    }
+}
+```
+
+CanvasKit treats all API endpoints that may return multiple items as if they were paginated, regardless of whether or not they are currently paginated. This means you cannot make assumptions about the maximum number of items in a response—typically paginated APIs will default to 10 items per page, but non paginated APIs have no limit.
 
 CanvasKit is available under the MIT license. See the LICENSE file for more info.
