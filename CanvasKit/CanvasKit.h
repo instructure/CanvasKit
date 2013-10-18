@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CKUser.h"
-#import "CKLocalUser.h"
+#import "CK2User.h"
+#import "CK2LocalUser.h"
 #import "Constants.h"
 
 @interface CanvasKit : NSObject
 
 /**
- Prepares the shared client for OAuth2 authentication. Preparing the CKClient for authentication with this method will not prompt the user for a domain.
+ Prepares the shared client for OAuth2 authentication. Preparing the CK2Client for authentication with this method will not prompt the user for a domain.
  
  @param OAuth2 client id
  @param OAuth2 shared secret

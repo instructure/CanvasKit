@@ -19,6 +19,6 @@
         "manually_locked":true
     },
     "lock_explanation":"This assignment is locked until September 1 at 12:00am",
-    "hidden_for_user":false,
+    "hidden_for_user":true,
     "thumbnail_url":"http://www.instructure.testing/this/url"
 }
