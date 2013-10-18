@@ -25,7 +25,7 @@ describe(@"The CKClient", ^{
             __block BOOL ranFailureBlock = NO;
             __block BOOL ranSuccessBlock = NO;
             [client fetchModelAtPath:testPath parameters:nil modelClass:[CKModel class] context:contxt success:^(CKModel *model) {
-                ranFailureBlock = YES;
+                ranSuccessBlock = YES;
             } failure:^(NSError *error) {
                 ranFailureBlock = YES;
             }];

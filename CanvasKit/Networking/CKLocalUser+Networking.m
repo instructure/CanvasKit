@@ -31,8 +31,11 @@
     
 }
 
-- (void)performLoginWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
+- (void)performLoginWithDomain:(NSString *)domain success:(void(^)(void))success failure:(void(^)(NSError *error))failure
 {
+    
+    NSAssert(domain, @"You must provide a domain for login");
+    
     CKClient *sharedClient = [CKClient sharedClient];
     
     if (! sharedClient.clientId || ! sharedClient.sharedSecret) {
@@ -40,13 +43,20 @@
         return;
     }
     
-    CKLoginViewController *loginViewController = [[CKLoginViewController alloc] initWithSuccess:^{
-        success();
+    CKLoginViewController *loginViewController = [[CKLoginViewController alloc] initWithDomain:domain success:^{
+        if (success) {
+            success();
+        }
     } failure:^(NSError *error) {
-        failure(error);
+        if (failure) {
+            failure(error);
+        }
     }];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    [navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
+    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [navigationController.navigationBar setTranslucent:YES];
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
     [loginViewController.navigationItem setRightBarButtonItem:button];

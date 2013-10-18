@@ -10,7 +10,6 @@
 #import <ReactiveCocoa.h>
 
 #import <CKLocalUser+Networking.h>
-#import <AFNetworking.h>
 #import <CoreGraphics/CoreGraphics.h>
 
 #import "CKTodoItemsTableViewController.h"
@@ -44,7 +43,7 @@
     [layer setCornerRadius:self.profileImageView.frame.size.width / 2];
     [layer setBorderWidth:2];
     [layer setBorderColor:[UIColor lightGrayColor].CGColor];
-    
+        
     [RACAble(self.user.name) subscribeNext:^(id x) {
         [self setTitle:self.user.name];
     }];
@@ -67,7 +66,7 @@
 
 - (IBAction)logoutUser:(id)sender
 {
-    NSLog(@"IS LOGGED IN?: %hhd", self.user.isLoggedIn);
+    NSLog(@"IS LOGGED IN?: %d", self.user.isLoggedIn);
 }
 
 - (IBAction)viewTodoItems:(id)sender

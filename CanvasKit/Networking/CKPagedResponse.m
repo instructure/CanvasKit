@@ -85,7 +85,7 @@
 
 - (BOOL)isLastPage
 {
-    return [self.currentPage isEqual:self.lastPage];
+    return self.currentPage == nil || [self.currentPage isEqual:self.lastPage];
 }
 
 - (void)fetchNextPageWithSuccess:(void (^)(CKPagedResponse *))success failure:(void (^)(NSError *))failure
