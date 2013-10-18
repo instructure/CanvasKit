@@ -13,7 +13,7 @@
 
 @implementation CKAssignment (Networking)
 
-- (void)fetchAssignmentsForCourse:(CKCourse *)course withSuccess:(void(^)(CKPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
++ (void)fetchAssignmentsForCourse:(CKCourse *)course withSuccess:(void(^)(CKPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignments"];
     

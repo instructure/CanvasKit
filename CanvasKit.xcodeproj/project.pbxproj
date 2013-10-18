@@ -81,6 +81,9 @@
 		80C63B8C17FCA1C700DEB92A /* CKClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C63B8B17FCA1C700DEB92A /* CKClientSpec.m */; };
 		80C7D9F017CEDC4300915729 /* lock_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D9EF17CEDC4300915729 /* lock_info.json */; };
 		80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
+		80D16607180C404F00D265C2 /* CKFolder+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D16606180C404F00D265C2 /* CKFolder+Networking.m */; };
+		80D16608180C405400D265C2 /* CKFolder+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D16606180C404F00D265C2 /* CKFolder+Networking.m */; };
+		80D1660A180C9D5700D265C2 /* CKFolder+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D16609180C9D5700D265C2 /* CKFolder+NetworkingSpec.m */; };
 		80E06FC71805F4FB009CD10B /* CKFileSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FC61805F4FB009CD10B /* CKFileSpec.m */; };
 		80E06FCD1806152F009CD10B /* CKFile+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */; };
 		80E06FD018061587009CD10B /* CKFile+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCF18061587009CD10B /* CKFile+Networking.m */; };
@@ -284,6 +287,9 @@
 		80C7D9EF17CEDC4300915729 /* lock_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock_info.json; sourceTree = "<group>"; };
 		80C8470F17E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"; sourceTree = "<group>"; };
 		80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.m"; sourceTree = "<group>"; };
+		80D16605180C404F00D265C2 /* CKFolder+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKFolder+Networking.h"; sourceTree = "<group>"; };
+		80D16606180C404F00D265C2 /* CKFolder+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKFolder+Networking.m"; sourceTree = "<group>"; };
+		80D16609180C9D5700D265C2 /* CKFolder+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKFolder+NetworkingSpec.m"; sourceTree = "<group>"; };
 		80E06FC61805F4FB009CD10B /* CKFileSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKFileSpec.m; sourceTree = "<group>"; };
 		80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKFile+NetworkingSpec.m"; sourceTree = "<group>"; };
 		80E06FCE18061587009CD10B /* CKFile+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKFile+Networking.h"; sourceTree = "<group>"; };
@@ -509,6 +515,8 @@
 				804904BE18048B7B00BB8978 /* CKUser+Networking.m */,
 				80E06FCE18061587009CD10B /* CKFile+Networking.h */,
 				80E06FCF18061587009CD10B /* CKFile+Networking.m */,
+				80D16605180C404F00D265C2 /* CKFolder+Networking.h */,
+				80D16606180C404F00D265C2 /* CKFolder+Networking.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -528,6 +536,7 @@
 		8024E1A117C6B3620031E0F4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				80D16609180C9D5700D265C2 /* CKFolder+NetworkingSpec.m */,
 				80E06FCC1806152F009CD10B /* CKFile+NetworkingSpec.m */,
 				809876E7180493E4001D01BC /* CKUser+NetworkingSpec.m */,
 				80A8BE6417FF5C15002ED94E /* CKCourse+NetworkingSpec.m */,
@@ -932,6 +941,7 @@
 				BD15900417E91681008887E3 /* CKCalendarEvent.m in Sources */,
 				809A664517EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m in Sources */,
 				803282A817D05C7D001E73FA /* CKSubmission.m in Sources */,
+				80D16607180C404F00D265C2 /* CKFolder+Networking.m in Sources */,
 				4910CE9C17E8F3D000A6A73E /* CKAPIV1.m in Sources */,
 				802837F017CCF2BF0019FE30 /* CKLockableModel.m in Sources */,
 				BD661DA117E78772004210DD /* CKLocalUser+Networking.m in Sources */,
@@ -979,6 +989,7 @@
 				BDB4B92E17E3BA760097D4AC /* CKCourse.m in Sources */,
 				80E06FD11806158E009CD10B /* CKFile+Networking.m in Sources */,
 				2472D26B17E3BF4C0035E10E /* CKPage+Networking.m in Sources */,
+				80D1660A180C9D5700D265C2 /* CKFolder+NetworkingSpec.m in Sources */,
 				80A8BE6517FF5C15002ED94E /* CKCourse+NetworkingSpec.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKSubmission.m in Sources */,
 				BDB4B91F17E3BA6E0097D4AC /* NSValueTransformer+CKPredefinedTransformerAdditions.m in Sources */,
@@ -1024,6 +1035,7 @@
 				80E06FC71805F4FB009CD10B /* CKFileSpec.m in Sources */,
 				497948BD17E90C2900E1F600 /* CKAPIV1.m in Sources */,
 				24D5436217FCA5630056096D /* CKQuizSpec.m in Sources */,
+				80D16608180C405400D265C2 /* CKFolder+Networking.m in Sources */,
 				800BC95817FE205E00934C8E /* CKGroup+Networking.m in Sources */,
 				BDB4B92017E3BA6E0097D4AC /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				80A07D7917E42653001B9EE4 /* CKModule+NetworkingSpec.m in Sources */,

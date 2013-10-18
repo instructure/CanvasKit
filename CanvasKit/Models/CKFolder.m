@@ -12,16 +12,6 @@
 
 @interface CKFolder ()
 
-/**
- The API URL for accessing a listing of all folders in this folder.
- */
-@property (nonatomic, strong) NSURL *foldersURL;
-
-/**
- The API URL for accessing a listing of all files in this folder.
- */
-@property (nonatomic, strong) NSURL *filesURL;
-
 @end
 
 @implementation CKFolder

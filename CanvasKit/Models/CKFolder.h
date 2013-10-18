@@ -21,6 +21,16 @@
 @property (nonatomic) NSInteger foldersCount;
 
 /**
+ The API URL for accessing a listing of all folders in this folder.
+ */
+@property (nonatomic, strong) NSURL *foldersURL;
+
+/**
+ The API URL for accessing a listing of all files in this folder.
+ */
+@property (nonatomic, strong) NSURL *filesURL;
+
+/**
  The date the folder was created.
  */
 @property (nonatomic, strong) NSDate *createdAt;
