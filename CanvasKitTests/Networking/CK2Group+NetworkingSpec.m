@@ -18,42 +18,42 @@ SPEC_BEGIN(CK2Group_NetworkingSpec)
 describe(@"A CK2Group", ^{
     context(@"when fetching a group", ^{
         NSString *testPath = @"/api/v1/groups/1";
-        [[CK2Client sharedClient] returnResponseObject:@{} forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@{} forPath:testPath];
         
         it(@"should call the CK2Client helper with correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Group fetchGroup:@"1" success:nil failure:nil];
         });
     });
     
     context(@"when fetching the current user's groups", ^{
         NSString *testPath = @"/api/v1/self/groups";
-        [[CK2Client sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@[] forPath:testPath];
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
             [CK2Group fetchGroupsForLocalUserWithSuccess:nil failure:nil];
         });
     });
     
     context(@"when fetching groups for an account", ^{
         NSString *testPath = @"/api/v1/accounts/1/groups";
-        [[CK2Client sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@[] forPath:testPath];
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
             [CK2Group fetchGroupsForAccount:@"1" success:nil failure:nil];
         });
     });
     
     context(@"when fetching groups for an account", ^{
         NSString *testPath = @"/api/v1/courses/123/groups";
-        [[CK2Client sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@[] forPath:testPath];
         id course = [CK2Course mock];
         [course stub:@selector(id) andReturn:@"123"];
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath,any(),any(),any(),any(),any()];
             [CK2Group fetchGroupsForCourse:course success:nil failure:nil];
         });
     });

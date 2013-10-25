@@ -39,7 +39,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CK2Client *sharedClient = [CK2Client currentClient];
     
     self.webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     NSString *urlString = [NSString stringWithFormat:@"http://%@/login/oauth2/auth?client_id=%@&response_type=%@&redirect_uri=%@&mobile=1&canvas_login=1"
@@ -101,19 +101,19 @@
  */
 - (void)getAuthTokenWithCode:(id)code
 {
-    CK2Client *client = [CK2Client sharedClient];
+    CK2Client *client = [CK2Client currentClient];
     
-    [client POST:@"/login/oauth2/token" parameters:@{@"client_id":client.clientId, @"client_secret": client.sharedSecret, @"code": code} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client POST:@"/login/oauth2/token" parameters:@{@"client_id":client.clientId, @"client_secret": client.sharedSecret, @"code": code} success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        [[CK2Client sharedClient].keychain setObject:responseObject[@"access_token"] forKey:kCK2KeychainAuthTokenKey];
-        [[CK2Client sharedClient] setAuthToken:responseObject[@"access_token"]];
+        [[CK2Client currentClient].keychain setObject:responseObject[@"access_token"] forKey:kCK2KeychainAuthTokenKey];
+        [[CK2Client currentClient] setAuthToken:responseObject[@"access_token"]];
         
         CK2LocalUser *newUser = [MTLJSONAdapter modelOfClass:[CK2LocalUser class] fromJSONDictionary:responseObject[@"user"] error:nil];
         [[CK2LocalUser sharedUser] mergeValuesForKeysFromModel:newUser];
         
         self.oauthSuccessBlock();
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         self.oauthFailureBlock(error);
         

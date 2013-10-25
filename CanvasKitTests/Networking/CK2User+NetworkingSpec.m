@@ -24,7 +24,7 @@ describe(@"A CK2User", ^{
         NSString *testPath = @"/api/v1/courses/123/users";
         
         it(@"should call the CK2Client helper method with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2User fetchUsersForCourse:course success:nil failure:nil];
         });
     });
@@ -32,7 +32,7 @@ describe(@"A CK2User", ^{
         NSString *testPath = @"/api/v1/courses/123/search_users";
         
         it(@"should call the CK2Client helper method with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2User fetchUsersMatchingSearchTerm:@"sheldon" course:course success:nil failure:nil];
         });
     });

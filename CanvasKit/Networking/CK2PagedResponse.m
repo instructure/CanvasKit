@@ -54,12 +54,12 @@
 
 @implementation CK2PagedResponse
 
-+ (instancetype)pagedResponseForOperation:(AFHTTPRequestOperation *)operation responseObject:(NSArray *)responseObject modelClass:(Class)modelClass context:(id<CK2Context>)context
++ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject modelClass:(Class)modelClass context:(id<CK2Context>)context
 {
     NSAssert([modelClass isSubclassOfClass:[CK2Model class]], @"%@ is not a subclass of CK2Model", modelClass);
     CK2PagedResponse *pagedResponse = [[CK2PagedResponse alloc] init];
     
-    NSHTTPURLResponse *response = operation.response;
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
     pagedResponse.currentPage = response.currentPage;
     pagedResponse.nextPage = response.nextPage;
     pagedResponse.previousPage = response.previousPage;
@@ -90,12 +90,12 @@
 
 - (void)fetchNextPageWithSuccess:(void (^)(CK2PagedResponse *))success failure:(void (^)(NSError *))failure
 {
-    [[CK2Client sharedClient] GET:self.nextPage.relativeString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CK2Client currentClient] GET:self.nextPage.relativeString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CK2PagedResponse *pagedResponse = [CK2PagedResponse pagedResponseForOperation:operation responseObject:responseObject modelClass:self.modelClass context:self.context];
+            CK2PagedResponse *pagedResponse = [CK2PagedResponse pagedResponseForTask:task responseObject:responseObject modelClass:self.modelClass context:self.context];
             success(pagedResponse);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }

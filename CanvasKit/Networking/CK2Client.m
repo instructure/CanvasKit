@@ -12,25 +12,42 @@
 #import "CK2Model.h"
 #import "NSHTTPURLResponse+Pagination.h"
 
+static CK2Client *_currentClient;
+
 @implementation CK2Client
 
-+ (instancetype)sharedClient {
-    static CK2Client *_sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedClient = [[CK2Client alloc] initWithBaseURL:[NSURL URLWithString:@"https://mobiledev.instructure.com/"]];
-        [_sharedClient setRequestSerializer:[AFJSONRequestSerializer serializer]];
-        [_sharedClient setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    });
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL
+{
+    CK2Client *client = [[self alloc] initWithBaseURL:baseURL];
+    [client setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [client setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    return client;
+}
 
-    return _sharedClient;
++ (instancetype)currentClient
+{
+    NSAssert(_currentClient, @"You must set the currentClient before you can call currentClient");
+    
+    return _currentClient;
+}
+
++ (void)setCurrentClient:(CK2Client *)client
+{
+    @synchronized([CK2Client class]) {
+        if ([_currentClient isEqual:client]) {
+            return;
+        }
+        
+        [_currentClient invalidateSessionCancelingTasks:YES];
+        _currentClient = client;
+    }
 }
 
 #pragma mark - OAuth
 
 - (void)setAuthToken:(NSString *)authToken
 {
-    [(AFHTTPRequestSerializer*)[CK2Client sharedClient].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
+    [(AFHTTPRequestSerializer*)[CK2Client currentClient].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - JSON API Helpers
@@ -40,19 +57,18 @@
     NSAssert([modelClass isSubclassOfClass:[CK2Model class]], @"modelClass must be a subclass of CK2Model");
     
     
-    [[CK2Client sharedClient] GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        CK2Model *model = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:responseObject error:nil];
-        model.context = context;
-        
+    [[CK2Client currentClient] GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
+            CK2Model *model = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:responseObject error:nil];
+            model.context = context;
+            
             success(model);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }
     }];
-    
 }
 
 #pragma mark - Paginated JSON API Helpers
@@ -61,15 +77,16 @@
 {
     NSAssert([modelClass isSubclassOfClass:[CK2Model class]], @"Can only fetch CK2Models");
 
-    [[CK2Client sharedClient] GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CK2Client currentClient] GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CK2PagedResponse *pagedResponse = [CK2PagedResponse pagedResponseForOperation:operation responseObject:responseObject modelClass:modelClass context:context];
+            CK2PagedResponse *pagedResponse = [CK2PagedResponse pagedResponseForTask:task responseObject:responseObject modelClass:modelClass context:context];
             success(pagedResponse);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }
+
     }];
 }
 

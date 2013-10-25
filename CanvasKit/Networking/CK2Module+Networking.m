@@ -16,7 +16,7 @@
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"modules"];
     
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Module class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Module class] context:course success:success failure:failure];
 }
 
 + (void)fetchModuleWithID:(NSString *)moduleID forCourse:(CK2Course *)course success:(void (^)(CK2Module *))success failure:(void (^)(NSError *))failure
@@ -24,7 +24,7 @@
     NSString *path = [course.path stringByAppendingPathComponent:@"modules"];
     path = [path stringByAppendingPathComponent:moduleID];
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:self context:course success:(void (^)(CK2Model *))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:self context:course success:(void (^)(CK2Model *))success failure:failure];
 }
 
 @end

@@ -17,7 +17,7 @@
     NSString *path = [course.path stringByAppendingPathComponent:@"users"];
     NSDictionary *parameters = @{@"include": @[@"avatar_url"]};
     
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CK2User class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CK2User class] context:course success:success failure:failure];
 }
 
 + (void)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CK2Course *)course success:(void(^)(CK2PagedResponse *))success failure:(void(^)(NSError *error))failure
@@ -25,7 +25,7 @@
     NSString *path = [course.path stringByAppendingPathComponent:@"search_users"];
     NSDictionary *parameters = @{@"search_term": searchTerm, @"include": @[@"avatar_url"]};
     
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CK2User class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:parameters modelClass:[CK2User class] context:course success:success failure:failure];
 }
 
 @end

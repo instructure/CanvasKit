@@ -20,7 +20,7 @@ context(@"The CK2Folder class", ^{
         NSString *testPath = @"/api/v1/folders/123";
         
         it(@"should call the correct helper method", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Folder fetchFolder:@"123" success:nil failure:nil];
         });
     });
@@ -30,7 +30,7 @@ context(@"The CK2Folder class", ^{
         [course stub:@selector(path) andReturn:@"/api/v1/courses/123"];
         
         it(@"should call the correct helper method", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Folder fetchRootFolderForCourse:course success:nil failure:nil];
         });
     });
@@ -47,7 +47,7 @@ context(@"A CK2Folder instance", ^{
         NSString *testPath = folderURL.relativeString;
         
         it(@"should call the correct helper method", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [folder fetchFoldersWithSuccess:nil failure:nil];
         });
     });
@@ -56,7 +56,7 @@ context(@"A CK2Folder instance", ^{
         NSString *testPath = fileURL.relativeString;
         
         it(@"should call the correct helper method", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [folder fetchFilesWithSuccess:nil failure:nil];
         });
     });

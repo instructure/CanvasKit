@@ -17,7 +17,7 @@
     NSString *path = [CK2RootContext.path stringByAppendingPathComponent:@"courses"];
     NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
     
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:params modelClass:[CK2Course class] context:nil success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:params modelClass:[CK2Course class] context:nil success:success failure:failure];
 }
 
 @end

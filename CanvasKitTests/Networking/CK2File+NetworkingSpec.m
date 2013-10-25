@@ -19,7 +19,7 @@ describe(@"A CK2File", ^{
         NSString *testPath = @"/api/v1/files/123";
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2File fetchFile:@"123" success:nil failure:nil];
         });
     });

@@ -16,7 +16,7 @@
 + (void) fetchExternalToolsForCourse:(CK2Course *)course success:(void (^)(CK2PagedResponse *response))success failure:(void (^)(NSError *error))failure
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"external_tools"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2ExternalTool class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2ExternalTool class] context:course success:success failure:failure];
 }
 
 + (void) fetchSessionlessLaunchURLWithURL:(NSString *)url andCourse:(CK2Course *)course success:(void (^)(CK2ExternalTool *response))success failure:(void (^)(NSError *error))failure
@@ -25,7 +25,7 @@
     
     NSDictionary *params = @{@"url":url};
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:params modelClass:[CK2ExternalTool class] context:course success:(void (^)(CK2Model *))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:params modelClass:[CK2ExternalTool class] context:course success:(void (^)(CK2Model *))success failure:failure];
 }
 
 + (void) fetchExternalToolForCourseWithExternalToolID:(NSString *)externalToolID andCourse:(CK2Course *)course success:(void (^)(CK2ExternalTool *response))success failure:(void (^)(NSError *error))failure
@@ -33,7 +33,7 @@
     NSString *path = [course.path stringByAppendingPathComponent:@"external_tools"];
     path = [path stringByAppendingPathComponent:externalToolID];
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2ExternalTool class] context:course success:(void (^)(CK2Model *))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2ExternalTool class] context:course success:(void (^)(CK2Model *))success failure:failure];
 }
 
 @end

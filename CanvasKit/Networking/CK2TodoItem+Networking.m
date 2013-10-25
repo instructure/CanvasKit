@@ -15,13 +15,13 @@
 + (void)fetchTodoItemsForCourse:(CK2Course *)course success:(void(^)(CK2PagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"todo"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2TodoItem class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2TodoItem class] context:course success:success failure:failure];
 }
 
 + (void)fetchTodoItemsForCurrentUserWithSuccess:(void(^)(CK2PagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [[[CK2LocalUser sharedUser] path] stringByAppendingPathComponent:@"todo"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2TodoItem class] context:nil success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2TodoItem class] context:nil success:success failure:failure];
 }
 
 @end

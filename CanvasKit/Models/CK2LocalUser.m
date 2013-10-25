@@ -25,7 +25,7 @@
 
 - (BOOL)isLoggedIn
 {
-    return [[CK2Client sharedClient].keychain objectForKey:kCK2KeychainAuthTokenKey] != nil;
+    return [[CK2Client currentClient].keychain objectForKey:kCK2KeychainAuthTokenKey] != nil;
 }
 
 - (NSString *)path

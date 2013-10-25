@@ -16,13 +16,13 @@
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"quizzes"];
     path = [path stringByAppendingPathComponent:quizID];
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Quiz class] context:course success:(void (^)(CK2Model *quiz))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Quiz class] context:course success:(void (^)(CK2Model *quiz))success failure:failure];
 }
 
 + (void)fetchQuizzesForCourse:(CK2Course *)course success:(void (^)(CK2PagedResponse *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"quizzes"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Quiz class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Quiz class] context:course success:success failure:failure];
 }
 
 

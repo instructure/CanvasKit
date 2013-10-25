@@ -17,7 +17,7 @@
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignments"];
     
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Assignment class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Assignment class] context:course success:success failure:failure];
 }
 
 @end

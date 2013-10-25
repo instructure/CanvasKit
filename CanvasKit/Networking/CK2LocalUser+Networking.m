@@ -17,13 +17,13 @@
 {
     NSString *path = [[self path] stringByAppendingPathComponent:@"profile"];
     
-    [[CK2Client sharedClient] GET:path parameters:0 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CK2Client currentClient] GET:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
         CK2LocalUser *user = [MTLJSONAdapter modelOfClass:[CK2LocalUser class] fromJSONDictionary:responseObject error:nil];
         [[CK2LocalUser sharedUser] mergeValuesForKeysFromModel:user];
         
         if (success)
             success();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }
@@ -36,7 +36,7 @@
     
     NSAssert(domain, @"You must provide a domain for login");
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CK2Client *sharedClient = [CK2Client currentClient];
     
     if (! sharedClient.clientId || ! sharedClient.sharedSecret) {
         failure([NSError errorWithDomain:kCK2ErrorDomain code:kCK2ErrorCodeNotPreparedForOAuth userInfo:@{NSLocalizedDescriptionKey: @"Client ID and shared secret must be set prior to authentication. See CanvasKit.h prepare methods."}]);

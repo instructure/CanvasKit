@@ -16,7 +16,7 @@
     NSString *path = [CK2RootContext.path stringByAppendingPathComponent:@"files"];
     path = [path stringByAppendingPathComponent:fileID];
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2File class] context:nil success:(void(^)(CK2Model *file))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2File class] context:nil success:(void(^)(CK2Model *file))success failure:failure];
 }
 
 @end

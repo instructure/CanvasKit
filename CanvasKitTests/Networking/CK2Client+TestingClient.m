@@ -17,24 +17,10 @@
 
 @implementation CK2Client (TestingClient)
 
-+ (CK2Client *)testClient
-{
-    static CK2Client *testClient;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        testClient = [CK2TestClient new];
-    });
-    return testClient;
-}
-
 + (void)useTestClient
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        Method sharedClient = class_getClassMethod(self, @selector(sharedClient));
-        Method testClient = class_getClassMethod(self, @selector(testClient));
-        method_exchangeImplementations(sharedClient, testClient);
-    });
+    CK2TestClient *testClient = [CK2TestClient new];
+    [CK2Client setCurrentClient:testClient];
 }
 
 - (void)returnErrorForPath:(NSString *)path
@@ -80,7 +66,7 @@
     }
 }
 
-- (AFHTTPRequestOperation *)GET:(NSString *)URLString parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (NSURLSessionDataTask *)GET:(NSString *)URLString parameters:(NSDictionary *)parameters success:(void (^)(NSURLSessionDataTask *, id))success failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 {
     NSParameterAssert(URLString);
     
@@ -98,24 +84,5 @@
     [NSException raise:NSInvalidArgumentException format:@"There is no test configuration for the given path (%@)", URLString];
     return nil;
 }
-
-//- (NSURLSessionDataTask *)GET:(NSString *)URLString parameters:(NSDictionary *)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSError *))failure
-//{
-//    NSParameterAssert(URLString);
-//    
-//    if ([self.errorPaths containsObject:URLString]) {
-//        failure([NSError errorWithDomain:@"com.instructure.CanvasKit" code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"CK2TestClient error.", @"Error only used in testing")}]);
-//        return nil;
-//    }
-//    
-//    id responseObject = self.objectsByPath[URLString];
-//    if (responseObject != nil) {
-//        success(nil, responseObject);
-//        return nil;
-//    }
-//
-//    [NSException raise:NSInvalidArgumentException format:@"There is no test configuration for the given path (%@)", URLString];
-//    return nil;
-//}
 
 @end

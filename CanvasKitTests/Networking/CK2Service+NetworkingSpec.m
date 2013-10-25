@@ -19,10 +19,10 @@ describe(@"A CK2Service", ^{
     
     context(@"when fetching a service", ^{
         NSString *testPath = @"/api/v1/services/kaltura";
-        [[CK2Client sharedClient] returnResponseObject:@{} forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@{} forPath:testPath];
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Service fetchServiceSuccess:nil failure:nil];
         });
     });

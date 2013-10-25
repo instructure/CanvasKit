@@ -15,18 +15,18 @@
 + (void)fetchFavoriteCoursesWithSuccess:(void(^)(CK2PagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [[[CK2LocalUser sharedUser] path] stringByAppendingPathComponent:@"favorites/courses"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Favorite class] context:nil success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Favorite class] context:nil success:success failure:failure];
 }
 
 + (void)addCourse:(CK2Course *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
 {
     NSString *path = [[[[CK2LocalUser sharedUser] path] stringByAppendingPathComponent:@"favorites/courses/"] stringByAppendingPathComponent:course.id];
     
-    [[CK2Client sharedClient] POST:path parameters:0 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CK2Client currentClient] POST:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success();
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }
@@ -38,12 +38,11 @@
 {
     NSString *path = [[[[CK2LocalUser sharedUser] path] stringByAppendingPathComponent:@"favorites/courses"] stringByAppendingPathComponent:course.id];
     
-    
-    [[CK2Client sharedClient] DELETE:path parameters:0 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CK2Client currentClient] DELETE:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success();
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }

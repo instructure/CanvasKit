@@ -17,13 +17,13 @@
     NSString *path = [module.path stringByAppendingPathComponent:@"items"];
     path = [path stringByAppendingPathComponent:moduleItemID];
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2ModuleItem class] context:module success:(void (^)(CK2Model *))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2ModuleItem class] context:module success:(void (^)(CK2Model *))success failure:failure];
 }
 
 + (void)fetchModuleItemsForModule:(CK2Module *)module success:(void (^)(CK2PagedResponse *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [module.path stringByAppendingPathComponent:@"items"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2ModuleItem class] context:module success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2ModuleItem class] context:module success:success failure:failure];
 }
 
 @end

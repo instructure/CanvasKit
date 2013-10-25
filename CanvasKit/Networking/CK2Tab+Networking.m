@@ -14,7 +14,7 @@
 + (void)fetchTabsForCourse:(CK2Course *)course success:(void (^)(CK2PagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"tabs"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Tab class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Tab class] context:course success:success failure:failure];
 }
 
 

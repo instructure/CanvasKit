@@ -19,7 +19,7 @@
     NSAssert(aClientId, @"You must provide a client id");
     NSAssert(aSharedSecret, @"You must provide a shared secret");
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CK2Client *sharedClient = [CK2Client currentClient];
     [sharedClient setClientId:aClientId];
     [sharedClient setSharedSecret:aSharedSecret];
     [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCK2KeychainAuthTokenKey]];
@@ -29,7 +29,7 @@
 {
     [CanvasKit prepareWithClientID:aClientId sharedSecret:aSharedSecret];
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CK2Client *sharedClient = [CK2Client currentClient];
     [sharedClient setKeyChainId:aKeyChainId];
     [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCK2KeychainAuthTokenKey]];
 }

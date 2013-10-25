@@ -15,7 +15,7 @@
 + (void)fetchServiceSuccess:(void (^)(CK2Service *))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [CK2RootContext.path stringByAppendingPathComponent:@"services/kaltura"];
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Service class] context:CK2RootContext success:(void (^)(CK2Model *service))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Service class] context:CK2RootContext success:(void (^)(CK2Model *service))success failure:failure];
 }
 
 @end

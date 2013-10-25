@@ -20,20 +20,20 @@ describe(@"A CK2Module", ^{
     
     context(@"when fetching a single module", ^{
         NSString *testPath = @"/api/v1/courses/123/modules/1";
-        [[CK2Client sharedClient] returnResponseObject:@{} forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@{} forPath:testPath];
         
         it(@"should call the CK2Client helper method with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchModelAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Module fetchModuleWithID:@"1" forCourse:course success:nil failure:nil];
         });
     });
     
     context(@"when fetching modules for a course", ^{
         NSString *testPath = @"/api/v1/courses/123/modules";
-        [[CK2Client sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@[] forPath:testPath];
         
         it(@"should call the CK2CLient helper method with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(),any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(),any()];
             [CK2Module fetchModulesForCourse:course success:nil failure:nil];
         });
     });

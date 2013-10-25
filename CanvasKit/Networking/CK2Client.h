@@ -6,24 +6,52 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import <AFHTTPRequestOperationManager.h>
+#import <AFHTTPSessionManager.h>
 #import "CK2PagedResponse.h"
 
 @class CK2Model;
 @protocol CK2Context;
 
-@interface CK2Client : AFHTTPRequestOperationManager
+/**
+ The client responsible for processing all networking requests to
+ the canvas API.
+ 
+ Example:
+ NSURL *baseURL = [NSURL URLWithString:@"https://canvas.instructure.com"];
+ CK2Client *client = [CK2Client clientWithBaseURL:baseURL];
+ [CK2Client setCurrentClient:client];
+ 
+ // once the currentClient has been set, anyone can use it.
+ [CK2Client currentClient];
+ */
+@interface CK2Client : AFHTTPSessionManager
 
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *sharedSecret;
 @property (nonatomic, strong) NSString *keyChainId;
 
 /**
- Canvas Kit netorking singleton object
+ Create a canvas client for a given domain specified by the base URL.
  
- @return the CK2Client singleton
+ @param baseURL the base URL to be used by the client
  */
-+ (instancetype)sharedClient;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL;
+
+/**
+ Get the client to be used for the specified current domain.
+ 
+ @return the CK2Client as specified by the currentDomain property
+ @warning an exception will be raised if the currentDomain has not been set first.
+ @see setCurrentDomain:
+ */
++ (instancetype)currentClient;
+
+/**
+ Set the new current client.
+ 
+ @param currentClient the new current client
+ */
++ (void)setCurrentClient:(CK2Client *)currentClient;
 
 
 /**

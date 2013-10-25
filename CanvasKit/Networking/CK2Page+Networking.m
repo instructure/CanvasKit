@@ -15,7 +15,7 @@
 + (void)fetchPagesForCourse:(CK2Course *)course success:(void (^)(CK2PagedResponse *pagedResponse))success failure:(void (^)(NSError *))failure
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"pages"];
-    [[CK2Client sharedClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Page class] context:course success:success failure:failure];
+    [[CK2Client currentClient] fetchPagedResponseAtPath:path parameters:nil modelClass:[CK2Page class] context:course success:success failure:failure];
 }
 
 + (void)fetchPage:(NSString *)pageId forCourse:(CK2Course *)course success:(void (^)(CK2Page *))success failure:(void (^)(NSError *))failure
@@ -23,7 +23,7 @@
     NSString * path = [course.path stringByAppendingPathComponent:@"pages"];
     path = [path stringByAppendingPathComponent:pageId];
     
-    [[CK2Client sharedClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Page class] context:course success:(void (^)(CK2Model *model))success failure:failure];
+    [[CK2Client currentClient] fetchModelAtPath:path parameters:nil modelClass:[CK2Page class] context:course success:(void (^)(CK2Model *model))success failure:failure];
 }
 
 @end

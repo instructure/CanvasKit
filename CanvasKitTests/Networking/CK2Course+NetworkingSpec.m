@@ -17,10 +17,10 @@ SPEC_BEGIN(CK2Course_NetworkingSpec)
 describe(@"A CK2Course", ^{
     context(@"when fetching courses for the a user", ^{
         NSString *testPath = @"/api/v1/courses";
-        [[CK2Client sharedClient] returnResponseObject:@[] forPath:testPath];
+        [[CK2Client currentClient] returnResponseObject:@[] forPath:testPath];
         
         it(@"should call the CK2Client helper with the correct path", ^{
-            [[[CK2Client sharedClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
+            [[[CK2Client currentClient] should] receive:@selector(fetchPagedResponseAtPath:parameters:modelClass:context:success:failure:) withArguments:testPath, any(), any(), any(), any(), any()];
             [CK2Course fetchCoursesForCurrentUserWithSuccess:nil failure:nil];
         });
     });
