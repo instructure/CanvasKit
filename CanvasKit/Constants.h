@@ -13,17 +13,17 @@
  Error Handling Definitions
  */
 
-#define kCK2ErrorCodeUserCancelledOAuth 0
-#define kCK2ErrorCodeNotPreparedForOAuth 1
+#define kCKIErrorCodeUserCancelledOAuth 0
+#define kCKIErrorCodeNotPreparedForOAuth 1
 
-#define kCK2ErrorDomain @"com.instructure.canvaskit"
+#define kCKIErrorDomain @"com.instructure.canvaskit"
 
 
 /**
  Keychain keys
  */
 
-#define kCK2KeychainAuthTokenKey @"AUTH_TOKEN"
+#define kCKIKeychainAuthTokenKey @"AUTH_TOKEN"
 
 
 

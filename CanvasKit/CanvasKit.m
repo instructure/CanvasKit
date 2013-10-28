@@ -8,8 +8,8 @@
 
 #import "CanvasKit.h"
 
-#import "CK2Client.h"
-#import "CK2Client+Keychain.h"
+#import "CKIClient.h"
+#import "CKIClient+Keychain.h"
 
 @implementation CanvasKit
 
@@ -19,19 +19,31 @@
     NSAssert(aClientId, @"You must provide a client id");
     NSAssert(aSharedSecret, @"You must provide a shared secret");
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CKIClient *sharedClient = [CKIClient currentClient];
     [sharedClient setClientId:aClientId];
     [sharedClient setSharedSecret:aSharedSecret];
-    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCK2KeychainAuthTokenKey]];
+    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKIKeychainAuthTokenKey]];
 }
 
 + (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret keyChainId:(NSString *)aKeyChainId
 {
     [CanvasKit prepareWithClientID:aClientId sharedSecret:aSharedSecret];
     
-    CK2Client *sharedClient = [CK2Client sharedClient];
+    CKIClient *sharedClient = [CKIClient currentClient];
     [sharedClient setKeyChainId:aKeyChainId];
-    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCK2KeychainAuthTokenKey]];
+    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKIKeychainAuthTokenKey]];
+}
+
++ (void)setCurrentDomain:(NSURL *)currentDomain
+{
+    CKIClient *client = [CKIClient clientWithBaseURL:currentDomain];
+    CKIClient *currentClient = [CKIClient currentClient];
+    
+    client.sharedSecret = currentClient.sharedSecret;
+    client.authToken = currentClient.authToken;
+    client.keyChainId = currentClient.keyChainId;
+    
+    [CKIClient setCurrentClient:client];
 }
 
 @end
