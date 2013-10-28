@@ -32,4 +32,12 @@
  */
 + (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret keyChainId:(NSString *)aKeyChainId;
 
+/**
+ Set the current base URL for the canvas instance you want to work with. Ex: http://canvas.instructure.com
+ 
+ @param currentDomain the domain/subdomains where you want to be hitting the APIs
+ @warning if you don't call one of the prepareWithClientID methods first, you're gonna have a bad time.
+ */
++ (void)setCurrentDomain:(NSURL *)currentDomain;
+
 @end

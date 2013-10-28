@@ -34,4 +34,16 @@
     [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKIKeychainAuthTokenKey]];
 }
 
++ (void)setCurrentDomain:(NSURL *)currentDomain
+{
+    CKIClient *client = [CKIClient clientWithBaseURL:currentDomain];
+    CKIClient *currentClient = [CKIClient currentClient];
+    
+    client.sharedSecret = currentClient.sharedSecret;
+    client.authToken = currentClient.authToken;
+    client.keyChainId = currentClient.keyChainId;
+    
+    [CKIClient setCurrentClient:client];
+}
+
 @end

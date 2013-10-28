@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *sharedSecret;
 @property (nonatomic, strong) NSString *keyChainId;
+@property (nonatomic, strong) NSString *authToken;
 
 /**
  Create a canvas client for a given domain specified by the base URL.
