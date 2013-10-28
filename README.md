@@ -43,18 +43,18 @@ Once you have your Client ID and Shared Secret you can start using CanvasKit. So
 ### User Authentication
 
 
-#### CK2LocalUser
+#### CKILocalUser
 
-CanvasKit uses the concept of a 'Local User', or the user currently using the device. `CK2LocalUser` is a singleton, giving you access to the current user anywhere in your application by calling:
+CanvasKit uses the concept of a 'Local User', or the user currently using the device. `CKILocalUser` is a singleton, giving you access to the current user anywhere in your application by calling:
 
 ```objc
-[CK2LocalUser sharedInstance]
+[CKILocalUser sharedInstance]
 ```
 
 Before you can use any other CanvasKit methods to access the Canvas LMS API you must authenticate the current user. CanvasKit makes this easy by handling the OAuth 2 authentication flow for you. All you have to do is call the following method to prompt the user to authenticate.
 
 ```objc
-[[CK2LocalUser sharedInstance] performLoginWithDomain:@"yourschooldomain" success:^{
+[[CKILocalUser sharedInstance] performLoginWithDomain:@"yourschooldomain" success:^{
     [self dismissViewControllerAnimated:YES completion:nil];
     // Success the user was authenticated
 } failure:^(NSError *error) {
@@ -70,20 +70,20 @@ Once authentication succeeds, an authentication token will be added to your appl
 ```objc
 [CanvasKit prepareWithClientID:@"yourclientid" sharedSecret:@"yoursharedsecret" keyChainId:@"yourkeychainid"];
 ```
-The authentication token will remain in the keychain until you logout the `CK2LocalUser`.
+The authentication token will remain in the keychain until you logout the `CKILocalUser`.
 
 ```objc
-[[CK2LocalUser sharedInstance] logout];
+[[CKILocalUser sharedInstance] logout];
 ```
 
 ### Accessing the API
 
 #### Architecture Overview
 
-CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CK2Course class and envoke one of the networking methods. For example:
+CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CKICourse class and envoke one of the networking methods. For example:
 
 ```objc
-[CK2Course fetchCoursesForCurrentUserWithSuccess:^(CK2PagedResponse *response) {
+[CKICourse fetchCoursesForCurrentUserWithSuccess:^(CKIPagedResponse *response) {
     // Success fetching courses
 } failure:^(NSError *error) {
     // Failed to fetch courses
@@ -94,13 +94,13 @@ Each networking method begins with 'fetch' making it easy for you to see all ava
 
 #### Pagination
 
-For performance reasons, many of the Canvas API endpoints that return lists of items do not return all items at once—they instead return chunks (pages) of items. As you need more items in the list, you can request more pages. More information on the specific implementation details for pagination can be found in the [API Pagination Documentation](https://canvas.instructure.com/doc/api/file.pagination.html), but fortunately CanvasKit abstracts most of this away from you with `CK2PagedResponse`.
+For performance reasons, many of the Canvas API endpoints that return lists of items do not return all items at once—they instead return chunks (pages) of items. As you need more items in the list, you can request more pages. More information on the specific implementation details for pagination can be found in the [API Pagination Documentation](https://canvas.instructure.com/doc/api/file.pagination.html), but fortunately CanvasKit abstracts most of this away from you with `CKIPagedResponse`.
 
-The `CK2PagedResponse` provides you with three important things:
+The `CKIPagedResponse` provides you with three important things:
 
 1. `items` - the list of items returned by the API
 2. `isLastPage` - tells you if you there are more pages to grab
-3. `- fetchNextPageWithSuccess:failure:` - fetches the next CK2PagedResponse
+3. `- fetchNextPageWithSuccess:failure:` - fetches the next CKIPagedResponse
 
 So, how might this work? Let's look at an example where we want to fetch the assignments for a course (assuming we already have the course object)
 
@@ -109,7 +109,7 @@ So, how might this work? Let's look at an example where we want to fetch the ass
 {
     // if we haven't fetched any data yet, fetch the first page
     if (!self.currentPage) {
-        [CK2Assignment fetchAssignmentsForCourse:self.course withSuccess:^(CK2PagedResponse *pagedResponse) {
+        [CKIAssignment fetchAssignmentsForCourse:self.course withSuccess:^(CKIPagedResponse *pagedResponse) {
             self.currentPage = pagedResponse;
             [self.assignments addObjectsFromArray:pagedResponse.items];
             
@@ -122,7 +122,7 @@ So, how might this work? Let's look at an example where we want to fetch the ass
     }
     // if we've alread fetched some data, but we haven't fetched the last page yet, fetch more data
     else if (!self.currentPage.isLastPage) {
-        [self.currentPage fetchNextPageWithSuccess:^(CK2PagedResponse *pagedResponse) {
+        [self.currentPage fetchNextPageWithSuccess:^(CKIPagedResponse *pagedResponse) {
             self.currentPage = pagedResponse;
             [self.assignments addObjectsFromArray:pagedResponse.items];
             
