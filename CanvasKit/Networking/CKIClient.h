@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import <AFHTTPSessionManager.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 #import "CKIPagedResponse.h"
 
 @class CKIModel;

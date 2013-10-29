@@ -11,37 +11,45 @@
 #import "CKIClient.h"
 #import "CKIClient+Keychain.h"
 
+static NSString *clientID;
+static NSString *sharedSecret;
+static NSString *keychainID;
+
 @implementation CanvasKit
 
 + (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret
 {
-    
     NSAssert(aClientId, @"You must provide a client id");
     NSAssert(aSharedSecret, @"You must provide a shared secret");
     
-    CKIClient *sharedClient = [CKIClient currentClient];
-    [sharedClient setClientId:aClientId];
-    [sharedClient setSharedSecret:aSharedSecret];
-    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKIKeychainAuthTokenKey]];
+    FXKeychain *keychain;
+    if (keychainID) {
+        keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:nil];
+    } else {
+        keychain = [FXKeychain defaultKeychain];
+    }
+    
+    [keychain setObject:@"https://mobiledev.instructure.com/" forKey:kCKIKeychainDomainKey];
+    NSURL *domain = [NSURL URLWithString:[keychain objectForKey:kCKIKeychainDomainKey]];
+    if (domain) {
+        [self setCurrentDomain:domain];
+    }
 }
 
 + (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret keyChainId:(NSString *)aKeyChainId
 {
+    keychainID = aKeyChainId;
     [CanvasKit prepareWithClientID:aClientId sharedSecret:aSharedSecret];
-    
-    CKIClient *sharedClient = [CKIClient currentClient];
-    [sharedClient setKeyChainId:aKeyChainId];
-    [sharedClient setAuthToken:[sharedClient.keychain objectForKey:kCKIKeychainAuthTokenKey]];
 }
 
 + (void)setCurrentDomain:(NSURL *)currentDomain
 {
     CKIClient *client = [CKIClient clientWithBaseURL:currentDomain];
-    CKIClient *currentClient = [CKIClient currentClient];
     
-    client.sharedSecret = currentClient.sharedSecret;
-    client.authToken = currentClient.authToken;
-    client.keyChainId = currentClient.keyChainId;
+    client.sharedSecret = sharedSecret;
+    client.clientId = clientID;
+    client.keyChainId = keychainID;
+    client.authToken = [client.keychain objectForKey:kCKIKeychainAuthTokenKey];
     
     [CKIClient setCurrentClient:client];
 }

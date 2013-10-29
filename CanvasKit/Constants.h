@@ -24,6 +24,7 @@
  */
 
 #define kCKIKeychainAuthTokenKey @"AUTH_TOKEN"
+#define kCKIKeychainDomainKey @"DOMAIN_KEY"
 
 
 
