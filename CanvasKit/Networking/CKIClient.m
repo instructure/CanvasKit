@@ -48,7 +48,7 @@ static CKIClient *_currentClient;
 - (void)setAuthToken:(NSString *)authToken
 {
     _authToken = authToken;
-    [(AFHTTPRequestSerializer*)[CKIClient currentClient].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
+    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - JSON API Helpers

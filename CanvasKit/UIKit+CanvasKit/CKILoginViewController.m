@@ -106,6 +106,7 @@
     [client POST:@"/login/oauth2/token" parameters:@{@"client_id":client.clientId, @"client_secret": client.sharedSecret, @"code": code} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         [[CKIClient currentClient].keychain setObject:responseObject[@"access_token"] forKey:kCKIKeychainAuthTokenKey];
+        [[CKIClient currentClient].keychain setObject:[client.baseURL absoluteString] forKey:kCKIKeychainDomainKey];
         [[CKIClient currentClient] setAuthToken:responseObject[@"access_token"]];
         
         CKILocalUser *newUser = [MTLJSONAdapter modelOfClass:[CKILocalUser class] fromJSONDictionary:responseObject[@"user"] error:nil];
