@@ -85,7 +85,7 @@
  
  @note Returned only if the current user has grading rights and include[]=needs_grading_count
  */
-@property (nonatomic) NSInteger *needsGradingCount;
+@property (nonatomic) NSInteger needsGradingCount;
 
 /**
  The name of the enrollment term for the course
