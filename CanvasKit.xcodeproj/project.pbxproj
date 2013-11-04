@@ -53,6 +53,8 @@
 		8027B7BB18283A9D0008BB07 /* CKIActivityStreamMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7B918283A940008BB07 /* CKIActivityStreamMessageItem.m */; };
 		8027B7BD18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7BC18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m */; };
 		8027B7BF18283B0E0008BB07 /* activity_stream_message_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7BE18283B0E0008BB07 /* activity_stream_message_item.json */; };
+		8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */; };
+		8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */; };
 		802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
 		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
@@ -278,6 +280,10 @@
 		8027B7B918283A940008BB07 /* CKIActivityStreamMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamMessageItem.m; sourceTree = "<group>"; };
 		8027B7BC18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamMessageItemSpec.m; sourceTree = "<group>"; };
 		8027B7BE18283B0E0008BB07 /* activity_stream_message_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_message_item.json; sourceTree = "<group>"; };
+		8027B7C2182849F60008BB07 /* CKIActivityStreamConferenceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamConferenceItem.h; sourceTree = "<group>"; };
+		8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamConferenceItem.m; sourceTree = "<group>"; };
+		8027B7C518284A190008BB07 /* CKIActivityStreamCollaborationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamCollaborationItem.h; sourceTree = "<group>"; };
+		8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamCollaborationItem.m; sourceTree = "<group>"; };
 		802837EE17CCF2BF0019FE30 /* CKILockableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockableModel.h; sourceTree = "<group>"; };
 		802837EF17CCF2BF0019FE30 /* CKILockableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockableModel.m; sourceTree = "<group>"; };
 		8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPURLResponsePaginationSpec.m; sourceTree = "<group>"; };
@@ -555,6 +561,10 @@
 				8027B7B1182821BB0008BB07 /* CKIActivityStreamConversationItem.m */,
 				8027B7B818283A940008BB07 /* CKIActivityStreamMessageItem.h */,
 				8027B7B918283A940008BB07 /* CKIActivityStreamMessageItem.m */,
+				8027B7C2182849F60008BB07 /* CKIActivityStreamConferenceItem.h */,
+				8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */,
+				8027B7C518284A190008BB07 /* CKIActivityStreamCollaborationItem.h */,
+				8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1049,6 +1059,7 @@
 				809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */,
+				8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
 				809A664517EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m in Sources */,
 				803282A817D05C7D001E73FA /* CKISubmission.m in Sources */,
 				80D16607180C404F00D265C2 /* CKIFolder+Networking.m in Sources */,
@@ -1087,6 +1098,7 @@
 				BDFB334617E79698000C6C13 /* CKISubmission+Networking.m in Sources */,
 				8027B7B2182821BB0008BB07 /* CKIActivityStreamConversationItem.m in Sources */,
 				80B997FE182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
+				8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				80538A1E17DD132A009095F2 /* CKISubmissionComment.m in Sources */,
 				BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */,
 				BD661DA017E78772004210DD /* CKICourse+Networking.m in Sources */,
