@@ -29,7 +29,6 @@ static NSString *keychainID;
         keychain = [FXKeychain defaultKeychain];
     }
     
-    [keychain setObject:@"https://mobiledev.instructure.com/" forKey:kCKIKeychainDomainKey];
     NSURL *domain = [NSURL URLWithString:[keychain objectForKey:kCKIKeychainDomainKey]];
     if (domain) {
         [self setCurrentDomain:domain];
