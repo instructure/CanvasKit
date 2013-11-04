@@ -84,6 +84,10 @@
 		80B3676F17D0253000A32E70 /* CKIRubricCriterion.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */; };
 		80B3677B17D02A6500A32E70 /* rubric_criterion.json in Resources */ = {isa = PBXBuildFile; fileRef = 80B3677A17D02A6500A32E70 /* rubric_criterion.json */; };
 		80B3677D17D02AB800A32E70 /* model_string.json in Resources */ = {isa = PBXBuildFile; fileRef = 80B3677C17D02AB800A32E70 /* model_string.json */; };
+		80B997F11828081F0083798A /* CKIActivityStreamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B997F01828081F0083798A /* CKIActivityStreamItem.m */; };
+		80B997F3182808500083798A /* activity_stream_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 80B997F2182808500083798A /* activity_stream_item.json */; };
+		80B997F5182808DE0083798A /* CKIActivityStreamItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B997F4182808DE0083798A /* CKIActivityStreamItemSpec.m */; };
+		80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B997F01828081F0083798A /* CKIActivityStreamItem.m */; };
 		80BA049F17E0E41000D11B5F /* Helpers.h in Resources */ = {isa = PBXBuildFile; fileRef = 80E3C09817C6EFAE0056EA62 /* Helpers.h */; };
 		80C63B8C17FCA1C700DEB92A /* CKIClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C63B8B17FCA1C700DEB92A /* CKIClientSpec.m */; };
 		80C7D9F017CEDC4300915729 /* lock_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C7D9EF17CEDC4300915729 /* lock_info.json */; };
@@ -304,6 +308,10 @@
 		80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterion.m; sourceTree = "<group>"; };
 		80B3677A17D02A6500A32E70 /* rubric_criterion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rubric_criterion.json; sourceTree = "<group>"; };
 		80B3677C17D02AB800A32E70 /* model_string.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = model_string.json; sourceTree = "<group>"; };
+		80B997EF1828081F0083798A /* CKIActivityStreamItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamItem.h; sourceTree = "<group>"; };
+		80B997F01828081F0083798A /* CKIActivityStreamItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamItem.m; sourceTree = "<group>"; };
+		80B997F2182808500083798A /* activity_stream_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_item.json; sourceTree = "<group>"; };
+		80B997F4182808DE0083798A /* CKIActivityStreamItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamItemSpec.m; sourceTree = "<group>"; };
 		80C63B8B17FCA1C700DEB92A /* CKIClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKIClientSpec.m; path = CanvasKitTests/Networking/CKIClientSpec.m; sourceTree = SOURCE_ROOT; };
 		80C7D9EA17CED9B300915729 /* CKILockInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockInfo.h; sourceTree = "<group>"; };
 		80C7D9EB17CED9B300915729 /* CKILockInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockInfo.m; sourceTree = "<group>"; };
@@ -510,6 +518,8 @@
 				80538A2617DD1A20009095F2 /* CKIUser.m */,
 				24EFAD9D180C56FA009E8058 /* CKIService.h */,
 				24EFAD9E180C56FA009E8058 /* CKIService.m */,
+				80B997EF1828081F0083798A /* CKIActivityStreamItem.h */,
+				80B997F01828081F0083798A /* CKIActivityStreamItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -566,6 +576,7 @@
 		8024E1A017C6B3620031E0F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80B997F4182808DE0083798A /* CKIActivityStreamItemSpec.m */,
 				80E06FC61805F4FB009CD10B /* CKIFileSpec.m */,
 				B589360F180CA1F200665753 /* CKIExternalToolSpec.m */,
 				804904C118048B9B00BB8978 /* CKIUserSpec.m */,
@@ -643,6 +654,7 @@
 				80F1E0E617FB75DC005E71E1 /* group.json */,
 				24D5435C17FCA4B90056096D /* quiz.json */,
 				24EFAD99180C5453009E8058 /* service.json */,
+				80B997F2182808500083798A /* activity_stream_item.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -870,6 +882,7 @@
 				B59520D61805BBEC0055DDCC /* external_tool.json in Resources */,
 				80B3677D17D02AB800A32E70 /* model_string.json in Resources */,
 				80785A1017E13DE900339A06 /* module_item.json in Resources */,
+				80B997F3182808500083798A /* activity_stream_item.json in Resources */,
 				80F1E0E717FB75DC005E71E1 /* group.json in Resources */,
 				BD99E77E17E8AC5D00AEC79C /* favorite.json in Resources */,
 				80538A2217DD1427009095F2 /* submission_comment.json in Resources */,
@@ -1000,6 +1013,7 @@
 				BD661D9E17E78772004210DD /* CKIAssignment+Networking.m in Sources */,
 				BDF67B3B17EBAD3E008AE5F5 /* CKIFolder.m in Sources */,
 				80061C1817FDFC3100A8CDFF /* CKIGroup+Networking.m in Sources */,
+				80B997F11828081F0083798A /* CKIActivityStreamItem.m in Sources */,
 				80F1E0E117FB6BBE005E71E1 /* CKIGroup.m in Sources */,
 				80785A0E17E1365700339A06 /* CKIModule.m in Sources */,
 				BDB4B91D17E3B9DC0097D4AC /* CKILockInfo.m in Sources */,
@@ -1047,6 +1061,7 @@
 				2472D26B17E3BF4C0035E10E /* CKIPage+Networking.m in Sources */,
 				80D1660A180C9D5700D265C2 /* CKIFolder+NetworkingSpec.m in Sources */,
 				80A8BE6517FF5C15002ED94E /* CKICourse+NetworkingSpec.m in Sources */,
+				80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */,
 				BDB4B91F17E3BA6E0097D4AC /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */,
 				800B2F0417FE395F0069D0CC /* CKIModuleItem+Networking.m in Sources */,
@@ -1054,6 +1069,7 @@
 				BDB4B92717E3BA760097D4AC /* CKIRubricCriterion.m in Sources */,
 				BDF67B3817EBA8AC008AE5F5 /* CKIFile.m in Sources */,
 				BD15900517E91681008887E3 /* CKICalendarEvent.m in Sources */,
+				80B997F5182808DE0083798A /* CKIActivityStreamItemSpec.m in Sources */,
 				BDFB333F17E78C0D000C6C13 /* CKIAssignment+Networking.m in Sources */,
 				809876E8180493E4001D01BC /* CKIUser+NetworkingSpec.m in Sources */,
 				BD15900D17EA0679008887E3 /* CKICalendarEvent+Networking.m in Sources */,
