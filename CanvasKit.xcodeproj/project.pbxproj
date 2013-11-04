@@ -55,6 +55,7 @@
 		8027B7BF18283B0E0008BB07 /* activity_stream_message_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7BE18283B0E0008BB07 /* activity_stream_message_item.json */; };
 		8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */; };
 		8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */; };
+		8027B7CA18284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */; };
 		802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
 		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
@@ -284,6 +285,8 @@
 		8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamConferenceItem.m; sourceTree = "<group>"; };
 		8027B7C518284A190008BB07 /* CKIActivityStreamCollaborationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamCollaborationItem.h; sourceTree = "<group>"; };
 		8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamCollaborationItem.m; sourceTree = "<group>"; };
+		8027B7C818284F9E0008BB07 /* CKIActivityStreamSubmissionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamSubmissionItem.h; sourceTree = "<group>"; };
+		8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamSubmissionItem.m; sourceTree = "<group>"; };
 		802837EE17CCF2BF0019FE30 /* CKILockableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockableModel.h; sourceTree = "<group>"; };
 		802837EF17CCF2BF0019FE30 /* CKILockableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockableModel.m; sourceTree = "<group>"; };
 		8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPURLResponsePaginationSpec.m; sourceTree = "<group>"; };
@@ -551,20 +554,7 @@
 				80538A2617DD1A20009095F2 /* CKIUser.m */,
 				24EFAD9D180C56FA009E8058 /* CKIService.h */,
 				24EFAD9E180C56FA009E8058 /* CKIService.m */,
-				80B997EF1828081F0083798A /* CKIActivityStreamItem.h */,
-				80B997F01828081F0083798A /* CKIActivityStreamItem.m */,
-				80B997FC182814C80083798A /* CKIActivityStreamDiscussionTopicItem.h */,
-				80B997FD182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m */,
-				8027B7AD182821400008BB07 /* CKIActivityStreamAnnouncementItem.h */,
-				8027B7AE182821400008BB07 /* CKIActivityStreamAnnouncementItem.m */,
-				8027B7B0182821BB0008BB07 /* CKIActivityStreamConversationItem.h */,
-				8027B7B1182821BB0008BB07 /* CKIActivityStreamConversationItem.m */,
-				8027B7B818283A940008BB07 /* CKIActivityStreamMessageItem.h */,
-				8027B7B918283A940008BB07 /* CKIActivityStreamMessageItem.m */,
-				8027B7C2182849F60008BB07 /* CKIActivityStreamConferenceItem.h */,
-				8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */,
-				8027B7C518284A190008BB07 /* CKIActivityStreamCollaborationItem.h */,
-				8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */,
+				8027B7CB18284FBB0008BB07 /* CKIActivityStreamItems */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -654,6 +644,29 @@
 				2479F8E4180D871400C700C6 /* CKIService+NetworkingSpec.m */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		8027B7CB18284FBB0008BB07 /* CKIActivityStreamItems */ = {
+			isa = PBXGroup;
+			children = (
+				80B997EF1828081F0083798A /* CKIActivityStreamItem.h */,
+				80B997F01828081F0083798A /* CKIActivityStreamItem.m */,
+				80B997FC182814C80083798A /* CKIActivityStreamDiscussionTopicItem.h */,
+				80B997FD182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m */,
+				8027B7AD182821400008BB07 /* CKIActivityStreamAnnouncementItem.h */,
+				8027B7AE182821400008BB07 /* CKIActivityStreamAnnouncementItem.m */,
+				8027B7B0182821BB0008BB07 /* CKIActivityStreamConversationItem.h */,
+				8027B7B1182821BB0008BB07 /* CKIActivityStreamConversationItem.m */,
+				8027B7B818283A940008BB07 /* CKIActivityStreamMessageItem.h */,
+				8027B7B918283A940008BB07 /* CKIActivityStreamMessageItem.m */,
+				8027B7C2182849F60008BB07 /* CKIActivityStreamConferenceItem.h */,
+				8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */,
+				8027B7C518284A190008BB07 /* CKIActivityStreamCollaborationItem.h */,
+				8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */,
+				8027B7C818284F9E0008BB07 /* CKIActivityStreamSubmissionItem.h */,
+				8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */,
+			);
+			name = CKIActivityStreamItems;
 			sourceTree = "<group>";
 		};
 		808A0DC317CBCA6D0000654F /* Helpers */ = {
@@ -1099,6 +1112,7 @@
 				8027B7B2182821BB0008BB07 /* CKIActivityStreamConversationItem.m in Sources */,
 				80B997FE182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
 				8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */,
+				8027B7CA18284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */,
 				80538A1E17DD132A009095F2 /* CKISubmissionComment.m in Sources */,
 				BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */,
 				BD661DA017E78772004210DD /* CKICourse+Networking.m in Sources */,
