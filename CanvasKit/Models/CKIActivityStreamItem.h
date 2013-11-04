@@ -10,7 +10,7 @@
 
 /**
  Base class for all activity stream items. There are many different types
- of activity stream item: discussion topics, conversations, messages,
+ of activity stream item: discussion topics, announcements, conversations, messages,
  submissions, conferences, collaborations... and maybe more in the future.
  
  For properties specific to each of these types, use the methods provided
