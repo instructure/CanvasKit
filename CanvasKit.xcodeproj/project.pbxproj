@@ -61,6 +61,10 @@
 		8027B7CE18295B9E0008BB07 /* CKIActivityStreamConferenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */; };
 		8027B7CF18295BB10008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */; };
 		8027B7D118295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7D018295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m */; };
+		8027B7D3182969990008BB07 /* activity_stream_announcement_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7D2182969990008BB07 /* activity_stream_announcement_item.json */; };
+		8027B7D9182971550008BB07 /* activity_stream_submission_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7D8182971550008BB07 /* activity_stream_submission_item.json */; };
+		8027B7DB182971A90008BB07 /* activity_stream_conference_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7DA182971A90008BB07 /* activity_stream_conference_item.json */; };
+		8027B7DD182971E70008BB07 /* activity_stream_collaboration_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7DC182971E70008BB07 /* activity_stream_collaboration_item.json */; };
 		802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
 		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
@@ -293,6 +297,10 @@
 		8027B7C818284F9E0008BB07 /* CKIActivityStreamSubmissionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamSubmissionItem.h; sourceTree = "<group>"; };
 		8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamSubmissionItem.m; sourceTree = "<group>"; };
 		8027B7D018295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CKILocalUser+NetworkingSpec.m"; path = "CanvasKitTests/Networking/CKILocalUser+NetworkingSpec.m"; sourceTree = SOURCE_ROOT; };
+		8027B7D2182969990008BB07 /* activity_stream_announcement_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_announcement_item.json; sourceTree = "<group>"; };
+		8027B7D8182971550008BB07 /* activity_stream_submission_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_submission_item.json; sourceTree = "<group>"; };
+		8027B7DA182971A90008BB07 /* activity_stream_conference_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_conference_item.json; sourceTree = "<group>"; };
+		8027B7DC182971E70008BB07 /* activity_stream_collaboration_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_stream_collaboration_item.json; sourceTree = "<group>"; };
 		802837EE17CCF2BF0019FE30 /* CKILockableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockableModel.h; sourceTree = "<group>"; };
 		802837EF17CCF2BF0019FE30 /* CKILockableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockableModel.m; sourceTree = "<group>"; };
 		8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPURLResponsePaginationSpec.m; sourceTree = "<group>"; };
@@ -724,8 +732,12 @@
 				24EFAD99180C5453009E8058 /* service.json */,
 				80B997F2182808500083798A /* activity_stream_item.json */,
 				80B997FA1828143C0083798A /* activity_stream_discussion_topic_item.json */,
+				8027B7D2182969990008BB07 /* activity_stream_announcement_item.json */,
 				8027B7B3182821FE0008BB07 /* activity_stream_conversation_item.json */,
 				8027B7BE18283B0E0008BB07 /* activity_stream_message_item.json */,
+				8027B7D8182971550008BB07 /* activity_stream_submission_item.json */,
+				8027B7DA182971A90008BB07 /* activity_stream_conference_item.json */,
+				8027B7DC182971E70008BB07 /* activity_stream_collaboration_item.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -943,12 +955,15 @@
 				BDFB334917E7A70B000C6C13 /* users_array.json in Resources */,
 				80C7D9F017CEDC4300915729 /* lock_info.json in Resources */,
 				24D5435D17FCA4B90056096D /* quiz.json in Resources */,
+				8027B7D3182969990008BB07 /* activity_stream_announcement_item.json in Resources */,
 				BD15900917E9F74A008887E3 /* calendar_event.json in Resources */,
 				80785A0917E135ED00339A06 /* module.json in Resources */,
 				BDF67B3517EBA84C008AE5F5 /* file.json in Resources */,
 				24EFAD9A180C5453009E8058 /* service.json in Resources */,
+				8027B7DD182971E70008BB07 /* activity_stream_collaboration_item.json in Resources */,
 				803282A517D03646001E73FA /* rubric_criterion_rating.json in Resources */,
 				809808C217C6DD1400FC3BF6 /* assignment.json in Resources */,
+				8027B7D9182971550008BB07 /* activity_stream_submission_item.json in Resources */,
 				80B3677B17D02A6500A32E70 /* rubric_criterion.json in Resources */,
 				B59520D61805BBEC0055DDCC /* external_tool.json in Resources */,
 				80B3677D17D02AB800A32E70 /* model_string.json in Resources */,
@@ -969,6 +984,7 @@
 				BD18758417E0E53B00138469 /* course.json in Resources */,
 				BD32B5CE17E7659800E0CF49 /* courses_array.json in Resources */,
 				BD661D9517E784B9004210DD /* oauth_user_data.json in Resources */,
+				8027B7DB182971A90008BB07 /* activity_stream_conference_item.json in Resources */,
 				803282AC17D0606D001E73FA /* submission.json in Resources */,
 				BD99E77517E8A41300AEC79C /* tab.json in Resources */,
 			);

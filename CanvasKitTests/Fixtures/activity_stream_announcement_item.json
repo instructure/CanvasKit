@@ -9,7 +9,7 @@
     "course_id": 1,
     "group_id": 1,
     "html_url": "http://canvas.instructure.com/api/v1/foo",
-    "type": "DiscussionTopic",
+    "type": "Announcement",
     "discussion_topic_id": 1234,
     "total_root_discussion_entries": 5,
     "require_initial_post": true,

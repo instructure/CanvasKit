@@ -60,7 +60,7 @@
 #pragma mark - Factory
 
 static NSString *kCKIActivityStreamDicussionItemType = @"DiscussionTopic";
-static NSString *kCKIActivityStreamAnnouncementItemType = @"Annoucement";
+static NSString *kCKIActivityStreamAnnouncementItemType = @"Announcement";
 static NSString *kCKIActivityStreamConversationItemType = @"Conversation";
 static NSString *kCKIActivityStreamMessageItemType = @"Message";
 static NSString *kCKIActivityStreamSubmissionItemType = @"Submission";

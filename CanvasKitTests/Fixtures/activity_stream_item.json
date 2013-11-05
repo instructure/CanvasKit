@@ -4,7 +4,6 @@
     "id": 1234,
     "title": "Stream Item Subject",
     "message": "This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.",
-    "type": "DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...",
     "read_state": false,
     "context_type": "course",
     "course_id": 1,

@@ -11,6 +11,13 @@
 #import "CKIISO8601DateMatcher.h"
 
 #import "CKIActivityStreamItem.h"
+#import "CKIActivityStreamDiscussionTopicItem.h"
+#import "CKIActivityStreamAnnouncementItem.h"
+#import "CKIActivityStreamConversationItem.h"
+#import "CKIActivityStreamMessageItem.h"
+#import "CKIActivityStreamSubmissionItem.h"
+#import "CKIActivityStreamConferenceItem.h"
+#import "CKIActivityStreamCollaborationItem.h"
 
 SPEC_BEGIN(CKIActivityStreamItemSpec)
 
@@ -52,6 +59,48 @@ describe(@"An activity stream item", ^{
         it(@"gets the canvas html URL", ^{
             NSURL *url = [NSURL URLWithString:@"http://canvas.instructure.com/api/v1/foo"];
             [[streamItem.htmlURL should] equal:url];
+        });
+    });
+    context(@"transformer", ^{
+        __block NSValueTransformer *transformer;
+        beforeAll(^{
+             transformer = [CKIActivityStreamItem activityStreamItemTransformer];
+        });
+        
+        it(@"transforms discussion topics", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_discussion_topic_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamDiscussionTopicItem class]];
+        });
+        it(@"transforms annoucnements", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_announcement_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamAnnouncementItem class]];
+        });
+        it(@"transforms conversations", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_conversation_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamConversationItem class]];
+        });
+        it(@"transforms messages", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_message_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamMessageItem class]];
+        });
+        it(@"transforms submissions", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_submission_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamSubmissionItem class]];
+        });
+        it(@"transforms conferences", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_conference_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamConferenceItem class]];
+        });
+        it(@"transforms collaborations", ^{
+            NSDictionary *json = loadJSONFixture(@"activity_stream_collaboration_item");
+            id value = [transformer transformedValue:json];
+            [[value should] beKindOfClass:[CKIActivityStreamCollaborationItem class]];
         });
     });
 });
