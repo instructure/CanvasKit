@@ -31,9 +31,10 @@
  
  @param response the HTTP response.
  @param responseObject the parsed JSON array
- @param modelClass the class of models contained in the array.
+ @param valueTransformer the transformer for individual elements of the JSON array
+ @param context the context of all the items
  */
-+ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject modelClass:(Class)modelClass context:(id<CKIContext>)context;
++ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context;
 
 /**
  Fetch the page after this page

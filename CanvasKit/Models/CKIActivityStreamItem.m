@@ -7,7 +7,13 @@
 //
 
 #import "CKIActivityStreamItem.h"
-
+#import "CKIActivityStreamDiscussionTopicItem.h"
+#import "CKIActivityStreamAnnouncementItem.h"
+#import "CKIActivityStreamConversationItem.h"
+#import "CKIActivityStreamMessageItem.h"
+#import "CKIActivityStreamSubmissionItem.h"
+#import "CKIActivityStreamConferenceItem.h"
+#import "CKIActivityStreamCollaborationItem.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
@@ -49,6 +55,36 @@
 + (NSValueTransformer *)htmlURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+#pragma mark - Factory
+
+static NSString *kCKIActivityStreamDicussionItemType = @"DiscussionTopic";
+static NSString *kCKIActivityStreamAnnouncementItemType = @"Annoucement";
+static NSString *kCKIActivityStreamConversationItemType = @"Conversation";
+static NSString *kCKIActivityStreamMessageItemType = @"Message";
+static NSString *kCKIActivityStreamSubmissionItemType = @"Submission";
+static NSString *kCKIActivityStreamConferenceItemType = @"Conference";
+static NSString *kCKIActivityStreamCollaborationItemType = @"Collaboration";
+
++ (NSValueTransformer *)activityStreamItemTransformer
+{
+    return [MTLValueTransformer transformerWithBlock:^id(NSDictionary *jsonDictionary) {
+        NSDictionary *itemKeyToClassMapping = @{
+            kCKIActivityStreamDicussionItemType: [CKIActivityStreamDiscussionTopicItem class],
+            kCKIActivityStreamAnnouncementItemType: [CKIActivityStreamAnnouncementItem class],
+            kCKIActivityStreamConversationItemType: [CKIActivityStreamConversationItem class],
+            kCKIActivityStreamMessageItemType: [CKIActivityStreamMessageItem class],
+            kCKIActivityStreamSubmissionItemType: [CKIActivityStreamSubmissionItem class],
+            kCKIActivityStreamConferenceItemType: [CKIActivityStreamConferenceItem class],
+            kCKIActivityStreamCollaborationItemType: [CKIActivityStreamCollaborationItem class]
+        };
+        
+        NSString *type = jsonDictionary[@"type"];
+        Class targetClass = itemKeyToClassMapping[type];
+        CKIActivityStreamItem *streamItem = [targetClass modelFromJSONDictionary:jsonDictionary];
+        return streamItem;
+    }];
 }
 
 @end

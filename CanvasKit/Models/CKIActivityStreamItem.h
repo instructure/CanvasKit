@@ -58,4 +58,11 @@
  */
 @property (nonatomic, strong) NSURL *htmlURL;
 
+/**
+ A transformer that will take a JSON dictionary for an activity stream item
+ and transform it into an instance of the correct CKIActivityStreamItem
+ subclass.
+ */
++ (NSValueTransformer *)activityStreamItemTransformer;
+
 @end

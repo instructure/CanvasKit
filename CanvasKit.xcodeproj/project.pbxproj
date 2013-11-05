@@ -56,6 +56,11 @@
 		8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */; };
 		8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */; };
 		8027B7CA18284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */; };
+		8027B7CC18295B7F0008BB07 /* CKIActivityStreamAnnouncementItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7AE182821400008BB07 /* CKIActivityStreamAnnouncementItem.m */; };
+		8027B7CD18295B8D0008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */; };
+		8027B7CE18295B9E0008BB07 /* CKIActivityStreamConferenceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C3182849F60008BB07 /* CKIActivityStreamConferenceItem.m */; };
+		8027B7CF18295BB10008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */; };
+		8027B7D118295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8027B7D018295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m */; };
 		802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
 		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
@@ -287,6 +292,7 @@
 		8027B7C618284A190008BB07 /* CKIActivityStreamCollaborationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamCollaborationItem.m; sourceTree = "<group>"; };
 		8027B7C818284F9E0008BB07 /* CKIActivityStreamSubmissionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamSubmissionItem.h; sourceTree = "<group>"; };
 		8027B7C918284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIActivityStreamSubmissionItem.m; sourceTree = "<group>"; };
+		8027B7D018295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CKILocalUser+NetworkingSpec.m"; path = "CanvasKitTests/Networking/CKILocalUser+NetworkingSpec.m"; sourceTree = SOURCE_ROOT; };
 		802837EE17CCF2BF0019FE30 /* CKILockableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockableModel.h; sourceTree = "<group>"; };
 		802837EF17CCF2BF0019FE30 /* CKILockableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockableModel.m; sourceTree = "<group>"; };
 		8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPURLResponsePaginationSpec.m; sourceTree = "<group>"; };
@@ -611,6 +617,7 @@
 		8024E1A017C6B3620031E0F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8027B7D018295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m */,
 				8027B7BC18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m */,
 				8027B7B51828382E0008BB07 /* CKIActivityStreamConversationItemSpec.m */,
 				80B99800182814EB0083798A /* CKIActivityStreamDiscussionTopicItemSpec.m */,
@@ -1133,6 +1140,7 @@
 				80E06FD11806158E009CD10B /* CKIFile+Networking.m in Sources */,
 				2479F8E3180D85BB00C700C6 /* CKIService+Networking.m in Sources */,
 				2472D26B17E3BF4C0035E10E /* CKIPage+Networking.m in Sources */,
+				8027B7CD18295B8D0008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				80D1660A180C9D5700D265C2 /* CKIFolder+NetworkingSpec.m in Sources */,
 				80A8BE6517FF5C15002ED94E /* CKICourse+NetworkingSpec.m in Sources */,
 				80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */,
@@ -1150,6 +1158,7 @@
 				BDB4B93317E3BA790097D4AC /* CanvasKit.m in Sources */,
 				BDF67B3C17EBAD3E008AE5F5 /* CKIFolder.m in Sources */,
 				80B99801182814EB0083798A /* CKIActivityStreamDiscussionTopicItemSpec.m in Sources */,
+				8027B7CF18295BB10008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */,
 				BDB4B92F17E3BA760097D4AC /* CKIPage.m in Sources */,
 				BDB4B93017E3BA760097D4AC /* CKIModule.m in Sources */,
 				80E3C09A17C6EFAE0056EA62 /* Helpers.m in Sources */,
@@ -1172,10 +1181,12 @@
 				BDB4B92C17E3BA760097D4AC /* CKIUser.m in Sources */,
 				24EFADA0180C56FA009E8058 /* CKIService.m in Sources */,
 				496C9A0D17E1080F00E5DB70 /* CKIClient+TestingClient.m in Sources */,
+				8027B7CC18295B7F0008BB07 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				80A07D7A17E4265D001B9EE4 /* CKIModule+Networking.m in Sources */,
 				BDB4B92D17E3BA760097D4AC /* CKISubmissionComment.m in Sources */,
 				BDFB334717E79698000C6C13 /* CKISubmission+Networking.m in Sources */,
 				BD7907B317EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */,
+				8027B7CE18295B9E0008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
 				8027B7BD18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m in Sources */,
 				80061C1C17FE05F300A8CDFF /* CKIGroup+NetworkingSpec.m in Sources */,
 				BD158FFB17E8F8CF008887E3 /* CKITodoItem+Networking.m in Sources */,
@@ -1203,6 +1214,7 @@
 				B5893615180CA27200665753 /* CKIExternalTool.m in Sources */,
 				BDFB334317E78C35000C6C13 /* CKILoginViewController.m in Sources */,
 				80F1E0E317FB6BDE005E71E1 /* CKIGroupSpec.m in Sources */,
+				8027B7D118295D0D0008BB07 /* CKILocalUser+NetworkingSpec.m in Sources */,
 				2414374D1805ACF700047474 /* CKIQuiz+Networking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
