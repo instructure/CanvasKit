@@ -10,6 +10,7 @@
 #import "CKIClient.h"
 #import "Constants.h"
 #import "CKILoginViewController.h"
+#import "CKIActivityStreamItem.h"
 
 @implementation CKILocalUser (Networking)
 
@@ -64,6 +65,14 @@
     UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
     [presentingViewController presentViewController:navigationController animated:YES completion:nil];
     
+}
+
+- (void)fetchActivityStreamWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+{
+    NSString *path = @"/api/v1/users/self/activity_stream";
+    
+    NSValueTransformer *valueTransformer = [CKIActivityStreamItem activityStreamItemTransformer];
+    [[CKIClient currentClient] fetchPagedResponseAtPath:path parameters:nil valueTransformer:valueTransformer context:nil success:success failure:failure];
 }
 
 @end

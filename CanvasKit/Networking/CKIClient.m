@@ -77,17 +77,26 @@ static CKIClient *_currentClient;
 - (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure
 {
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only fetch CKIModels");
+    
+    NSValueTransformer *valueTransformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
+    [self fetchPagedResponseAtPath:path parameters:parameters valueTransformer:valueTransformer context:context success:success failure:failure];
+}
 
+
+- (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure
+{
+    NSAssert(valueTransformer, @"valueTransformer cannot be nil");
+    
     [[CKIClient currentClient] GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject modelClass:modelClass context:context];
+            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:valueTransformer context:context];
             success(pagedResponse);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
             failure(error);
         }
-
+        
     }];
 }
 
