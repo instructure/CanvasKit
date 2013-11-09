@@ -55,4 +55,10 @@ NSString * const CKIModuleWorkflowStateDeleted = @"deleted";
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIModuleItem class]];
 }
 
+
+- (NSString *)path
+{
+    return [[[self.context path] stringByAppendingPathComponent:@"modules"] stringByAppendingPathComponent:self.id];
+}
+
 @end

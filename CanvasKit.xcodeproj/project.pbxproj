@@ -26,6 +26,9 @@
 		496C9A0317E0EAF500E5DB70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496C9A0217E0EAF500E5DB70 /* CoreGraphics.framework */; };
 		496C9A0D17E1080F00E5DB70 /* CKIClient+TestingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9A0B17E1080F00E5DB70 /* CKIClient+TestingClient.m */; };
 		497948BD17E90C2900E1F600 /* CKIAPIV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */; };
+		4982E7F1182981B7006FED3C /* CKIModel+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4982E7F0182981B7006FED3C /* CKIModel+Networking.m */; };
+		4982E7F2182981B7006FED3C /* CKIModel+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4982E7F0182981B7006FED3C /* CKIModel+Networking.m */; };
+		4982E7F4182981D6006FED3C /* CKIModel+NetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4982E7F3182981D6006FED3C /* CKIModel+NetworkingSpec.m */; };
 		499B4A2617F22C9F00E211C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809DC72117C694EC0089E846 /* Foundation.framework */; };
 		499B4A2717F22C9F00E211C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496C9A0217E0EAF500E5DB70 /* CoreGraphics.framework */; };
 		499B4A2817F22C9F00E211C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809DC73217C694EC0089E846 /* UIKit.framework */; };
@@ -228,6 +231,9 @@
 		496C9A0217E0EAF500E5DB70 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		496C9A0A17E1080F00E5DB70 /* CKIClient+TestingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+TestingClient.h"; sourceTree = "<group>"; };
 		496C9A0B17E1080F00E5DB70 /* CKIClient+TestingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+TestingClient.m"; sourceTree = "<group>"; };
+		4982E7EF182981B7006FED3C /* CKIModel+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIModel+Networking.h"; sourceTree = "<group>"; };
+		4982E7F0182981B7006FED3C /* CKIModel+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIModel+Networking.m"; sourceTree = "<group>"; };
+		4982E7F3182981D6006FED3C /* CKIModel+NetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIModel+NetworkingSpec.m"; sourceTree = "<group>"; };
 		499B4A2517F22C9F00E211C9 /* CanvasKitTestBundle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanvasKitTestBundle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499B4A2B17F22C9F00E211C9 /* CanvasKitTestBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CanvasKitTestBundle-Info.plist"; sourceTree = "<group>"; };
 		499B4A2D17F22C9F00E211C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -517,48 +523,50 @@
 		8024E19C17C6AE250031E0F4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B589360C180CA1DA00665753 /* CKIExternalTool+Networking.h */,
-				B589360D180CA1DA00665753 /* CKIExternalTool+Networking.m */,
 				BD661D9617E78772004210DD /* CKIAssignment+Networking.h */,
 				BD661D9717E78772004210DD /* CKIAssignment+Networking.m */,
+				BD15900A17EA0679008887E3 /* CKICalendarEvent+Networking.h */,
+				BD15900B17EA0679008887E3 /* CKICalendarEvent+Networking.m */,
 				49A53A07180C9C800070AA01 /* CKIClient+Keychain.h */,
 				49A53A08180C9C800070AA01 /* CKIClient+Keychain.m */,
 				BD661D9817E78772004210DD /* CKIClient.h */,
 				BD661D9917E78772004210DD /* CKIClient.m */,
 				BD661D9A17E78772004210DD /* CKICourse+Networking.h */,
 				BD661D9B17E78772004210DD /* CKICourse+Networking.m */,
-				BD661D9C17E78772004210DD /* CKILocalUser+Networking.h */,
-				BD661D9D17E78772004210DD /* CKILocalUser+Networking.m */,
-				8057D2E817E25B85002AAED2 /* CKIPage+Networking.h */,
-				8057D2E917E25B85002AAED2 /* CKIPage+Networking.m */,
-				BDFB334417E79698000C6C13 /* CKISubmission+Networking.h */,
-				80A07D7517E425F9001B9EE4 /* CKIModule+Networking.h */,
-				BDFB334517E79698000C6C13 /* CKISubmission+Networking.m */,
-				BD99E78C17E8DE1300AEC79C /* CKITab+Networking.h */,
-				BD99E78D17E8DE1300AEC79C /* CKITab+Networking.m */,
+				B589360C180CA1DA00665753 /* CKIExternalTool+Networking.h */,
+				B589360D180CA1DA00665753 /* CKIExternalTool+Networking.m */,
 				BD99E78F17E8DF4A00AEC79C /* CKIFavorite+Networking.h */,
 				BD99E79017E8DF4A00AEC79C /* CKIFavorite+Networking.m */,
-				BD158FF817E8F8CF008887E3 /* CKITodoItem+Networking.h */,
-				BD158FF917E8F8CF008887E3 /* CKITodoItem+Networking.m */,
-				BD15900A17EA0679008887E3 /* CKICalendarEvent+Networking.h */,
-				BD15900B17EA0679008887E3 /* CKICalendarEvent+Networking.m */,
-				80A07D7617E425F9001B9EE4 /* CKIModule+Networking.m */,
-				805E1E5F17EA334F0055EA0C /* CKIPagedResponse.h */,
-				805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */,
-				80061C1617FDFC3100A8CDFF /* CKIGroup+Networking.h */,
-				80061C1717FDFC3100A8CDFF /* CKIGroup+Networking.m */,
-				800B2F0117FE39570069D0CC /* CKIModuleItem+Networking.h */,
-				800B2F0217FE39570069D0CC /* CKIModuleItem+Networking.m */,
-				241437471804A59300047474 /* CKIQuiz+Networking.h */,
-				241437481804A59300047474 /* CKIQuiz+Networking.m */,
-				804904BD18048B7B00BB8978 /* CKIUser+Networking.h */,
-				804904BE18048B7B00BB8978 /* CKIUser+Networking.m */,
 				80E06FCE18061587009CD10B /* CKIFile+Networking.h */,
-				2479F8E0180D85BB00C700C6 /* CKIService+Networking.h */,
 				80E06FCF18061587009CD10B /* CKIFile+Networking.m */,
 				80D16605180C404F00D265C2 /* CKIFolder+Networking.h */,
 				80D16606180C404F00D265C2 /* CKIFolder+Networking.m */,
+				80061C1617FDFC3100A8CDFF /* CKIGroup+Networking.h */,
+				80061C1717FDFC3100A8CDFF /* CKIGroup+Networking.m */,
+				BD661D9C17E78772004210DD /* CKILocalUser+Networking.h */,
+				BD661D9D17E78772004210DD /* CKILocalUser+Networking.m */,
+				80A07D7517E425F9001B9EE4 /* CKIModule+Networking.h */,
+				80A07D7617E425F9001B9EE4 /* CKIModule+Networking.m */,
+				800B2F0117FE39570069D0CC /* CKIModuleItem+Networking.h */,
+				800B2F0217FE39570069D0CC /* CKIModuleItem+Networking.m */,
+				8057D2E817E25B85002AAED2 /* CKIPage+Networking.h */,
+				8057D2E917E25B85002AAED2 /* CKIPage+Networking.m */,
+				805E1E5F17EA334F0055EA0C /* CKIPagedResponse.h */,
+				805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */,
+				241437471804A59300047474 /* CKIQuiz+Networking.h */,
+				241437481804A59300047474 /* CKIQuiz+Networking.m */,
+				2479F8E0180D85BB00C700C6 /* CKIService+Networking.h */,
 				2479F8E1180D85BB00C700C6 /* CKIService+Networking.m */,
+				BDFB334417E79698000C6C13 /* CKISubmission+Networking.h */,
+				BDFB334517E79698000C6C13 /* CKISubmission+Networking.m */,
+				BD99E78C17E8DE1300AEC79C /* CKITab+Networking.h */,
+				BD99E78D17E8DE1300AEC79C /* CKITab+Networking.m */,
+				BD158FF817E8F8CF008887E3 /* CKITodoItem+Networking.h */,
+				BD158FF917E8F8CF008887E3 /* CKITodoItem+Networking.m */,
+				804904BD18048B7B00BB8978 /* CKIUser+Networking.h */,
+				804904BE18048B7B00BB8978 /* CKIUser+Networking.m */,
+				4982E7EF182981B7006FED3C /* CKIModel+Networking.h */,
+				4982E7F0182981B7006FED3C /* CKIModel+Networking.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -593,6 +601,7 @@
 				80A07D7817E42653001B9EE4 /* CKIModule+NetworkingSpec.m */,
 				2414374B1804B9E500047474 /* CKIQuiz+NetworkingSpec.m */,
 				2479F8E4180D871400C700C6 /* CKIService+NetworkingSpec.m */,
+				4982E7F3182981D6006FED3C /* CKIModel+NetworkingSpec.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -992,6 +1001,7 @@
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				809A664517EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m in Sources */,
+				4982E7F1182981B7006FED3C /* CKIModel+Networking.m in Sources */,
 				803282A817D05C7D001E73FA /* CKISubmission.m in Sources */,
 				80D16607180C404F00D265C2 /* CKIFolder+Networking.m in Sources */,
 				4910CE9C17E8F3D000A6A73E /* CKIAPIV1.m in Sources */,
@@ -1096,6 +1106,7 @@
 				24D5436217FCA5630056096D /* CKIQuizSpec.m in Sources */,
 				80D16608180C405400D265C2 /* CKIFolder+Networking.m in Sources */,
 				800BC95817FE205E00934C8E /* CKIGroup+Networking.m in Sources */,
+				4982E7F4182981D6006FED3C /* CKIModel+NetworkingSpec.m in Sources */,
 				BDB4B92017E3BA6E0097D4AC /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				80A07D7917E42653001B9EE4 /* CKIModule+NetworkingSpec.m in Sources */,
 				B5893613180CA20000665753 /* CKIExternalTool+NetworkingSpec.m in Sources */,
@@ -1103,6 +1114,7 @@
 				BDB4B8C017E236330097D4AC /* NSString+CKIAdditions.m in Sources */,
 				2479F8E5180D871400C700C6 /* CKIService+NetworkingSpec.m in Sources */,
 				BDB4B93217E3BA760097D4AC /* CKILocalUser.m in Sources */,
+				4982E7F2182981B7006FED3C /* CKIModel+Networking.m in Sources */,
 				BD99E77C17E8ABD200AEC79C /* CKIFavorite.m in Sources */,
 				B5893615180CA27200665753 /* CKIExternalTool.m in Sources */,
 				BDFB334317E78C35000C6C13 /* CKILoginViewController.m in Sources */,

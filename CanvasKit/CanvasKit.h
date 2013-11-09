@@ -41,3 +41,59 @@
 + (void)setCurrentDomain:(NSURL *)currentDomain;
 
 @end
+
+#pragma mark - models
+
+#import "CKIAssignment.h"
+#import "CKIAssignmentGroup.h"
+#import "CKICalendarEvent.h"
+#import "CKIContext.h"
+#import "CKICourse.h"
+#import "CKIExternalTool.h"
+#import "CKIFavorite.h"
+#import "CKIFile.h"
+#import "CKIFolder.h"
+#import "CKIGroup.h"
+#import "CKILocalUser.h"
+#import "CKILockInfo.h"
+#import "CKILockableModel.h"
+#import "CKIModel.h"
+#import "CKIModule.h"
+#import "CKIModuleItem.h"
+#import "CKIPage.h"
+#import "CKIQuiz.h"
+#import "CKIRubricCriterion.h"
+#import "CKIRubricCriterionRating.h"
+#import "CKIService.h"
+#import "CKISubmission.h"
+#import "CKISubmissionComment.h"
+#import "CKITab.h"
+#import "CKITodoItem.h"
+#import "CKIUser.h"
+
+
+#pragma mark - networking
+
+#import "CKIAssignment+Networking.h"
+#import "CKICalendarEvent+Networking.h"
+#import "CKIClient+Keychain.h"
+#import "CKIClient.h"
+#import "CKICourse+Networking.h"
+#import "CKIExternalTool+Networking.h"
+#import "CKIFavorite+Networking.h"
+#import "CKIFile+Networking.h"
+#import "CKIFolder+Networking.h"
+#import "CKIGroup+Networking.h"
+#import "CKILocalUser+Networking.h"
+#import "CKIModel+Networking.h"
+#import "CKIModule+Networking.h"
+#import "CKIModuleItem+Networking.h"
+#import "CKIPage+Networking.h"
+#import "CKIPagedResponse.h"
+#import "CKIQuiz+Networking.h"
+#import "CKIService+Networking.h"
+#import "CKISubmission+Networking.h"
+#import "CKITab+Networking.h"
+#import "CKITodoItem+Networking.h"
+#import "CKIUser+Networking.h"
+
