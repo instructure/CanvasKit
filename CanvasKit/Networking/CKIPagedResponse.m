@@ -42,9 +42,9 @@
 @property (nonatomic, copy) NSURL *lastPage;
 
 /**
- The class that will be used to transform the items in the response.
+ The transformer to be applied to the individual items in the response.
  */
-@property (nonatomic) Class modelClass;
+@property (nonatomic, strong) NSValueTransformer *valueTransformer;
 
 /**
  The context of the items.
@@ -54,9 +54,8 @@
 
 @implementation CKIPagedResponse
 
-+ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject modelClass:(Class)modelClass context:(id<CKIContext>)context
++ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context
 {
-    NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"%@ is not a subclass of CKIModel", modelClass);
     CKIPagedResponse *pagedResponse = [[CKIPagedResponse alloc] init];
     
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -65,12 +64,17 @@
     pagedResponse.previousPage = response.previousPage;
     pagedResponse.firstPage = response.firstPage;
     pagedResponse.lastPage = response.lastPage;
-    
-    pagedResponse.modelClass = modelClass;
-    
+    pagedResponse.valueTransformer = valueTransformer;
     pagedResponse.context = context;
     
-    NSValueTransformer *arrayTransformer = [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:modelClass];
+    NSValueTransformer *arrayTransformer = [MTLValueTransformer transformerWithBlock:^id(NSArray *array) {
+        NSMutableArray *models = [NSMutableArray new];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *jsonDictionary, NSUInteger idx, BOOL *stop) {
+            id model = [valueTransformer transformedValue:jsonDictionary];
+            [models addObject:model];
+        }];
+        return [models copy];
+    }];
     NSArray *items = [arrayTransformer transformedValue:responseObject];
     
     [items enumerateObjectsUsingBlock:^(CKIModel *model, NSUInteger idx, BOOL *stop) {
@@ -92,7 +96,7 @@
 {
     [[CKIClient currentClient] GET:self.nextPage.relativeString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject modelClass:self.modelClass context:self.context];
+            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:self.valueTransformer context:self.context];
             success(pagedResponse);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

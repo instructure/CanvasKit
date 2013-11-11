@@ -8,6 +8,8 @@
 
 #import "CKILocalUser.h"
 
+@class CKIPagedResponse;
+
 @interface CKILocalUser (Networking)
 
 /**
@@ -24,5 +26,13 @@
  @see CanvasKit.h
  */
 - (void)performLoginWithDomain:(NSString *)domain success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+
+/**
+ Fetches the activity stream for the current user.
+ 
+ @param success success block returning a paged response
+ @param failure failure block for handling error
+ */
+- (void)fetchActivityStreamWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
 
 @end
