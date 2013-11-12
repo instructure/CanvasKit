@@ -10,6 +10,7 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 @implementation CKITab
+@dynamic context;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {

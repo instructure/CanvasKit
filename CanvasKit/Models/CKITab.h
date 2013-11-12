@@ -8,6 +8,8 @@
 
 #import "CKIModel.h"
 
+@class CKICourse;
+
 @interface CKITab : CKIModel
 
 @property (nonatomic, strong) NSURL *htmlURL;
@@ -16,4 +18,5 @@
 
 @property (nonatomic, strong) NSString *type;
 
+@property (nonatomic) CKICourse *context;
 @end
