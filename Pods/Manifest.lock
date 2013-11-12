@@ -19,16 +19,16 @@ PODS:
   - AFNetworking/Serialization (2.0.0)
   - AFNetworking/UIKit (2.0.0):
     - AFNetworking/NSURLConnection
-  - FXKeychain (1.3.4)
-  - ISO8601DateFormatter (0.6)
-  - Kiwi/ARC (2.2.2)
-  - Kiwi/NonARC (2.2.2)
-  - Kiwi/XCTest (2.2.2):
+  - FXKeychain (1.4)
+  - ISO8601DateFormatter (0.7)
+  - Kiwi/ARC (2.2.3)
+  - Kiwi/NonARC (2.2.3)
+  - Kiwi/XCTest (2.2.3):
     - Kiwi/ARC
     - Kiwi/NonARC
-  - Mantle (1.3):
+  - Mantle (1.3.1):
     - Mantle/extobjc
-  - Mantle/extobjc (1.3)
+  - Mantle/extobjc (1.3.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.0)
@@ -39,9 +39,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 3fa983b1beaba69566a3374612511e2a6e3fe845
-  FXKeychain: 25ce8bd340a5fb2202673e54f269f03ef3e3004a
-  ISO8601DateFormatter: 72ad8f5b4f51bd8fb317d7284c32fee5f54a6584
-  Kiwi: 03539aeb004ccd42bdbc31253617b26364315df4
-  Mantle: c3e963daaad6f1418feacce974d789b2d0465539
+  FXKeychain: 649efca683aa602c446620701a46780515d25610
+  ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
+  Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
+  Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.27.1

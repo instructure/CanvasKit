@@ -54,7 +54,7 @@
 
 @implementation CKIPagedResponse
 
-+ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context
++ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context client:(CKIClient *)client
 {
     CKIPagedResponse *pagedResponse = [[CKIPagedResponse alloc] init];
     
@@ -66,6 +66,7 @@
     pagedResponse.lastPage = response.lastPage;
     pagedResponse.valueTransformer = valueTransformer;
     pagedResponse.context = context;
+    pagedResponse.client = client;
     
     NSValueTransformer *arrayTransformer = [MTLValueTransformer transformerWithBlock:^id(NSArray *array) {
         NSMutableArray *models = [NSMutableArray new];
@@ -94,9 +95,9 @@
 
 - (void)fetchNextPageWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
 {
-    [[CKIClient currentClient] GET:self.nextPage.relativeString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.client GET:self.nextPage.relativeString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:self.valueTransformer context:self.context];
+            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:self.valueTransformer context:self.context client:self.client];
             success(pagedResponse);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

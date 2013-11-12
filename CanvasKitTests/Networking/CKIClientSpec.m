@@ -14,33 +14,9 @@
 SPEC_BEGIN(CKIClientSpec)
 
 describe(@"The CKIClient", ^{
+    __block CKIClient *testClient;
     beforeEach(^{
-        [CKIClient useTestClient];
-    });
-    
-    context(@"when the current client is not set", ^{
-        beforeAll(^{
-            [CKIClient setCurrentClient:nil];
-        });
-        
-        it(@"should raise an exception when getting current client", ^{
-            [[theBlock(^{
-                [CKIClient currentClient];
-            }) should] raise];
-        });
-    });
-    
-    context(@"when the current client is set", ^{
-        __block CKIClient *client;
-        beforeEach(^{
-            NSURL *baseURL = [NSURL URLWithString:@"https://example.com/"];
-            client = [CKIClient clientWithBaseURL:baseURL];
-            [CKIClient setCurrentClient:client];
-        });
-        
-        it(@"should return the current client", ^{
-            [[[CKIClient currentClient] should] equal:client];
-        });
+        testClient = [CKIClient testClient];
     });
     
     context(@"when fetching a single model", ^{
@@ -58,8 +34,8 @@ describe(@"The CKIClient", ^{
             beforeEach(^{
                 ranFailureBlock = NO;
                 ranSuccessBlock = NO;
-                [[CKIClient currentClient] returnErrorForPath:testPath];
-                [[CKIClient currentClient] fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
+                [testClient returnErrorForPath:testPath];
+                [testClient fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
                     ranSuccessBlock = YES;
                 } failure:^(NSError *error) {
                     ranFailureBlock = YES;
@@ -78,10 +54,10 @@ describe(@"The CKIClient", ^{
             __block BOOL ranSuccessBlock;
             __block BOOL ranFailureBlock;
             beforeEach(^{
-                [[CKIClient currentClient] returnResponseObject:@{} forPath:testPath];
+                [testClient returnResponseObject:@{} forPath:testPath];
                 ranSuccessBlock = NO;
                 ranFailureBlock = NO;
-                [[CKIClient currentClient] fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
+                [testClient fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
                     ranSuccessBlock = YES;
                 } failure:^(NSError *error) {
                     ranFailureBlock = YES;
@@ -100,8 +76,8 @@ describe(@"The CKIClient", ^{
         context(@"and recieves a model", ^{
             __block CKIModel *fetchedModel;
             beforeEach(^{
-                [[CKIClient currentClient] returnResponseObject:@{} forPath:testPath];
-                [[CKIClient currentClient] fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
+                [testClient returnResponseObject:@{} forPath:testPath];
+                [testClient fetchModelAtPath:testPath parameters:nil modelClass:[CKIModel class] context:contxt success:^(CKIModel *model) {
                     fetchedModel = model;
                 } failure:nil];
             });

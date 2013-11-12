@@ -7,6 +7,7 @@
 //
 
 #import <Mantle/Mantle.h>
+#import <FXKeychain.h>
 
 #import "CKIClient.h"
 #import "CKIModel.h"
@@ -24,23 +25,15 @@ static CKIClient *_currentClient;
     return client;
 }
 
-+ (instancetype)currentClient
-{
-    NSAssert(_currentClient, @"You must set the currentClient before you can call currentClient");
-    
-    return _currentClient;
-}
+#pragma mark - Keychain
 
-+ (void)setCurrentClient:(CKIClient *)client
+- (FXKeychain *)keychain
 {
-    @synchronized([CKIClient class]) {
-        if ([_currentClient isEqual:client]) {
-            return;
-        }
-        
-        [_currentClient invalidateSessionCancelingTasks:YES];
-        _currentClient = client;
+    if (self.keyChainId) {
+        return [[FXKeychain alloc] initWithService:self.keyChainId accessGroup:self.keyChainId];
     }
+    
+    return [FXKeychain defaultKeychain];
 }
 
 #pragma mark - OAuth
@@ -51,6 +44,11 @@ static CKIClient *_currentClient;
     [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
 }
 
+- (BOOL)isLoggedIn
+{
+    return [self.keychain objectForKey:kCKIKeychainAuthTokenKey] != nil;
+}
+
 #pragma mark - JSON API Helpers
 
 - (void)fetchModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void (^)(CKIModel *model))success failure:(void (^)(NSError *error))failure
@@ -58,7 +56,7 @@ static CKIClient *_currentClient;
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"modelClass must be a subclass of CKIModel");
     
     
-    [[CKIClient currentClient] GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             CKIModel *model = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:responseObject error:nil];
             model.context = context;
@@ -87,9 +85,9 @@ static CKIClient *_currentClient;
 {
     NSAssert(valueTransformer, @"valueTransformer cannot be nil");
     
-    [[CKIClient currentClient] GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:valueTransformer context:context];
+            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:valueTransformer context:context client:self];
             success(pagedResponse);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

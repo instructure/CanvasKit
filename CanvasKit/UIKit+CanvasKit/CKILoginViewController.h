@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class CKIClient;
+
 typedef void (^CKIOAuthSuccessBlock)(void);
 typedef void (^CKIOAuthFailureBlock)(NSError *error);
 
@@ -28,7 +30,14 @@ typedef void (^CKIOAuthFailureBlock)(NSError *error);
 /**
  Domain used for authentication
  */
-@property (nonatomic, strong) NSString *domain;
+@property (nonatomic, readonly) NSString *domain;
+
+/**
+ The client for this domain.
+ 
+ @see domain
+ */
+@property (nonatomic, readonly) CKIClient *client;
 
 - (id)initWithDomain:(NSString *)domain success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 - (void)cancelOAuth;

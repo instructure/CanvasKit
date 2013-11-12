@@ -6,18 +6,19 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import "CKILoginViewController.h"
-#import "NSString+CKIAdditions.h"
-#import "CKIClient.h"
-#import "CKILocalUser.h"
-#import "Constants.h"
-#import <FXKeychain/FXKeychain.h>
 #import <AFHTTPRequestOperation.h>
-#import "Mantle.h"
-#import "CKIClient+Keychain.h"
+#import <FXKeychain/FXKeychain.h>
+#import <Mantle/Mantle.h>
+
+#import "CKILoginViewController.h"
+#import "CKIClient.h"
+#import "NSString+CKIAdditions.h"
+#import "Constants.h"
+#import "CKIUser.h"
 
 @interface CKILoginViewController () <UIWebViewDelegate>
-
+@property (nonatomic, strong) NSString *domain;
+@property (nonatomic, strong) CKIClient *client;
 @end
 
 @implementation CKILoginViewController
@@ -29,6 +30,8 @@
         [self setOauthSuccessBlock:success];
         [self setOauthFailureBlock:failure];
         [self setDomain:domain];
+        NSURL *baseURL = [NSURL URLWithString:self.domain];
+        self.client = [CKIClient clientWithBaseURL:baseURL];
     }
     
     return self;
@@ -39,12 +42,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CKIClient *sharedClient = [CKIClient currentClient];
-    
     self.webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     NSString *urlString = [NSString stringWithFormat:@"http://%@/login/oauth2/auth?client_id=%@&response_type=%@&redirect_uri=%@&mobile=1&canvas_login=1"
                            , self.domain
-                           , sharedClient.clientId
+                           , self.client.clientId
                            , @"code"
                            , @"urn:ietf:wg:oauth:2.0:oob"];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -101,16 +102,17 @@
  */
 - (void)getAuthTokenWithCode:(id)code
 {
-    CKIClient *client = [CKIClient currentClient];
+    CKIClient *client = self.client;
     
     [client POST:@"/login/oauth2/token" parameters:@{@"client_id":client.clientId, @"client_secret": client.sharedSecret, @"code": code} success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        [[CKIClient currentClient].keychain setObject:responseObject[@"access_token"] forKey:kCKIKeychainAuthTokenKey];
-        [[CKIClient currentClient].keychain setObject:[client.baseURL absoluteString] forKey:kCKIKeychainDomainKey];
-        [[CKIClient currentClient] setAuthToken:responseObject[@"access_token"]];
+        [client.keychain setObject:responseObject[@"access_token"] forKey:kCKIKeychainAuthTokenKey];
+        [client.keychain setObject:[client.baseURL absoluteString] forKey:kCKIKeychainDomainKey];
+        [client setAuthToken:responseObject[@"access_token"]];
         
-        CKILocalUser *newUser = [MTLJSONAdapter modelOfClass:[CKILocalUser class] fromJSONDictionary:responseObject[@"user"] error:nil];
-        [[CKILocalUser sharedUser] mergeValuesForKeysFromModel:newUser];
+        
+        CKIUser *newUser = [MTLJSONAdapter modelOfClass:[CKIUser class] fromJSONDictionary:responseObject[@"user"] error:nil];
+        [client.currentUser mergeValuesForKeysFromModel:newUser];
         
         self.oauthSuccessBlock();
         

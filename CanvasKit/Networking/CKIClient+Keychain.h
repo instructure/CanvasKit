@@ -7,7 +7,7 @@
 //
 
 #import "CKIClient.h"
-#import <FXKeychain.h>
+
 
 @interface CKIClient (Keychain)
 @property (nonatomic, readonly) FXKeychain *keychain;

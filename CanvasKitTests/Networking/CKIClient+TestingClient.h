@@ -10,7 +10,7 @@
 
 @interface CKIClient (TestingClient)
 
-+ (void)useTestClient;
++ (instancetype)testClient;
 
 - (void)returnErrorForPath:(NSString *)path;
 - (void)returnResponseObject:(id)responseObject forPath:(NSString *)path;

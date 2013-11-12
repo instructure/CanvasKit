@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "CKIContext.h"
 
+@class CKIClient;
+
 /**
  Many of the JSON APIs in Canvas are paginated. This class is
  designed to abstract away the complexities of pagination.
@@ -27,6 +29,11 @@
 @property (nonatomic, copy) NSArray *items;
 
 /**
+ The client used to fetch the paginated series.
+ */
+@property (nonatomic, strong) CKIClient *client;
+
+/**
  Create a CKIPagedResponse.
  
  @param response the HTTP response.
@@ -34,7 +41,7 @@
  @param valueTransformer the transformer for individual elements of the JSON array
  @param context the context of all the items
  */
-+ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context;
++ (instancetype)pagedResponseForTask:(NSURLSessionDataTask *)task responseObject:(NSArray *)responseObject valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context client:(CKIClient *)client;
 
 /**
  Fetch the page after this page

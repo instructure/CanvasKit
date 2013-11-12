@@ -17,10 +17,9 @@
 
 @implementation CKIClient (TestingClient)
 
-+ (void)useTestClient
++ (instancetype)testClient
 {
-    CKITestClient *testClient = [CKITestClient new];
-    [CKIClient setCurrentClient:testClient];
+    return [CKITestClient new];
 }
 
 - (void)returnErrorForPath:(NSString *)path

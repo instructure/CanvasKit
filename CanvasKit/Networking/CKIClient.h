@@ -10,19 +10,14 @@
 #import "CKIPagedResponse.h"
 
 @class CKIModel;
+@class CKIUser;
+@class FXKeychain;
+
 @protocol CKIContext;
 
 /**
  The client responsible for processing all networking requests to
  the canvas API.
- 
- Example:
- NSURL *baseURL = [NSURL URLWithString:@"https://canvas.instructure.com"];
- CKIClient *client = [CKIClient clientWithBaseURL:baseURL];
- [CKIClient setCurrentClient:client];
- 
- // once the currentClient has been set, anyone can use it.
- [CKIClient currentClient];
  */
 @interface CKIClient : AFHTTPSessionManager
 
@@ -32,27 +27,21 @@
 @property (nonatomic, strong) NSString *authToken;
 
 /**
+ The user that is currently logged in via this client.
+ */
+@property (nonatomic, strong) CKIUser *currentUser;
+
+/**
+ The keychain used by the client to store secrets.
+ */
+@property (nonatomic, readonly) FXKeychain *keychain;
+
+/**
  Create a canvas client for a given domain specified by the base URL.
  
  @param baseURL the base URL to be used by the client
  */
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL;
-
-/**
- Get the client to be used for the specified current domain.
- 
- @return the CKIClient as specified by the currentDomain property
- @warning an exception will be raised if the currentDomain has not been set first.
- @see setCurrentDomain:
- */
-+ (instancetype)currentClient;
-
-/**
- Set the new current client.
- 
- @param currentClient the new current client
- */
-+ (void)setCurrentClient:(CKIClient *)currentClient;
 
 
 /**
@@ -61,6 +50,11 @@
  @param Authentication token recieved from OAuth2 process
  */
 - (void)setAuthToken:(NSString *)authToken;
+
+/**
+ Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
+ */
+- (BOOL)isLoggedIn;
 
 #pragma mark - JSON API Helpers
 
