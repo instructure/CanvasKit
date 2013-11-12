@@ -13,6 +13,19 @@
     id<CKIContext> _context;
 }
 
++ (instancetype)modelWithID:(NSString *)modelID
+{
+    return [self modelWithID:modelID context:CKIRootContext];
+}
+
++ (instancetype)modelWithID:(NSString *)modelID context:(id<CKIContext>)context
+{
+    CKIModel *me = [self new];
+    me.id = modelID;
+    me.context = context;
+    return me;
+}
+
 - (BOOL)isEqual:(id)object
 {
     if ([object isKindOfClass:[CKIModel class]]) {
@@ -23,7 +36,7 @@
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
-{
+{ 
     return @{};
 }
 

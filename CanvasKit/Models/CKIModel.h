@@ -12,6 +12,16 @@
 @interface CKIModel : MTLModel <MTLJSONSerializing, CKIContext>
 
 /**
+ Creates an empty model with the given ID assumes the `CKIRootContext`
+ */
++ (instancetype)modelWithID:(NSString *)modelID;
+
+/**
+ Creates an empty model with the given ID in the given context
+ */
++ (instancetype)modelWithID:(NSString *)modelID context:(id<CKIContext>)context;
+
+/**
  The unique identifier assigned to this model.
  */
 @property (nonatomic, copy) NSString *id;

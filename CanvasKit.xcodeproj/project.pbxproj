@@ -139,6 +139,9 @@
 		80DA1F611832A11500CC4E84 /* CKIClient+CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */; };
 		80DA1F651832A95F00CC4E84 /* CKIClient+CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */; };
 		80DA1F661832A95F00CC4E84 /* CKIClient+CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */; };
+		80DA1F691832C52800CC4E84 /* CKIClient+CKIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F681832C52800CC4E84 /* CKIClient+CKIModel.m */; };
+		80DA1F6A1832C52D00CC4E84 /* CKIClient+CKIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F681832C52800CC4E84 /* CKIClient+CKIModel.m */; };
+		80DA1F6C1832C68000CC4E84 /* CKIClient+CKIModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F6B1832C68000CC4E84 /* CKIClient+CKIModelSpec.m */; };
 		80E06FC71805F4FB009CD10B /* CKIFileSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FC61805F4FB009CD10B /* CKIFileSpec.m */; };
 		80E06FCD1806152F009CD10B /* CKIClient+CKIFileSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E06FCC1806152F009CD10B /* CKIClient+CKIFileSpec.m */; };
 		80E3C09A17C6EFAE0056EA62 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E3C09917C6EFAE0056EA62 /* Helpers.m */; };
@@ -260,7 +263,6 @@
 		499B4A3217F22C9F00E211C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		499B4A3317F22C9F00E211C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		499B4A3517F22C9F00E211C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		49A53A07180C9C800070AA01 /* CKIClient+Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+Keychain.h"; sourceTree = "<group>"; };
 		49D211F617E22326006359A7 /* submission_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission_array.json; sourceTree = "<group>"; };
 		7A7373B900534292A61BF551 /* libPods-CanvasKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80061C1B17FE05F300A8CDFF /* CKIClient+CKIGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIGroupSpec.m"; sourceTree = "<group>"; };
@@ -388,6 +390,9 @@
 		80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.m"; sourceTree = "<group>"; };
 		80D16609180C9D5700D265C2 /* CKIClient+CKIFolderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIFolderSpec.m"; sourceTree = "<group>"; };
 		80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIUser.m"; sourceTree = "<group>"; };
+		80DA1F671832C52800CC4E84 /* CKIClient+CKIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIModel.h"; sourceTree = "<group>"; };
+		80DA1F681832C52800CC4E84 /* CKIClient+CKIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIModel.m"; sourceTree = "<group>"; };
+		80DA1F6B1832C68000CC4E84 /* CKIClient+CKIModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIModelSpec.m"; sourceTree = "<group>"; };
 		80E06FC61805F4FB009CD10B /* CKIFileSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIFileSpec.m; sourceTree = "<group>"; };
 		80E06FCC1806152F009CD10B /* CKIClient+CKIFileSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIFileSpec.m"; sourceTree = "<group>"; };
 		80E3C09817C6EFAE0056EA62 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
@@ -587,6 +592,8 @@
 				80A199811831C231003A7083 /* CKIClient+CKIGroup.m */,
 				80A1996E1831A8AD003A7083 /* CKIClient+CKILocalUser.h */,
 				80A1996F1831A8AD003A7083 /* CKIClient+CKILocalUser.m */,
+				80DA1F671832C52800CC4E84 /* CKIClient+CKIModel.h */,
+				80DA1F681832C52800CC4E84 /* CKIClient+CKIModel.m */,
 				80A199831831C31C003A7083 /* CKIClient+CKIModule.h */,
 				80A199841831C31C003A7083 /* CKIClient+CKIModule.m */,
 				80A199861831F674003A7083 /* CKIClient+CKIModuleItem.h */,
@@ -605,7 +612,6 @@
 				80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */,
 				80A199981831F995003A7083 /* CKIClient+CKIUser.h */,
 				80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */,
-				49A53A07180C9C800070AA01 /* CKIClient+Keychain.h */,
 				BD661D9817E78772004210DD /* CKIClient.h */,
 				BD661D9917E78772004210DD /* CKIClient.m */,
 				805E1E5F17EA334F0055EA0C /* CKIPagedResponse.h */,
@@ -617,6 +623,7 @@
 		8024E1A017C6B3620031E0F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80DA1F6B1832C68000CC4E84 /* CKIClient+CKIModelSpec.m */,
 				8027B7BC18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m */,
 				8027B7B51828382E0008BB07 /* CKIActivityStreamConversationItemSpec.m */,
 				80B99800182814EB0083798A /* CKIActivityStreamDiscussionTopicItemSpec.m */,
@@ -1121,6 +1128,7 @@
 				80A199881831F674003A7083 /* CKIClient+CKIModuleItem.m in Sources */,
 				8026FC4217E0DDC000126518 /* CKIPage.m in Sources */,
 				80A1998E1831F7AA003A7083 /* CKIClient+CKIService.m in Sources */,
+				80DA1F691832C52800CC4E84 /* CKIClient+CKIModel.m in Sources */,
 				80A1997C1831AE6A003A7083 /* CKIClient+CKIFile.m in Sources */,
 				8027B7B2182821BB0008BB07 /* CKIActivityStreamConversationItem.m in Sources */,
 				80B997FE182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
@@ -1149,6 +1157,7 @@
 				80DA1F591832A0F900CC4E84 /* CKIClient+CKILocalUser.m in Sources */,
 				80DA1F561832A0EE00CC4E84 /* CKIClient+CKIFile.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */,
+				80DA1F6C1832C68000CC4E84 /* CKIClient+CKIModelSpec.m in Sources */,
 				BDB4B91F17E3BA6E0097D4AC /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */,
 				804904C218048B9B00BB8978 /* CKIUserSpec.m in Sources */,
 				BDB4B92717E3BA760097D4AC /* CKIRubricCriterion.m in Sources */,
@@ -1187,6 +1196,7 @@
 				BDB4B92C17E3BA760097D4AC /* CKIUser.m in Sources */,
 				24EFADA0180C56FA009E8058 /* CKIService.m in Sources */,
 				496C9A0D17E1080F00E5DB70 /* CKIClient+TestingClient.m in Sources */,
+				80DA1F6A1832C52D00CC4E84 /* CKIClient+CKIModel.m in Sources */,
 				8027B7CC18295B7F0008BB07 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				80DA1F5C1832A10400CC4E84 /* CKIClient+CKIPage.m in Sources */,
 				80DA1F5A1832A0FD00CC4E84 /* CKIClient+CKIModule.m in Sources */,

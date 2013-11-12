@@ -90,7 +90,7 @@
 
 - (BOOL)isLastPage
 {
-    return self.currentPage == nil || [self.currentPage isEqual:self.lastPage];
+    return self.currentPage == nil || self.nextPage == nil || [self.currentPage isEqual:self.lastPage];
 }
 
 - (void)fetchNextPageWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure

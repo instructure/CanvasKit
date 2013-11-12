@@ -8,8 +8,10 @@
 
 #import "CKITab.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "CKICourse.h"
 
 @implementation CKITab
+@dynamic context;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -30,6 +32,11 @@
 + (NSValueTransformer *)idJSONTransformer
 {
     return nil; 
+}
+
+- (NSString *)path
+{
+    return [self.context.path stringByAppendingPathComponent:self.id];
 }
 
 @end
