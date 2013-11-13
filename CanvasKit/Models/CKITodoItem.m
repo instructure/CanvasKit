@@ -7,6 +7,7 @@
 //
 
 #import "CKITodoItem.h"
+#import "CKIAssignment.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 @implementation CKITodoItem
@@ -40,6 +41,11 @@
 + (NSValueTransformer *)htmlUrlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)assignmentJSONTransformer
+{
+    return [MTLValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
 }
 
 @end

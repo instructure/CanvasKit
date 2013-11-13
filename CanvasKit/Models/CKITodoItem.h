@@ -7,10 +7,13 @@
 //
 
 #import "CKIModel.h"
+@class CKIAssignment;
 
 @interface CKITodoItem : CKIModel
 
 @property (nonatomic, strong) NSString *type;
+
+@property (nonatomic, strong) CKIAssignment *assignment;
 
 @property (nonatomic, strong) NSURL *ignore;
 
