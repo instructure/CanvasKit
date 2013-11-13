@@ -151,6 +151,7 @@
 		80F1E0E317FB6BDE005E71E1 /* CKIGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F1E0E217FB6BDE005E71E1 /* CKIGroupSpec.m */; };
 		80F1E0E517FB6F22005E71E1 /* CKIGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F1E0E017FB6BBE005E71E1 /* CKIGroup.m */; };
 		80F1E0E717FB75DC005E71E1 /* group.json in Resources */ = {isa = PBXBuildFile; fileRef = 80F1E0E617FB75DC005E71E1 /* group.json */; };
+		B54281FC183443C700C2D483 /* CKIClient+CKITodoItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B54281FB183443C700C2D483 /* CKIClient+CKITodoItemSpec.m */; };
 		B5893610180CA1F200665753 /* CKIExternalToolSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B589360F180CA1F200665753 /* CKIExternalToolSpec.m */; };
 		B5893613180CA20000665753 /* CKIClient+CKIExternalToolSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B5893612180CA20000665753 /* CKIClient+CKIExternalToolSpec.m */; };
 		B5893615180CA27200665753 /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
@@ -403,6 +404,7 @@
 		80F1E0E017FB6BBE005E71E1 /* CKIGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIGroup.m; sourceTree = "<group>"; };
 		80F1E0E217FB6BDE005E71E1 /* CKIGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIGroupSpec.m; sourceTree = "<group>"; };
 		80F1E0E617FB75DC005E71E1 /* group.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = group.json; sourceTree = "<group>"; };
+		B54281FB183443C700C2D483 /* CKIClient+CKITodoItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKITodoItemSpec.m"; sourceTree = "<group>"; };
 		B589360F180CA1F200665753 /* CKIExternalToolSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalToolSpec.m; sourceTree = "<group>"; };
 		B5893612180CA20000665753 /* CKIClient+CKIExternalToolSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIExternalToolSpec.m"; sourceTree = "<group>"; };
 		B59520D51805BBEC0055DDCC /* external_tool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = external_tool.json; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				80D16609180C9D5700D265C2 /* CKIClient+CKIFolderSpec.m */,
 				496C9A0A17E1080F00E5DB70 /* CKIClient+TestingClient.h */,
 				496C9A0B17E1080F00E5DB70 /* CKIClient+TestingClient.m */,
+				B54281FB183443C700C2D483 /* CKIClient+CKITodoItemSpec.m */,
 				80061C1B17FE05F300A8CDFF /* CKIClient+CKIGroupSpec.m */,
 				80A07D7817E42653001B9EE4 /* CKIClient+CKIModuleSpec.m */,
 				800B2F0517FE3B970069D0CC /* CKIClient+CKIModuleItemSpec.m */,
@@ -1151,6 +1154,7 @@
 			files = (
 				80E06FCD1806152F009CD10B /* CKIClient+CKIFileSpec.m in Sources */,
 				80C63B8C17FCA1C700DEB92A /* CKIClientSpec.m in Sources */,
+				B54281FC183443C700C2D483 /* CKIClient+CKITodoItemSpec.m in Sources */,
 				BDB4B92E17E3BA760097D4AC /* CKICourse.m in Sources */,
 				8027B7CD18295B8D0008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				80D1660A180C9D5700D265C2 /* CKIClient+CKIFolderSpec.m in Sources */,
