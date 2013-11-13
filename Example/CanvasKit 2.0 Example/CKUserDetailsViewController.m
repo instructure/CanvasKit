@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import "CKUserDetailsViewController.h"
 #import <ReactiveCocoa.h>
-
-#import <CKLocalUser+Networking.h>
 #import <CoreGraphics/CoreGraphics.h>
 
+#import "CKUserDetailsViewController.h"
 #import "CKTodoItemsTableViewController.h"
+#import "CKCourseDetailsTableViewController.h"
 
 @interface CKUserDetailsViewController ()
 
@@ -34,8 +33,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.user = [CKLocalUser sharedUser];
-    self.title = self.user.name;
     self.navigationItem.hidesBackButton = YES;
     
     CALayer *layer = [self.profileImageView layer];
@@ -43,36 +40,31 @@
     [layer setCornerRadius:self.profileImageView.frame.size.width / 2];
     [layer setBorderWidth:2];
     [layer setBorderColor:[UIColor lightGrayColor].CGColor];
-        
-    [RACAble(self.user.name) subscribeNext:^(id x) {
-        [self setTitle:self.user.name];
-    }];
     
-    [self.user fetchAttributesWithsuccess:^{
-        [self.profileImageView setImageWithURL:self.user.avatarURL];
-        [self.nameLabel setText:self.user.name];
-        [self.descriptionLabel setText:@"This is a temporary description for the user"];
-    } failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get user info" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    RAC(self, title) = RACObserve(self, client.currentUser.name);
+    RAC(self, nameLabel.text) = RACObserve(self, client.currentUser.name);
+    RAC(self, descriptionLabel.text) = RACObserve(self, client.currentUser.email);
 }
 
 - (IBAction)logoutUser:(id)sender
 {
-    NSLog(@"IS LOGGED IN?: %d", self.user.isLoggedIn);
+    [self.client logout];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)viewTodoItems:(id)sender
 {
     CKTodoItemsTableViewController *controller = [[CKTodoItemsTableViewController alloc] init];
+    controller.client = self.client;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PushCourses"]) {
+        CKCourseDetailsTableViewController *vc = segue.destinationViewController;
+        vc.client = self.client;
+    }
 }
 
 @end

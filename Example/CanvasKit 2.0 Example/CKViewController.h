@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CanvasKit.h>
+#import <CanvasKit/CanvasKit.h>
 
 @interface CKViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 
 - (IBAction)loginButtonPressed:(id)sender;
+
+@property (nonatomic, strong) CKIClient *client;
 
 @end

@@ -10,31 +10,7 @@
 #import "CKIUser.h"
 #import "Constants.h"
 
-@interface CanvasKit : NSObject
-
-/**
- Prepares the shared client for OAuth2 authentication. Preparing the CKIClient for authentication with this method will not prompt the user for a domain.
- 
- @param OAuth2 client id
- @param OAuth2 shared secret
- 
- @warning If the domain is invalidated the login process will fail.
- */
-+ (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret;
-
-/**
- Prepares the shared client for OAuth2 authentication. Use this preparation method if you would like to store the authentication token in your keychain.
- 
- @param OAuth2 client id
- @param OAuth2 shared secret
- @param application keychain ID
- */
-+ (void)prepareWithClientID:(NSString *)aClientId sharedSecret:(NSString *)aSharedSecret keyChainId:(NSString *)aKeyChainId;
-
-
-@end
-
-#pragma mark - models
+#pragma mark - Models
 
 #import "CKIAssignment.h"
 #import "CKIAssignmentGroup.h"
@@ -63,7 +39,7 @@
 #import "CKIUser.h"
 
 
-#pragma mark - networking
+#pragma mark - Networking
 
 #import "CKIPagedResponse.h"
 

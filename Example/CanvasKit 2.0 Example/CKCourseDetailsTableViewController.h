@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CanvasKit.h>
-#import <CKCourse.h>
 
 @interface CKCourseDetailsTableViewController : UITableViewController
 
-@property (nonatomic, strong) CKCourse *course;
+@property (nonatomic, strong) CKIClient *client;
+@property (nonatomic, strong) CKICourse *course;
 @property (nonatomic, strong) NSMutableArray *courseItems;
 
 @end

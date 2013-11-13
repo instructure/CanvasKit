@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CKCourse.h>
+
+@class CKIClient;
+@class CKICourse;
 
 @interface CKTodoItemsTableViewController : UITableViewController
 
+@property (nonatomic, strong) CKIClient *client;
 @property (nonatomic, strong) NSArray *todoItems;
-@property (nonatomic, strong) CKCourse *course;
+@property (nonatomic, strong) CKICourse *course;
 
 @end

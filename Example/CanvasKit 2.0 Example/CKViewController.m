@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import "CKViewController.h"
-#import <CKLocalUser+Networking.h>
 #import <ReactiveCocoa.h>
-#import <CanvasKit.h>
+
+#import "CKViewController.h"
+#import "CKUserDetailsViewController.h"
 
 @interface CKViewController ()
 
@@ -36,20 +36,20 @@
 {
     static NSString *ClientID = nil; // Your Client ID
     static NSString *SharedSecret = nil; // Your shared secret here
-    static NSString *Domain = nil; // @"school.instructure.com" (Optional)
+    static NSString *Domain = nil; // @"https://school.instructure.com"
+    NSURL *url = [NSURL URLWithString:Domain];
     
-    [CanvasKit prepareWithClientID:ClientID sharedSecret:SharedSecret];
     
-    [[CKLocalUser sharedUser] performLoginWithDomain:Domain success:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.client = [CKIClient clientWithBaseURL:url clientID:ClientID sharedSecret:SharedSecret];
+    [self.client loginWithSuccess:^{
         [self performSegueWithIdentifier:@"UserDetails" sender:sender];
     } failure:^(NSError *error) {
-        [self dismissViewControllerAnimated:YES completion:nil];
         switch (error.code) {
-            case kCKErrorCodeUserCancelledOAuth:
+            case kCKIErrorCodeUserCancelledOAuth:
                 [self showErrorAlertWithMessage:@"You must login to proceed."];
                 break;
-            case kCKErrorCodeNotPreparedForOAuth:
+            case kCKIErrorCodeNotPreparedForOAuth:
                 [self showErrorAlertWithMessage:@"Your application developer should prepare for OAuth before attempting to login the user."];
             default:
                 break;
@@ -61,6 +61,14 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"UserDetails"]) {
+        CKUserDetailsViewController *detailsVC = segue.destinationViewController;
+        detailsVC.client = self.client;
+    }
 }
 
 @end

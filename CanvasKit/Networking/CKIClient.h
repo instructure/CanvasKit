@@ -21,10 +21,10 @@
  */
 @interface CKIClient : AFHTTPSessionManager
 
-@property (nonatomic, strong) NSString *clientId;
-@property (nonatomic, strong) NSString *sharedSecret;
-@property (nonatomic, strong) NSString *keyChainId;
-@property (nonatomic, strong) NSString *authToken;
+@property (nonatomic, readonly) NSString *clientID;
+@property (nonatomic, readonly) NSString *sharedSecret;
+@property (nonatomic, readonly) NSString *keyChainId;
+@property (nonatomic, readonly) NSString *oauthToken;
 
 /**
  The user that is currently logged in via this client.
@@ -32,29 +32,58 @@
 @property (nonatomic, strong) CKIUser *currentUser;
 
 /**
- The keychain used by the client to store secrets.
- */
-@property (nonatomic, readonly) FXKeychain *keychain;
-
-/**
- Create a canvas client for a given domain specified by the base URL.
+ Instantiates a canvas client from the default keychain if the OAuth Token is stored there, otherwise generates a new client.
  
  @param baseURL the base URL to be used by the client
+ @param clientID the special client ID that uniquely identifies this application
+ @param sharedSecret the shared secret for the application
  */
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL;
-
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret;
 
 /**
- Helper method for setting the auth token after successful login
+ Instantiates a canvas client from the given keychain if the OAuth Token is stored there, otherwise generates a new client.
  
- @param Authentication token recieved from OAuth2 process
+ @param baseURL the base URL to be used by the client
+ @param clientID the special client ID that uniquely identifies this application
+ @param sharedSecret the shared secret for the application
+ @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
  */
-- (void)setAuthToken:(NSString *)authToken;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID;
+
+/**
+ Creates a new canvas client.
+ 
+ @param baseURL the base URL to be used by the client
+ @param clientID the special client ID that uniquely identifies this application
+ @param sharedSecret the shared secret for the application
+ @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
+ */
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID;
+
+#pragma mark - OAuth
+
+/**
+ Starts the OAuth2 authentication process. The user will be aksed to login to Canvas. Once logged in the user will have the option to allow the app to authenticate via Canvas.
+ 
+ @warning CanvasKit must be prepared for OAuth2 before this method is called.
+ @see CanvasKit.h
+ */
+- (void)loginWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure;
+
+/**
+ Logs out the current user, clears the keychain and all cookies related to the baseURL.
+ */
+- (void)logout;
 
 /**
  Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
  */
 - (BOOL)isLoggedIn;
+
+/**
+ Request object for making the request to get the OAuth Token.
+ */
+- (NSURLRequest *)oauthRequest;
 
 #pragma mark - JSON API Helpers
 
@@ -71,7 +100,7 @@
 - (void)fetchModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void (^)(CKIModel *model))success failure:(void (^)(NSError *error))failure;
 
 /**
- Fetch the given page number from a paginated JSON API endpoint.
+ Fetch a paginated response from the given JSON API endpoint.
  
  @param path the paginated JSON API endpoint (ex. @"api/v1/courses/123/modules")
  @param parameters the parameters to be applied to the request
@@ -81,6 +110,16 @@
  */
 - (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
 
+
+/**
+ Fetch a paginated response from the given JSON API endpoint.
+ 
+ @param path the paginated JSON API endpoint (ex. @"api/v1/courses/123/modules")
+ @param parameters the parameters to be applied to the request
+ @param valueTransformer an NSValueTransformer that transforms dictionaries into CKIModels
+ @param success the success block which will accept the CKIPagedResponse result
+ @param failure the block to be executed if the API call fails.
+ */
 - (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure;
 
 @end

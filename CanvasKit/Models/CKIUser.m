@@ -21,7 +21,8 @@
        @"loginID": @"login_id",
        @"avatarURL": @"avatar_url",
        @"lastLogin": @"last_login",
-       @"timeZone": @"time_zone"
+       @"timeZone": @"time_zone",
+       @"email": @"primary_email"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

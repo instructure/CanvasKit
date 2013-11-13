@@ -18,14 +18,4 @@
 
 #define kCKIErrorDomain @"com.instructure.canvaskit"
 
-
-/**
- Keychain keys
- */
-
-#define kCKIKeychainAuthTokenKey @"AUTH_TOKEN"
-#define kCKIKeychainDomainKey @"DOMAIN_KEY"
-
-
-
 #endif

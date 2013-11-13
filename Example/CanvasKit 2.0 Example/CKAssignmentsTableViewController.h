@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CKAssignment.h>
-#import <CKAssignment+Networking.h>
+
+@class CKIClient;
 
 @interface CKAssignmentsTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *assignments;
+@property (nonatomic, strong) CKIClient *client;
 
 @end

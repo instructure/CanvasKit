@@ -41,4 +41,9 @@
  */
 + (instancetype)modelFromJSONDictionary:(NSDictionary *)dictionaryValue;
 
+/**
+ Convenience method for turning model into JSON dictionary.
+ */
+- (NSDictionary *)JSONDictionary;
+
 @end

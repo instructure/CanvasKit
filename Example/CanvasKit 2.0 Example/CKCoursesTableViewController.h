@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class CKIClient;
+
 @interface CKCoursesTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *courses;
+
+@property (nonatomic, strong) CKIClient *client;
 
 @end

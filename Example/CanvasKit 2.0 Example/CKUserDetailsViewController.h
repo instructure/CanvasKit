@@ -12,7 +12,7 @@
 
 @interface CKUserDetailsViewController : UIViewController
 
-@property (nonatomic, strong) CKLocalUser *user;
+@property (nonatomic, strong) CKIClient *client;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
