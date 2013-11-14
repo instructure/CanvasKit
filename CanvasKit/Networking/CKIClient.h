@@ -47,8 +47,9 @@
  @param clientID the special client ID that uniquely identifies this application
  @param sharedSecret the shared secret for the application
  @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
+ @param accessGroup the access group to be used for the shared keychain
  */
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
  Creates a new canvas client.
@@ -57,8 +58,9 @@
  @param clientID the special client ID that uniquely identifies this application
  @param sharedSecret the shared secret for the application
  @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
+ @param accessGroup the access group to be used for the shared keychain
  */
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 #pragma mark - OAuth
 
