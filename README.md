@@ -1,5 +1,9 @@
 ## CanvasKit by Instructure iOS
 
+***
+CanvasKit is a Work in Progress—the architecture is still prone to change and not all off the API endpoints are implemented.
+***
+
 CanvasKit is a library that will help you integrate your own third party app with [Canvas by Instructure](https://instructure.com/).
 
 CanvasKit is built on the [Canvas API](https://canvas.instructure.com/doc/api/index.html). CanvasKit is designed to allow for great flexibility while providing an easy to use interface. You can use CanvasKit to build apps for open source versions of Canvas as well as instances hosted by Instructure.
@@ -32,58 +36,39 @@ CanvasKit 2.0 is a major refactor from the previous version of CanvasKit. Until 
 
 ### Setup
 
-In order to use CanvasKit with Instructure mangaged instances of [Canvas LMS](https://github.com/instructure/canvas-lms) you must obtain a Client ID and Shared Secret. CanvasKit uses [OAuth 2](https://canvas.instructure.com/doc/api/file.oauth.html) for authentication. Request your Client ID and Shared Secret by sending an email to <mike@instructure.com>. Make sure to give us your name, email, and what you are hoping to do with the CanvasKit.
+In order to use CanvasKit with Instructure mangaged instances of [Canvas LMS](https://github.com/instructure/canvas-lms) you must obtain a Client ID and Shared Secret. CanvasKit uses [OAuth 2](https://canvas.instructure.com/doc/api/file.oauth.html) for authentication. Request your Client ID and Shared Secret by sending an email to <mike@instructure.com>. Make sure to give us your name, email, and what you are hoping to do with CanvasKit.
 
-Once you have your Client ID and Shared Secret you can start using CanvasKit. Somewhere in your App Delegate's `didFinishLaunchingWithOptions` method setup CanvasKit with your Client ID and Shared Secret.
+### CKIClient
+
+The `CKIClient` is in charge of all the networking in CanvasKit. Insantiate a `CKIClient` with your client ID and shared secret like so:
 
 ```objc
-[CanvasKit prepareWithClientID:@"yourclientid" sharedSecret:@"yoursharedsecret"];
+CKIClient *client = [CKIClient clientWithBaseURL:url clientID:ClientID sharedSecret:SharedSecret];
 ```
 
-### User Authentication
+This method will first try to load any previous session from the keychain. To see if the client is already logged in, call `[client isLoggedIn]`.
 
-
-#### CKILocalUser
-
-CanvasKit uses the concept of a 'Local User', or the user currently using the device. `CKILocalUser` is a singleton, giving you access to the current user anywhere in your application by calling:
+If the client is not logged in, you may do so by calling `-loginWithSuccess:failure:`. This method will handle displaying a
+modal webview to the user and deal with the OAuth process for you. 
 
 ```objc
-[CKILocalUser sharedInstance]
-```
-
-Before you can use any other CanvasKit methods to access the Canvas LMS API you must authenticate the current user. CanvasKit makes this easy by handling the OAuth 2 authentication flow for you. All you have to do is call the following method to prompt the user to authenticate.
-
-```objc
-[[CKILocalUser sharedInstance] performLoginWithDomain:@"yourschooldomain" success:^{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // Success the user was authenticated
-} failure:^(NSError *error) {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // Authentication failed 
+[self.client loginWithSuccess:^{
+    // we're logged in. do anything we need to do after completion here.
+} failure:^(NSError *error) {a
+    // handle error
 }];
 ```
 
-#### Keychain
+The authentication token will remain in the keychain until you call `[client logout]`.
 
-Once authentication succeeds, an authentication token will be added to your application's keychain. If you would like to use a shared keychain with CanvasKit make sure you prepare CanvasKit with your shared keychain id:
-
-```objc
-[CanvasKit prepareWithClientID:@"yourclientid" sharedSecret:@"yoursharedsecret" keyChainId:@"yourkeychainid"];
-```
-The authentication token will remain in the keychain until you logout the `CKILocalUser`.
-
-```objc
-[[CKILocalUser sharedInstance] logout];
-```
+If you would like to get information about the currently logged in user, you may do so by accessing the `client.currentUser` property. See `CKIUser` for more information.
 
 ### Accessing the API
-
-#### Architecture Overview
 
 CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CKICourse class and envoke one of the networking methods. For example:
 
 ```objc
-[CKICourse fetchCoursesForCurrentUserWithSuccess:^(CKIPagedResponse *response) {
+[client fetchCoursesForCurrentUserWithSuccess:^(CKIPagedResponse *response) {
     // Success fetching courses
 } failure:^(NSError *error) {
     // Failed to fetch courses
@@ -109,7 +94,7 @@ So, how might this work? Let's look at an example where we want to fetch the ass
 {
     // if we haven't fetched any data yet, fetch the first page
     if (!self.currentPage) {
-        [CKIAssignment fetchAssignmentsForCourse:self.course withSuccess:^(CKIPagedResponse *pagedResponse) {
+        [self.client fetchAssignmentsForCourse:self.course withSuccess:^(CKIPagedResponse *pagedResponse) {
             self.currentPage = pagedResponse;
             [self.assignments addObjectsFromArray:pagedResponse.items];
             
@@ -137,5 +122,8 @@ So, how might this work? Let's look at an example where we want to fetch the ass
 ```
 
 CanvasKit treats all API endpoints that may return multiple items as if they were paginated, regardless of whether or not they are currently paginated. This means you cannot make assumptions about the maximum number of items in a response—typically paginated APIs will default to 10 items per page, but non paginated APIs have no limit.
+
+
+### License
 
 CanvasKit is available under the MIT license. See the LICENSE file for more info.
