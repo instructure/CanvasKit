@@ -71,7 +71,7 @@ FXKeychain * cki_keychainForKeychainID(NSString * keychainID)
 
 - (void)setCurrentUser:(CKIUser *)currentUser
 {
-    NSDictionary *userDictionary = [self.currentUser JSONDictionary];
+    NSDictionary *userDictionary = [currentUser JSONDictionary];
     self[kCKIKeychainCurrentUserKey] = userDictionary;
 }
 
