@@ -158,13 +158,6 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
 
 #pragma mark - Properties
 
-- (void)setCurrentUser:(CKIUser *)currentUser
-{
-    _currentUser = currentUser;
-    [self saveToKeychain];
-}
-
-
 - (void)setAuthToken:(NSString *)authToken
 {
     _authToken = authToken;
@@ -287,6 +280,7 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
     [self fetchModelAtPath:path parameters:nil modelClass:[CKIUser class] context:nil success:^(CKIModel *user) {
         self.currentUser = (CKIUser *)user;
+        [self saveToKeychain];
     } failure:^(NSError *error) {
         NSLog(@"Error fetching user details: %@", error);
     }];
