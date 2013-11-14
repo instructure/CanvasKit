@@ -19,7 +19,7 @@
 
 #pragma mark - Keychain Helpers
 
-static const NSString *kCKIKeychainAuthTokenKey = @"AUTH_TOKEN";
+static const NSString *kCKIKeychainOAuthTokenKey = @"AUTH_TOKEN";
 static const NSString *kCKIKeychainDomainKey = @"DOMAIN_KEY";
 static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
@@ -35,25 +35,47 @@ FXKeychain * cki_keychainForKeychainID(NSString * keychainID)
     return keychain;
 }
 
-NSString * cki_loadOAuthTokenFromKeychain(NSString *keychainID)
+@interface FXKeychain (CKIKeychain)
+@property (nonatomic, strong) NSString *oauthToken;
+@property (nonatomic, strong) NSURL *domain;
+@property (nonatomic, strong) CKIUser *currentUser;
+@end
+
+@implementation FXKeychain (CBIKeychain)
+
+- (NSString *)oauthToken
 {
-    FXKeychain *keychain = cki_keychainForKeychainID(keychainID);
-    return keychain[kCKIKeychainAuthTokenKey];
+    return self[kCKIKeychainOAuthTokenKey];
 }
 
-NSString * cki_loadDomainFromKeychain(NSString *keychainID)
+- (void)setOauthToken:(NSString *)oauthToken
 {
-    FXKeychain *keychain = cki_keychainForKeychainID(keychainID);
-    return keychain[kCKIKeychainDomainKey];
+    self[kCKIKeychainOAuthTokenKey] = oauthToken;
 }
 
-CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
+- (NSURL *)domain
 {
-    FXKeychain *keychain = cki_keychainForKeychainID(keychainID);
-    NSDictionary *dictionary = keychain[kCKIKeychainCurrentUserKey];
+    return [NSURL URLWithString:self[kCKIKeychainDomainKey]];
+}
+
+- (void)setDomain:(NSURL *)domain
+{
+    self[kCKIKeychainDomainKey] = domain.absoluteString;
+}
+
+- (CKIUser *)currentUser
+{
+    NSDictionary *dictionary = self[kCKIKeychainCurrentUserKey];
     return [CKIUser modelFromJSONDictionary:dictionary];
 }
 
+- (void)setCurrentUser:(CKIUser *)currentUser
+{
+    NSDictionary *userDictionary = [currentUser JSONDictionary];
+    self[kCKIKeychainCurrentUserKey] = userDictionary;
+}
+
+@end
 
 #pragma mark - Client
 
@@ -62,10 +84,11 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *sharedSecret;
-@property (nonatomic, strong) NSString *keychainID;
-@property (nonatomic, strong) NSString *authToken;
+@property (nonatomic, strong) NSString *oauthToken;
 
 @property (nonatomic, strong) FXKeychain *keychain;
+@property (nonatomic, copy) NSString *keychainServiceID;
+@property (nonatomic, copy) NSString *keychainAccessGroup;
 @end
 
 @implementation CKIClient
@@ -73,22 +96,22 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
 
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret
 {
-    return [self clientWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainID:nil];
+    return [self clientWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:nil accessGroup:nil];
 }
 
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
-    CKIClient *client = [self loadClientWithClientID:clientID sharedSecret:sharedSecret fromKeychain:keychainID];
+    CKIClient *client = [self loadClientFromKeychainWithClientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
     
     // create a new client if we can't find existing one in the keychain
     if (!client) {
-        client = [[self alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainID:keychainID];
+        client = [[self alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
     }
     
     return client;
 }
 
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainID:(NSString *)keychainID
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     NSParameterAssert(baseURL);
     NSParameterAssert(clientID);
@@ -103,65 +126,51 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
     [self setResponseSerializer:[AFJSONResponseSerializer serializer]];
     self.clientID = clientID;
     self.sharedSecret = sharedSecret;
-    self.keychainID = keychainID;
+    self.keychainServiceID = keychainID;
     
     return self;
 }
 
 // returns nil if the keychain doesn't have an oauth token
-+ (instancetype)loadClientWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret fromKeychain:(NSString *)keychainID
++ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
-    NSString *oauthToken = cki_loadOAuthTokenFromKeychain(keychainID);
+    FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
+    
+    NSString *oauthToken = keychain.oauthToken;
     if (!oauthToken) {
         return nil;
     }
     
-    NSString *domainString = cki_loadDomainFromKeychain(keychainID);
-    NSURL *baseURL = [NSURL URLWithString:domainString];
+    NSURL *baseURL = keychain.domain;
     
-    CKIUser *currentUser = cki_loadCurrentUserFromKeychain(keychainID);
-    
-    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainID:keychainID];
-    client.authToken = oauthToken;
-    client.currentUser = currentUser;
+    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    client.oauthToken = oauthToken;
+    client.currentUser = keychain.currentUser;
     return client;
 }
 
 #pragma mark - Keychain
 
-- (FXKeychain *)keychain
-{
-    if (_keychain) {
-        return _keychain;
-    }
-    
-    _keychain = cki_keychainForKeychainID(self.keychainID);
-    
-    return _keychain;
-}
-
 - (void)saveToKeychain
 {
-    self.keychain[kCKIKeychainAuthTokenKey] = self.authToken;
-    self.keychain[kCKIKeychainDomainKey] = self.baseURL.absoluteString;
-    
-    NSDictionary *userDictionary = [self.currentUser JSONDictionary];
-    self.keychain[kCKIKeychainCurrentUserKey] = userDictionary ;
+    self.keychain.oauthToken = self.oauthToken;
+    self.keychain.domain = self.baseURL;
+    self.keychain.currentUser = self.currentUser;
 }
 
 - (void)clearKeychain
 {
-    [self.keychain removeObjectForKey:kCKIKeychainAuthTokenKey];
+    [self.keychain removeObjectForKey:kCKIKeychainOAuthTokenKey];
     [self.keychain removeObjectForKey:kCKIKeychainDomainKey];
     [self.keychain removeObjectForKey:kCKIKeychainCurrentUserKey];
 }
 
 #pragma mark - Properties
 
-- (void)setAuthToken:(NSString *)authToken
+- (void)setOAuthToken:(NSString *)oauthToken
 {
-    _authToken = authToken;
-    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", authToken] forHTTPHeaderField:@"Authorization"];
+    _oauthToken = oauthToken;
+    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", oauthToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - OAuth
@@ -208,7 +217,7 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
 
 - (BOOL)isLoggedIn
 {
-    return self.authToken != nil;
+    return self.oauthToken != nil;
 }
 
 - (NSURLRequest *)oauthRequest
@@ -271,7 +280,7 @@ CKIUser * cki_loadCurrentUserFromKeychain(NSString *keychainID)
 
 - (void)processOAuthTokenFromOAuthResponse:(NSDictionary *)jsonResponse
 {
-    self.authToken = jsonResponse[@"access_token"];
+    self.oauthToken = jsonResponse[@"access_token"];
 }
 
 - (void)processUserFromOAuthResponse:(NSDictionary *)jsonResponse
