@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'CanvasKit'
-  s.version  = 'v0.2'
+  s.version  = '0.2'
   s.license  = 'MIT'
   s.summary  = 'A Canvas API integration framework better than bamboo'
   s.homepage = 'https://github.com/jlarsen/CanvasKit'
