@@ -12,6 +12,14 @@
 
 #pragma mark - Models
 
+#import "CKIActivityStreamItem.h"
+#import "CKIActivityStreamDiscussionTopicItem.h"
+#import "CKIActivityStreamAnnouncementItem.h"
+#import "CKIActivityStreamConversationItem.h"
+#import "CKIActivityStreamMessageItem.h"
+#import "CKIActivityStreamConferenceItem.h"
+#import "CKIActivityStreamCollaborationItem.h"
+#import "CKIActivityStreamSubmissionItem.h"
 #import "CKIAssignment.h"
 #import "CKIAssignmentGroup.h"
 #import "CKICalendarEvent.h"
@@ -22,8 +30,8 @@
 #import "CKIFile.h"
 #import "CKIFolder.h"
 #import "CKIGroup.h"
-#import "CKILockInfo.h"
 #import "CKILockableModel.h"
+#import "CKILockInfo.h"
 #import "CKIModel.h"
 #import "CKIModule.h"
 #import "CKIModuleItem.h"
@@ -37,7 +45,6 @@
 #import "CKITab.h"
 #import "CKITodoItem.h"
 #import "CKIUser.h"
-
 
 #pragma mark - Networking
 
