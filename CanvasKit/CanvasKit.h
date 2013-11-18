@@ -51,6 +51,7 @@
 #import "CKIPagedResponse.h"
 
 #import "CKIClient.h"
+#import "CKIClient+CKIActivityStreamItem.h"
 #import "CKIClient+CKIAssignment.h"
 #import "CKIClient+CKICalendarEvent.h"
 #import "CKIClient+CKICourse.h"
