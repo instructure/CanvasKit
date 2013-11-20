@@ -12,8 +12,6 @@
 
 @interface CKIClient (CKIFavorite)
 
-- (void)fetchFavoriteCoursesWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
-
 - (void)addCourse:(CKICourse *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
 - (void)removeCourse:(CKICourse *)course fromFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;

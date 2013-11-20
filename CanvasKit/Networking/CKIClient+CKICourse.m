@@ -11,12 +11,22 @@
 
 @implementation CKIClient (CKICourse)
 
+- (void)fetchCoursesAtPath:(NSString *)path success:(void (^)(CKIPagedResponse *response))success failure:(void(^)(NSError *error))failure
+{
+    NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
+    
+    [self fetchPagedResponseAtPath:path parameters:params modelClass:[CKICourse class] context:CKIRootContext success:success failure:failure];
+}
+
+- (void)fetchFavoriteCoursesForCurrentUsersWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *error))failure {
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses"];
+    [self fetchCoursesAtPath:path success:success failure:failure];
+}
+
 - (void)fetchCoursesForCurrentUserWithSuccess:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure {
     
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
-    NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
-    
-    [self fetchPagedResponseAtPath:path parameters:params modelClass:[CKICourse class] context:nil success:success failure:failure];
+    [self fetchCoursesAtPath:path success:success failure:failure];
 }
 
 @end

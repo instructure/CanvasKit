@@ -12,12 +12,6 @@
 
 @implementation CKIClient (CKIFavorite)
 
-- (void)fetchFavoriteCoursesWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIFavorite class] context:nil success:success failure:failure];
-}
-
 - (NSString *)currentUserFavoritesPathStringForCourse:(CKICourse *)course
 {
     return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses/"] stringByAppendingPathComponent:course.id];
@@ -51,7 +45,6 @@
             failure(error);
         }
     }];
-    
 }
 
 @end
