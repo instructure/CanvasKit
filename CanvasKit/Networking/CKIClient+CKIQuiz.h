@@ -10,11 +10,12 @@
 
 @class CKIQuiz;
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKIQuiz)
 
-- (void)fetchQuiz:(NSString *)quizID forCourse:(CKICourse *)course success:(void (^)(CKIQuiz *quiz))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchQuiz:(NSString *)quizID forCourse:(CKICourse *)course;
 
-- (void)fetchQuizzesForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchQuizzesForCourse:(CKICourse *)course;
 
 @end

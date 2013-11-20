@@ -9,9 +9,10 @@
 #import "CKIClient.h"
 
 @class CKIService;
+@class RACSignal;
 
 @interface CKIClient (CKIService)
 
-- (void)fetchServiceSuccess:(void (^)(CKIService *service))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchService;
 
 @end
