@@ -344,10 +344,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
             RACSignal *thisPageSignal = [self parseResponseWithTransformer:transformer fromJSON:responseObject context:context];
             RACSignal *nextPageSignal;
             
-            if ([currentPage isEqual:lastPage]) {
-                [subscriber sendCompleted];
-            }
-            else {
+            if (nextPage && ![currentPage isEqual:lastPage]) {
                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
             }
             
