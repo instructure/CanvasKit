@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIActivityStreamItem.h"
 #import "CKIActivityStreamItem.h"
 
 @implementation CKIClient (CKIActivityStreamItem)
 
-- (void)fetchActivityStreamWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchActivityStream
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/activity_stream"];
-    
-    NSValueTransformer *valueTransformer = [CKIActivityStreamItem activityStreamItemTransformer];
-    [self fetchPagedResponseAtPath:path parameters:nil valueTransformer:valueTransformer context:nil success:success failure:failure];
+    NSValueTransformer *transformer = [CKIActivityStreamItem activityStreamItemTransformer];
+    return [self fetchResponseAtPath:path parameters:nil transformer:transformer context:nil];
 }
 
 @end

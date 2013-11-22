@@ -6,27 +6,19 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKICourse.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKICourse)
 
-- (void)fetchCoursesAtPath:(NSString *)path success:(void (^)(CKIPagedResponse *response))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchCoursesForCurrentUser
 {
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
     NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
     
-    [self fetchPagedResponseAtPath:path parameters:params modelClass:[CKICourse class] context:CKIRootContext success:success failure:failure];
-}
-
-- (void)fetchFavoriteCoursesForCurrentUsersWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *error))failure {
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses"];
-    [self fetchCoursesAtPath:path success:success failure:failure];
-}
-
-- (void)fetchCoursesForCurrentUserWithSuccess:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure {
-    
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
-    [self fetchCoursesAtPath:path success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICourse class] context:nil];
 }
 
 @end

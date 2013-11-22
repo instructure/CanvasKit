@@ -11,12 +11,11 @@
 
 @implementation CKIClient (CKIFile)
 
-- (void)fetchFile:(NSString *)fileID success:(void(^)(CKIFile *file))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchFile:(NSString *)fileID
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"files"];
     path = [path stringByAppendingPathComponent:fileID];
-    
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIFile class] context:nil success:(void(^)(CKIModel *file))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFile class] context:nil];
 }
 
 @end

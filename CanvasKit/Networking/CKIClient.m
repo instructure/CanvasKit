@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AFNetworking/AFHTTPRequestOperation.h>
 #import <Mantle/Mantle.h>
 #import <FXKeychain.h>
 
@@ -14,26 +16,13 @@
 #import "CKIUser.h"
 #import "CKILoginViewController.h"
 #import "NSHTTPURLResponse+Pagination.h"
-
-
+#import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 #pragma mark - Keychain Helpers
 
 static const NSString *kCKIKeychainOAuthTokenKey = @"AUTH_TOKEN";
 static const NSString *kCKIKeychainDomainKey = @"DOMAIN_KEY";
 static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
-
-FXKeychain * cki_keychainForKeychainID(NSString * keychainID)
-{
-    FXKeychain *keychain;
-    if (keychainID) {
-        keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:nil];
-    } else {
-        keychain = [FXKeychain defaultKeychain];
-    }
-    
-    return keychain;
-}
 
 @interface FXKeychain (CKIKeychain)
 @property (nonatomic, strong) NSString *oauthToken;
@@ -326,32 +315,87 @@ FXKeychain * cki_keychainForKeychainID(NSString * keychainID)
     }];
 }
 
-#pragma mark - Paginated JSON API Helpers
 
-- (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure
+#pragma mark - JSON API Helpers
+
+- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context
 {
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only fetch CKIModels");
     
-    NSValueTransformer *valueTransformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
-    [self fetchPagedResponseAtPath:path parameters:parameters valueTransformer:valueTransformer context:context success:success failure:failure];
+    NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
+    return [self fetchResponseAtPath:path parameters:parameters transformer:transformer context:context];
 }
 
 
-- (void)fetchPagedResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters valueTransformer:(NSValueTransformer *)valueTransformer context:(id<CKIContext>)context success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure
+- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
 {
-    NSAssert(valueTransformer, @"valueTransformer cannot be nil");
+    NSParameterAssert(path);
+    NSParameterAssert(transformer);
     
-    [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            CKIPagedResponse *pagedResponse = [CKIPagedResponse pagedResponseForTask:task responseObject:responseObject valueTransformer:valueTransformer context:context client:self];
-            success(pagedResponse);
+    NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
+    
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self GET:path parameters:newParameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+            NSURL *currentPage = response.currentPage;
+            NSURL *nextPage = response.nextPage;
+            NSURL *lastPage = response.lastPage;
+            
+            RACSignal *thisPageSignal = [self parseResponseWithTransformer:transformer fromJSON:responseObject context:context];
+            RACSignal *nextPageSignal = [RACSignal empty];
+            
+            if (nextPage && ![currentPage isEqual:lastPage]) {
+               nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
+            }
+            
+            [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context];
+}
+
+- (RACSignal *)parseResponseWithTransformer:(NSValueTransformer *)transformer fromJSON:(id)responseObject context:(id<CKIContext>)context
+{
+    NSParameterAssert(transformer);
+    NSParameterAssert(responseObject);
+    NSAssert([responseObject isKindOfClass:NSArray.class] || [responseObject isKindOfClass:NSDictionary.class], @"Response object must be either an array or dictionary");
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if ([responseObject isKindOfClass:NSArray.class]) {
+            NSArray *jsonModels = responseObject;
+            NSArray *models = [[jsonModels.rac_sequence map:^id(id jsonModel) {
+                return [self parseModel:transformer fromJSON:jsonModel context:context];
+            }] array];
+            [subscriber sendNext:models];
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failure) {
-            failure(error);
+        else {
+            NSDictionary *jsonModel = responseObject;
+            CKIModel *model = [self parseModel:transformer fromJSON:jsonModel context:context];
+            [subscriber sendNext:model];
         }
         
+        [subscriber sendCompleted];
+        return nil;
     }];
+}
+
+
+- (CKIModel *)parseModel:(NSValueTransformer *)transformer fromJSON:(NSDictionary *)jsonDictionary context:(id)context
+{
+    NSParameterAssert(transformer);
+    NSParameterAssert(jsonDictionary);
+    
+    id tranformedValue = [transformer transformedValue:jsonDictionary];
+    NSAssert([tranformedValue isKindOfClass:CKIModel.class], @"Transformer gave back an object of type %@, expected a CKIModel subclass.", [tranformedValue class]);
+    CKIModel *model = (CKIModel *)tranformedValue;
+    model.context = context;
+    return model;
 }
 
 @end

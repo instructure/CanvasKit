@@ -8,10 +8,10 @@
 
 #import "CKIClient.h"
 
+@class RACSignal;
+
 @interface CKIClient (CKICourse)
 
-- (void)fetchCoursesForCurrentUserWithSuccess:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure;
-
-- (void)fetchFavoriteCoursesForCurrentUsersWithSuccess:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchCoursesForCurrentUser;
 
 @end

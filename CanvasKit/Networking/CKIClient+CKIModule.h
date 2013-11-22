@@ -10,6 +10,7 @@
 
 @class CKICourse;
 @class CKIModule;
+@class RACSignal;
 
 @interface CKIClient (CKIModule)
 
@@ -20,7 +21,7 @@
  @param success the block to be executed if the API call succeeds
  @param failure the block to be executed if the API call fails
  */
-- (void)fetchModulesForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchModulesForCourse:(CKICourse *)course;
 
 /**
  Fetch a specific module for a course.
@@ -29,6 +30,6 @@
  @param success the block to be executed if the API call succeeds
  @param failure the block to be executed if the API call fails
  */
-- (void)fetchModuleWithID:(NSString *)moduleID forCourse:(CKICourse *)course success:(void (^)(CKIModule *module))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchModuleWithID:(NSString *)moduleID forCourse:(CKICourse *)course;
 
 @end

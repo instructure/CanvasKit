@@ -10,11 +10,12 @@
 
 @class CKIModule;
 @class CKIModuleItem;
+@class RACSignal;
 
 @interface CKIClient (CKIModuleItem)
 
-- (void)fetchModuleItem:(NSString *)moduleItemID forModule:(CKIModule *)module success:(void (^)(CKIModuleItem *))success failure:(void (^)(NSError *))failure;
+- (RACSignal *)fetchModuleItem:(NSString *)moduleItemID forModule:(CKIModule *)module;
 
-- (void)fetchModuleItemsForModule:(CKIModule *)module success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure;
+- (RACSignal *)fetchModuleItemsForModule:(CKIModule *)module;
 
 @end

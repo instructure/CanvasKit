@@ -9,8 +9,11 @@
 #import "CKIClient.h"
 
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKIFavorite)
+
+- (RACSignal *)fetchFavoriteCourses;
 
 - (void)addCourse:(CKICourse *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
