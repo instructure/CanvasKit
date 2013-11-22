@@ -43,6 +43,7 @@
 #import "CKISubmission.h"
 #import "CKISubmissionComment.h"
 #import "CKITab.h"
+#import "CKITerm.h"
 #import "CKITodoItem.h"
 #import "CKIUser.h"
 

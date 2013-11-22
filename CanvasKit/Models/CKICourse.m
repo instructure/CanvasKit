@@ -9,6 +9,7 @@
 #import "CKICourse.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "CKITerm.h"
 
 @implementation CKICourse
 
@@ -47,6 +48,11 @@
 + (NSValueTransformer *)endAtJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)termJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKITerm class]];
 }
 
 - (NSString *)path
