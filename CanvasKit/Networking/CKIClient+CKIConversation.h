@@ -10,7 +10,7 @@
 #import "CKIConversation.h"
 
 typedef NS_ENUM(NSInteger, CKIConversationScope) {
-    CKIConversationScopeAll,
+    CKIConversationScopeInbox,
     CKIConversationScopeUnread,
     CKIConversationScopeArchived,
     CKIConversationScopeStarred,
