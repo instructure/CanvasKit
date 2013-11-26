@@ -94,4 +94,11 @@
     return array;
 }
 
+
+#pragma mark - path
+
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"conversations"] stringByAppendingPathComponent:self.id];
+}
 @end

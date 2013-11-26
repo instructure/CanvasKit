@@ -499,6 +499,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4931A8E918450FAA00B0D369 /* CKIConversations */ = {
+			isa = PBXGroup;
+			children = (
+				4931A8A2183FA63E00B0D369 /* CKIConversation.h */,
+				4931A8A3183FA63E00B0D369 /* CKIConversation.m */,
+			);
+			name = CKIConversations;
+			sourceTree = "<group>";
+		};
 		499B4A2917F22C9F00E211C9 /* CanvasKitTestBundle */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,8 +542,7 @@
 				BD7907B117EA364B006D12D9 /* CKIAssignmentGroup.m */,
 				BD15900217E91681008887E3 /* CKICalendarEvent.h */,
 				BD15900317E91681008887E3 /* CKICalendarEvent.m */,
-				4931A8A2183FA63E00B0D369 /* CKIConversation.h */,
-				4931A8A3183FA63E00B0D369 /* CKIConversation.m */,
+				4931A8E918450FAA00B0D369 /* CKIConversations */,
 				4910CE9717E8E72000A6A73E /* CKIContext.h */,
 				BD18757A17E0D7AE00138469 /* CKICourse.h */,
 				BD18757B17E0D7AE00138469 /* CKICourse.m */,

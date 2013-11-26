@@ -34,4 +34,13 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIConversation class] context:CKIRootContext];
 }
+
+
+- (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message
+{
+    NSString *path = [[CKIRootContext path] stringByAppendingPathComponent:@"conversations"];
+    NSDictionary *parameters = @{@"recipients": recipients, @"body": message};
+    
+    return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:CKIRootContext];
+}
 @end

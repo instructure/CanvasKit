@@ -95,6 +95,7 @@
  @param path the paginated JSON API endpoint (ex. @"api/v1/courses/123/modules")
  @param parameters the parameters to be applied to the request
  @param modelClass the class of the model to generate
+ @param context the context for the created object(s)
  */
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context;
 /**
@@ -103,7 +104,18 @@
  @param path the paginated JSON API endpoint (ex. @"api/v1/courses/123/modules")
  @param parameters the parameters to be applied to the request
  @param valueTransformer an NSValueTransformer that transforms dictionaries into CKIModels
+ @param context the context for the created object(s)
  */
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context;
 
+
+/**
+ Performs a POST to the give path with the give parameters
+ 
+ @param path the path for creating the object
+ @param parameters the POST parameters to be sent
+ @param modelClass the class of the resulting object
+ @param context the context for the created object
+ */
+- (RACSignal *)createModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context;
 @end
