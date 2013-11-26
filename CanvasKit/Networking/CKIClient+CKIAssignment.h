@@ -9,9 +9,10 @@
 #import "CKIClient.h"
 
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKIAssignment)
 
-- (void)fetchAssignmentsForCourse:(CKICourse *)course withSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)fetchAssignmentsForCourse:(CKICourse *)course;
 
 @end

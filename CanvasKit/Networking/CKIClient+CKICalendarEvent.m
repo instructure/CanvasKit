@@ -6,32 +6,34 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKICalendarEvent.h"
 #import "CKICalendarEvent.h"
 
 @implementation CKIClient (CKICalendarEvent)
 
-- (void)fetchCalendarEventsForTodayWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchCalendarEventsForToday
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKICalendarEvent class] context:nil success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKICalendarEvent class] context:nil];
 }
 
-- (void)fetchCalendarEventsFrom:(NSDate *)startDate to:(NSDate *)endDate success:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchCalendarEventsFrom:(NSDate *)startDate to:(NSDate *)endDate
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-mm-dd"];
     NSDictionary *params = @{@"start_date": [dateFormatter stringFromDate:startDate], @"end_date": [dateFormatter stringFromDate:endDate]};
-    [self fetchPagedResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil];
 }
 
-- (void)fetchCalendarEventsWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchCalendarEvents
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
     NSDictionary *params = @{@"all_events": @"true"};
-    [self fetchPagedResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil];
 }
 
 @end

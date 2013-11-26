@@ -8,6 +8,8 @@
 
 #import "CKIClient.h"
 
+@class RACSignal;
+
 @interface CKIClient (CKIActivityStreamItem)
 
 /**
@@ -16,6 +18,6 @@
  @param success success block returning a paged response of CKIActivityStreamItem
  @param failure failure block for handling error
  */
-- (void)fetchActivityStreamWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)fetchActivityStream;
 
 @end

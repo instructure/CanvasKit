@@ -6,16 +6,18 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIFavorite.h"
 #import "CKIFavorite.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKIFavorite)
 
-- (void)fetchFavoriteCoursesWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchFavoriteCourses
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIFavorite class] context:nil success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKICourse class] context:nil];
 }
 
 - (NSString *)currentUserFavoritesPathStringForCourse:(CKICourse *)course
