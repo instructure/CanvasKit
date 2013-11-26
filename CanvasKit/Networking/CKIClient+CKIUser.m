@@ -14,10 +14,17 @@
 
 - (void)fetchUsersForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
 {
+    [self fetchUsersWithParameters:nil course:course success:success failure:failure];
+}
+
+- (void)fetchUsersWithParameters:(NSDictionary *)parameters course:(CKICourse *)course success:(void(^)(CKIPagedResponse *))success failure:(void(^)(NSError *error))failure
+{
     NSString *path = [course.path stringByAppendingPathComponent:@"users"];
-    NSDictionary *parameters = @{@"include": @[@"avatar_url"]};
+
+    NSMutableDictionary *updatedParameters = [parameters mutableCopy];
+    [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
     
-    [self fetchPagedResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course success:success failure:failure];
+    [self fetchPagedResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:course success:success failure:failure];
 }
 
 - (void)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course success:(void(^)(CKIPagedResponse *))success failure:(void(^)(NSError *error))failure
