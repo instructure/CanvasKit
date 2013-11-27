@@ -13,10 +13,11 @@
 
 @implementation CKIClient (CKIModel)
 
-- (void)refreshModel:(CKIModel *)model success:(void (^)())success failure:(void (^)(NSError *))failure
+- (RACSignal *)refreshModel:(CKIModel *)model parameters:(NSDictionary *)parameters
 {
-    [[self fetchResponseAtPath:model.path parameters:nil modelClass:[model class] context:model.context] subscribeNext:^(CKIModel *newModel) {
-        [model mergeValuesForKeysFromModel:newModel];
+    return [[self fetchResponseAtPath:model.path parameters:parameters modelClass:[model class] context:model.context] map:^(CKIModel *updatedObject) {
+        [model mergeValuesForKeysFromModel:updatedObject];
+        return model;
     }];
 }
 

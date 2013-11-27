@@ -12,6 +12,6 @@
 
 @interface CKIClient (CKIModel)
 
-- (void)refreshModel:(CKIModel *)model success:(void (^)())success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)refreshModel:(CKIModel *)model parameters:(NSDictionary *)params;
 
 @end
