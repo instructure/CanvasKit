@@ -10,6 +10,8 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "CKIUser.h"
+#import "CKIConversationMessage.h"
+#import "CKISubmission.h"
 
 @interface CKIConversation ()
 @property (nonatomic) NSArray *properties;
@@ -70,6 +72,11 @@
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIUser class]];
 }
 
++ (NSValueTransformer *)messagesJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIConversationMessage class]];
+}
+
 - (void)setProperties:(NSArray *)properties
 {
     self.isLastAuthor = [properties containsObject:@"last_author"];
@@ -101,4 +108,5 @@
 {
     return [[self.context.path stringByAppendingPathComponent:@"conversations"] stringByAppendingPathComponent:self.id];
 }
+
 @end
