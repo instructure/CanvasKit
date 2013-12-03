@@ -16,9 +16,17 @@
 
 - (RACSignal *)fetchUsersForCourse:(CKICourse *)course
 {
+    return [self fetchUsersWithParameters:nil course:course];
+}
+
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters course:(CKICourse *)course
+{
     NSString *path = [course.path stringByAppendingPathComponent:@"users"];
-    NSDictionary *parameters = @{@"include": @[@"avatar_url"]};
-    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course];
+
+    NSMutableDictionary *updatedParameters = [parameters mutableCopy];
+    [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
+    
+    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:course];
 }
 
 - (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course
