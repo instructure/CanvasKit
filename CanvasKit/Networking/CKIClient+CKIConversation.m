@@ -7,6 +7,7 @@
 //
 
 #import "CKIClient+CKIConversation.h"
+#import "CKIClient+CKIModel.h"
 
 NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     switch (scope) {
@@ -35,6 +36,11 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIConversation class] context:CKIRootContext];
 }
 
+- (RACSignal *)refreshConversation:(CKIConversation *)conversation
+{
+    return [self refreshModel:conversation parameters:@{@"interleave_submissions": @(1)}];
+}
+
 
 - (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message
 {
@@ -43,4 +49,13 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     
     return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:CKIRootContext];
 }
+
+- (RACSignal *)createMessage:(NSString *)message inConversation:(CKIConversation *)conversation withAttachmentIDs:(NSArray *)attachments
+{
+    NSString *path = [[conversation path] stringByAppendingPathComponent:@"add_message"];
+    NSDictionary *parameters = @{@"body": message, @"attachment_ids" : attachments};
+    
+    return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:conversation.context];
+}
+
 @end
