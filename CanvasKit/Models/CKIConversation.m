@@ -110,3 +110,19 @@
 }
 
 @end
+
+
+@implementation CKIConversation (MergeNewMessage)
+
+- (void)mergeNewMessageFromConversation:(CKIConversation *)conversation
+{
+    CKIConversationMessage *message = [conversation.messages firstObject];
+    if (message) {
+        self.lastMessage = message.body;
+        NSMutableArray *current = [self.messages mutableCopy];
+        [current insertObject:message atIndex:0];
+        self.messages = current;
+    }
+}
+
+@end
