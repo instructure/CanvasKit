@@ -103,3 +103,9 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
 
 
 @end
+
+
+
+@interface CKIConversation (MergeNewMessage)
+- (void)mergeNewMessageFromConversation:(CKIConversation *)conversation;
+@end
