@@ -23,6 +23,7 @@
 #import "CKIAssignment.h"
 #import "CKIAssignmentGroup.h"
 #import "CKICalendarEvent.h"
+#import "CKIConversation.h"
 #import "CKIContext.h"
 #import "CKICourse.h"
 #import "CKIExternalTool.h"
@@ -43,17 +44,17 @@
 #import "CKISubmission.h"
 #import "CKISubmissionComment.h"
 #import "CKITab.h"
+#import "CKITerm.h"
 #import "CKITodoItem.h"
 #import "CKIUser.h"
 
 #pragma mark - Networking
 
-#import "CKIPagedResponse.h"
-
 #import "CKIClient.h"
 #import "CKIClient+CKIActivityStreamItem.h"
 #import "CKIClient+CKIAssignment.h"
 #import "CKIClient+CKICalendarEvent.h"
+#import "CKIClient+CKIConversation.h"
 #import "CKIClient+CKICourse.h"
 #import "CKIClient+CKIExternalTool.h"
 #import "CKIClient+CKIFavorite.h"

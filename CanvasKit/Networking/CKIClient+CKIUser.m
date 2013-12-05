@@ -6,26 +6,34 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIUser.h"
 #import "CKIUser.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKIUser)
 
-- (void)fetchUsersForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchUsersForCourse:(CKICourse *)course
 {
-    NSString *path = [course.path stringByAppendingPathComponent:@"users"];
-    NSDictionary *parameters = @{@"include": @[@"avatar_url"]};
-    
-    [self fetchPagedResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course success:success failure:failure];
+    return [self fetchUsersWithParameters:nil course:course];
 }
 
-- (void)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course success:(void(^)(CKIPagedResponse *))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters course:(CKICourse *)course
+{
+    NSString *path = [course.path stringByAppendingPathComponent:@"users"];
+
+    NSMutableDictionary *updatedParameters = [parameters mutableCopy];
+    [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
+    
+    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:course];
+}
+
+- (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"search_users"];
     NSDictionary *parameters = @{@"search_term": searchTerm, @"include": @[@"avatar_url"]};
-    
-    [self fetchPagedResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course];
 }
 
 @end

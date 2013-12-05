@@ -8,6 +8,8 @@
 
 #import "CKIModel.h"
 
+@class CKITerm;
+
 /**
  A Canvas course.
  */
@@ -92,7 +94,7 @@
  
  @note Returned only if include[]=term
  */
-@property (nonatomic, strong) id term;
+@property (nonatomic, strong) CKITerm *term;
 
 /**
  Weight final grade based on assignment group percentages

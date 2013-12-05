@@ -19,6 +19,12 @@
 		24EFAD9F180C56FA009E8058 /* CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAD9E180C56FA009E8058 /* CKIService.m */; };
 		24EFADA0180C56FA009E8058 /* CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAD9E180C56FA009E8058 /* CKIService.m */; };
 		4910CE9C17E8F3D000A6A73E /* CKIAPIV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */; };
+		4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4914E809183EF18B00CB30B9 /* CKITerm.m */; };
+		4914E80B183EF19200CB30B9 /* CKITerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4914E809183EF18B00CB30B9 /* CKITerm.m */; };
+		4931A8A4183FA63E00B0D369 /* CKIConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931A8A3183FA63E00B0D369 /* CKIConversation.m */; };
+		4931A8A5183FA63E00B0D369 /* CKIConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931A8A3183FA63E00B0D369 /* CKIConversation.m */; };
+		4931A8A8183FE3C700B0D369 /* CKIClient+CKIConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931A8A7183FE3C700B0D369 /* CKIClient+CKIConversation.m */; };
+		4931A8A9183FE3C700B0D369 /* CKIClient+CKIConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4931A8A7183FE3C700B0D369 /* CKIClient+CKIConversation.m */; };
 		496C9A0317E0EAF500E5DB70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496C9A0217E0EAF500E5DB70 /* CoreGraphics.framework */; };
 		496C9A0D17E1080F00E5DB70 /* CKIClient+TestingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9A0B17E1080F00E5DB70 /* CKIClient+TestingClient.m */; };
 		497948BD17E90C2900E1F600 /* CKIAPIV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */; };
@@ -67,7 +73,6 @@
 		80538A2417DD1931009095F2 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 80538A2317DD1931009095F2 /* user.json */; };
 		80538A2717DD1A20009095F2 /* CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A2617DD1A20009095F2 /* CKIUser.m */; };
 		8055140217FCF1DD009F8723 /* CKIClient+TestingClient.h in Resources */ = {isa = PBXBuildFile; fileRef = 496C9A0A17E1080F00E5DB70 /* CKIClient+TestingClient.h */; };
-		805E1E6117EA334F0055EA0C /* CKIPagedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */; };
 		80785A0917E135ED00339A06 /* module.json in Resources */ = {isa = PBXBuildFile; fileRef = 80785A0817E135ED00339A06 /* module.json */; };
 		80785A0E17E1365700339A06 /* CKIModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 80785A0D17E1365700339A06 /* CKIModule.m */; };
 		80785A1017E13DE900339A06 /* module_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 80785A0F17E13DE900339A06 /* module_item.json */; };
@@ -76,7 +81,6 @@
 		809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 809808BC17C6D9BB00FC3BF6 /* CKIAssignment.m */; };
 		809808C217C6DD1400FC3BF6 /* assignment.json in Resources */ = {isa = PBXBuildFile; fileRef = 809808C117C6DD1400FC3BF6 /* assignment.json */; };
 		809876E8180493E4001D01BC /* CKIClient+CKIUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 809876E7180493E4001D01BC /* CKIClient+CKIUserSpec.m */; };
-		809A664117EB8D5A005C5855 /* CKIPagedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */; };
 		809A664517EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = 809A664417EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m */; };
 		809DC72217C694EC0089E846 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809DC72117C694EC0089E846 /* Foundation.framework */; };
 		809DC72717C694EC0089E846 /* CanvasKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 809DC72617C694EC0089E846 /* CanvasKit.h */; };
@@ -253,6 +257,12 @@
 		4910CE9717E8E72000A6A73E /* CKIContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIContext.h; sourceTree = "<group>"; };
 		4910CE9A17E8F3D000A6A73E /* CKIAPIV1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CKIAPIV1.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CKIAPIV1.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4914E808183EF18B00CB30B9 /* CKITerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKITerm.h; sourceTree = "<group>"; };
+		4914E809183EF18B00CB30B9 /* CKITerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKITerm.m; sourceTree = "<group>"; };
+		4931A8A2183FA63E00B0D369 /* CKIConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIConversation.h; sourceTree = "<group>"; };
+		4931A8A3183FA63E00B0D369 /* CKIConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIConversation.m; sourceTree = "<group>"; };
+		4931A8A6183FE3C700B0D369 /* CKIClient+CKIConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIConversation.h"; sourceTree = "<group>"; };
+		4931A8A7183FE3C700B0D369 /* CKIClient+CKIConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIConversation.m"; sourceTree = "<group>"; };
 		496C9A0217E0EAF500E5DB70 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		496C9A0A17E1080F00E5DB70 /* CKIClient+TestingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+TestingClient.h"; sourceTree = "<group>"; };
 		496C9A0B17E1080F00E5DB70 /* CKIClient+TestingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+TestingClient.m"; sourceTree = "<group>"; };
@@ -309,8 +319,6 @@
 		80538A2317DD1931009095F2 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		80538A2517DD1A20009095F2 /* CKIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIUser.h; sourceTree = "<group>"; };
 		80538A2617DD1A20009095F2 /* CKIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIUser.m; sourceTree = "<group>"; };
-		805E1E5F17EA334F0055EA0C /* CKIPagedResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIPagedResponse.h; sourceTree = "<group>"; };
-		805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIPagedResponse.m; sourceTree = "<group>"; };
 		80785A0817E135ED00339A06 /* module.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = module.json; sourceTree = "<group>"; };
 		80785A0C17E1365700339A06 /* CKIModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIModule.h; sourceTree = "<group>"; };
 		80785A0D17E1365700339A06 /* CKIModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIModule.m; sourceTree = "<group>"; };
@@ -491,6 +499,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4931A8E918450FAA00B0D369 /* CKIConversations */ = {
+			isa = PBXGroup;
+			children = (
+				4931A8A2183FA63E00B0D369 /* CKIConversation.h */,
+				4931A8A3183FA63E00B0D369 /* CKIConversation.m */,
+			);
+			name = CKIConversations;
+			sourceTree = "<group>";
+		};
 		499B4A2917F22C9F00E211C9 /* CanvasKitTestBundle */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +542,7 @@
 				BD7907B117EA364B006D12D9 /* CKIAssignmentGroup.m */,
 				BD15900217E91681008887E3 /* CKICalendarEvent.h */,
 				BD15900317E91681008887E3 /* CKICalendarEvent.m */,
+				4931A8E918450FAA00B0D369 /* CKIConversations */,
 				4910CE9717E8E72000A6A73E /* CKIContext.h */,
 				BD18757A17E0D7AE00138469 /* CKICourse.h */,
 				BD18757B17E0D7AE00138469 /* CKICourse.m */,
@@ -564,6 +582,8 @@
 				80538A1D17DD132A009095F2 /* CKISubmissionComment.m */,
 				BD99E76E17E8A15E00AEC79C /* CKITab.h */,
 				BD99E76F17E8A15E00AEC79C /* CKITab.m */,
+				4914E808183EF18B00CB30B9 /* CKITerm.h */,
+				4914E809183EF18B00CB30B9 /* CKITerm.m */,
 				BD158FF417E8F0B5008887E3 /* CKITodoItem.h */,
 				BD158FF517E8F0B5008887E3 /* CKITodoItem.m */,
 				80538A2517DD1A20009095F2 /* CKIUser.h */,
@@ -581,6 +601,8 @@
 				80A199691831A6CA003A7083 /* CKIClient+CKIAssignment.m */,
 				80A199741831AAF4003A7083 /* CKIClient+CKICalendarEvent.h */,
 				80A199751831AAF4003A7083 /* CKIClient+CKICalendarEvent.m */,
+				4931A8A6183FE3C700B0D369 /* CKIClient+CKIConversation.h */,
+				4931A8A7183FE3C700B0D369 /* CKIClient+CKIConversation.m */,
 				80A199651831A639003A7083 /* CKIClient+CKICourse.h */,
 				80A199661831A639003A7083 /* CKIClient+CKICourse.m */,
 				80A1996B1831A76F003A7083 /* CKIClient+CKIExternalTool.h */,
@@ -619,8 +641,6 @@
 				80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */,
 				BD661D9817E78772004210DD /* CKIClient.h */,
 				BD661D9917E78772004210DD /* CKIClient.m */,
-				805E1E5F17EA334F0055EA0C /* CKIPagedResponse.h */,
-				805E1E6017EA334F0055EA0C /* CKIPagedResponse.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1096,6 +1116,7 @@
 				BD7907B217EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */,
 				809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */,
 				80A199911831F808003A7083 /* CKIClient+CKISubmission.m in Sources */,
+				4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
@@ -1114,7 +1135,6 @@
 				80DA1F6F1832CCAE00CC4E84 /* CKIClient+Login.m in Sources */,
 				8027B7AF182821400008BB07 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				80538A2717DD1A20009095F2 /* CKIUser.m in Sources */,
-				805E1E6117EA334F0055EA0C /* CKIPagedResponse.m in Sources */,
 				BD661D9F17E78772004210DD /* CKIClient.m in Sources */,
 				80A199791831ABF4003A7083 /* CKIClient+CKIFavorite.m in Sources */,
 				BDF67B3317EBA378008AE5F5 /* CKIFile.m in Sources */,
@@ -1134,6 +1154,8 @@
 				8026FC4217E0DDC000126518 /* CKIPage.m in Sources */,
 				80A1998E1831F7AA003A7083 /* CKIClient+CKIService.m in Sources */,
 				80DA1F691832C52800CC4E84 /* CKIClient+CKIModel.m in Sources */,
+				4931A8A8183FE3C700B0D369 /* CKIClient+CKIConversation.m in Sources */,
+				4931A8A4183FA63E00B0D369 /* CKIConversation.m in Sources */,
 				80A1997C1831AE6A003A7083 /* CKIClient+CKIFile.m in Sources */,
 				8027B7B2182821BB0008BB07 /* CKIActivityStreamConversationItem.m in Sources */,
 				80B997FE182814C80083798A /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
@@ -1162,6 +1184,7 @@
 				80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */,
 				80DA1F561832A0EE00CC4E84 /* CKIClient+CKIFile.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */,
+				4931A8A5183FA63E00B0D369 /* CKIConversation.m in Sources */,
 				80DA1F6C1832C68000CC4E84 /* CKIClient+CKIModelSpec.m in Sources */,
 				BDB4B91F17E3BA6E0097D4AC /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */,
 				804904C218048B9B00BB8978 /* CKIUserSpec.m in Sources */,
@@ -1182,7 +1205,6 @@
 				24B91A8017FCB01800D5FF60 /* CKIISO8601DateMatcher.m in Sources */,
 				24B91A7D17FCA84500D5FF60 /* CKIQuiz.m in Sources */,
 				800B2F0617FE3B970069D0CC /* CKIClient+CKIModuleItemSpec.m in Sources */,
-				809A664117EB8D5A005C5855 /* CKIPagedResponse.m in Sources */,
 				80DA1F741832CD9800CC4E84 /* CKIClient+CKIActivityStreamItem.m in Sources */,
 				8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */,
 				8027B7B61828382E0008BB07 /* CKIActivityStreamConversationItemSpec.m in Sources */,
@@ -1220,6 +1242,7 @@
 				497948BD17E90C2900E1F600 /* CKIAPIV1.m in Sources */,
 				80DA1F531832A0E000CC4E84 /* CKIClient+CKIAssignment.m in Sources */,
 				8027B7BB18283A9D0008BB07 /* CKIActivityStreamMessageItem.m in Sources */,
+				4914E80B183EF19200CB30B9 /* CKITerm.m in Sources */,
 				80DA1F5B1832A10000CC4E84 /* CKIClient+CKIModuleItem.m in Sources */,
 				24D5436217FCA5630056096D /* CKIQuizSpec.m in Sources */,
 				80DA1F601832A11100CC4E84 /* CKIClient+CKITab.m in Sources */,
@@ -1232,6 +1255,7 @@
 				80DA1F521832A0D000CC4E84 /* CKIClient+CKICalendarEvent.m in Sources */,
 				BDB4B8C017E236330097D4AC /* NSString+CKIAdditions.m in Sources */,
 				80DA1F611832A11500CC4E84 /* CKIClient+CKITodoItem.m in Sources */,
+				4931A8A9183FE3C700B0D369 /* CKIClient+CKIConversation.m in Sources */,
 				2479F8E5180D871400C700C6 /* CKIClient+CKIServiceSpec.m in Sources */,
 				80DA1F511832A08500CC4E84 /* CKIClient+CKICourse.m in Sources */,
 				BD99E77C17E8ABD200AEC79C /* CKIFavorite.m in Sources */,
