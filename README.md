@@ -77,53 +77,6 @@ CanvasKit includes classes for many of the objects found in the Canvas LMS. Alon
 
 Each networking method begins with 'fetch' making it easy for you to see all available options with Xcode auto-complete.
 
-#### Pagination
-
-For performance reasons, many of the Canvas API endpoints that return lists of items do not return all items at once—they instead return chunks (pages) of items. As you need more items in the list, you can request more pages. More information on the specific implementation details for pagination can be found in the [API Pagination Documentation](https://canvas.instructure.com/doc/api/file.pagination.html), but fortunately CanvasKit abstracts most of this away from you with `CKIPagedResponse`.
-
-The `CKIPagedResponse` provides you with three important things:
-
-1. `items` - the list of items returned by the API
-2. `isLastPage` - tells you if you there are more pages to grab
-3. `- fetchNextPageWithSuccess:failure:` - fetches the next CKIPagedResponse
-
-So, how might this work? Let's look at an example where we want to fetch the assignments for a course (assuming we already have the course object)
-
-```objc
-- (void)loadMoreAssignmentsWithCompletion:(void (^)())completion
-{
-    // if we haven't fetched any data yet, fetch the first page
-    if (!self.currentPage) {
-        [self.client fetchAssignmentsForCourse:self.course withSuccess:^(CKIPagedResponse *pagedResponse) {
-            self.currentPage = pagedResponse;
-            [self.assignments addObjectsFromArray:pagedResponse.items];
-            
-            if (completion) {
-                completion();
-            }
-        } failure:^(NSError *error) {
-            // handle error
-        }];
-    }
-    // if we've alread fetched some data, but we haven't fetched the last page yet, fetch more data
-    else if (!self.currentPage.isLastPage) {
-        [self.currentPage fetchNextPageWithSuccess:^(CKIPagedResponse *pagedResponse) {
-            self.currentPage = pagedResponse;
-            [self.assignments addObjectsFromArray:pagedResponse.items];
-            
-            if (completion) {
-                completion();
-            }
-        } failure:^(NSError *error) {
-            // handle error
-        }];
-    }
-}
-```
-
-CanvasKit treats all API endpoints that may return multiple items as if they were paginated, regardless of whether or not they are currently paginated. This means you cannot make assumptions about the maximum number of items in a response—typically paginated APIs will default to 10 items per page, but non paginated APIs have no limit.
-
-
 ### License
 
 CanvasKit is available under the MIT license. See the LICENSE file for more info.
