@@ -10,6 +10,9 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "CKIUser.h"
+#import "CKIConversationMessage.h"
+#import "CKISubmission.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKIConversation ()
 @property (nonatomic) NSArray *properties;
@@ -27,6 +30,7 @@
         @"isPrivate": @"private",
         @"audienceContexts": @"audience_contexts",
         @"avatarURL": @"avatar_url",
+        @"audienceIDs": @"audience"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -60,6 +64,19 @@
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
++ (NSValueTransformer *)audienceIDsJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSArray *arrayOfLongLongs) {
+        return [[arrayOfLongLongs.rac_sequence map:^id(id value) {
+            return [value description];
+        }] array];
+    } reverseBlock:^(NSArray *arrayOfStrings) {
+        return [[arrayOfStrings.rac_sequence map:^id(id value) {
+            return @([value longLongValue]);
+        }] array];
+    }];
+}
+
 + (NSValueTransformer *)avatarURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
@@ -68,6 +85,11 @@
 + (NSValueTransformer *)participantsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIUser class]];
+}
+
++ (NSValueTransformer *)messagesJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIConversationMessage class]];
 }
 
 - (void)setProperties:(NSArray *)properties
@@ -101,4 +123,21 @@
 {
     return [[self.context.path stringByAppendingPathComponent:@"conversations"] stringByAppendingPathComponent:self.id];
 }
+
+@end
+
+
+@implementation CKIConversation (MergeNewMessage)
+
+- (void)mergeNewMessageFromConversation:(CKIConversation *)conversation
+{
+    CKIConversationMessage *message = [conversation.messages firstObject];
+    if (message) {
+        self.lastMessage = message.body;
+        NSMutableArray *current = [self.messages mutableCopy];
+        [current insertObject:message atIndex:0];
+        self.messages = current;
+    }
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "CKISubmissionComment.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "CKIAssignment.h"
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
@@ -73,6 +74,11 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
 + (NSValueTransformer *)commentsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKISubmissionComment class]];
+}
+
++ (NSValueTransformer *)assignmentJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "CKIClient+CKIConversation.h"
+#import "CKIClient+CKIModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     switch (scope) {
@@ -35,6 +37,11 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIConversation class] context:CKIRootContext];
 }
 
+- (RACSignal *)refreshConversation:(CKIConversation *)conversation
+{
+    return [self refreshModel:conversation parameters:@{@"interleave_submissions": @(1)}];
+}
+
 
 - (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message
 {
@@ -43,4 +50,38 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
     
     return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:CKIRootContext];
 }
+
+- (RACSignal *)createMessage:(NSString *)message inConversation:(CKIConversation *)conversation withAttachmentIDs:(NSArray *)attachments
+{
+    NSString *path = [[conversation path] stringByAppendingPathComponent:@"add_message"];
+    NSDictionary *parameters = @{@"body": message, @"attachment_ids" : attachments};
+    
+    return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:conversation.context];
+}
+
+- (RACSignal *)addNewRecipientsIDs:(NSArray *)recipientIDs toConversation:(CKIConversation *)conversation
+{
+    NSString *path = [[conversation path] stringByAppendingPathComponent:@"add_recipients"];
+    NSDictionary *parameters = @{@"recipients": recipientIDs};
+    
+    return [[self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:conversation.context] map:^(CKIConversation *updatedConversation) {
+        [[CKIConversation propertyKeys] enumerateObjectsUsingBlock:^(NSString *property, BOOL *stop) {
+            if ([@[@"messages", @"context"] containsObject:property]) {
+                return;
+            }
+            [conversation mergeValueForKey:property fromModel:updatedConversation];
+        }];
+        conversation.messages = [updatedConversation.messages arrayByAddingObjectsFromArray:conversation.messages];
+
+        return conversation;
+    }];
+    
+}
+
+
+- (RACSignal *)markConversation:(CKIConversation *)conversation asWorkflowState:(CKIConversationWorkflowState)state
+{
+    return [self updateModel:conversation parameters:@{@"conversation": @{@"workflow_state" : CKIStringForConversationScope(state)}}];
+}
+
 @end

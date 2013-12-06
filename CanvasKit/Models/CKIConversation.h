@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
 /**
  Audience user ids excluding current user (unless it's a monologue).
  */
-@property (nonatomic, copy) NSArray *audience;
+@property (nonatomic, copy) NSArray *audienceIDs;
 
 /**
  Audience contexts
@@ -89,4 +89,23 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
  */
 @property (nonatomic, copy) NSArray *participants;
 
+
+#pragma mark - Messages and Submissions
+/**
+ @name Messages and Submissions
+ */
+
+
+/**
+ The `CKIConversationMessage`s for the conversation
+ */
+@property (nonatomic, copy) NSArray *messages;
+
+
+@end
+
+
+
+@interface CKIConversation (MergeNewMessage)
+- (void)mergeNewMessageFromConversation:(CKIConversation *)conversation;
 @end
