@@ -59,6 +59,11 @@
 @property (nonatomic, strong) NSURL *htmlURL;
 
 /**
+ Whether or not the notification has been read.
+ */
+@property (nonatomic) BOOL isRead;
+
+/**
  A transformer that will take a JSON dictionary for an activity stream item
  and transform it into an instance of the correct CKIActivityStreamItem
  subclass.
