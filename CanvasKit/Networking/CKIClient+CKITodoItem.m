@@ -12,16 +12,16 @@
 
 @implementation CKIClient (CKITodoItem)
 
-- (void)fetchTodoItemsForCourse:(CKICourse *)course success:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchTodoItemsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"todo"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKITodoItem class] context:course success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITodoItem class] context:course];
 }
 
-- (void)fetchTodoItemsForCurrentUserWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchTodoItemsForCurrentUser
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/todo"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKITodoItem class] context:nil success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITodoItem class] context:nil];
 }
 
 @end

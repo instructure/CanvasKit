@@ -9,11 +9,12 @@
 #import "CKIClient.h"
 
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKITodoItem)
 
-- (void)fetchTodoItemsForCourse:(CKICourse *)course success:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)fetchTodoItemsForCourse:(CKICourse *)course;
 
-- (void)fetchTodoItemsForCurrentUserWithSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)fetchTodoItemsForCurrentUser;
 
 @end

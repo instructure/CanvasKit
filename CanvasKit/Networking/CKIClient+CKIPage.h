@@ -10,11 +10,12 @@
 
 @class CKICourse;
 @class CKIPage;
+@class RACSignal;
 
 @interface CKIClient (CKIPage)
 
-- (void)fetchPagesForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchPagesForCourse:(CKICourse *)course;
 
-- (void)fetchPage:(NSString *)id forCourse:(CKICourse *)course success:(void (^)(CKIPage *page))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchPage:(NSString *)id forCourse:(CKICourse *)course;
 
 @end

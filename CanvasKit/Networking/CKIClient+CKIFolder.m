@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIFolder.h"
 #import "CKICourse.h"
 #import "CKIFolder.h"
@@ -13,33 +15,29 @@
 
 @implementation CKIClient (CKIFolder)
 
-- (void)fetchFolder:(NSString *)folderID success:(void (^)(CKIFolder *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchFolder:(NSString *)folderID
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"folders"];
     path = [path stringByAppendingPathComponent:folderID];
-    
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIFolder class] context:nil success:(void (^)(CKIModel *))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:nil];
 }
 
-- (void)fetchRootFolderForCourse:(CKICourse *)course success:(void (^)(CKIFolder *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchRootFolderForCourse:(CKICourse *)course
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"folders/root"];
-    
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIFolder class] context:nil success:(void (^)(CKIModel *))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:course];
 }
 
-- (void)fetchFoldersForFolder:(CKIFolder *)folder success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchFoldersForFolder:(CKIFolder *)folder
 {
     NSString *path = folder.foldersURL.relativeString;
-    
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:folder success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:folder];
 }
 
-- (void)fetchFilesForFolder:(CKIFolder *)folder success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchFilesForFolder:(CKIFolder *)folder
 {
     NSString *path = folder.filesURL.relativeString;
-    
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIFile class] context:folder success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFile class] context:folder];
 }
 
 @end

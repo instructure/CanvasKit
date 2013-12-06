@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CKIClient+CKIService.h"
 #include "CKIService.h"
 
 @implementation CKIClient (CKIService)
 
-- (void)fetchServiceSuccess:(void (^)(CKIService *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchService
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"services/kaltura"];
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIService class] context:CKIRootContext success:(void (^)(CKIModel *service))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIService class] context:nil];
 }
-
 
 @end

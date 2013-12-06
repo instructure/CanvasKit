@@ -10,23 +10,23 @@
 
 @class CKICourse;
 @class CKIExternalTool;
+@class RACSignal;
 
 @interface CKIClient (CKIExternalTool)
 
 /**
  Fetches all of the external tools for a course
  */
-- (void) fetchExternalToolsForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchExternalToolsForCourse:(CKICourse *)course;
 
 /**
  Get a sessionless launch url for an external tool with id.
  */
-- (void) fetchSessionlessLaunchURLWithURL:(NSString *)url andCourse:(CKICourse *)course success:(void (^)(CKIExternalTool *response))success failure:(void (^)(NSError *error))failure;
-
+- (RACSignal *)fetchSessionlessLaunchURLWithURL:(NSString *)url course:(CKICourse *)course;
 
 /**
  Get a single external tool
  */
-- (void) fetchExternalToolForCourseWithExternalToolID:(NSString *)externalToolID andCourse:(CKICourse *)course success:(void (^)(CKIExternalTool *response))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchExternalToolForCourseWithExternalToolID:(NSString *)externalToolID course:(CKICourse *)course;
 
 @end

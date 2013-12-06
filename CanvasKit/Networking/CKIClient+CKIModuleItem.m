@@ -6,24 +6,25 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIModuleItem.h"
 #import "CKIModuleItem.h"
 #import "CKIModule.h"
 
 @implementation CKIClient (CKIModuleItem)
 
-- (void)fetchModuleItem:(NSString *)moduleItemID forModule:(CKIModule *)module success:(void (^)(CKIModuleItem *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchModuleItem:(NSString *)moduleItemID forModule:(CKIModule *)module
 {
     NSString *path = [module.path stringByAppendingPathComponent:@"items"];
     path = [path stringByAppendingPathComponent:moduleItemID];
-    
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIModuleItem class] context:module success:(void (^)(CKIModel *))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIModuleItem class] context:module];
 }
 
-- (void)fetchModuleItemsForModule:(CKIModule *)module success:(void (^)(CKIPagedResponse *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchModuleItemsForModule:(CKIModule *)module
 {
     NSString *path = [module.path stringByAppendingPathComponent:@"items"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIModuleItem class] context:module success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIModuleItem class] context:module];
 }
 
 @end

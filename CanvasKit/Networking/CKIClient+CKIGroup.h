@@ -10,15 +10,16 @@
 
 @class CKIGroup;
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKIGroup)
 
-- (void)fetchGroup:(NSString *)groupID success:(void (^)(CKIGroup *group))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchGroup:(NSString *)groupID;
 
-- (void)fetchGroupsForLocalUserWithSuccess:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchGroupsForLocalUser;
 
-- (void)fetchGroupsForAccount:(NSString *)accountID success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchGroupsForAccount:(NSString *)accountID;
 
-- (void)fetchGroupsForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchGroupsForCourse:(CKICourse *)course;
 
 @end
