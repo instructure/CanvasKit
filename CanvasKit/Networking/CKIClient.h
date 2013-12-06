@@ -118,4 +118,11 @@
  @param context the context for the created object
  */
 - (RACSignal *)createModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context;
+
+
+/**
+ Does a PUT do the model's `path` with the given parameters
+ */
+- (RACSignal *)updateModel:(CKIModel *)model parameters:(NSDictionary *)parameters;
+
 @end

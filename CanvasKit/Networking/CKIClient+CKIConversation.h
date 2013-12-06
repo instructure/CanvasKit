@@ -30,4 +30,17 @@ typedef NS_ENUM(NSInteger, CKIConversationScope) {
  posts message to the given conversation with the attachment IDs provided
  */
 - (RACSignal *)createMessage:(NSString *)message inConversation:(CKIConversation *)conversation withAttachmentIDs:(NSArray *)attachments;
+
+/**
+ updates the conversation to include the recipients
+ 
+ @param array of string ids for users
+ */
+- (RACSignal *)addNewRecipientsIDs:(NSArray *)recipientIDs toConversation:(CKIConversation *)conversation;
+
+
+/**
+ marks the conversation as read/unread/archived
+ */
+- (RACSignal *)markConversation:(CKIConversation *)conversation asWorkflowState:(CKIConversationWorkflowState)state;
 @end
