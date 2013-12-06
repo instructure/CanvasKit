@@ -60,6 +60,10 @@ describe(@"An activity stream item", ^{
             NSURL *url = [NSURL URLWithString:@"http://canvas.instructure.com/api/v1/foo"];
             [[streamItem.htmlURL should] equal:url];
         });
+        
+        it(@"gets the read state", ^{
+            [[theValue(streamItem.isRead) should] equal:theValue(YES)];
+        });
     });
     context(@"transformer", ^{
         __block NSValueTransformer *transformer;

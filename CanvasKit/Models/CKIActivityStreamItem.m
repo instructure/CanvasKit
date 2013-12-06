@@ -26,7 +26,8 @@
         @"groupID": @"group_id",
         @"createdAt": @"created_at",
         @"updatedAt": @"updated_at",
-        @"htmlURL": @"html_url"
+        @"htmlURL": @"html_url",
+        @"isRead": @"read_state"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
