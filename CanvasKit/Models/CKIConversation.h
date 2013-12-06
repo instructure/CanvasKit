@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
 /**
  Audience user ids excluding current user (unless it's a monologue).
  */
-@property (nonatomic, copy) NSArray *audience;
+@property (nonatomic, copy) NSArray *audienceIDs;
 
 /**
  Audience contexts

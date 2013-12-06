@@ -12,6 +12,7 @@
 #import "CKIUser.h"
 #import "CKIConversationMessage.h"
 #import "CKISubmission.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKIConversation ()
 @property (nonatomic) NSArray *properties;
@@ -29,6 +30,7 @@
         @"isPrivate": @"private",
         @"audienceContexts": @"audience_contexts",
         @"avatarURL": @"avatar_url",
+        @"audienceIDs": @"audience"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -60,6 +62,19 @@
 + (NSValueTransformer *)lastMessageAtJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)audienceIDsJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSArray *arrayOfLongLongs) {
+        return [[arrayOfLongLongs.rac_sequence map:^id(id value) {
+            return [value description];
+        }] array];
+    } reverseBlock:^(NSArray *arrayOfStrings) {
+        return [[arrayOfStrings.rac_sequence map:^id(id value) {
+            return @([value longLongValue]);
+        }] array];
+    }];
 }
 
 + (NSValueTransformer *)avatarURLJSONTransformer
