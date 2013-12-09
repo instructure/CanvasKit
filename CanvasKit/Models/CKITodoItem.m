@@ -48,4 +48,9 @@
     return [MTLValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
 }
 
+- (NSString *)path
+{
+    return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/todo"] stringByAppendingPathComponent:self.id];
+}
+
 @end
