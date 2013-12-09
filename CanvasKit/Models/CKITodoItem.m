@@ -50,7 +50,10 @@
 
 - (NSString *)path
 {
-    return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/todo"] stringByAppendingPathComponent:self.id];
+    // The canvas api doesn't provide ids for individual todo items and
+    // it is not possible to address a todo item directly. This path is
+    // provided for consistency and because we want to use it :)
+    return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/todo"] stringByAppendingPathComponent:self.assignment.id];
 }
 
 @end
