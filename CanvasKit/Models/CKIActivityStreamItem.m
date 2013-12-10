@@ -53,6 +53,11 @@
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
++ (NSValueTransformer *)urlJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 + (NSValueTransformer *)htmlURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
