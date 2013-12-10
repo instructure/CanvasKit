@@ -56,6 +56,11 @@ describe(@"An activity stream item", ^{
             [[streamItem.updatedAt should] equalISO8601String:@"2011-07-25T08:52:41Z"];
         });
         
+        it(@"gets the canvas api endpoint URL", ^{
+            NSURL *url = [NSURL URLWithString:@"http://canvas.instructure.com/api/v1/foo"];
+            [[streamItem.url should] equal:url];
+        });
+        
         it(@"gets the canvas html URL", ^{
             NSURL *url = [NSURL URLWithString:@"http://canvas.instructure.com/api/v1/foo"];
             [[streamItem.htmlURL should] equal:url];
