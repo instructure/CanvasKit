@@ -54,6 +54,11 @@
 @property (nonatomic, strong) NSDate *updatedAt;
 
 /**
+ The URL to the canvas API endpoint for this item.
+ */
+@property (nonatomic, strong) NSURL *url;
+
+/**
  The URL to the HTML web canvas page for this item.
  */
 @property (nonatomic, strong) NSURL *htmlURL;
