@@ -10,4 +10,9 @@
 
 @interface CKIActivityStreamSubmissionItem : CKIActivityStreamItem
 
+/**
+ The ID of the conversation.
+ */
+@property (nonatomic, copy) NSString *conversationID;
+
 @end
