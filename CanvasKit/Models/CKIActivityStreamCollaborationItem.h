@@ -10,4 +10,9 @@
 
 @interface CKIActivityStreamCollaborationItem : CKIActivityStreamItem
 
+/**
+ The ID of the collaboration.
+ */
+@property (nonatomic, copy) NSString *collaborationID;
+
 @end
