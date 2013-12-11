@@ -65,17 +65,17 @@ If you would like to get information about the currently logged in user, you may
 
 ### Accessing the API
 
-CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories for accessing the API endpoints. This means if you wanted to get data from the API related to courses you would start with the CKICourse class and envoke one of the networking methods. For example:
+CanvasKit includes classes for many of the objects found in the Canvas LMS. Along with these model classes CanvasKit includes networking categories on `CKIClient` for accessing the API endpoints. For example, to fetch all the courses for the current user, you would do this:
 
 ```objc
-[client fetchCoursesForCurrentUserWithSuccess:^(CKIPagedResponse *response) {
-    // Success fetching courses
-} failure:^(NSError *error) {
-    // Failed to fetch courses
+[[client fetchCoursesForCurrentUser] subscribeNext:^(NSArray *courses) {
+    // handle a page of courses
 }];
 ```
 
 Each networking method begins with 'fetch' making it easy for you to see all available options with Xcode auto-complete.
+
+One thing to note is that CanvasKit uses [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), however, it is not necessary to have any knowledge of ReactiveCocoa in order to use CanvasKit (although undertanding ReactiveCocoa will allow you to do much more powerful things). Each networking call returns a `RACSignal` object. Simply call `subscribeNext:` on that signal to process the data. Essentially the paginated data will be processed as a stream of pages, i.e. your `subscribeNext:` block will be called once for every page.
 
 ### License
 
