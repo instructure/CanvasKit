@@ -7,8 +7,8 @@
 //
 
 #import "CKIActivityStreamDiscussionTopicItem.h"
-
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIActivityStreamDiscussionTopicItem
 
@@ -17,10 +17,16 @@
     NSDictionary *keyPaths = @{
         @"totalRootDiscussionEntries": @"total_root_discussion_entries",
         @"requireInitialPost": @"require_initial_post",
-        @"userHasPosted": @"user_has_posted"
+        @"userHasPosted": @"user_has_posted",
+        @"discussionTopicID": @"discussion_topic_id"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
+}
+
++ (NSValueTransformer *)discussionTopicIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 @end
