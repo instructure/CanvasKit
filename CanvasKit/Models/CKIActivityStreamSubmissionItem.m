@@ -15,13 +15,19 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"conversationID": @"conversation_id"
+                               @"submissionID": @"submission_id",
+                               @"assignmentID": @"assignment_id"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }
 
-+ (NSValueTransformer *)conversationIDJSONTransformer
++ (NSValueTransformer *)submissionIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)assignmentIDJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
