@@ -45,8 +45,15 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
 
 - (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message
 {
+    return [self createConversationWithRecipientIDs:recipients message:message attachmentIDs:nil];
+}
+- (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message attachmentIDs:(NSArray *)attachmentIDs
+{
     NSString *path = [[CKIRootContext path] stringByAppendingPathComponent:@"conversations"];
-    NSDictionary *parameters = @{@"recipients": recipients, @"body": message};
+    NSMutableDictionary *parameters = [@{@"recipients": recipients, @"body": message} mutableCopy];
+    if ([attachmentIDs count]) {
+        parameters[@"attachment_ids"] = [attachmentIDs copy];
+    }
     
     return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:CKIRootContext];
 }
@@ -54,7 +61,10 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
 - (RACSignal *)createMessage:(NSString *)message inConversation:(CKIConversation *)conversation withAttachmentIDs:(NSArray *)attachments
 {
     NSString *path = [[conversation path] stringByAppendingPathComponent:@"add_message"];
-    NSDictionary *parameters = @{@"body": message, @"attachment_ids" : attachments};
+    NSMutableDictionary *parameters = [@{@"body": message} mutableCopy];
+    if ([attachments count]) {
+        parameters[@"attachment_ids"] = attachments;
+    }
     
     return [self createModelAtPath:path parameters:parameters modelClass:[CKIConversation class] context:conversation.context];
 }
