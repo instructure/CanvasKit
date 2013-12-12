@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, CKIConversationScope) {
  on success the signal will send a single CKIConversation object (pretty sure)
  */
 - (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message;
+- (RACSignal *)createConversationWithRecipientIDs:(NSArray *)recipients message:(NSString *)message attachmentIDs:(NSArray *)attachmentIDs;
 
 /**
  posts message to the given conversation with the attachment IDs provided

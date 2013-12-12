@@ -416,4 +416,21 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     }];
 }
 
+#pragma mark - PUTing
+
+- (RACSignal *)updateModel:(CKIModel *)model parameters:(NSDictionary *)parameters
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self PUT:model.path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[model class]] fromJSON:responseObject context:model.context] subscribe:subscriber];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+}
+
 @end
