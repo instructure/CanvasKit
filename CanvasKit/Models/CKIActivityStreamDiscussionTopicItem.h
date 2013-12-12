@@ -29,4 +29,9 @@
  */
 @property (nonatomic) BOOL userHasPosted;
 
+/**
+ The ID of the discussion topic.
+ */
+@property (nonatomic, copy) NSString * discussionTopicID;
+
 @end

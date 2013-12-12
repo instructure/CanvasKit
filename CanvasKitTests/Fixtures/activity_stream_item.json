@@ -8,5 +8,6 @@
     "context_type": "course",
     "course_id": 1,
     "group_id": 1,
+    "url": "http://canvas.instructure.com/api/v1/foo",
     "html_url": "http://canvas.instructure.com/api/v1/foo"
 }

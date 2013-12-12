@@ -10,4 +10,9 @@
 
 @interface CKIActivityStreamAnnouncementItem : CKIActivityStreamDiscussionTopicItem
 
+/**
+ The ID of the announcement.
+ */
+@property (nonatomic, copy)  NSString *announcementID;
+
 @end

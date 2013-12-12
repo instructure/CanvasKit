@@ -19,4 +19,9 @@
  */
 @property (nonatomic, copy) NSString *notificationCategory;
 
+/**
+ The ID of the message.
+ */
+@property (nonatomic, copy) NSString *messageID;
+
 @end

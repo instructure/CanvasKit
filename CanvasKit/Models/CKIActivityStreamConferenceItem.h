@@ -10,4 +10,9 @@
 
 @interface CKIActivityStreamConferenceItem : CKIActivityStreamItem
 
+/**
+ The ID of the conference.
+ */
+@property (nonatomic, copy) NSString *conferenceID;
+
 @end
