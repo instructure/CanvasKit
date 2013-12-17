@@ -15,7 +15,15 @@
 @interface CKIActivityStreamMessageItem : CKIActivityStreamItem
 
 /**
- The category of notification.
+ The category of notification. Can be any of the following:
+ - "Assignment Created"
+ - "Assignment Changed"
+ - "Assignment Due Date Changed"
+ - "Assignment Graded"
+ - "Assignment Submitted Late"
+ - "Grade Weight Changed"
+ - "Group Assignment Submitted Late"
+ - "Due Date"
  */
 @property (nonatomic, copy) NSString *notificationCategory;
 
