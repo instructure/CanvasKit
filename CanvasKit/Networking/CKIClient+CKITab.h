@@ -10,9 +10,10 @@
 
 @class CKITab;
 @class CKICourse;
+@class RACSignal;
 
 @interface CKIClient (CKITab)
 
-- (void)fetchTabsForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchTabsForCourse:(CKICourse *)course;
 
 @end

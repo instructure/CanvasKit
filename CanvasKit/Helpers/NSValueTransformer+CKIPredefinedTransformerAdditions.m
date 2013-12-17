@@ -44,6 +44,7 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [ISO8601DateFormatter new];
+        dateFormatter.includeTime = YES;
     });
     
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *dateString) {

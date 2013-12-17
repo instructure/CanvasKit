@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIAssignment.h"
 #import "CKIAssignment.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKIAssignment)
 
-- (void)fetchAssignmentsForCourse:(CKICourse *)course withSuccess:(void(^)(CKIPagedResponse *pagedResponse))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)fetchAssignmentsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignments"];
-    
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIAssignment class] context:course success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIAssignment class] context:course];
 }
 
 @end

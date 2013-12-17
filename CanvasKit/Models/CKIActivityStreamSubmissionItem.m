@@ -7,7 +7,29 @@
 //
 
 #import "CKIActivityStreamSubmissionItem.h"
+#import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIActivityStreamSubmissionItem
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    NSDictionary *keyPaths = @{
+                               @"submissionID": @"submission_id",
+                               @"assignmentID": @"assignment_id"
+                               };
+    NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
+    return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
+}
+
++ (NSValueTransformer *)submissionIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)assignmentIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
 
 @end

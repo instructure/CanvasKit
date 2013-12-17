@@ -54,9 +54,19 @@
 @property (nonatomic, strong) NSDate *updatedAt;
 
 /**
+ The URL to the canvas API endpoint for this item.
+ */
+@property (nonatomic, strong) NSURL *url;
+
+/**
  The URL to the HTML web canvas page for this item.
  */
 @property (nonatomic, strong) NSURL *htmlURL;
+
+/**
+ Whether or not the notification has been read.
+ */
+@property (nonatomic) BOOL isRead;
 
 /**
  A transformer that will take a JSON dictionary for an activity stream item

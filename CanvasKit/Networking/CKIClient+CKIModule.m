@@ -6,25 +6,25 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKIModule.h"
 #import "CKICourse.h"
 #import "CKIModule.h"
 
 @implementation CKIClient (CKIModule)
 
-- (void)fetchModulesForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *response))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchModulesForCourse:(CKICourse *)course
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"modules"];
-    
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKIModule class] context:course success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIModule class] context:course];
 }
 
-- (void)fetchModuleWithID:(NSString *)moduleID forCourse:(CKICourse *)course success:(void (^)(CKIModule *))success failure:(void (^)(NSError *))failure
+- (RACSignal *)fetchModuleWithID:(NSString *)moduleID forCourse:(CKICourse *)course
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"modules"];
     path = [path stringByAppendingPathComponent:moduleID];
-    
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIModule class] context:course success:(void (^)(CKIModel *))success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIModule class] context:course];
 }
 
 @end

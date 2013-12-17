@@ -6,16 +6,18 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "CKIClient+CKITab.h"
 #import "CKITab.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKITab)
 
-- (void)fetchTabsForCourse:(CKICourse *)course success:(void (^)(CKIPagedResponse *pagedResponse))success failure:(void (^)(NSError *error))failure
+- (RACSignal *)fetchTabsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"tabs"];
-    [self fetchPagedResponseAtPath:path parameters:nil modelClass:[CKITab class] context:course success:success failure:failure];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:course];
 }
 
 @end

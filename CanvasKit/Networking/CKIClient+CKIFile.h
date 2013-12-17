@@ -9,9 +9,10 @@
 #import "CKIClient.h"
 
 @class CKIFile;
+@class RACSignal;
 
 @interface CKIClient (CKIFile)
 
-- (void)fetchFile:(NSString *)fileID success:(void(^)(CKIFile *file))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)fetchFile:(NSString *)fileID;
 
 @end

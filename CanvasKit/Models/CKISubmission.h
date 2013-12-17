@@ -13,6 +13,8 @@ extern NSString * const CKISubmissionTypeOnlineURL;
 extern NSString * const CKISubmissionTypeOnlineUpload;
 extern NSString * const CKISubmissionTypeMediaRecording;
 
+@class CKIAssignment;
+
 @interface CKISubmission : CKIModel
 
 /**
@@ -107,5 +109,11 @@ extern NSString * const CKISubmissionTypeMediaRecording;
  Comments left by graders. An array of CKISubmissionComment objects.
  */
 @property (nonatomic, copy) NSArray *comments;
+
+/**
+ When a submission appears in a conversation, the assignment is also
+ available as part of the submission.
+ */
+@property (nonatomic) CKIAssignment *assignment;
 
 @end
