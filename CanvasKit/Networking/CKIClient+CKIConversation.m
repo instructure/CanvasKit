@@ -91,7 +91,7 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
 
 - (RACSignal *)markConversation:(CKIConversation *)conversation asWorkflowState:(CKIConversationWorkflowState)state
 {
-    return [self updateModel:conversation parameters:@{@"conversation": @{@"workflow_state" : CKIStringForConversationScope(state)}}];
+    return [self updateModel:conversation parameters:@{@"conversation": @{@"workflow_state" : CKIStringForConversationScope((CKIConversationScope)state)}}];
 }
 
 @end
