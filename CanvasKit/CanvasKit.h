@@ -26,6 +26,7 @@
 #import "CKIConversation.h"
 #import "CKIContext.h"
 #import "CKICourse.h"
+#import "CKIDiscussionTopic.h"
 #import "CKIExternalTool.h"
 #import "CKIFavorite.h"
 #import "CKIFile.h"
@@ -72,3 +73,4 @@
 #import "CKIClient+CKITab.h"
 #import "CKIClient+CKITodoItem.h"
 #import "CKIClient+CKIUser.h"
+#import "CKIClient+CKIDiscussionTopic.h"
