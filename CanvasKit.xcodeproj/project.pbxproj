@@ -18,6 +18,12 @@
 		24EFAD9A180C5453009E8058 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = 24EFAD99180C5453009E8058 /* service.json */; };
 		24EFAD9F180C56FA009E8058 /* CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAD9E180C56FA009E8058 /* CKIService.m */; };
 		24EFADA0180C56FA009E8058 /* CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EFAD9E180C56FA009E8058 /* CKIService.m */; };
+		49006E69185A4AEE00721DE2 /* CKIDiscussionTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 49006E68185A4AEE00721DE2 /* CKIDiscussionTopic.m */; };
+		49006E6B185A4B8F00721DE2 /* discussion_topic.json in Resources */ = {isa = PBXBuildFile; fileRef = 49006E6A185A4B8F00721DE2 /* discussion_topic.json */; };
+		49006E6D185A4BF100721DE2 /* CKIDiscussionTopicSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49006E6C185A4BF100721DE2 /* CKIDiscussionTopicSpec.m */; };
+		49006E72185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 49006E71185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m */; };
+		49006E73185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 49006E71185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m */; };
+		49006E74185B951100721DE2 /* CKIDiscussionTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 49006E68185A4AEE00721DE2 /* CKIDiscussionTopic.m */; };
 		4910CE9C17E8F3D000A6A73E /* CKIAPIV1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */; };
 		4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4914E809183EF18B00CB30B9 /* CKITerm.m */; };
 		4914E80B183EF19200CB30B9 /* CKITerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4914E809183EF18B00CB30B9 /* CKITerm.m */; };
@@ -259,6 +265,12 @@
 		24EFAD9E180C56FA009E8058 /* CKIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIService.m; sourceTree = "<group>"; };
 		2C4C27CC89F849148BEC406C /* Pods-CanvasKitTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKitTests.xcconfig"; path = "Pods/Pods-CanvasKitTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3112BE272369450EB9E316EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		49006E67185A4AEE00721DE2 /* CKIDiscussionTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIDiscussionTopic.h; sourceTree = "<group>"; };
+		49006E68185A4AEE00721DE2 /* CKIDiscussionTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIDiscussionTopic.m; sourceTree = "<group>"; };
+		49006E6A185A4B8F00721DE2 /* discussion_topic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = discussion_topic.json; sourceTree = "<group>"; };
+		49006E6C185A4BF100721DE2 /* CKIDiscussionTopicSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIDiscussionTopicSpec.m; sourceTree = "<group>"; };
+		49006E70185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIDiscussionTopic.h"; sourceTree = "<group>"; };
+		49006E71185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIDiscussionTopic.m"; sourceTree = "<group>"; };
 		4910CE9717E8E72000A6A73E /* CKIContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIContext.h; sourceTree = "<group>"; };
 		4910CE9A17E8F3D000A6A73E /* CKIAPIV1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CKIAPIV1.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4910CE9B17E8F3D000A6A73E /* CKIAPIV1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CKIAPIV1.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -561,6 +573,8 @@
 				4910CE9717E8E72000A6A73E /* CKIContext.h */,
 				BD18757A17E0D7AE00138469 /* CKICourse.h */,
 				BD18757B17E0D7AE00138469 /* CKICourse.m */,
+				49006E67185A4AEE00721DE2 /* CKIDiscussionTopic.h */,
+				49006E68185A4AEE00721DE2 /* CKIDiscussionTopic.m */,
 				B59520DA1805BC090055DDCC /* CKIExternalTool.h */,
 				B59520DB1805BC090055DDCC /* CKIExternalTool.m */,
 				BD99E77917E8ABD200AEC79C /* CKIFavorite.h */,
@@ -622,6 +636,8 @@
 				4931A8A7183FE3C700B0D369 /* CKIClient+CKIConversation.m */,
 				80A199651831A639003A7083 /* CKIClient+CKICourse.h */,
 				80A199661831A639003A7083 /* CKIClient+CKICourse.m */,
+				49006E70185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.h */,
+				49006E71185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m */,
 				80A1996B1831A76F003A7083 /* CKIClient+CKIExternalTool.h */,
 				80A1996C1831A76F003A7083 /* CKIClient+CKIExternalTool.m */,
 				80A199771831ABF4003A7083 /* CKIClient+CKIFavorite.h */,
@@ -677,6 +693,7 @@
 				80C63B8B17FCA1C700DEB92A /* CKIClientSpec.m */,
 				80F1E0E217FB6BDE005E71E1 /* CKIGroupSpec.m */,
 				2479F8DB180D827700C700C6 /* CKIServiceSpec.m */,
+				49006E6C185A4BF100721DE2 /* CKIDiscussionTopicSpec.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -779,6 +796,7 @@
 				8027B7D8182971550008BB07 /* activity_stream_submission_item.json */,
 				8027B7DA182971A90008BB07 /* activity_stream_conference_item.json */,
 				8027B7DC182971E70008BB07 /* activity_stream_collaboration_item.json */,
+				49006E6A185A4B8F00721DE2 /* discussion_topic.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -1012,6 +1030,7 @@
 				80785A1017E13DE900339A06 /* module_item.json in Resources */,
 				80B997F3182808500083798A /* activity_stream_item.json in Resources */,
 				80F1E0E717FB75DC005E71E1 /* group.json in Resources */,
+				49006E6B185A4B8F00721DE2 /* discussion_topic.json in Resources */,
 				BD99E77E17E8AC5D00AEC79C /* favorite.json in Resources */,
 				80538A2217DD1427009095F2 /* submission_comment.json in Resources */,
 				BD7907B517EA3956006D12D9 /* assignment_group_with_assignments.json in Resources */,
@@ -1123,6 +1142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD661DA417E789DE004210DD /* CKILoginViewController.m in Sources */,
+				49006E69185A4AEE00721DE2 /* CKIDiscussionTopic.m in Sources */,
 				4931A8EC18451F0500B0D369 /* CKIConversationMessage.m in Sources */,
 				B59520DC1805BC090055DDCC /* CKIExternalTool.m in Sources */,
 				80A199731831AA39003A7083 /* CKIClient+CKIPage.m in Sources */,
@@ -1135,6 +1155,7 @@
 				809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */,
 				80A199911831F808003A7083 /* CKIClient+CKISubmission.m in Sources */,
 				4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */,
+				49006E72185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
@@ -1204,6 +1225,7 @@
 				80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */,
 				80DA1F561832A0EE00CC4E84 /* CKIClient+CKIFile.m in Sources */,
 				BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */,
+				49006E74185B951100721DE2 /* CKIDiscussionTopic.m in Sources */,
 				4931A8A5183FA63E00B0D369 /* CKIConversation.m in Sources */,
 				80DA1F6C1832C68000CC4E84 /* CKIClient+CKIModelSpec.m in Sources */,
 				BDB4B91F17E3BA6E0097D4AC /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */,
@@ -1214,6 +1236,7 @@
 				BDF67B3817EBA8AC008AE5F5 /* CKIFile.m in Sources */,
 				BD15900517E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				80B997F5182808DE0083798A /* CKIActivityStreamItemSpec.m in Sources */,
+				49006E73185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */,
 				809876E8180493E4001D01BC /* CKIClient+CKIUserSpec.m in Sources */,
 				80DA1F5D1832A10700CC4E84 /* CKIClient+CKIQuiz.m in Sources */,
 				BDF67B3C17EBAD3E008AE5F5 /* CKIFolder.m in Sources */,
@@ -1268,6 +1291,7 @@
 				80DA1F5B1832A10000CC4E84 /* CKIClient+CKIModuleItem.m in Sources */,
 				24D5436217FCA5630056096D /* CKIQuizSpec.m in Sources */,
 				80DA1F601832A11100CC4E84 /* CKIClient+CKITab.m in Sources */,
+				49006E6D185A4BF100721DE2 /* CKIDiscussionTopicSpec.m in Sources */,
 				BDB4B92017E3BA6E0097D4AC /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				80DA1F571832A0F200CC4E84 /* CKIClient+CKIFolder.m in Sources */,
 				80A07D7917E42653001B9EE4 /* CKIClient+CKIModuleSpec.m in Sources */,
