@@ -17,7 +17,8 @@
 - (RACSignal *)fetchFavoriteCourses
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKICourse class] context:nil];
+    NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICourse class] context:nil];
 }
 
 - (NSString *)currentUserFavoritesPathStringForCourse:(CKICourse *)course
