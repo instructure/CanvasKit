@@ -18,4 +18,11 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIDiscussionTopic class] context:course];
 }
 
+- (RACSignal *)fetchAnnouncementsForCourse:(CKICourse *)course
+{
+    NSString *path = [course.path stringByAppendingPathComponent:@"discussion_topics"];
+    
+    NSDictionary *params = @{@"only_announcements":@"true"};
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:course];
+}
 @end
