@@ -48,14 +48,14 @@ CKIClient *client = [CKIClient clientWithBaseURL:url clientID:ClientID sharedSec
 
 This method will first try to load any previous session from the keychain. To see if the client is already logged in, call `[client isLoggedIn]`.
 
-If the client is not logged in, you may do so by calling `-loginWithSuccess:failure:`. This method will handle displaying a
-modal webview to the user and deal with the OAuth process for you. 
+If the client is not logged in, you may do so by calling `-login`. This method will handle displaying a
+modal webview to the user and deal with the OAuth process for you. At the end you may look  
 
 ```objc
-[self.client loginWithSuccess:^{
-    // we're logged in. do anything we need to do after completion here.
-} failure:^(NSError *error) {a
-    // handle error
+[[self.client login] subscribeError:^(NSError *error) {
+    // do somethign with the error
+} completed:^{
+    // login completed successfully. do something.
 }];
 ```
 
