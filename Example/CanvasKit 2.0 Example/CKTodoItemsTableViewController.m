@@ -8,6 +8,7 @@
 
 #import "CKTodoItemsTableViewController.h"
 #import <CanvasKit/CanvasKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKTodoItemsTableViewController ()
 
@@ -23,26 +24,30 @@
     
     self.todoItems = [NSMutableArray array];
     
-    if (self.course) {
-        
-        [self.client fetchTodoItemsForCourse:self.course success:^(CKIPagedResponse *pagedResponse) {
-            self.todoItems = [NSMutableArray arrayWithArray:pagedResponse.items];
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            NSLog(@"Error fetching the todo items for a course: %@", self.course);
-        }];
-        
-    } else {
-        
-        [self.client fetchTodoItemsForCurrentUserWithSuccess:^(CKIPagedResponse *pagedResponse) {
-            self.todoItems = [NSMutableArray arrayWithArray:pagedResponse.items];
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            NSLog(@"Error fetching todo items for current user");
-        }];
-        
-    }
+    RACSignal *todoItemsSignal;
     
+    if (self.course) {
+        todoItemsSignal = [self.client fetchTodoItemsForCourse:self.course];
+    }
+    else {
+        todoItemsSignal = [self.client fetchTodoItemsForCurrentUser];
+    }
+
+    [todoItemsSignal subscribeNext:^(id todoItems) {
+        [self.todoItems addObjectsFromArray:todoItems];
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        NSLog(@"Error fetching the todo items.");
+    }];
+
+}
+
+- (NSMutableArray *)todoItems
+{
+    if (!_todoItems) {
+        _todoItems = [NSMutableArray new];
+    }
+    return _todoItems;
 }
 
 #pragma mark - Table view data source

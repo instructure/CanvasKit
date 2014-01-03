@@ -14,7 +14,7 @@
 @interface CKTodoItemsTableViewController : UITableViewController
 
 @property (nonatomic, strong) CKIClient *client;
-@property (nonatomic, strong) NSArray *todoItems;
+@property (nonatomic, strong) NSMutableArray *todoItems;
 @property (nonatomic, strong) CKICourse *course;
 
 @end
