@@ -12,4 +12,5 @@
 
 @interface CKIClient (CKIDiscussionTopic)
 - (RACSignal *)fetchDiscussionTopicsForCourse:(CKICourse *)course;
+- (RACSignal *)fetchAnnouncementsForCourse:(CKICourse *)course;
 @end
