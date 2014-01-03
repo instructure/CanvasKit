@@ -38,13 +38,12 @@
     static NSString *SharedSecret = nil; // Your shared secret here
     static NSString *Domain = nil; // @"https://school.instructure.com"
     NSURL *url = [NSURL URLWithString:Domain];
-    
-    
-    
+
     self.client = [CKIClient clientWithBaseURL:url clientID:ClientID sharedSecret:SharedSecret];
-    [self.client loginWithSuccess:^{
+    
+    [[self.client login] subscribeNext:^(id _) {
         [self performSegueWithIdentifier:@"UserDetails" sender:sender];
-    } failure:^(NSError *error) {
+    } error:^(NSError *error) {
         switch (error.code) {
             case kCKIErrorCodeUserCancelledOAuth:
                 [self showErrorAlertWithMessage:@"You must login to proceed."];

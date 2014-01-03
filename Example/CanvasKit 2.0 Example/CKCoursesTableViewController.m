@@ -7,6 +7,7 @@
 //
 
 #import <CanvasKit/CanvasKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CKCoursesTableViewController.h"
 #import "CKCourseDetailsTableViewController.h"
@@ -21,13 +22,21 @@
 {
     [super viewDidLoad];
     
-    [self.client fetchCoursesForCurrentUserWithSuccess:^(CKIPagedResponse *response) {
-        self.courses = [NSMutableArray arrayWithArray:response.items];
+    [[self.client fetchCoursesForCurrentUser] subscribeNext:^(NSArray *courses) {
+        [self.courses addObjectsFromArray:courses];
         [self.tableView reloadData];
-    } failure:^(NSError *error) {
+    } error:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get courses" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }];
+}
+
+- (NSMutableArray *)courses
+{
+    if (!_courses) {
+        _courses = [NSMutableArray new];
+    }
+    return _courses;
 }
 
 #pragma mark - Table view data source
