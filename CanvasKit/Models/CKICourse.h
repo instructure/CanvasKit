@@ -103,6 +103,7 @@
 
 @property (nonatomic) BOOL publicSyllabus;
 
+@property (nonatomic) BOOL canCreateDiscussionTopics;
 @end
 
 
