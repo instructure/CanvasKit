@@ -8,10 +8,12 @@
 
 #import "CKIClient.h"
 
-@class RACSignal;
+@class RACSignal, CKICourse;
 
 @interface CKIClient (CKICourse)
 
 - (RACSignal *)fetchCoursesForCurrentUser;
+
+- (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course;
 
 @end

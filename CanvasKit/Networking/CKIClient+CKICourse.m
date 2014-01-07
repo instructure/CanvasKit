@@ -8,17 +8,27 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "CKIClient+CKIModel.h"
 #import "CKIClient+CKICourse.h"
 #import "CKICourse.h"
 
 @implementation CKIClient (CKICourse)
 
+- (NSDictionary *)parametersForFetchingCourses
+{
+    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions"]};
+}
+
 - (RACSignal *)fetchCoursesForCurrentUser
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
-    NSDictionary *params = @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term"]};
     
-    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICourse class] context:nil];
+    return [self fetchResponseAtPath:path parameters:[self parametersForFetchingCourses] modelClass:[CKICourse class] context:nil];
+}
+
+- (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course
+{
+    return [self refreshModel:course parameters:[self parametersForFetchingCourses]];
 }
 
 @end
