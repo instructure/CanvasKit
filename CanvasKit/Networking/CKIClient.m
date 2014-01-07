@@ -112,10 +112,23 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     }
     
     [self setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    [self setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
     self.clientID = clientID;
     self.sharedSecret = sharedSecret;
     self.keychainServiceID = keychainID;
+    
+    RACSignal *oauthTokenSignal = RACObserve(self, oauthToken);
+    RACSignal *sharedSecretSignal = RACObserve(self, sharedSecret);
+    RACSignal *clientIDSignal = RACObserve(self, clientID);
+    
+    RAC(self, isLoggedIn) = [oauthTokenSignal map:^id(id value) {
+        return @(value != nil);
+    }];
+    
+    [[RACSignal merge:@[oauthTokenSignal, sharedSecretSignal, clientIDSignal]] subscribeNext:^(id x) {
+        [self saveToKeychain];
+    }];
+    
     
     return self;
 }
@@ -156,7 +169,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 #pragma mark - Properties
 
-- (void)setOAuthToken:(NSString *)oauthToken
+- (void)setOauthToken:(NSString *)oauthToken
 {
     _oauthToken = oauthToken;
     [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", oauthToken] forHTTPHeaderField:@"Authorization"];
@@ -164,37 +177,49 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 #pragma mark - OAuth
 
-- (void)loginWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure
+- (RACSignal *)postOauthCode:(NSString *)temporaryCode
+{
+    NSDictionary *params = @{
+                             @"client_id": self.clientID,
+                             @"client_secret": self.sharedSecret,
+                             @"code": temporaryCode
+                             };
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self POST:@"/login/oauth2/token" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+}
+
+- (RACSignal *)login
 {
     // don't log in again if already logged in
     if (self.isLoggedIn) {
-        if (success) {
-            success();
-        }
-        return;
+        return nil;
     }
     
-    // set up a failure block to share for all callback-hell error handling
-    void (^failureBlock)(NSError *error) = ^void(NSError *error) {
+    return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
+        return [self postOauthCode:temporaryCode];
+    }] flattenMap:^RACStream *(NSDictionary *responseObject) {
+        self.oauthToken = responseObject[@"access_token"];
+        return [self fetchCurrentUser];
+    }] map:^id(CKIUser *user) {
+        self.currentUser = user;
+        return self; // return the client from login rather than the user object
+    }] doError:^(NSError *error) {
         NSLog(@"CanvasKit OAuth failed with error: %@", error);
         [self clearCookies];
         [self clearKeychain];
-        if (failure) {
-            failure(error);
-        }
-    };
-    
-    // pop open a webview and login
-    [self showWebviewLoginWithSuccess:^(NSString *oauthCode){
-        [self postOAuthCode:oauthCode success:^(id responseObject) {
-            [self processOAuthTokenFromOAuthResponse:responseObject];
-            [self processUserFromOAuthResponse:responseObject];
-            [self saveToKeychain];
-            if (success) {
-                success();
-            }
-        } failure:failureBlock];
-    } failure:failureBlock];
+    }];
 }
 
 - (void)logout
@@ -204,84 +229,52 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     [self clearCookies];
 }
 
-- (BOOL)isLoggedIn
-{
-    return self.oauthToken != nil;
-}
-
 - (NSURLRequest *)oauthRequest
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=%@&redirect_uri=%@&mobile=1&canvas_login=1"
+    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1&canvas_login=1"
                            , self.baseURL.absoluteString
-                           , self.clientID
-                           , @"code"
-                           , @"urn:ietf:wg:oauth:2.0:oob"];
+                           , self.clientID];
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     return request;
 }
 
-- (void)showWebviewLoginWithSuccess:(void(^)(NSString *authToken))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)authorizeWithServerUsingWebBrowser
 {
-    CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithOAuthRequest:self.oauthRequest];
-    __weak CKILoginViewController *weakLoginViewController = loginViewController;
-    loginViewController.oauthSuccessBlock = ^(NSString *authToken) {
-        [weakLoginViewController dismissViewControllerAnimated:YES completion:nil];
-        if (success) {
-            success(authToken);
-        }
-    };
-    loginViewController.oauthFailureBlock = ^(NSError *error) {
-        [weakLoginViewController dismissViewControllerAnimated:YES completion:nil];
-        if (failure) {
-            failure(error);
-        }
-    };
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    [navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
-    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [navigationController.navigationBar setTranslucent:YES];
-    
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
-    [loginViewController.navigationItem setRightBarButtonItem:button];
-    
-    UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-    [presentingViewController presentViewController:navigationController animated:YES completion:nil];
-}
-
-/**
- Makes request to get the |auth_token| from the backend.
- 
- @param code The code obtained from the authentication server in the OAuth2 process
- */
-- (void)postOAuthCode:(id)code success:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure
-{
-    [self POST:@"/login/oauth2/token" parameters:@{@"client_id":self.clientID, @"client_secret": self.sharedSecret, @"code": code} success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        failure(error);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithOAuthRequest:self.oauthRequest];
+        __weak CKILoginViewController *weakLoginViewController = loginViewController;
+        loginViewController.oauthSuccessBlock = ^(NSString *authToken) {
+            [subscriber sendNext:authToken];
+            [subscriber sendCompleted];
+        };
+        loginViewController.oauthFailureBlock = ^(NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        };
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        [navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
+        [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+        [navigationController.navigationBar setTranslucent:YES];
+        
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
+        [loginViewController.navigationItem setRightBarButtonItem:button];
+        
+        UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+        [presentingViewController presentViewController:navigationController animated:YES completion:nil];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [weakLoginViewController dismissViewControllerAnimated:YES completion:nil];
+        }];
     }];
 }
 
-- (void)processOAuthTokenFromOAuthResponse:(NSDictionary *)jsonResponse
+- (RACSignal *)fetchCurrentUser
 {
-    self.oauthToken = jsonResponse[@"access_token"];
-}
-
-- (void)processUserFromOAuthResponse:(NSDictionary *)jsonResponse
-{
-    self.currentUser = [CKIUser modelFromJSONDictionary:jsonResponse[@"user"]];
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
-    [self fetchModelAtPath:path parameters:nil modelClass:[CKIUser class] context:nil success:^(CKIModel *user) {
-        self.currentUser = (CKIUser *)user;
-        [self saveToKeychain];
-    } failure:^(NSError *error) {
-        NSLog(@"Error fetching user details: %@", error);
-    }];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIUser class] context:nil];
 }
 
 #pragma mark - Caching & Cookies
@@ -293,28 +286,6 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }];
 }
-
-#pragma mark - JSON API Helpers
-
-- (void)fetchModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context success:(void (^)(CKIModel *model))success failure:(void (^)(NSError *error))failure
-{
-    NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"modelClass must be a subclass of CKIModel");
-    
-    
-    [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            CKIModel *model = [MTLJSONAdapter modelOfClass:modelClass fromJSONDictionary:responseObject error:nil];
-            model.context = context;
-            
-            success(model);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
 
 #pragma mark - JSON API Helpers
 
@@ -345,7 +316,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
             RACSignal *nextPageSignal = [RACSignal empty];
             
             if (nextPage && ![currentPage isEqual:lastPage]) {
-               nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
+                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
             }
             
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
@@ -384,7 +355,6 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
         return nil;
     }];
 }
-
 
 - (CKIModel *)parseModel:(NSValueTransformer *)transformer fromJSON:(NSDictionary *)jsonDictionary context:(id)context
 {

@@ -62,6 +62,11 @@
  */
 - (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
+/**
+ Attempts to load a client with an oauth token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
+*/
++ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+
 #pragma mark - OAuth
 
 /**
@@ -70,7 +75,7 @@
  @warning CanvasKit must be prepared for OAuth2 before this method is called.
  @see CanvasKit.h
  */
-- (void)loginWithSuccess:(void(^)())success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)login;
 
 /**
  Logs out the current user, clears the keychain and all cookies related to the baseURL.
@@ -80,7 +85,7 @@
 /**
  Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
  */
-- (BOOL)isLoggedIn;
+@property (nonatomic) BOOL isLoggedIn;
 
 /**
  Request object for making the request to get the OAuth Token.
