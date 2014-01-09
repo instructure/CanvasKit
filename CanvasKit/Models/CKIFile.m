@@ -15,12 +15,16 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-       @"contentType": @"content-type",
-       @"name": @"display_name",
-       @"createdAt": @"created_at",
-       @"updatedAt": @"updated_at",
-       @"hiddenForUser": @"hidden_for_user",
-       @"thumbnailURL": @"thumbnail_url"
+       @"contentType" : @"content-type",
+       @"name" : @"display_name",
+       @"createdAt" : @"created_at",
+       @"updatedAt" : @"updated_at",
+       @"hiddenForUser" : @"hidden_for_user",
+       @"thumbnailURL" : @"thumbnail_url",
+       @"unlockAt" : @"unlock_at",
+       @"locked" : @"locked",
+       @"hidden" : @"hidden",
+       @"lockedAt" : @"locked_at"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -54,6 +58,13 @@
 + (NSValueTransformer *)urlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+- (NSString *)path
+{
+    NSString *path = CKIRootContext.path;
+    path = [path stringByAppendingPathComponent:@"files"];
+    return [path stringByAppendingPathComponent:self.id];
 }
 
 @end
