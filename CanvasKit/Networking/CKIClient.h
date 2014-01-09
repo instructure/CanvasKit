@@ -23,7 +23,6 @@
 
 @property (nonatomic, readonly) NSString *clientID;
 @property (nonatomic, readonly) NSString *sharedSecret;
-@property (nonatomic, readonly) NSString *keyChainId;
 @property (nonatomic, readonly) NSString *oauthToken;
 
 /**
@@ -32,24 +31,20 @@
 @property (nonatomic, strong) CKIUser *currentUser;
 
 /**
- Instantiates a canvas client from the default keychain if the OAuth Token is stored there, otherwise generates a new client.
- 
- @param baseURL the base URL to be used by the client
- @param clientID the special client ID that uniquely identifies this application
- @param sharedSecret the shared secret for the application
- */
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret;
+ Instantiates a canvas client with the given information.
 
-/**
- Instantiates a canvas client from the given keychain if the OAuth Token is stored there, otherwise generates a new client.
- 
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
  @param sharedSecret the shared secret for the application
  @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
- @param accessGroup the access group to be used for the shared keychain
+ @param accessGroup the access group to be used for the shared keychain. may be nil.
  */
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+
+/**
+ Attempts to load a client with an oauth token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
+*/
++ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
  Creates a new canvas client.
