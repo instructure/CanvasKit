@@ -65,4 +65,11 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+- (NSString *)path
+{
+    NSString *path = CKIRootContext.path;
+    path = [path stringByAppendingPathComponent:@"folders"];
+    return [path stringByAppendingPathComponent:self.id];
+}
+
 @end

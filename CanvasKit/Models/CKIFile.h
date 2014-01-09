@@ -50,4 +50,14 @@
  */
 @property (nonatomic, strong) NSURL *thumbnailURL;
 
+@property (nonatomic, strong) NSDate *unlockAt;
+
+@property (nonatomic, getter = isLocked) BOOL locked;
+
+@property (nonatomic, getter = isHidden) BOOL hidden;
+
+@property (nonatomic, strong) NSDate *lockedAt;
+
+
 @end
+
