@@ -9,8 +9,14 @@
 #import "CKIClient.h"
 
 @class RACSignal;
+@class CKICourse;
 
 @interface CKIClient (CKICalendarEvent)
+
+/**
+ Fetches all calendar events for the course
+ */
+- (RACSignal *)fetchCalendarEventsForCourse:(CKICourse *)course;
 
 /**
  Fetches only today's calendar events for the current user
