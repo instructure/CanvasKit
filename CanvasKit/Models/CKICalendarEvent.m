@@ -39,8 +39,8 @@
                                ,@"ownReservation": @"own_reservation"
                                ,@"reserveURL": @"reserve_url"
                                ,@"reserved": @"reserved"
-                               ,@"participantsPerAppointmnet": @"participants_per_appointment"
-                               ,@"availableSlots": @"available_slots"
+//                               ,@"participantsPerAppointmnet": @"participants_per_appointment"
+//                               ,@"availableSlots": @"available_slots"
                                ,@"user": @"user"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
