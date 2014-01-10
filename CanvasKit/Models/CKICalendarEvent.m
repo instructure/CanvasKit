@@ -97,4 +97,8 @@
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
+- (NSString *)path
+{
+    return [[CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"] stringByAppendingPathComponent:self.id];
+}
 @end
