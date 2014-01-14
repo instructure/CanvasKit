@@ -32,7 +32,8 @@
         @"automaticPeerReviews": @"automatic_peer_reviews",
         @"peerReviewCount": @"peer_review_count",
         @"peerReviewsAssignAt": @"peer_reviews_assign_at",
-        @"submissionTypes": @"submission_types"
+        @"submissionTypes": @"submission_types",
+        @"pointsPossible" : @"points_possible"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
