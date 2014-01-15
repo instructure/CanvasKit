@@ -9,7 +9,7 @@
 @class CKIUser;
 
 @interface FXKeychain (CKIKeychain)
-@property (nonatomic, strong) NSString *oauthToken;
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSURL *domain;
 @property (nonatomic, strong) CKIUser *currentUser;
 @property (nonatomic, strong) NSString *clientID;

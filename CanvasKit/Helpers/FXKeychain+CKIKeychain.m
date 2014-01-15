@@ -6,7 +6,7 @@
 #import "FXKeychain+CKIKeychain.h"
 #import "CKIUser.h"
 
-static const NSString *CKIKeychainOAuthTokenName = @"CKIKeychainOAuthToken";
+static const NSString *CKIKeychainAccessTokenName = @"CKIKeychainAccessToken";
 static const NSString *CKIKeychainDomainName = @"CKIKeychainDomain";
 static const NSString *CKIKeychainCurrentUserName = @"CKIKeychainCurrentUserName";
 static const NSString *CKIKeychainClientIDName = @"CKIKeychainClientIDName";
@@ -14,21 +14,21 @@ static const NSString *CKIKeychainClientSecretName = @"CKIKeychainClientSecretNa
 
 @implementation FXKeychain (CBIKeychain)
 
-- (NSString *)oauthToken
+- (NSString *)accessToken
 {
-    return self[CKIKeychainOAuthTokenName];
+    return self[CKIKeychainAccessTokenName];
 }
 
-- (void)setOauthToken:(NSString *)oauthToken
+- (void)setAccessToken:(NSString *)accessToken
 {
-    if (!oauthToken) {
-        if (self[CKIKeychainOAuthTokenName]) {
-            [self removeObjectForKey:CKIKeychainOAuthTokenName];
+    if (!accessToken) {
+        if (self[CKIKeychainAccessTokenName]) {
+            [self removeObjectForKey:CKIKeychainAccessTokenName];
         }
         return;
     }
 
-    self[CKIKeychainOAuthTokenName] = oauthToken;
+    self[CKIKeychainAccessTokenName] = accessToken;
 }
 
 - (NSURL *)domain

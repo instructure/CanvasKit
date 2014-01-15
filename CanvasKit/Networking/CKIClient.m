@@ -21,7 +21,7 @@
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
-@property (nonatomic, strong) NSString *oauthToken;
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) FXKeychain *keychain;
 @end
 
@@ -50,28 +50,30 @@
     self.clientSecret = clientSecret;
     self.keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
-    RACSignal *oauthTokenSignal = RACObserve(self, oauthToken);
+    RACSignal *accessTokenSignal = RACObserve(self, accessToken);
 
-    RAC(self, isLoggedIn) = [oauthTokenSignal map:^id(id value) {
+    RAC(self, isLoggedIn) = [accessTokenSignal map:^id(id value) {
         return @(value != nil);
     }];
 
     return self;
 }
 
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)loadClientFromKeychainWithKeychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
-    NSString *oauthToken = keychain.oauthToken;
-    if (!oauthToken) {
+    NSString *accessToken = keychain.accessToken;
+    if (!accessToken) {
         return nil;
     }
 
     NSURL *baseURL = keychain.domain;
+    NSString *clientID = keychain.clientID;
+    NSString *clientSecret = keychain.clientSecret;
 
     CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
-    client.oauthToken = oauthToken;
+    client.accessToken = accessToken;
     client.currentUser = keychain.currentUser;
     return client;
 }
@@ -80,7 +82,7 @@
 
 - (void)saveToKeychain
 {
-    self.keychain.oauthToken = self.oauthToken;
+    self.keychain.accessToken = self.accessToken;
     self.keychain.currentUser = self.currentUser;
     self.keychain.domain = self.baseURL;
     self.keychain.clientID = self.clientID;
@@ -89,7 +91,7 @@
 
 - (void)clearKeychain
 {
-    self.keychain.oauthToken = nil;
+    self.keychain.accessToken = nil;
     self.keychain.currentUser = nil;
     self.keychain.domain = nil;
     self.clientID = nil;
@@ -98,15 +100,15 @@
 
 #pragma mark - Properties
 
-- (void)setOauthToken:(NSString *)oauthToken
+- (void)setAccessToken:(NSString *)accessToken
 {
-    _oauthToken = oauthToken;
-    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", oauthToken] forHTTPHeaderField:@"Authorization"];
+    _accessToken = accessToken;
+    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - OAuth
 
-- (RACSignal *)postOauthCode:(NSString *)temporaryCode
+- (RACSignal *)postAuthCode:(NSString *)temporaryCode
 {
     NSDictionary *params = @{
             @"client_id": self.clientID,
@@ -137,9 +139,9 @@
     }
 
     return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
-        return [self postOauthCode:temporaryCode];
+        return [self postAuthCode:temporaryCode];
     }] flattenMap:^RACStream *(NSDictionary *responseObject) {
-        self.oauthToken = responseObject[@"access_token"];
+        self.accessToken = responseObject[@"access_token"];
         return [self fetchCurrentUser];
     }] map:^id(CKIUser *user) {
         self.currentUser = user;
@@ -155,12 +157,12 @@
 - (void)logout
 {
     self.currentUser = nil;
-    self.oauthToken = nil;
+    self.accessToken = nil;
     [self clearKeychain];
     [self clearCookies];
 }
 
-- (NSURLRequest *)oauthRequest
+- (NSURLRequest *)initialOAuthRequest
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
             , self.baseURL.absoluteString
@@ -177,13 +179,13 @@
 - (RACSignal *)authorizeWithServerUsingWebBrowser
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithOAuthRequest:self.oauthRequest];
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
         __weak CKILoginViewController *weakLoginViewController = loginViewController;
-        loginViewController.oauthSuccessBlock = ^(NSString *authToken) {
+        loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
         };
-        loginViewController.oauthFailureBlock = ^(NSError *error) {
+        loginViewController.failureBlock = ^(NSError *error) {
             [subscriber sendError:error];
             [subscriber sendCompleted];
         };

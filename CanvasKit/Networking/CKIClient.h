@@ -22,7 +22,7 @@
 
 @property (nonatomic, readonly) NSString *clientID;
 @property (nonatomic, readonly) NSString *clientSecret;
-@property (nonatomic, readonly) NSString *oauthToken;
+@property (nonatomic, readonly) NSString *accessToken;
 
 /**
  The user that is currently logged in via this client.
@@ -35,7 +35,7 @@
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
  @param clientSecret the client secret for the application
- @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
+ @param keychainID the keychain for the access token. Uses the default keychain if nil.
  @param accessGroup the access group to be used for the shared keychain. may be nil.
  */
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
@@ -46,15 +46,15 @@
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
  @param clientSecret the client secret for the application
- @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
+ @param keychainID the keychain for the access token. Uses the default keychain if nil.
  @param accessGroup the access group to be used for the shared keychain
  */
 - (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
- Attempts to load a client with an oauth token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
+ Attempts to load a client with an access token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
 */
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)loadClientFromKeychainWithKeychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 #pragma mark - OAuth
 
@@ -81,11 +81,6 @@
  standard canvas login page instead of a school's custom login page.
 */
 @property(nonatomic) BOOL forceCanvasLogin;
-
-/**
- Request object for making the request to get the OAuth Token.
- */
-- (NSURLRequest *)oauthRequest;
 
 #pragma mark - JSON API Helpers
 
