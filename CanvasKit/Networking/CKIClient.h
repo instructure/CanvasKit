@@ -42,11 +42,6 @@
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
- Attempts to load a client with an oauth token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
-*/
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
-
-/**
  Creates a new canvas client.
  
  @param baseURL the base URL to be used by the client
@@ -65,7 +60,7 @@
 #pragma mark - OAuth
 
 /**
- Starts the OAuth2 authentication process. The user will be aksed to login to Canvas. Once logged in the user will have the option to allow the app to authenticate via Canvas.
+ Starts the OAuth2 authentication process. The user will be asked to login to Canvas. Once logged in the user will have the option to allow the app to authenticate via Canvas.
  
  @warning CanvasKit must be prepared for OAuth2 before this method is called.
  @see CanvasKit.h
@@ -81,6 +76,12 @@
  Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
  */
 @property (nonatomic) BOOL isLoggedIn;
+
+/**
+ Forces the OAuth process to use canvas_login=1. This allows admins/support etc to login with a
+ standard canvas login page instead of a school's custom login page.
+*/
+@property(nonatomic) BOOL forceCanvasLogin;
 
 /**
  Request object for making the request to get the OAuth Token.
