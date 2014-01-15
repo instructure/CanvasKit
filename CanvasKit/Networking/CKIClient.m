@@ -38,6 +38,13 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (void)setOauthToken:(NSString *)oauthToken
 {
+    if (!oauthToken) {
+        if (self[kCKIKeychainOAuthTokenKey]) {
+            [self removeObjectForKey:kCKIKeychainOAuthTokenKey];
+        }
+        return;
+    }
+
     self[kCKIKeychainOAuthTokenKey] = oauthToken;
 }
 
@@ -48,6 +55,13 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (void)setDomain:(NSURL *)domain
 {
+    if (!domain) {
+        if (self[kCKIKeychainDomainKey]) {
+            [self removeObjectForKey:kCKIKeychainDomainKey];
+        }
+        return;
+    }
+
     self[kCKIKeychainDomainKey] = domain.absoluteString;
 }
 
@@ -59,6 +73,13 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (void)setCurrentUser:(CKIUser *)currentUser
 {
+    if (!currentUser) {
+        if (self[kCKIKeychainCurrentUserKey]) {
+            [self removeObjectForKey:kCKIKeychainCurrentUserKey];
+        }
+        return;
+    }
+
     NSDictionary *userDictionary = [currentUser JSONDictionary];
     self[kCKIKeychainCurrentUserKey] = userDictionary;
 }
@@ -137,9 +158,9 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (void)clearKeychain
 {
-    [self.keychain removeObjectForKey:kCKIKeychainOAuthTokenKey];
-    [self.keychain removeObjectForKey:kCKIKeychainDomainKey];
-    [self.keychain removeObjectForKey:kCKIKeychainCurrentUserKey];
+    self.keychain.oauthToken = nil;
+    self.keychain.currentUser = nil;
+    self.keychain.domain = nil;
 }
 
 #pragma mark - Properties
