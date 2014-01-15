@@ -16,83 +16,12 @@
 #import "CKILoginViewController.h"
 #import "NSHTTPURLResponse+Pagination.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
-
-#pragma mark - Keychain Helpers
-
-static const NSString *kCKIKeychainOAuthTokenKey = @"AUTH_TOKEN";
-static const NSString *kCKIKeychainDomainKey = @"DOMAIN_KEY";
-static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
-
-@interface FXKeychain (CKIKeychain)
-@property (nonatomic, strong) NSString *oauthToken;
-@property (nonatomic, strong) NSURL *domain;
-@property (nonatomic, strong) CKIUser *currentUser;
-@end
-
-@implementation FXKeychain (CBIKeychain)
-
-- (NSString *)oauthToken
-{
-    return self[kCKIKeychainOAuthTokenKey];
-}
-
-- (void)setOauthToken:(NSString *)oauthToken
-{
-    if (!oauthToken) {
-        if (self[kCKIKeychainOAuthTokenKey]) {
-            [self removeObjectForKey:kCKIKeychainOAuthTokenKey];
-        }
-        return;
-    }
-
-    self[kCKIKeychainOAuthTokenKey] = oauthToken;
-}
-
-- (NSURL *)domain
-{
-    return [NSURL URLWithString:self[kCKIKeychainDomainKey]];
-}
-
-- (void)setDomain:(NSURL *)domain
-{
-    if (!domain) {
-        if (self[kCKIKeychainDomainKey]) {
-            [self removeObjectForKey:kCKIKeychainDomainKey];
-        }
-        return;
-    }
-
-    self[kCKIKeychainDomainKey] = domain.absoluteString;
-}
-
-- (CKIUser *)currentUser
-{
-    NSDictionary *dictionary = self[kCKIKeychainCurrentUserKey];
-    return [CKIUser modelFromJSONDictionary:dictionary];
-}
-
-- (void)setCurrentUser:(CKIUser *)currentUser
-{
-    if (!currentUser) {
-        if (self[kCKIKeychainCurrentUserKey]) {
-            [self removeObjectForKey:kCKIKeychainCurrentUserKey];
-        }
-        return;
-    }
-
-    NSDictionary *userDictionary = [currentUser JSONDictionary];
-    self[kCKIKeychainCurrentUserKey] = userDictionary;
-}
-
-@end
-
-#pragma mark - Client
+#import "FXKeychain+CKIKeychain.h"
 
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *oauthToken;
-
 @property (nonatomic, strong) FXKeychain *keychain;
 @end
 
@@ -154,6 +83,8 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     self.keychain.oauthToken = self.oauthToken;
     self.keychain.currentUser = self.currentUser;
     self.keychain.domain = self.baseURL;
+    self.keychain.clientID = self.clientID;
+    self.keychain.clientSecret = self.clientSecret;
 }
 
 - (void)clearKeychain
@@ -161,6 +92,8 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     self.keychain.oauthToken = nil;
     self.keychain.currentUser = nil;
     self.keychain.domain = nil;
+    self.clientID = nil;
+    self.clientSecret = nil;
 }
 
 #pragma mark - Properties
