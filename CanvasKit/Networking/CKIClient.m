@@ -209,9 +209,12 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (NSURLRequest *)oauthRequest
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1&canvas_login=1"
+    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
             , self.baseURL.absoluteString
             , self.clientID];
+    if (self.forceCanvasLogin) {
+        urlString = [urlString stringByAppendingString:@"&canvas_login=1"];
+    }
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
@@ -374,7 +377,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];
         }];
-        
+
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
