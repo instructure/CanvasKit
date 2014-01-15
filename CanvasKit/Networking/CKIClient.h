@@ -2,7 +2,6 @@
 //  CKIClient.h
 //  CanvasKit
 //
-//  Created by rroberts on 9/11/13.
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
@@ -22,7 +21,7 @@
 @interface CKIClient : AFHTTPSessionManager
 
 @property (nonatomic, readonly) NSString *clientID;
-@property (nonatomic, readonly) NSString *sharedSecret;
+@property (nonatomic, readonly) NSString *clientSecret;
 @property (nonatomic, readonly) NSString *oauthToken;
 
 /**
@@ -35,27 +34,27 @@
 
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
- @param sharedSecret the shared secret for the application
+ @param clientSecret the client secret for the application
  @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
  @param accessGroup the access group to be used for the shared keychain. may be nil.
  */
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
  Creates a new canvas client.
  
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
- @param sharedSecret the shared secret for the application
+ @param clientSecret the client secret for the application
  @param keychainID the keychain for the oauth token. Uses the default keychain if nil.
  @param accessGroup the access group to be used for the shared keychain
  */
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 /**
  Attempts to load a client with an oauth token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
 */
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 
 #pragma mark - OAuth
 

@@ -2,7 +2,6 @@
 //  CKIClient.m
 //  CanvasKit
 //
-//  Created by rroberts on 9/11/13.
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
@@ -70,7 +69,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
-@property (nonatomic, strong) NSString *sharedSecret;
+@property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *oauthToken;
 
 @property (nonatomic, strong) FXKeychain *keychain;
@@ -78,16 +77,16 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 @implementation CKIClient
 
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
-    return [[self alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    return [[self alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
 }
 
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     NSParameterAssert(baseURL);
     NSParameterAssert(clientID);
-    NSParameterAssert(sharedSecret);
+    NSParameterAssert(clientSecret);
 
     self = [super initWithBaseURL:baseURL];;
     if (!self) {
@@ -98,7 +97,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
 
     self.clientID = clientID;
-    self.sharedSecret = sharedSecret;
+    self.clientSecret = clientSecret;
     self.keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
     RACSignal *oauthTokenSignal = RACObserve(self, oauthToken);
@@ -110,7 +109,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     return self;
 }
 
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
@@ -121,7 +120,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
     NSURL *baseURL = keychain.domain;
 
-    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
     client.oauthToken = oauthToken;
     client.currentUser = keychain.currentUser;
     return client;
@@ -157,7 +156,7 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 {
     NSDictionary *params = @{
             @"client_id": self.clientID,
-            @"client_secret": self.sharedSecret,
+            @"client_secret": self.clientSecret,
             @"code": temporaryCode
     };
 
