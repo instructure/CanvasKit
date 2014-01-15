@@ -191,10 +191,6 @@
         };
 
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        [navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
-        [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-        [navigationController.navigationBar setTranslucent:YES];
-
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
         [loginViewController.navigationItem setRightBarButtonItem:button];
 
