@@ -140,12 +140,12 @@
 /**
  If the event is a time slot, this is the participant limit
  */
-@property (nonatomic) NSInteger *participantsPerAppointment;
+//@property (nonatomic) NSInteger *participantsPerAppointment;
 
 /**
  If the event is a time slot and it has a participant limit, an integer indicating how many slots are available
  */
-@property (nonatomic) NSInteger *availableSlots;
+//@property (nonatomic) NSInteger *availableSlots;
 
 /**
  If the event is a user-level reservation, this will contain the user participant JSON (refer to the Users API)

@@ -25,4 +25,5 @@
     NSDictionary *params = @{@"only_announcements":@"true"};
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:course];
 }
+
 @end
