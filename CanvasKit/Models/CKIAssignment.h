@@ -111,7 +111,7 @@
  The type of grading the assignment receives; one of "pass_fail",
  "percent", "letter_grade", "points"
  */
-@property (nonatomic, copy) NSString *gradingType;
+@property (nonatomic, copy) NSString *scoringType;
 
 
 
