@@ -215,6 +215,7 @@
 		BDB4B93117E3BA760097D4AC /* CKIModuleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80785A1217E146B000339A06 /* CKIModuleItem.m */; };
 		BDB4B93F17E3BABD0097D4AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB4B93917E3BABD0097D4AC /* libPods.a */; };
 		BDC8B61417E8099100A63864 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809DC72F17C694EC0089E846 /* XCTest.framework */; };
+		BDCAA0F618808D3F006C9F28 /* CKIEnrollment.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCAA0F518808D3F006C9F28 /* CKIEnrollment.m */; };
 		BDF67B3317EBA378008AE5F5 /* CKIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF67B3217EBA378008AE5F5 /* CKIFile.m */; };
 		BDF67B3517EBA84C008AE5F5 /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = BDF67B3417EBA84C008AE5F5 /* file.json */; };
 		BDF67B3817EBA8AC008AE5F5 /* CKIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF67B3217EBA378008AE5F5 /* CKIFile.m */; };
@@ -480,6 +481,8 @@
 		BDB4B93717E3BABD0097D4AC /* libPods-ISO8601DateFormatter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ISO8601DateFormatter.a"; path = "Pods/build/Debug-iphoneos/libPods-ISO8601DateFormatter.a"; sourceTree = "<group>"; };
 		BDB4B93817E3BABD0097D4AC /* libPods-Mantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Mantle.a"; path = "Pods/build/Debug-iphoneos/libPods-Mantle.a"; sourceTree = "<group>"; };
 		BDB4B93917E3BABD0097D4AC /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		BDCAA0F418808D3F006C9F28 /* CKIEnrollment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIEnrollment.h; sourceTree = "<group>"; };
+		BDCAA0F518808D3F006C9F28 /* CKIEnrollment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIEnrollment.m; sourceTree = "<group>"; };
 		BDF67B3117EBA378008AE5F5 /* CKIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIFile.h; sourceTree = "<group>"; };
 		BDF67B3217EBA378008AE5F5 /* CKIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIFile.m; sourceTree = "<group>"; };
 		BDF67B3417EBA84C008AE5F5 /* file.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 				80538A2617DD1A20009095F2 /* CKIUser.m */,
 				809808BB17C6D9BB00FC3BF6 /* CKIAssignment.h */,
 				809808BC17C6D9BB00FC3BF6 /* CKIAssignment.m */,
+				BDCAA0F418808D3F006C9F28 /* CKIEnrollment.h */,
+				BDCAA0F518808D3F006C9F28 /* CKIEnrollment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1197,6 +1202,7 @@
 				80DA1F731832CD9800CC4E84 /* CKIClient+CKIActivityStreamItem.m in Sources */,
 				24D5436017FCA4DA0056096D /* CKIQuiz.m in Sources */,
 				80785A1317E146B000339A06 /* CKIModuleItem.m in Sources */,
+				BDCAA0F618808D3F006C9F28 /* CKIEnrollment.m in Sources */,
 				4931A8F7184532E500B0D369 /* CKIAttachment.m in Sources */,
 				8024E19F17C6AE7D0031E0F4 /* CKIModel.m in Sources */,
 				80A199971831F916003A7083 /* CKIClient+CKITodoItem.m in Sources */,
