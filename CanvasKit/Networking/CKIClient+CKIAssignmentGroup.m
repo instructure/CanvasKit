@@ -18,7 +18,7 @@
 - (RACSignal *)fetchAssignmentGroupsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignment_groups"];
-    return [[self fetchResponseAtPath:path parameters:@{@"include": @[@"assignments", @"all_dates", @"discussion_topic"]} modelClass:[CKIAssignmentGroup class] context:course] map:^id(NSArray *assignmentGroups) {
+    return [[self fetchResponseAtPath:path parameters:nil modelClass:[CKIAssignmentGroup class] context:course] map:^id(NSArray *assignmentGroups) {
         for (CKIAssignmentGroup *group in assignmentGroups) {
             for (CKIAssignment *assignment in group.assignments) {
                 assignment.context = course;

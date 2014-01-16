@@ -11,6 +11,7 @@
 #import "CKICourse.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "CKISubmission.h"
 
 @implementation CKIAssignment
 
@@ -81,6 +82,11 @@
 + (NSValueTransformer *)rubricJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
+}
+
++ (NSValueTransformer *)submissionJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
 }
 
 - (NSString *)path

@@ -17,7 +17,7 @@
 - (RACSignal *)fetchAssignmentsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignments"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIAssignment class] context:course];
+    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"submission"]} modelClass:[CKIAssignment class] context:course];
 }
 
 @end

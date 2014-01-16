@@ -9,6 +9,8 @@
 #import "CKILockableModel.h"
 
 @class CKICourse;
+@class CKISubmission;
+
 @interface CKIAssignment : CKILockableModel
 
 
@@ -128,8 +130,10 @@
  */
 @property (nonatomic, copy) NSArray *submissionTypes;
 
-
-//@property (nonatomic, copy) CKISubmission *submission;
+/**
+ Submission for the assignment.
+ */
+@property (nonatomic, copy) CKISubmission *submission;
 
 /**
  If the requesting user has grading rights, the number of
