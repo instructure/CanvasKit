@@ -17,8 +17,4 @@ DerivedData
 *.hmap
 
 #CocoaPods
-#Pods
-#Podfile.lock
-
-# Ignore workspace—you can generate your own by running pod
-#*.xcworkspace/
+Pods

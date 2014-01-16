@@ -2,7 +2,6 @@
 //  CKIClient.m
 //  CanvasKit
 //
-//  Created by rroberts on 9/11/13.
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
@@ -17,77 +16,27 @@
 #import "CKILoginViewController.h"
 #import "NSHTTPURLResponse+Pagination.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
-
-#pragma mark - Keychain Helpers
-
-static const NSString *kCKIKeychainOAuthTokenKey = @"AUTH_TOKEN";
-static const NSString *kCKIKeychainDomainKey = @"DOMAIN_KEY";
-static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
-
-@interface FXKeychain (CKIKeychain)
-@property (nonatomic, strong) NSString *oauthToken;
-@property (nonatomic, strong) NSURL *domain;
-@property (nonatomic, strong) CKIUser *currentUser;
-@end
-
-@implementation FXKeychain (CBIKeychain)
-
-- (NSString *)oauthToken
-{
-    return self[kCKIKeychainOAuthTokenKey];
-}
-
-- (void)setOauthToken:(NSString *)oauthToken
-{
-    self[kCKIKeychainOAuthTokenKey] = oauthToken;
-}
-
-- (NSURL *)domain
-{
-    return [NSURL URLWithString:self[kCKIKeychainDomainKey]];
-}
-
-- (void)setDomain:(NSURL *)domain
-{
-    self[kCKIKeychainDomainKey] = domain.absoluteString;
-}
-
-- (CKIUser *)currentUser
-{
-    NSDictionary *dictionary = self[kCKIKeychainCurrentUserKey];
-    return [CKIUser modelFromJSONDictionary:dictionary];
-}
-
-- (void)setCurrentUser:(CKIUser *)currentUser
-{
-    NSDictionary *userDictionary = [currentUser JSONDictionary];
-    self[kCKIKeychainCurrentUserKey] = userDictionary;
-}
-
-@end
-
-#pragma mark - Client
+#import "FXKeychain+CKIKeychain.h"
 
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
-@property (nonatomic, strong) NSString *sharedSecret;
-@property (nonatomic, strong) NSString *oauthToken;
-
+@property (nonatomic, strong) NSString *clientSecret;
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) FXKeychain *keychain;
 @end
 
 @implementation CKIClient
 
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
-    return [[self alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    return [[self alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
 }
 
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     NSParameterAssert(baseURL);
     NSParameterAssert(clientID);
-    NSParameterAssert(sharedSecret);
+    NSParameterAssert(clientSecret);
 
     self = [super initWithBaseURL:baseURL];;
     if (!self) {
@@ -98,31 +47,33 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
 
     self.clientID = clientID;
-    self.sharedSecret = sharedSecret;
+    self.clientSecret = clientSecret;
     self.keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
-    RACSignal *oauthTokenSignal = RACObserve(self, oauthToken);
+    RACSignal *accessTokenSignal = RACObserve(self, accessToken);
 
-    RAC(self, isLoggedIn) = [oauthTokenSignal map:^id(id value) {
+    RAC(self, isLoggedIn) = [accessTokenSignal map:^id(id value) {
         return @(value != nil);
     }];
 
     return self;
 }
 
-+ (instancetype)loadClientFromKeychainWithClientID:(NSString *)clientID sharedSecret:(NSString *)sharedSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)loadClientFromKeychainWithKeychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
 {
     FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
-    NSString *oauthToken = keychain.oauthToken;
-    if (!oauthToken) {
+    NSString *accessToken = keychain.accessToken;
+    if (!accessToken) {
         return nil;
     }
 
     NSURL *baseURL = keychain.domain;
+    NSString *clientID = keychain.clientID;
+    NSString *clientSecret = keychain.clientSecret;
 
-    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID sharedSecret:sharedSecret keychainServiceID:keychainID accessGroup:accessGroup];
-    client.oauthToken = oauthToken;
+    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    client.accessToken = accessToken;
     client.currentUser = keychain.currentUser;
     return client;
 }
@@ -131,33 +82,37 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 
 - (void)saveToKeychain
 {
-    self.keychain.oauthToken = self.oauthToken;
+    self.keychain.accessToken = self.accessToken;
     self.keychain.currentUser = self.currentUser;
     self.keychain.domain = self.baseURL;
+    self.keychain.clientID = self.clientID;
+    self.keychain.clientSecret = self.clientSecret;
 }
 
 - (void)clearKeychain
 {
-    [self.keychain removeObjectForKey:kCKIKeychainOAuthTokenKey];
-    [self.keychain removeObjectForKey:kCKIKeychainDomainKey];
-    [self.keychain removeObjectForKey:kCKIKeychainCurrentUserKey];
+    self.keychain.accessToken = nil;
+    self.keychain.currentUser = nil;
+    self.keychain.domain = nil;
+    self.clientID = nil;
+    self.clientSecret = nil;
 }
 
 #pragma mark - Properties
 
-- (void)setOauthToken:(NSString *)oauthToken
+- (void)setAccessToken:(NSString *)accessToken
 {
-    _oauthToken = oauthToken;
-    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", oauthToken] forHTTPHeaderField:@"Authorization"];
+    _accessToken = accessToken;
+    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - OAuth
 
-- (RACSignal *)postOauthCode:(NSString *)temporaryCode
+- (RACSignal *)postAuthCode:(NSString *)temporaryCode
 {
     NSDictionary *params = @{
             @"client_id": self.clientID,
-            @"client_secret": self.sharedSecret,
+            @"client_secret": self.clientSecret,
             @"code": temporaryCode
     };
 
@@ -184,9 +139,9 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
     }
 
     return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
-        return [self postOauthCode:temporaryCode];
+        return [self postAuthCode:temporaryCode];
     }] flattenMap:^RACStream *(NSDictionary *responseObject) {
-        self.oauthToken = responseObject[@"access_token"];
+        self.accessToken = responseObject[@"access_token"];
         return [self fetchCurrentUser];
     }] map:^id(CKIUser *user) {
         self.currentUser = user;
@@ -202,12 +157,12 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 - (void)logout
 {
     self.currentUser = nil;
-    self.oauthToken = nil;
+    self.accessToken = nil;
     [self clearKeychain];
     [self clearCookies];
 }
 
-- (NSURLRequest *)oauthRequest
+- (NSURLRequest *)initialOAuthRequest
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
             , self.baseURL.absoluteString
@@ -224,22 +179,18 @@ static const NSString *kCKIKeychainCurrentUserKey = @"CANVAS_CURRENT_USER_KEY";
 - (RACSignal *)authorizeWithServerUsingWebBrowser
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithOAuthRequest:self.oauthRequest];
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
         __weak CKILoginViewController *weakLoginViewController = loginViewController;
-        loginViewController.oauthSuccessBlock = ^(NSString *authToken) {
+        loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
         };
-        loginViewController.oauthFailureBlock = ^(NSError *error) {
+        loginViewController.failureBlock = ^(NSError *error) {
             [subscriber sendError:error];
             [subscriber sendCompleted];
         };
 
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        [navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
-        [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-        [navigationController.navigationBar setTranslucent:YES];
-
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
         [loginViewController.navigationItem setRightBarButtonItem:button];
 

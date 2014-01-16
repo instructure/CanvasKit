@@ -22,7 +22,7 @@
 
 @implementation CKILoginViewController
 
-- (id)initWithOAuthRequest:(NSURLRequest *)request
+- (id)initWithRequest:(NSURLRequest *)request
 {
     self = [super init];
     if (self) {
@@ -50,10 +50,10 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     if ([self getValueFromRequest:request withKey:@"code"]  ) {
-        self.oauthSuccessBlock([self getValueFromRequest:request withKey:@"code"]);
+        self.successBlock([self getValueFromRequest:request withKey:@"code"]);
         return NO;
     } else if ([self getValueFromRequest:request withKey:@"error"]) {
-        self.oauthFailureBlock([NSError errorWithDomain:@"com.instructure.canvaskit" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Authentication failed. Most likely the user denied the request for access."}]);
+        self.failureBlock([NSError errorWithDomain:@"com.instructure.canvaskit" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Authentication failed. Most likely the user denied the request for access."}]);
         return NO;
     }
     
@@ -79,7 +79,7 @@
 - (void)cancelOAuth
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        self.oauthFailureBlock([NSError errorWithDomain:@"com.instructure.canvaskit" code:0 userInfo:@{NSLocalizedDescriptionKey: @"User cancelled authentication"}]);
+        self.failureBlock([NSError errorWithDomain:@"com.instructure.canvaskit" code:0 userInfo:@{NSLocalizedDescriptionKey: @"User cancelled authentication"}]);
     }];
 }
 

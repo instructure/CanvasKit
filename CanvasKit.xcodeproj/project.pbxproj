@@ -173,6 +173,7 @@
 		B5893615180CA27200665753 /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
 		B59520D61805BBEC0055DDCC /* external_tool.json in Resources */ = {isa = PBXBuildFile; fileRef = B59520D51805BBEC0055DDCC /* external_tool.json */; };
 		B59520DC1805BC090055DDCC /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
+		BA6E8F88C12ACF9D53A67546 /* FXKeychain+CKIKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8124757B9FA76EFEFFE0 /* FXKeychain+CKIKeychain.m */; };
 		BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD158FF717E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BD15900317E91681008887E3 /* CKICalendarEvent.m */; };
@@ -445,6 +446,8 @@
 		B59520D51805BBEC0055DDCC /* external_tool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = external_tool.json; sourceTree = "<group>"; };
 		B59520DA1805BC090055DDCC /* CKIExternalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIExternalTool.h; sourceTree = "<group>"; };
 		B59520DB1805BC090055DDCC /* CKIExternalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalTool.m; sourceTree = "<group>"; };
+		BA6E8124757B9FA76EFEFFE0 /* FXKeychain+CKIKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FXKeychain+CKIKeychain.m"; sourceTree = "<group>"; };
+		BA6E8EAD675893AEFC8175F3 /* FXKeychain+CKIKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FXKeychain+CKIKeychain.h"; sourceTree = "<group>"; };
 		BD158FF417E8F0B5008887E3 /* CKITodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKITodoItem.h; sourceTree = "<group>"; };
 		BD158FF517E8F0B5008887E3 /* CKITodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKITodoItem.m; sourceTree = "<group>"; };
 		BD15900217E91681008887E3 /* CKICalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKICalendarEvent.h; sourceTree = "<group>"; };
@@ -763,6 +766,8 @@
 				BDB4B8BE17E236330097D4AC /* NSString+CKIAdditions.m */,
 				809A664317EB93F2005C5855 /* NSHTTPURLResponse+Pagination.h */,
 				809A664417EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m */,
+				BA6E8124757B9FA76EFEFFE0 /* FXKeychain+CKIKeychain.m */,
+				BA6E8EAD675893AEFC8175F3 /* FXKeychain+CKIKeychain.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1220,6 +1225,7 @@
 				24EFAD9F180C56FA009E8058 /* CKIService.m in Sources */,
 				BD99E77B17E8ABD200AEC79C /* CKIFavorite.m in Sources */,
 				80A199821831C231003A7083 /* CKIClient+CKIGroup.m in Sources */,
+				BA6E8F88C12ACF9D53A67546 /* FXKeychain+CKIKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,6 +1490,7 @@
 				GENERATE_PROFILING_CODE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
@@ -1501,6 +1508,7 @@
 				GCC_PREFIX_HEADER = "CanvasKit/Supporting Files/CanvasKit-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};
