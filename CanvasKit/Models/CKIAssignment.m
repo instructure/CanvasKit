@@ -34,7 +34,8 @@
         @"peerReviewCount": @"peer_review_count",
         @"peerReviewsAssignAt": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
-        @"pointsPossible" : @"points_possible"
+        @"pointsPossible" : @"points_possible",
+        @"gradingType" : @"grading_type"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -92,6 +93,25 @@
 - (NSString *)path
 {
     return [[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.id];
+}
+
+- (CKIAssignmentScoringType)scoringType
+{
+    NSString *scoringTypeString = self.gradingType;
+    if ([scoringTypeString isEqual:@"pass_fail"]) {
+        return CKIAssignmentScoringTypePassFail;
+    }
+    else if ([scoringTypeString isEqual:@"percent"]) {
+        return CKIAssignmentScoringTypePercentage;
+    }
+    else if ([scoringTypeString isEqual:@"letter_grade"]) {
+        return CKIAssignmentScoringTypeLetter;
+    }
+    else if ([scoringTypeString isEqual:@"not_graded"]) {
+        return CKIAssignmentScoringTypeNotGraded;
+    }
+    
+    return CKIAssignmentScoringTypePoints;
 }
 
 @end
