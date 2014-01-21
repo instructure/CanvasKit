@@ -6,99 +6,99 @@
 #import "FXKeychain+CKIKeychain.h"
 #import "CKIUser.h"
 
-static const NSString *CKIKeychainAccessTokenName = @"CKIKeychainAccessToken";
-static const NSString *CKIKeychainDomainName = @"CKIKeychainDomain";
-static const NSString *CKIKeychainCurrentUserName = @"CKIKeychainCurrentUserName";
-static const NSString *CKIKeychainClientIDName = @"CKIKeychainClientIDName";
-static const NSString *CKIKeychainClientSecretName = @"CKIKeychainClientSecretName";
+static const NSString *CKIKeychainAccessToken = @"CKIKeychainAccessToken";
+static const NSString *CKIKeychainBaseURL = @"CKIKeychainBaseURL";
+static const NSString *CKIKeychainCurrentUser = @"CKIKeychainCurrentUser";
+static const NSString *CKIKeychainClientID = @"CKIKeychainClientID";
+static const NSString *CKIKeychainClientSecret = @"CKIKeychainClientSecret";
 
 @implementation FXKeychain (CBIKeychain)
 
 - (NSString *)accessToken
 {
-    return self[CKIKeychainAccessTokenName];
+    return self[CKIKeychainAccessToken];
 }
 
 - (void)setAccessToken:(NSString *)accessToken
 {
     if (!accessToken) {
-        if (self[CKIKeychainAccessTokenName]) {
-            [self removeObjectForKey:CKIKeychainAccessTokenName];
+        if (self[CKIKeychainAccessToken]) {
+            [self removeObjectForKey:CKIKeychainAccessToken];
         }
         return;
     }
 
-    self[CKIKeychainAccessTokenName] = accessToken;
+    self[CKIKeychainAccessToken] = accessToken;
 }
 
-- (NSURL *)domain
+- (NSURL *)baseURL
 {
-    return [NSURL URLWithString:self[CKIKeychainDomainName]];
+    return [NSURL URLWithString:self[CKIKeychainBaseURL]];
 }
 
-- (void)setDomain:(NSURL *)domain
+- (void)setBaseURL:(NSURL *)baseURL
 {
-    if (!domain) {
-        if (self[CKIKeychainDomainName]) {
-            [self removeObjectForKey:CKIKeychainDomainName];
+    if (!baseURL) {
+        if (self[CKIKeychainBaseURL]) {
+            [self removeObjectForKey:CKIKeychainBaseURL];
         }
         return;
     }
 
-    self[CKIKeychainDomainName] = domain.absoluteString;
+    self[CKIKeychainBaseURL] = baseURL.absoluteString;
 }
 
 - (CKIUser *)currentUser
 {
-    NSDictionary *dictionary = self[CKIKeychainCurrentUserName];
+    NSDictionary *dictionary = self[CKIKeychainCurrentUser];
     return [CKIUser modelFromJSONDictionary:dictionary];
 }
 
 - (void)setCurrentUser:(CKIUser *)currentUser
 {
     if (!currentUser) {
-        if (self[CKIKeychainCurrentUserName]) {
-            [self removeObjectForKey:CKIKeychainCurrentUserName];
+        if (self[CKIKeychainCurrentUser]) {
+            [self removeObjectForKey:CKIKeychainCurrentUser];
         }
         return;
     }
 
     NSDictionary *userDictionary = [currentUser JSONDictionary];
-    self[CKIKeychainCurrentUserName] = userDictionary;
+    self[CKIKeychainCurrentUser] = userDictionary;
 }
 
 - (NSString *)clientID
 {
-    return self[CKIKeychainClientIDName];
+    return self[CKIKeychainClientID];
 }
 
 - (void)setClientID:(NSString *)clientID
 {
     if (!clientID) {
-        if (self[CKIKeychainClientIDName]) {
-            [self removeObjectForKey:CKIKeychainClientIDName];
+        if (self[CKIKeychainClientID]) {
+            [self removeObjectForKey:CKIKeychainClientID];
         }
         return;
     }
 
-    self[CKIKeychainClientIDName] = clientID;
+    self[CKIKeychainClientID] = clientID;
 }
 
 - (NSString *)clientSecret
 {
-    return self[CKIKeychainClientSecretName];
+    return self[CKIKeychainClientSecret];
 }
 
 - (void)setClientSecret:(NSString *)clientSecret
 {
     if (!clientSecret) {
-        if (self[CKIKeychainClientSecretName]) {
-            [self removeObjectForKey:CKIKeychainClientSecretName];
+        if (self[CKIKeychainClientSecret]) {
+            [self removeObjectForKey:CKIKeychainClientSecret];
         }
         return;
     }
 
-    self[CKIKeychainClientSecretName] = clientSecret;
+    self[CKIKeychainClientSecret] = clientSecret;
 }
 
 @end
