@@ -69,7 +69,7 @@
         return nil;
     }
 
-    NSURL *baseURL = keychain.domain;
+    NSURL *baseURL = keychain.baseURL;
     NSString *clientID = keychain.clientID;
     NSString *clientSecret = keychain.clientSecret;
 
@@ -85,7 +85,7 @@
 {
     self.keychain.accessToken = self.accessToken;
     self.keychain.currentUser = self.currentUser;
-    self.keychain.domain = self.baseURL;
+    self.keychain.baseURL = self.baseURL;
     self.keychain.clientID = self.clientID;
     self.keychain.clientSecret = self.clientSecret;
 }
@@ -94,7 +94,7 @@
 {
     self.keychain.accessToken = nil;
     self.keychain.currentUser = nil;
-    self.keychain.domain = nil;
+    self.keychain.baseURL = nil;
     self.clientID = nil;
     self.clientSecret = nil;
 }
@@ -182,7 +182,6 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
-        __weak CKILoginViewController *weakLoginViewController = loginViewController;
         loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];

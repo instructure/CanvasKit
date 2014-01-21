@@ -31,21 +31,21 @@ static const NSString *CKIKeychainClientSecret = @"CKIKeychainClientSecret";
     self[CKIKeychainAccessToken] = accessToken;
 }
 
-- (NSURL *)domain
+- (NSURL *)baseURL
 {
     return [NSURL URLWithString:self[CKIKeychainBaseURL]];
 }
 
-- (void)setDomain:(NSURL *)domain
+- (void)setBaseURL:(NSURL *)baseURL
 {
-    if (!domain) {
+    if (!baseURL) {
         if (self[CKIKeychainBaseURL]) {
             [self removeObjectForKey:CKIKeychainBaseURL];
         }
         return;
     }
 
-    self[CKIKeychainBaseURL] = domain.absoluteString;
+    self[CKIKeychainBaseURL] = baseURL.absoluteString;
 }
 
 - (CKIUser *)currentUser
