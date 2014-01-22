@@ -40,4 +40,8 @@
  */
 @property (nonatomic, readonly) CKIUser *lastEditedBy;
 
+@property (nonatomic) BOOL published;
+
+@property (nonatomic) BOOL frontPage;
+
 @end

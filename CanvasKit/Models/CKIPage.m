@@ -30,7 +30,12 @@
         @"hideFromStudents": @"hide_from_students",
         @"lastEditedByID": @"last_edited_by.id",
         @"lastEditedByDisplayName": @"last_edited_by.display_name",
-        @"lastEditedByAvatarURL": @"last_edited_by.avatar_image_url"
+        @"lastEditedByAvatarURL": @"last_edited_by.avatar_image_url",
+        @"published": @"published",
+        @"frontPage": @"front_page",
+        @"lockedForUser": @"locked_for_user",
+        @"lockInfo": @"lock_info",
+        @"lockExplanation": @"lock_explanation",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
