@@ -121,7 +121,7 @@ typedef enum {
  The type of grading the assignment receives; one of "pass_fail",
  "percent", "letter_grade", "points"
  */
-@property (nonatomic, copy) NSString *scoringType;
+@property (nonatomic, copy) NSString *gradingType;
 
 /**
  The type of score the assignment submissions receive
