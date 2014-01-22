@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) FXKeychain *keychain;
+@property (nonatomic, weak) UIViewController *webLoginViewController;
 @end
 
 @implementation CKIClient
@@ -68,7 +69,7 @@
         return nil;
     }
 
-    NSURL *baseURL = keychain.domain;
+    NSURL *baseURL = keychain.baseURL;
     NSString *clientID = keychain.clientID;
     NSString *clientSecret = keychain.clientSecret;
 
@@ -84,7 +85,7 @@
 {
     self.keychain.accessToken = self.accessToken;
     self.keychain.currentUser = self.currentUser;
-    self.keychain.domain = self.baseURL;
+    self.keychain.baseURL = self.baseURL;
     self.keychain.clientID = self.clientID;
     self.keychain.clientSecret = self.clientSecret;
 }
@@ -93,7 +94,7 @@
 {
     self.keychain.accessToken = nil;
     self.keychain.currentUser = nil;
-    self.keychain.domain = nil;
+    self.keychain.baseURL = nil;
     self.clientID = nil;
     self.clientSecret = nil;
 }
@@ -146,6 +147,7 @@
     }] map:^id(CKIUser *user) {
         self.currentUser = user;
         [self saveToKeychain];
+        [self.webLoginViewController dismissViewControllerAnimated:YES completion:nil];
         return self;
     }] doError:^(NSError *error) {
         NSLog(@"CanvasKit OAuth failed with error: %@", error);
@@ -180,7 +182,6 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
-        __weak CKILoginViewController *weakLoginViewController = loginViewController;
         loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
@@ -196,10 +197,9 @@
 
         UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
         [presentingViewController presentViewController:navigationController animated:YES completion:nil];
+        self.webLoginViewController = navigationController;
 
-        return [RACDisposable disposableWithBlock:^{
-            [weakLoginViewController dismissViewControllerAnimated:YES completion:nil];
-        }];
+        return [RACDisposable disposableWithBlock:^{}];
     }];
 }
 
