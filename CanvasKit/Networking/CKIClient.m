@@ -65,13 +65,13 @@
     FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
     NSString *accessToken = keychain.accessToken;
-    if (!accessToken) {
-        return nil;
-    }
-
     NSURL *baseURL = keychain.baseURL;
     NSString *clientID = keychain.clientID;
     NSString *clientSecret = keychain.clientSecret;
+    
+    if (!accessToken || !baseURL || !clientID || !clientSecret) {
+        return nil;
+    }
 
     CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
     client.accessToken = accessToken;
