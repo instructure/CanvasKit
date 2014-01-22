@@ -11,6 +11,7 @@
 #import "CKICourse.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "CKISubmission.h"
 
 @implementation CKIAssignment
 
@@ -34,7 +35,7 @@
         @"peerReviewsAssignAt": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
         @"pointsPossible" : @"points_possible",
-        @"scoringType" : @"grading_type"
+        @"gradingType" : @"grading_type"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -84,9 +85,33 @@
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
 }
 
++ (NSValueTransformer *)submissionJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
+}
+
 - (NSString *)path
 {
     return [[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.id];
+}
+
+- (CKIAssignmentScoringType)scoringType
+{
+    NSString *scoringTypeString = self.gradingType;
+    if ([scoringTypeString isEqual:@"pass_fail"]) {
+        return CKIAssignmentScoringTypePassFail;
+    }
+    else if ([scoringTypeString isEqual:@"percent"]) {
+        return CKIAssignmentScoringTypePercentage;
+    }
+    else if ([scoringTypeString isEqual:@"letter_grade"]) {
+        return CKIAssignmentScoringTypeLetter;
+    }
+    else if ([scoringTypeString isEqual:@"not_graded"]) {
+        return CKIAssignmentScoringTypeNotGraded;
+    }
+    
+    return CKIAssignmentScoringTypePoints;
 }
 
 @end
