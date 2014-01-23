@@ -62,7 +62,7 @@
 
 - (NSString *)path
 {
-    NSString *path = CKIRootContext.path;
+    NSString *path = self.context.path;
     path = [path stringByAppendingPathComponent:@"files"];
     return [path stringByAppendingPathComponent:self.id];
 }
