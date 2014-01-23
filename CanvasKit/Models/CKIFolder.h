@@ -11,6 +11,17 @@
 @interface CKIFolder : CKILockableModel
 
 /**
+ The context type of the folder.
+ */
+@property (nonatomic, copy) NSString *contextType;
+
+/**
+ The id of the context for this folder
+ */
+@property (nonatomic, copy) NSString *contextID;
+
+
+/**
  The number of files in this folder.
  */
 @property (nonatomic) NSInteger filesCount;

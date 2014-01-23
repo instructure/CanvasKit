@@ -19,6 +19,8 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+        @"contextType": @"context_type",
+        @"contextID": @"context_id",
         @"filesCount": @"files_count",
         @"updatedAt": @"updated_at",
         @"foldersURL": @"folders_url",
