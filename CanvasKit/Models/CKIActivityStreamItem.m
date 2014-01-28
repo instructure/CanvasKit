@@ -70,7 +70,7 @@ static NSString *kCKIActivityStreamAnnouncementItemType = @"Announcement";
 static NSString *kCKIActivityStreamConversationItemType = @"Conversation";
 static NSString *kCKIActivityStreamMessageItemType = @"Message";
 static NSString *kCKIActivityStreamSubmissionItemType = @"Submission";
-static NSString *kCKIActivityStreamConferenceItemType = @"Conference";
+static NSString *kCKIActivityStreamConferenceItemType = @"WebConference";
 static NSString *kCKIActivityStreamCollaborationItemType = @"Collaboration";
 
 + (NSValueTransformer *)activityStreamItemTransformer
