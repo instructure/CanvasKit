@@ -35,26 +35,17 @@
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
  @param clientSecret the client secret for the application
- @param keychainID the keychain for the access token. Uses the default keychain if nil.
- @param accessGroup the access group to be used for the shared keychain. may be nil.
  */
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret;
 
 /**
- Creates a new canvas client.
- 
+ Instantiates a canvas client with the given information.
+
  @param baseURL the base URL to be used by the client
  @param clientID the special client ID that uniquely identifies this application
  @param clientSecret the client secret for the application
- @param keychainID the keychain for the access token. Uses the default keychain if nil.
- @param accessGroup the access group to be used for the shared keychain
  */
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
-
-/**
- Attempts to load a client with an access token saved in the specified keychain and access group. Returns nil if nothing is saved in the keychain.
-*/
-+ (instancetype)loadClientFromKeychainWithKeychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret;
 
 #pragma mark - OAuth
 
@@ -65,11 +56,6 @@
  @see CanvasKit.h
  */
 - (RACSignal *)login;
-
-/**
- Logs out the current user, clears the keychain and all cookies related to the baseURL.
- */
-- (void)logout;
 
 /**
  Checks to see if the user is logged in by checking for the OAuthToken in the keychain.

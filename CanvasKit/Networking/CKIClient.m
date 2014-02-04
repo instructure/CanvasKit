@@ -8,7 +8,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
 #import <Mantle/Mantle.h>
-#import <FXKeychain.h>
 
 #import "CKIClient.h"
 #import "CKIModel.h"
@@ -16,24 +15,22 @@
 #import "CKILoginViewController.h"
 #import "NSHTTPURLResponse+Pagination.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
-#import "FXKeychain+CKIKeychain.h"
 
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) FXKeychain *keychain;
 @property (nonatomic, weak) UIViewController *webLoginViewController;
 @end
 
 @implementation CKIClient
 
-+ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
++ (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret
 {
-    return [[self alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
+    return [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret];
 }
 
-- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret keychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret
 {
     NSParameterAssert(baseURL);
     NSParameterAssert(clientID);
@@ -49,7 +46,6 @@
 
     self.clientID = clientID;
     self.clientSecret = clientSecret;
-    self.keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
 
     RACSignal *accessTokenSignal = RACObserve(self, accessToken);
 
@@ -60,51 +56,12 @@
     return self;
 }
 
-+ (instancetype)loadClientFromKeychainWithKeychainServiceID:(NSString *)keychainID accessGroup:(NSString *)accessGroup;
-{
-    FXKeychain *keychain = [[FXKeychain alloc] initWithService:keychainID accessGroup:accessGroup];
-
-    NSString *accessToken = keychain.accessToken;
-    NSURL *baseURL = keychain.baseURL;
-    NSString *clientID = keychain.clientID;
-    NSString *clientSecret = keychain.clientSecret;
-    
-    if (!accessToken || !baseURL || !clientID || !clientSecret) {
-        return nil;
-    }
-
-    CKIClient *client = [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret keychainServiceID:keychainID accessGroup:accessGroup];
-    client.accessToken = accessToken;
-    client.currentUser = keychain.currentUser;
-    return client;
-}
-
-#pragma mark - Keychain
-
-- (void)saveToKeychain
-{
-    self.keychain.accessToken = self.accessToken;
-    self.keychain.currentUser = self.currentUser;
-    self.keychain.baseURL = self.baseURL;
-    self.keychain.clientID = self.clientID;
-    self.keychain.clientSecret = self.clientSecret;
-}
-
-- (void)clearKeychain
-{
-    self.keychain.accessToken = nil;
-    self.keychain.currentUser = nil;
-    self.keychain.baseURL = nil;
-    self.clientID = nil;
-    self.clientSecret = nil;
-}
-
 #pragma mark - Properties
 
 - (void)setAccessToken:(NSString *)accessToken
 {
     _accessToken = accessToken;
-    [(AFHTTPRequestSerializer*)self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark - OAuth
@@ -146,22 +103,12 @@
         return [self fetchCurrentUser];
     }] map:^id(CKIUser *user) {
         self.currentUser = user;
-        [self saveToKeychain];
         [self.webLoginViewController dismissViewControllerAnimated:YES completion:nil];
         return self;
     }] doError:^(NSError *error) {
         NSLog(@"CanvasKit OAuth failed with error: %@", error);
         [self clearCookies];
-        [self clearKeychain];
     }];
-}
-
-- (void)logout
-{
-    self.currentUser = nil;
-    self.accessToken = nil;
-    [self clearKeychain];
-    [self clearCookies];
 }
 
 - (NSURLRequest *)initialOAuthRequest
