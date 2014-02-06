@@ -111,6 +111,22 @@
     }];
 }
 
+- (RACSignal *)logout
+{
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        NSString *path = @"/login/oauth2/token";
+        NSURLSessionDataTask *task = [self DELETE:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+        }];
+
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+}
+
 - (NSURLRequest *)initialOAuthRequest
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"

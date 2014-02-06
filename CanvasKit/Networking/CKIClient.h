@@ -58,6 +58,11 @@
 - (RACSignal *)login;
 
 /**
+ Tell the server to revoke the access token.
+*/
+- (RACSignal *)logout;
+
+/**
  Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
  */
 @property (nonatomic) BOOL isLoggedIn;
