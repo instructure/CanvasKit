@@ -20,14 +20,15 @@
  */
 @interface CKIClient : AFHTTPSessionManager
 
-@property (nonatomic, readonly) NSString *clientID;
-@property (nonatomic, readonly) NSString *clientSecret;
+/**
+ The access token for making oauth requests (if logged in)
+*/
 @property (nonatomic, readonly) NSString *accessToken;
 
 /**
  The user that is currently logged in via this client.
  */
-@property (nonatomic, strong) CKIUser *currentUser;
+@property (nonatomic, readonly) CKIUser *currentUser;
 
 /**
  Instantiates a canvas client with the given information.
