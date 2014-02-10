@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) CKIUser *currentUser;
 @property (nonatomic, weak) UIViewController *webLoginViewController;
 @end
 
