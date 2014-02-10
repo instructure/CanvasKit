@@ -116,8 +116,12 @@
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSString *path = @"/login/oauth2/token";
         NSURLSessionDataTask *task = [self DELETE:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            self.accessToken = nil;
+            self.currentUser = nil;
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            self.accessToken = nil;
+            self.currentUser = nil;
             [subscriber sendError:error];
         }];
 
