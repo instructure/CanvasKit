@@ -104,7 +104,9 @@
         return [self fetchCurrentUser];
     }] map:^id(CKIUser *user) {
         self.currentUser = user;
-        [self.webLoginViewController dismissViewControllerAnimated:YES completion:nil];
+        [self.webLoginViewController dismissViewControllerAnimated:YES completion:^void(){
+            self.webLoginViewController = nil;
+        }];
         return self;
     }] doError:^(NSError *error) {
         NSLog(@"CanvasKit OAuth failed with error: %@", error);
@@ -167,7 +169,9 @@
         [presentingViewController presentViewController:navigationController animated:YES completion:nil];
         self.webLoginViewController = navigationController;
 
-        return [RACDisposable disposableWithBlock:^{}];
+        return [RACDisposable disposableWithBlock:^{
+            self.webLoginViewController = nil;
+        }];
     }];
 }
 
