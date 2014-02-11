@@ -46,7 +46,6 @@ The `CKIClient` is in charge of all the networking in CanvasKit. Insantiate a `C
 CKIClient *client = [CKIClient clientWithBaseURL:url clientID:ClientID sharedSecret:SharedSecret];
 ```
 
-This method will first try to load any previous session from the keychain. To see if the client is already logged in, call `[client isLoggedIn]`.
 
 If the client is not logged in, you may do so by calling `-login`. This method will handle displaying a
 modal webview to the user and deal with the OAuth process for you. At the end you may look  
@@ -58,8 +57,6 @@ modal webview to the user and deal with the OAuth process for you. At the end yo
     // login completed successfully. do something.
 }];
 ```
-
-The authentication token will remain in the keychain until you call `[client logout]`.
 
 If you would like to get information about the currently logged in user, you may do so by accessing the `client.currentUser` property. See `CKIUser` for more information.
 
