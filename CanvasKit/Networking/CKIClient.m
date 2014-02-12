@@ -119,12 +119,10 @@
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSString *path = @"/login/oauth2/token";
         NSURLSessionDataTask *task = [self DELETE:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            self.accessToken = nil;
-            self.currentUser = nil;
+            [self revokeClient];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            self.accessToken = nil;
-            self.currentUser = nil;
+            [self revokeClient];
             [subscriber sendError:error];
         }];
 
@@ -132,6 +130,12 @@
             [task cancel];
         }];
     }];
+}
+
+- (void)revokeClient
+{
+    self.accessToken = nil;
+    self.currentUser = nil;
 }
 
 - (NSURLRequest *)initialOAuthRequest
@@ -209,9 +213,9 @@
 
     NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
 
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self GET:path parameters:newParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
             NSURL *currentPage = response.currentPage;
             NSURL *nextPage = response.nextPage;
             NSURL *lastPage = response.lastPage;
@@ -226,6 +230,10 @@
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            if ([self errorCausedByRevokedAuthToken:error task:task]) {
+                [self revokeClient];
+            }
+
             [subscriber sendError:error];
         }];
 
@@ -233,6 +241,13 @@
             [task cancel];
         }];
     }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context];
+}
+
+- (BOOL)errorCausedByRevokedAuthToken:(NSError *)error task:(NSURLSessionDataTask *)task
+{
+    return [error.domain isEqualToString:AFNetworkingErrorDomain] &&
+            error.code == NSURLErrorBadServerResponse &&
+            [error.localizedDescription hasPrefix:@"Request failed: unauthorized (401)"];
 }
 
 - (RACSignal *)parseResponseWithTransformer:(NSValueTransformer *)transformer fromJSON:(id)responseObject context:(id<CKIContext>)context
