@@ -9,15 +9,16 @@
 #import "CKIClient.h"
 
 @class RACSignal;
+@class CKICourse;
 
 @interface CKIClient (CKIActivityStreamItem)
 
 /**
- Fetches the activity stream for the current user.
+ Fetches the activity stream for the given context.
  
- @param success success block returning a paged response of CKIActivityStreamItem
- @param failure failure block for handling error
+ @param context the context for the stream
+ @return a signal of pages (NSArray *) of stream items.
  */
-- (RACSignal *)fetchActivityStream;
+- (RACSignal *)fetchActivityStreamForContext:(id<CKIContext>)context;
 
 @end
