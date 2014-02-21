@@ -26,6 +26,20 @@
 
 @implementation CKIClient
 
+- (instancetype)initWithBaseURL:(NSURL *)url
+{
+    self = [super initWithBaseURL:url];
+    if (self) {
+        RAC(self, isLoggedIn) = [RACObserve(self, accessToken) map:^id(id value) {
+            return @(value != nil);
+        }];
+
+        [self setRequestSerializer:[AFJSONRequestSerializer serializer]];
+        [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
+    }
+    return self;
+}
+
 + (instancetype)clientWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret
 {
     return [[CKIClient alloc] initWithBaseURL:baseURL clientID:clientID clientSecret:clientSecret];
@@ -37,22 +51,13 @@
     NSParameterAssert(clientID);
     NSParameterAssert(clientSecret);
 
-    self = [super initWithBaseURL:baseURL];;
+    self = [self initWithBaseURL:baseURL];
     if (!self) {
         return nil;
     }
 
-    [self setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
-
     self.clientID = clientID;
     self.clientSecret = clientSecret;
-
-    RACSignal *accessTokenSignal = RACObserve(self, accessToken);
-
-    RAC(self, isLoggedIn) = [accessTokenSignal map:^id(id value) {
-        return @(value != nil);
-    }];
 
     return self;
 }
