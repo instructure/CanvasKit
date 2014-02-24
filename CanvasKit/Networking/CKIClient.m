@@ -112,13 +112,14 @@
         return self;
     }] doError:^(NSError *error) {
         NSLog(@"CanvasKit OAuth failed with error: %@", error);
-        [self clearCookies];
+        [self clearCookiesAndCache];
     }];
 }
 
 - (RACSignal *)logout
 {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [self clearCookiesAndCache];
         NSString *path = @"/login/oauth2/token";
         NSURLSessionDataTask *task = [self DELETE:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             [self revokeClient];
@@ -191,12 +192,12 @@
 
 #pragma mark - Caching & Cookies
 
-- (void)clearCookies
+- (void)clearCookiesAndCache
 {
-    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:self.baseURL];
-    [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie *cookie, NSUInteger idx, BOOL *stop) {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-    }];
+    }
 }
 
 #pragma mark - JSON API Helpers
