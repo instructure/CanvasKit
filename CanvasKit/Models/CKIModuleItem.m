@@ -7,13 +7,14 @@
 //
 
 #import "CKIModuleItem.h"
+#import "CKIModule.h"
 
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 NSString * const CKIModuleItemTypeFile = @"File";
 NSString * const CKIModuleItemTypePage = @"Page";
-NSString * const CKIModuleItemTypeDiscussion = @"Dicussion";
+NSString * const CKIModuleItemTypeDiscussion = @"Discussion";
 NSString * const CKIModuleItemTypeAssignment = @"Assignment";
 NSString * const CKIModuleItemTypeQuiz = @"Quiz";
 NSString * const CKIModuleItemTypeSubHeader = @"SubHeader";
@@ -75,4 +76,8 @@ NSString * const CKIModuleItemCompletionRequirementMinimumScore = @"min_score";
     return self.contentID ?: self.pageID;
 }
 
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"items"] stringByAppendingPathComponent:self.id];
+}
 @end
