@@ -10,6 +10,7 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKITerm.h"
+#import "CKIEnrollment.h"
 
 @implementation CKICourse
 
@@ -29,7 +30,9 @@
         @"syllabusBody": @"syllabus_body",
         @"term": @"term",
         @"applyAssignmentGroupWeights": @"apply_assignment_group_weights",
-        @"publicSyllabus" : @"public_syllabus"
+        @"publicSyllabus" : @"public_syllabus",
+        @"canCreateDiscussionTopics" : @"permissions.create_discussion_topic",
+        @"hideFinalGrades" : @"hide_final_grades",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -53,6 +56,11 @@
 + (NSValueTransformer *)termJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKITerm class]];
+}
+
++ (NSValueTransformer *)enrollmentsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIEnrollment class]];
 }
 
 - (NSString *)path

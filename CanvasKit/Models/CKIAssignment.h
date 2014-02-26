@@ -9,8 +9,18 @@
 #import "CKILockableModel.h"
 
 @class CKICourse;
-@interface CKIAssignment : CKILockableModel
+@class CKISubmission;
 
+typedef enum {
+    CKIAssignmentScoringTypePoints,
+    CKIAssignmentScoringTypePercentage,
+    CKIAssignmentScoringTypePassFail,
+    CKIAssignmentScoringTypeLetter,
+    CKIAssignmentScoringTypeNotGraded
+} CKIAssignmentScoringType;
+
+
+@interface CKIAssignment : CKILockableModel
 
 
 #pragma mark - Assignment Info
@@ -64,7 +74,7 @@
 /**
  List of the allowed extensions for file uploads.
  
- @note Only valid if if submissionTypes includes "online_upload"
+ @note Only valid if submissionTypes includes "online_upload"
  */
 @property (nonatomic, copy) NSArray *allowedExtensions;
 
@@ -111,9 +121,12 @@
  The type of grading the assignment receives; one of "pass_fail",
  "percent", "letter_grade", "points"
  */
-@property (nonatomic, copy) NSString *scoringType;
+@property (nonatomic, copy) NSString *gradingType;
 
-
+/**
+ The type of score the assignment submissions receive
+ */
+@property (nonatomic, assign) CKIAssignmentScoringType scoringType;
 
 #pragma mark - Submissions
 
@@ -128,8 +141,10 @@
  */
 @property (nonatomic, copy) NSArray *submissionTypes;
 
-
-//@property (nonatomic, copy) CKISubmission *submission;
+/**
+ Submission for the assignment.
+ */
+@property (nonatomic, copy) CKISubmission *submission;
 
 /**
  If the requesting user has grading rights, the number of

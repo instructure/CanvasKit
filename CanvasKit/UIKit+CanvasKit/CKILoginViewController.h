@@ -17,14 +17,14 @@
 /**
  Block to be performed when authentication is successful
  */
-@property (nonatomic, copy) void (^oauthSuccessBlock)(NSString *oauthCode);
+@property (nonatomic, copy) void (^successBlock)(NSString *oauthCode);
 
 /**
  Block to be performed when authentication fails
  */
-@property (nonatomic, copy) void (^oauthFailureBlock)(NSError *error);
+@property (nonatomic, copy) void (^failureBlock)(NSError *error);
 
-- (id)initWithOAuthRequest:(NSURLRequest *)request;
+- (id)initWithRequest:(NSURLRequest *)request;
 - (void)cancelOAuth;
 
 @end

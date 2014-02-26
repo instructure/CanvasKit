@@ -103,6 +103,10 @@
 
 @property (nonatomic) BOOL publicSyllabus;
 
+@property (nonatomic) BOOL canCreateDiscussionTopics;
+
+@property (nonatomic) BOOL hideFinalGrades;
+
 @end
 
 
