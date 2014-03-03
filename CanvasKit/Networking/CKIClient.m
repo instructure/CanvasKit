@@ -218,7 +218,8 @@
 
     NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
 
-    return [[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [[[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        NSLog(@"Request for path: %@", path);
         NSURLSessionDataTask *task = [self GET:path parameters:newParameters success:^(NSURLSessionDataTask *task, id responseObject) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
             NSURL *currentPage = response.currentPage;
@@ -245,7 +246,8 @@
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
-    }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context];
+    }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context]
+            replay];
 }
 
 - (BOOL)errorCausedByRevokedAuthToken:(NSError *)error task:(NSURLSessionDataTask *)task
