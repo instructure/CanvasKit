@@ -31,6 +31,11 @@
 @property (nonatomic, readonly) CKIUser *currentUser;
 
 /**
+ The ID of the user that the current user should masquerade as
+ */
+@property (nonatomic) NSString *actAsUserID;
+
+/**
  Instantiates a canvas client with the given information.
 
  @param baseURL the base URL to be used by the client

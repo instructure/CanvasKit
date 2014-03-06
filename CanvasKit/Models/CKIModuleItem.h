@@ -8,6 +8,8 @@
 
 #import "CKIModel.h"
 
+@class CKIModule;
+
 /**
  The module item is a file.
  
@@ -155,4 +157,6 @@ extern NSString * const CKIModuleItemCompletionRequirementMinimumScore;
  */
 @property (nonatomic) BOOL completed;
 
+
+@property (nonatomic) CKIModule *context;
 @end
