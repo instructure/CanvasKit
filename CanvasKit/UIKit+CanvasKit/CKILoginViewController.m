@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setTitle:self.request.URL.host];
     self.webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [self.webView setDelegate:self];
     [self.webView setScalesPageToFit:YES];

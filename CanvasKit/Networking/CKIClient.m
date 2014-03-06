@@ -218,7 +218,7 @@
 
     NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
 
-    return [[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [[[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSDictionary *finalParameters = newParameters;
         if ([self.actAsUserID length]) {
             finalParameters = [@{@"as_user_id": self.actAsUserID} dictionaryByAddingObjectsFromDictionary:finalParameters];
@@ -249,7 +249,8 @@
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
-    }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context];
+    }] setNameWithFormat:@"-fetchResponseAtPath: %@ parameters: %@ transformer: %@ context: %@", path, newParameters, transformer, context]
+            replay];
 }
 
 - (BOOL)errorCausedByRevokedAuthToken:(NSError *)error task:(NSURLSessionDataTask *)task

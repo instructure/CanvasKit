@@ -16,7 +16,12 @@
 
 - (RACSignal *)fetchActivityStreamForContext:(id<CKIContext>)context
 {
-    NSString *path = [context.path stringByAppendingPathComponent:@"users/self/activity_stream"];
+    NSString *path = context.path;
+    
+    if ([path isEqualToString:@"/api/v1"] || path == (id)[NSNull null] || path.length == 0){
+        path = @"/api/v1/users/self/activity_stream";
+    }
+    
     NSValueTransformer *transformer = [CKIActivityStreamItem activityStreamItemTransformer];
     return [self fetchResponseAtPath:path parameters:nil transformer:transformer context:nil];
 }
