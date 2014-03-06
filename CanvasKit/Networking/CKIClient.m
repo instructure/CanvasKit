@@ -219,7 +219,11 @@
     NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
 
     return [[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        NSURLSessionDataTask *task = [self GET:path parameters:newParameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *finalParameters = newParameters;
+        if ([self.actAsUserID length]) {
+            finalParameters = [@{@"as_user_id": self.actAsUserID} dictionaryByAddingObjectsFromDictionary:finalParameters];
+        }
+        NSURLSessionDataTask *task = [self GET:path parameters:finalParameters success:^(NSURLSessionDataTask *task, id responseObject) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
             NSURL *currentPage = response.currentPage;
             NSURL *nextPage = response.nextPage;
