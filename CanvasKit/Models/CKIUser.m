@@ -22,7 +22,8 @@
        @"avatarURL": @"avatar_url",
        @"lastLogin": @"last_login",
        @"timeZone": @"time_zone",
-       @"email": @"primary_email"
+       @"email": @"primary_email",
+       @"calendar": @"calendar.ics"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -36,6 +37,11 @@
 + (NSValueTransformer *)lastLoginJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)calendarJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 - (NSString *)path

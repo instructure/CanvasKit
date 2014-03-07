@@ -80,4 +80,9 @@
  */
 @property (nonatomic, copy) NSString *timeZone;
 
+/**
+ The URL for the user's calendar.
+ **/
+@property (nonatomic, strong) NSURL *calendar;
+
 @end
