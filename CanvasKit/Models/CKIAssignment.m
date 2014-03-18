@@ -34,6 +34,7 @@
         @"peerReviewCount": @"peer_review_count",
         @"peerReviewsAssignAt": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
+        @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type"
     };
