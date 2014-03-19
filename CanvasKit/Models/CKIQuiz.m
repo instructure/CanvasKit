@@ -62,4 +62,9 @@
     return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
 }
 
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"quizzes"] stringByAppendingPathComponent:self.id];
+}
+
 @end
