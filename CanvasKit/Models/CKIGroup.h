@@ -17,6 +17,11 @@ extern NSString * const CKIGroupJoinLevelInvitationOnly;
 /**
  Plain text description of the group.
  */
+@property (nonatomic, copy) NSString *name;
+
+/**
+ Plain text description of the group.
+ */
 @property (nonatomic, copy) NSString *groupDescription;
 
 /**
