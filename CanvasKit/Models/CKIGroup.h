@@ -15,6 +15,16 @@ extern NSString * const CKIGroupJoinLevelInvitationOnly;
 @interface CKIGroup : CKIModel
 
 /**
+ Plain text name of the group
+ */
+@property (nonatomic, copy) NSString *name;
+
+/**
+ Plain text description of the group.
+ */
+@property (nonatomic, copy) NSString *name;
+
+/**
  Plain text description of the group.
  */
 @property (nonatomic, copy) NSString *groupDescription;
