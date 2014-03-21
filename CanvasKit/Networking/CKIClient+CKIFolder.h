@@ -44,4 +44,9 @@
  */
 - (RACSignal *)fetchFilesForFolder:(CKIFolder *)folder;
 
+
+- (RACSignal *)fetchFolder:(NSString *)folderID withContext:(id<CKIContext>)context;
+
+- (RACSignal *)fetchRootFolderForContext:(id <CKIContext>)context;
+
 @end

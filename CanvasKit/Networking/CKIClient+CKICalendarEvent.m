@@ -11,6 +11,7 @@
 #import "CKIClient+CKICalendarEvent.h"
 #import "CKICalendarEvent.h"
 #import "CKICourse.h"
+#import "CKIGroup.h"
 
 @implementation CKIClient (CKICalendarEvent)
 
@@ -19,6 +20,26 @@
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
     
     NSString *contextCode = [NSString stringWithFormat:@"course_%@", course.id];
+    NSDictionary *params = @{@"type": @"event",
+                             @"context_codes": @[contextCode],
+                             @"start_date": @"1900-01-01",
+                             @"end_date": @"2099-12-31"};
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil];
+}
+
+- (RACSignal *)fetchCalendarEventsForContext:(id<CKIContext>)context
+{
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
+    
+    NSString *contextCode = @"";
+    if ([[context path] rangeOfString:@"courses"].location != NSNotFound){
+        contextCode = [NSString stringWithFormat:@"course_%@", context];
+    } else if ([[context path] rangeOfString:@"groups"].location != NSNotFound){
+        contextCode = [NSString stringWithFormat:@"groups_%@", context];
+    } else if ([[context path] rangeOfString:@"users"].location != NSNotFound) {
+        contextCode = [NSString stringWithFormat:@"users_%@", context];
+    }
+    
     NSDictionary *params = @{@"type": @"event",
                              @"context_codes": @[contextCode],
                              @"start_date": @"1900-01-01",

@@ -18,5 +18,4 @@
 
 @property (nonatomic, strong) NSString *type;
 
-@property (nonatomic) CKICourse *context;
 @end

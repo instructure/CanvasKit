@@ -36,4 +36,6 @@
  */
 - (RACSignal *)fetchCalendarEvents;
 
+- (RACSignal *)fetchCalendarEventsForContext:(id<CKIContext>)context;
+
 @end
