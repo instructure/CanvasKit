@@ -41,4 +41,9 @@ NSString * const CKIGroupJoinLevelInvitationOnly = @"invitation_only";
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"groups"] stringByAppendingPathComponent:self.id];
+}
+
 @end
