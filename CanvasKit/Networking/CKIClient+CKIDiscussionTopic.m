@@ -12,28 +12,6 @@
 
 @implementation CKIClient (CKIDiscussionTopic)
 
-- (RACSignal *)fetchDiscussionTopicsForCourse:(CKICourse *)course
-{
-    NSString *path = [course.path stringByAppendingPathComponent:@"discussion_topics"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIDiscussionTopic class] context:course];
-}
-
-- (RACSignal *)fetchDiscussionTopicForCourse:(CKICourse *)course topicID:(NSString *)topicID
-{
-    NSString *path = [course.path stringByAppendingPathComponent:@"discussion_topics"];
-    path = [path stringByAppendingPathComponent:[NSString stringWithFormat: @"%@", topicID]];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIDiscussionTopic class] context:course];
-}
-
-- (RACSignal *)fetchAnnouncementsForCourse:(CKICourse *)course
-{
-    NSString *path = [course.path stringByAppendingPathComponent:@"discussion_topics"];
-    
-    NSDictionary *params = @{@"only_announcements":@"true"};
-    return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:course];
-}
-
-
 - (RACSignal *)fetchDiscussionTopicsForContext:(id<CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"discussion_topics"];

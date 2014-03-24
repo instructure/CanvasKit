@@ -14,8 +14,6 @@
 
 @interface CKIClient (CKITab)
 
-- (RACSignal *)fetchTabsForCourse:(CKICourse *)course;
-
 - (RACSignal *)fetchTabsForContext:(id<CKIContext>)context;
 
 @end

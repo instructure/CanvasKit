@@ -12,19 +12,6 @@
 
 @implementation CKIClient (CKIPage)
 
-- (RACSignal *)fetchPagesForCourse:(CKICourse *)course
-{
-    NSString *path = [course.path stringByAppendingPathComponent:@"pages"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:course];
-}
-
-- (RACSignal *)fetchPage:(NSString *)pageId forCourse:(CKICourse *)course
-{
-    NSString * path = [course.path stringByAppendingPathComponent:@"pages"];
-    path = [path stringByAppendingPathComponent:pageId];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:course];
-}
-
 - (RACSignal *)fetchPagesForContext:(id<CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"pages"];

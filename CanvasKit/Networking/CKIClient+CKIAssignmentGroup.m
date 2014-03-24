@@ -15,19 +15,6 @@
 
 @implementation CKIClient (CKIAssignmentGroup)
 
-- (RACSignal *)fetchAssignmentGroupsForCourse:(CKICourse *)course
-{
-    NSString *path = [[course path] stringByAppendingPathComponent:@"assignment_groups"];
-    return [[self fetchResponseAtPath:path parameters:nil modelClass:[CKIAssignmentGroup class] context:course] map:^id(NSArray *assignmentGroups) {
-        for (CKIAssignmentGroup *group in assignmentGroups) {
-            for (CKIAssignment *assignment in group.assignments) {
-                assignment.context = course;
-            }
-        }
-        return assignmentGroups;
-    }];
-}
-
 - (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignment_groups"];

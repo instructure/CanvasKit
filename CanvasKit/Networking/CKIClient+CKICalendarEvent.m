@@ -15,18 +15,6 @@
 
 @implementation CKIClient (CKICalendarEvent)
 
-- (RACSignal *)fetchCalendarEventsForCourse:(CKICourse *)course
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];
-    
-    NSString *contextCode = [NSString stringWithFormat:@"course_%@", course.id];
-    NSDictionary *params = @{@"type": @"event",
-                             @"context_codes": @[contextCode],
-                             @"start_date": @"1900-01-01",
-                             @"end_date": @"2099-12-31"};
-    return [self fetchResponseAtPath:path parameters:params modelClass:[CKICalendarEvent class] context:nil];
-}
-
 - (RACSignal *)fetchCalendarEventsForContext:(id<CKIContext>)context
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"calendar_events"];

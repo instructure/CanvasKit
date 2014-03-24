@@ -354,7 +354,7 @@
 		80785A1217E146B000339A06 /* CKIModuleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIModuleItem.m; sourceTree = "<group>"; };
 		808A0DC417CBCADA0000654F /* NSValueTransformer+CKIPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+CKIPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
 		808A0DC517CBCADA0000654F /* NSValueTransformer+CKIPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+CKIPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
-		809808BB17C6D9BB00FC3BF6 /* CKIAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CKIAssignment.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		809808BB17C6D9BB00FC3BF6 /* CKIAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CKIAssignment.h; sourceTree = "<group>"; };
 		809808BC17C6D9BB00FC3BF6 /* CKIAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIAssignment.m; sourceTree = "<group>"; };
 		809808C117C6DD1400FC3BF6 /* assignment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = assignment.json; sourceTree = "<group>"; };
 		809876E7180493E4001D01BC /* CKIClient+CKIUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIUserSpec.m"; sourceTree = "<group>"; };
