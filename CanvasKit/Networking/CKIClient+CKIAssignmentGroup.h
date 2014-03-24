@@ -14,5 +14,6 @@
 @interface CKIClient (CKIAssignmentGroup)
 
 - (RACSignal *)fetchAssignmentGroupsForCourse:(CKICourse *)course;
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context;
 
 @end

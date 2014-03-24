@@ -33,4 +33,26 @@
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:course];
 }
 
+
+- (RACSignal *)fetchDiscussionTopicsForContext:(id<CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"discussion_topics"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIDiscussionTopic class] context:context];
+}
+
+- (RACSignal *)fetchDiscussionTopicForContext:(id<CKIContext>)context topicID:(NSString *)topicID
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"discussion_topics"];
+    path = [path stringByAppendingPathComponent:[NSString stringWithFormat: @"%@", topicID]];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIDiscussionTopic class] context:context];
+}
+
+- (RACSignal *)fetchAnnouncementsForContext:(id<CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"discussion_topics"];
+    
+    NSDictionary *params = @{@"only_announcements":@"true"};
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:context];
+}
+
 @end

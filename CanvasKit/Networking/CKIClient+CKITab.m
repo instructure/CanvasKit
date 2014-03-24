@@ -21,10 +21,10 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:course];
 }
 
-- (RACSignal *)fetchTabsForGroup:(CKIGroup *)group
+- (RACSignal *)fetchTabsForContext:(id<CKIContext>)context
 {
-    NSString *path = [[group path] stringByAppendingPathComponent:@"tabs"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:group];
+    NSString *path = [[context path] stringByAppendingPathComponent:@"tabs"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:context];
 }
 
 @end

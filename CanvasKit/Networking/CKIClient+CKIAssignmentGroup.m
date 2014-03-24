@@ -28,4 +28,17 @@
     }];
 }
 
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context
+{
+    NSString *path = [[context path] stringByAppendingPathComponent:@"assignment_groups"];
+    return [[self fetchResponseAtPath:path parameters:nil modelClass:[CKIAssignmentGroup class] context:context] map:^id(NSArray *assignmentGroups) {
+        for (CKIAssignmentGroup *group in assignmentGroups) {
+            for (CKIAssignment *assignment in group.assignments) {
+                assignment.context = context;
+            }
+        }
+        return assignmentGroups;
+    }];
+}
+
 @end

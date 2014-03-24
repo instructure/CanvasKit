@@ -22,4 +22,7 @@
 
 - (RACSignal *)fetchGroupsForCourse:(CKICourse *)course;
 
+- (RACSignal *)fetchGroup:(NSString *)groupID withContext:(id<CKIContext>)context;
+
+- (RACSignal *)fetchGroupsForContext:(id <CKIContext>)context;
 @end

@@ -38,4 +38,8 @@
  */
 - (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course;
 
+
+- (RACSignal *)fetchUsersForContext:(id<CKIContext>)context;
+
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
 @end

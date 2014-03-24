@@ -25,4 +25,17 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:course];
 }
 
+- (RACSignal *)fetchPagesForContext:(id<CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"pages"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
+}
+
+- (RACSignal *)fetchPage:(NSString *)pageId forContext:(id<CKIContext>)context
+{
+    NSString * path = [context.path stringByAppendingPathComponent:@"pages"];
+    path = [path stringByAppendingPathComponent:pageId];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
+}
+
 @end

@@ -14,6 +14,12 @@
 
 @implementation CKIClient (CKIAssignment)
 
+- (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context
+{
+    NSString *path = [[context path] stringByAppendingPathComponent:@"assignments"];
+    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"submission"]} modelClass:[CKIAssignment class] context:context];
+}
+
 - (RACSignal *)fetchAssignmentsForCourse:(CKICourse *)course
 {
     NSString *path = [[course path] stringByAppendingPathComponent:@"assignments"];

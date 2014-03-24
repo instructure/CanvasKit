@@ -36,4 +36,19 @@
     return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course];
 }
 
+- (RACSignal *)fetchUsersForContext:(id<CKIContext>)context
+{
+    return [self fetchUsersWithParameters:nil context:context];
+}
+
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id<CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"users"];
+    
+    NSMutableDictionary *updatedParameters = [parameters mutableCopy];
+    [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
+    
+    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:context];
+}
+
 @end

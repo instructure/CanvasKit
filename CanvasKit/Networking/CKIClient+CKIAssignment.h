@@ -13,6 +13,7 @@
 
 @interface CKIClient (CKIAssignment)
 
+- (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context;
 - (RACSignal *)fetchAssignmentsForCourse:(CKICourse *)course;
 
 @end
