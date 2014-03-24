@@ -31,9 +31,4 @@
     return [self fetchActivityStreamForContext:CKIRootContext];
 }
 
-- (RACSignal *)fetchActivityStreamForCourse:(CKICourse *)course
-{
-    return [self fetchActivityStreamForContext:course];
-}
-
 @end

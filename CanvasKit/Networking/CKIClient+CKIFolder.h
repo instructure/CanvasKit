@@ -22,13 +22,15 @@
 - (RACSignal *)fetchFolder:(NSString *)folderID;
 
 /**
- Every course has a root folder which contains all the files
- and folders for the course. This method fetches that folder,
- which can in turn in be used to fetch the entire file tree.
+ This method fetches the root folder for a given context 
+ if it exists. If a root folder is returned it can be used
+ to fetch the entire file tree.
  
- @param course the course to fetch the root folder for
+ @param context the context to fetch the root folder for
+ (course, group, etc)
  */
-- (RACSignal *)fetchRootFolderForCourse:(CKICourse *)course;
+
+- (RACSignal *)fetchRootFolderForContext:(id <CKIContext>)context;
 
 /**
  Fetch the folders inside the given folder.
@@ -46,7 +48,5 @@
 
 
 - (RACSignal *)fetchFolder:(NSString *)folderID withContext:(id<CKIContext>)context;
-
-- (RACSignal *)fetchRootFolderForContext:(id <CKIContext>)context;
 
 @end

@@ -15,12 +15,6 @@
 
 @implementation CKIClient (CKITab)
 
-- (RACSignal *)fetchTabsForCourse:(CKICourse *)course
-{
-    NSString *path = [[course path] stringByAppendingPathComponent:@"tabs"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:course];
-}
-
 - (RACSignal *)fetchTabsForContext:(id<CKIContext>)context
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"tabs"];

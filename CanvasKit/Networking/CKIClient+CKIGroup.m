@@ -36,21 +36,14 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:nil];
 }
 
-- (RACSignal *)fetchGroupsForCourse:(CKICourse *)course
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
-    path = [path stringByAppendingPathComponent:course.id];
-    path = [path stringByAppendingPathComponent:@"groups"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:course];
-}
-
-- (RACSignal *)fetchGroup:(NSString *)groupID withContext:(id<CKIContext>)context
+- (RACSignal *)fetchGroup:(NSString *)groupID forContext:(id<CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"groups"];
     path = [path stringByAppendingPathComponent:groupID];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:context];
 }
 
+//Currently only supports courses
 - (RACSignal *)fetchGroupsForContext:(id <CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"courses"];

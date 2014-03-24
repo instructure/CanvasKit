@@ -11,10 +11,6 @@
 @class CKICourse;
 
 @interface CKIClient (CKIDiscussionTopic)
-- (RACSignal *)fetchDiscussionTopicsForCourse:(CKICourse *)course;
-- (RACSignal *)fetchDiscussionTopicForCourse:(CKICourse *)course topicID:(NSString *)topicID;
-- (RACSignal *)fetchAnnouncementsForCourse:(CKICourse *)course;
-
 - (RACSignal *)fetchDiscussionTopicsForContext:(id<CKIContext>)context;
 - (RACSignal *)fetchDiscussionTopicForContext:(id<CKIContext>)context topicID:(NSString *)topicID;
 - (RACSignal *)fetchAnnouncementsForContext:(id<CKIContext>)context;
