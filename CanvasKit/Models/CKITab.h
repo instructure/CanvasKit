@@ -12,10 +12,12 @@
 
 @interface CKITab : CKIModel
 
-@property (nonatomic, strong) NSURL *htmlURL;
+@property (nonatomic) NSURL *htmlURL;
 
-@property (nonatomic, strong) NSString *label;
+@property (nonatomic) NSString *label;
 
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic) NSString *type;
+
+@property (nonatomic) NSURL *url;
 
 @end

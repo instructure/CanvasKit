@@ -18,7 +18,7 @@
 - (RACSignal *)fetchTabsForContext:(id<CKIContext>)context
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"tabs"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKITab class] context:context];
+    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"external"]} modelClass:[CKITab class] context:context];
 }
 
 @end

@@ -58,4 +58,10 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"external_tools"] stringByAppendingPathComponent:self.id];
+}
+
 @end
