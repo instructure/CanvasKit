@@ -12,17 +12,17 @@
 
 @implementation CKIClient (CKIPage)
 
-- (RACSignal *)fetchPagesForCourse:(CKICourse *)course
+- (RACSignal *)fetchPagesForContext:(id<CKIContext>)context
 {
-    NSString *path = [course.path stringByAppendingPathComponent:@"pages"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:course];
+    NSString *path = [context.path stringByAppendingPathComponent:@"pages"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
 }
 
-- (RACSignal *)fetchPage:(NSString *)pageId forCourse:(CKICourse *)course
+- (RACSignal *)fetchPage:(NSString *)pageId forContext:(id<CKIContext>)context
 {
-    NSString * path = [course.path stringByAppendingPathComponent:@"pages"];
+    NSString * path = [context.path stringByAppendingPathComponent:@"pages"];
     path = [path stringByAppendingPathComponent:pageId];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:course];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
 }
 
 @end

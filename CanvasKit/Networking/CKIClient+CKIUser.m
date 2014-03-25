@@ -14,26 +14,26 @@
 
 @implementation CKIClient (CKIUser)
 
-- (RACSignal *)fetchUsersForCourse:(CKICourse *)course
+- (RACSignal *)fetchUsersForContext:(id<CKIContext>)context
 {
-    return [self fetchUsersWithParameters:nil course:course];
+    return [self fetchUsersWithParameters:nil context:context];
 }
 
-- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters course:(CKICourse *)course
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id<CKIContext>)context
 {
-    NSString *path = [course.path stringByAppendingPathComponent:@"users"];
-
+    NSString *path = [context.path stringByAppendingPathComponent:@"users"];
+    
     NSMutableDictionary *updatedParameters = [parameters mutableCopy];
     [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
     
-    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:course];
+    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:context];
 }
 
-- (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm course:(CKICourse *)course
+- (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm context:(id<CKIContext>)context
 {
-    NSString *path = [course.path stringByAppendingPathComponent:@"search_users"];
+    NSString *path = [context.path stringByAppendingPathComponent:@"search_users"];
     NSDictionary *parameters = @{@"search_term": searchTerm, @"include": @[@"avatar_url"]};
-    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:course];
+    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context];
 }
 
 @end

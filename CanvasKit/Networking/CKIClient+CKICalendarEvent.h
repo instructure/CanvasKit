@@ -14,9 +14,9 @@
 @interface CKIClient (CKICalendarEvent)
 
 /**
- Fetches all calendar events for the course
+ Fetches all calendar events for the context
  */
-- (RACSignal *)fetchCalendarEventsForCourse:(CKICourse *)course;
+- (RACSignal *)fetchCalendarEventsForContext:(id<CKIContext>)context;
 
 /**
  Fetches only today's calendar events for the current user

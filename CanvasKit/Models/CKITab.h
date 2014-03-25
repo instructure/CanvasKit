@@ -18,7 +18,6 @@
 
 @property (nonatomic) NSString *type;
 
-@property (nonatomic) CKICourse *context;
-
 @property (nonatomic) NSURL *url;
+
 @end

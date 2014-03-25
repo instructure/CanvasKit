@@ -11,13 +11,14 @@
 #import "CKIClient+CKITab.h"
 #import "CKITab.h"
 #import "CKICourse.h"
+#import "CKIGroup.h"
 
 @implementation CKIClient (CKITab)
 
-- (RACSignal *)fetchTabsForCourse:(CKICourse *)course
+- (RACSignal *)fetchTabsForContext:(id<CKIContext>)context
 {
-    NSString *path = [[course path] stringByAppendingPathComponent:@"tabs"];
-    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"external"]} modelClass:[CKITab class] context:course];
+    NSString *path = [[context path] stringByAppendingPathComponent:@"tabs"];
+    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"external"]} modelClass:[CKITab class] context:context];
 }
 
 @end

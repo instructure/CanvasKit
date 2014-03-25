@@ -22,10 +22,10 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:CKIRootContext];
 }
 
-- (RACSignal *)fetchRootFolderForCourse:(CKICourse *)course
+- (RACSignal *)fetchRootFolderForContext:(id <CKIContext>)context
 {
-    NSString *path = [course.path stringByAppendingPathComponent:@"folders/root"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:course];
+    NSString *path = [context.path stringByAppendingPathComponent:@"folders/root"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:context];
 }
 
 - (RACSignal *)fetchFoldersForFolder:(CKIFolder *)folder
@@ -42,6 +42,13 @@
     path =  [path stringByAppendingPathComponent:folder.id];
     path = [path stringByAppendingPathComponent:@"files"];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFile class] context:folder.context];
+}
+
+- (RACSignal *)fetchFolder:(NSString *)folderID withContext:(id<CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"folders"];
+    path = [path stringByAppendingPathComponent:folderID];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:context];
 }
 
 @end

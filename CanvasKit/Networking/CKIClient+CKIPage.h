@@ -14,8 +14,8 @@
 
 @interface CKIClient (CKIPage)
 
-- (RACSignal *)fetchPagesForCourse:(CKICourse *)course;
+- (RACSignal *)fetchPagesForContext:(id<CKIContext>)context;
 
-- (RACSignal *)fetchPage:(NSString *)id forCourse:(CKICourse *)course;
+- (RACSignal *)fetchPage:(NSString *)pageId forContext:(id<CKIContext>)context;
 
 @end

@@ -46,7 +46,7 @@ typedef enum {
 /**
  The date after which the assignment is locked. nil if this assignment is
  never locked.
- 
+
  @warning If this assignment has assignment overrides, use the date from
  the override instead.
  */
@@ -200,15 +200,5 @@ typedef enum {
  @note This is NOT valid unless you have automatic_peer_reviews set to true.
  */
 @property (nonatomic, strong) NSDate *peerReviewsAssignAt;
-    
-
-#pragma mark - CKIModel
-/** @name CKIModel Overrides. */
-
-/**
- The context for an assignment is a CKICourse object. This override
- is a convenience and merely adds the type of the context back in.
- */
-@property (nonatomic, readonly) CKICourse *context;
 
 @end
