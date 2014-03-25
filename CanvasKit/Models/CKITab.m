@@ -29,6 +29,11 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
++ (NSValueTransformer *)urlJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 + (NSValueTransformer *)idJSONTransformer
 {
     return nil; 
