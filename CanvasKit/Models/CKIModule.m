@@ -29,7 +29,8 @@ NSString * const CKIModuleWorkflowStateDeleted = @"deleted";
         @"requireSequentialProgress": @"require_sequential_progress",
         @"itemsCount": @"items_count",
         @"itemsAPIURL": @"items_url",
-        @"completedAt": @"completed_at"
+        @"completedAt": @"completed_at",
+        @"prerequisiteModuleIDs": @"prerequisite_module_ids"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -41,6 +42,11 @@ NSString * const CKIModuleWorkflowStateDeleted = @"deleted";
 }
 
 + (NSValueTransformer *)itemsAPIURLJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)prerequisiteModuleIDsAPIURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
