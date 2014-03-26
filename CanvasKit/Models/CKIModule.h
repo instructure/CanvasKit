@@ -92,4 +92,9 @@ extern NSString * const CKIModuleWorkflowStateDeleted;
  */
 @property (nonatomic, strong) NSDate *completedAt;
 
+/**
+ IDs of Modules that must be completed before this one is unlocked
+ */
+@property (nonatomic, copy) NSArray *prerequisiteModuleIDs;
+
 @end
