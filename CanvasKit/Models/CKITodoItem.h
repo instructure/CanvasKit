@@ -27,6 +27,6 @@
 
 @property (nonatomic, strong) NSString *contextType;
 
-@property (nonatomic) NSInteger groupID;
+@property (nonatomic, strong) NSString *groupID;
 
 @end
