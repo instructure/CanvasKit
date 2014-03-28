@@ -7,6 +7,7 @@
 //
 
 #import "CKILockableModel.h"
+#import "CKICourse.h"
 
 @interface CKIFile : CKILockableModel
 
@@ -57,6 +58,13 @@
 @property (nonatomic, getter = isHidden) BOOL hidden;
 
 @property (nonatomic, strong) NSDate *lockedAt;
+
+
+/**
+ The context for a file will always be a course
+ The API does not support files in groups at this time
+ */
+@property (nonatomic, strong) CKICourse *context;
 
 
 @end

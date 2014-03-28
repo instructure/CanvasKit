@@ -7,6 +7,7 @@
 //
 
 #import "CKILockableModel.h"
+#import "CKICourse.h"
 
 @interface CKIFolder : CKILockableModel
 
@@ -77,5 +78,11 @@
  If this folder should be hidden from this user.
  */
 @property (nonatomic, getter = isHiddenForUser) BOOL hiddenForUser;
+
+/**
+ The context for a folder will always be a course
+ The API does not support folders in groups at this time
+ */
+@property (nonatomic, strong) CKICourse *context;
 
 @end

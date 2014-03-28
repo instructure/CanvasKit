@@ -49,4 +49,11 @@
 
 - (RACSignal *)fetchFolder:(NSString *)folderID withContext:(id<CKIContext>)context;
 
+/**
+ Delete the folder
+ 
+ @param folder the folder you want to delete
+ */
+- (RACSignal *)deleteFolder:(CKIFolder *)folder;
+
 @end

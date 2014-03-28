@@ -82,6 +82,15 @@
 #pragma mark - JSON API Helpers
 
 /**
+ Delete an object at the given path
+ 
+ @param path the api endpoint for the object
+ @param modelClass the class of the model that is being deleted
+ @param context the context for the deleted object
+ */
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
+
+/**
  Fetch a paginated response from the given JSON API endpoint.
  
  @param path the paginated JSON API endpoint (ex. @"api/v1/courses/123/modules")

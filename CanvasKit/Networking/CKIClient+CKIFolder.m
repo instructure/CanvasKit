@@ -51,4 +51,11 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIFolder class] context:context];
 }
 
+- (RACSignal *)deleteFolder:(CKIFolder *)folder
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"folders"] stringByAppendingPathComponent:folder.id];
+    NSDictionary *params = @{@"force": @"true"};
+    return [self deleteObjectAtPath:path modelClass:[CKIFolder class] parameters:params context:nil];
+}
+
 @end
