@@ -14,5 +14,6 @@
 @interface CKIClient (CKIFile)
 
 - (RACSignal *)fetchFile:(NSString *)fileID;
+- (RACSignal *)deleteFile:(CKIFile *)file;
 
 @end

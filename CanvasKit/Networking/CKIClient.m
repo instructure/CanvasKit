@@ -202,6 +202,26 @@
 
 #pragma mark - JSON API Helpers
 
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
+{
+    NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        NSURLSessionDataTask *task = [self DELETE:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
+            [subscriber sendNext:model];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+        
+    }] setNameWithFormat:@"-deleteObjectAtPath: %@", path];
+}
+
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context
 {
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only fetch CKIModels");

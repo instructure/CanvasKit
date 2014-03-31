@@ -7,6 +7,7 @@
 //
 
 #import "CKILockableModel.h"
+#import "CKICourse.h"
 
 @interface CKIFolder : CKILockableModel
 
