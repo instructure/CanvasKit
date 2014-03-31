@@ -13,29 +13,20 @@
 @interface CKIClient (CKIUser)
 
 /**
- Fetch all the users for the current context.
+ Fetch all the users for the current course.
  
  @param course the course to fetch the users for
  */
 - (RACSignal *)fetchUsersForContext:(id<CKIContext>)context;
 
 /**
- Fetch users for the current context filtered by parameters.
+ Fetch users for the current course filtered by parameters.
  
  @param parameters the parameters for fetching users in the course
- @param context the context (course, group, account, etc.) to fetch the users for
+ @param course the course to fetch the users for
  @param success the block to be executed if the API call succeeds
  @param failure the block to be executed if the API call fails
  */
-
-- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
-
-/**
- Fetch all the users for the current context.
- 
- @param searchTerm the search term for searching users in the course
- @param context the context (course, group, ccount) to fetch the users for
- */
-- (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm context:(id<CKIContext>)context;
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id <CKIContext>)context;
 
 @end

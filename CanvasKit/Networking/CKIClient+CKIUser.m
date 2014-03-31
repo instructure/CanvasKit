@@ -14,25 +14,14 @@
 
 @implementation CKIClient (CKIUser)
 
-- (RACSignal *)fetchUsersForContext:(id<CKIContext>)context
+- (RACSignal *)fetchUsersForContext:(id <CKIContext>)context
 {
-    return [self fetchUsersWithParameters:nil context:context];
+    return [self fetchUsersWithParameters:@{@"include" : @[@"avatar_url", @"enrollments"]} context:context];
 }
 
-- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id<CKIContext>)context
+- (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id <CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"users"];
-    
-    NSMutableDictionary *updatedParameters = [parameters mutableCopy];
-    [updatedParameters setObject:@[@"avatar_url"] forKey:@"include"];
-    
-    return [self fetchResponseAtPath:path parameters:updatedParameters modelClass:[CKIUser class] context:context];
-}
-
-- (RACSignal *)fetchUsersMatchingSearchTerm:(NSString *)searchTerm context:(id<CKIContext>)context
-{
-    NSString *path = [context.path stringByAppendingPathComponent:@"search_users"];
-    NSDictionary *parameters = @{@"search_term": searchTerm, @"include": @[@"avatar_url"]};
     return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context];
 }
 
