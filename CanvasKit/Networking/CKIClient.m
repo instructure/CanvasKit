@@ -212,7 +212,8 @@
             [subscriber sendNext:model];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [subscriber sendError:error];
+            NSHTTPURLResponse *response = task.response;
+            [subscriber sendError:[self errorForResponse:response]];
         }];
         
         return [RACDisposable disposableWithBlock:^{
@@ -220,6 +221,29 @@
         }];
         
     }] setNameWithFormat:@"-deleteObjectAtPath: %@", path];
+}
+
+- (NSError *)errorForResponse:(NSHTTPURLResponse *)response
+{
+
+    NSDictionary *userInfo;
+    
+    switch (response.statusCode) {
+        case 401: {
+            userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"You are not authorized to perform this action.", nil),
+                         NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"", nil)};
+        }
+            break;
+        default: {
+            userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"An error occurred", nil),
+                            NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"", nil),
+                            NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"", nil)};
+        }
+            break;
+    }
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"com.instructure.canvaskit.APIRequestError" code:response.statusCode userInfo:userInfo];
+    return error;
 }
 
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context
