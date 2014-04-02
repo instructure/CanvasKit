@@ -23,7 +23,7 @@
 
 - (RACSignal *)fetchGroupsForLocalUser
 {
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"self/groups"];
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/groups"];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:nil];
 }
 
