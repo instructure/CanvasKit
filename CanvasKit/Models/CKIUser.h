@@ -85,4 +85,10 @@
  **/
 @property (nonatomic, strong) NSURL *calendar;
 
+/**
+ Array of the user's enrollments when fetched for a particular course.
+ @warning: this only works when fetching list of users for a course.
+*/
+@property (nonatomic, copy) NSArray *enrollments;
+
 @end
