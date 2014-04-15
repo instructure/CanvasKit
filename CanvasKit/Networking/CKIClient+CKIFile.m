@@ -7,8 +7,10 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AFHTTPRequestOperationManager.h>
 #import "CKIClient+CKIFile.h"
 #import "CKIFile.h"
+#import "CKIFolder.h"
 
 @implementation CKIClient (CKIFile)
 
@@ -23,6 +25,56 @@
 {
     NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"files"] stringByAppendingPathComponent:file.id];
     return [self deleteObjectAtPath:path modelClass:[CKIFile class] parameters:0 context:nil];
+}
+
+- (RACSignal *)uploadFile:(NSData *)fileData ofType:(NSString *)fileType withName:(NSString *)name inFolder:(CKIFolder *)folder
+{
+    NSString *path = [[[CKIRootContext.path stringByAppendingPathComponent:@"folders"] stringByAppendingPathComponent:folder.id] stringByAppendingPathComponent:@"files"];
+    return [[self fileUploadTokenSignalForPath:path file:fileData fileName:name folder:folder] flattenMap:^RACStream *(NSDictionary *fileUploadInfo) {
+        return [self uploadFile:fileData ofType:fileType withName:name withFileUploadInfo:fileUploadInfo inFolder:folder];
+    }];
+}
+
+- (RACSignal *)fileUploadTokenSignalForPath:(NSString *)path file:(NSData *)fileData fileName:(NSString *)fileName folder:(CKIFolder *)folder
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self POST:path parameters:@{@"name": fileName, @"size": @(fileData.length), @"parent_folder_id": folder.id, @"on_duplicate": @"rename"} success:^(NSURLSessionDataTask *task, id responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    
+}
+
+- (RACSignal *)uploadFile:(NSData *)fileData ofType:(NSString *)fileType withName:(NSString *)fileName withFileUploadInfo:(NSDictionary *)uploadInfo inFolder:(CKIFolder *)folder
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        AFHTTPRequestOperationManager *uploadOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:uploadInfo[@"upload_url"]]];
+        uploadOperationManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        NSURLSessionDataTask *task = [uploadOperationManager POST:@"" parameters:uploadInfo[@"upload_params"] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:@"application/octet-stream"];
+        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            CKIFile *newFile = [self parseModel:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIFile class]] fromJSON:responseObject context:folder.context];
+            [subscriber sendNext:newFile];
+            [subscriber sendCompleted];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
 }
 
 @end

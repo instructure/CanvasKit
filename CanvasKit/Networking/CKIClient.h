@@ -126,4 +126,9 @@
  */
 - (RACSignal *)updateModel:(CKIModel *)model parameters:(NSDictionary *)parameters;
 
+/**
+ Creates a model from json
+ */
+- (CKIModel *)parseModel:(NSValueTransformer *)transformer fromJSON:(NSDictionary *)jsonDictionary context:(id)context;
+
 @end
