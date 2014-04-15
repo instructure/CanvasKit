@@ -56,4 +56,12 @@
  */
 - (RACSignal *)deleteFolder:(CKIFolder *)folder;
 
+/**
+ Creates a folder in the given parent folder
+ 
+ @param folder the folder to create
+ @prarm parentFolder the folder the new folder will be created in
+ */
+- (RACSignal *)createFolder:(CKIFolder *)folder InFolder:(CKIFolder *)parentFolder;
+
 @end

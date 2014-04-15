@@ -58,4 +58,11 @@
     return [self deleteObjectAtPath:path modelClass:[CKIFolder class] parameters:params context:nil];
 }
 
+- (RACSignal *)createFolder:(CKIFolder *)folder InFolder:(CKIFolder *)parentFolder
+{
+    NSString *path = [[[CKIRootContext.path stringByAppendingPathComponent:@"folders"] stringByAppendingPathComponent:parentFolder.id] stringByAppendingPathComponent:@"folders"];
+    NSDictionary *params = @{@"name": folder.name};
+    return [self createModelAtPath:path parameters:params modelClass:[CKIFolder class] context:parentFolder.context];
+}
+
 @end

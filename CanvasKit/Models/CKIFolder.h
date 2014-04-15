@@ -79,4 +79,9 @@
  */
 @property (nonatomic, getter = isHiddenForUser) BOOL hiddenForUser;
 
+/**
+ Sort position for the folder
+ */
+@property (nonatomic) NSInteger position;
+
 @end
