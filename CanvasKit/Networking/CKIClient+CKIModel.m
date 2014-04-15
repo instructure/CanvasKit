@@ -15,8 +15,13 @@
 
 - (RACSignal *)refreshModel:(CKIModel *)model parameters:(NSDictionary *)parameters
 {
-    return [[self fetchResponseAtPath:model.path parameters:parameters modelClass:[model class] context:model.context] map:^(CKIModel *updatedObject) {
+    RACSignal *mergeSignal = [[self fetchResponseAtPath:model.path parameters:parameters modelClass:[model class] context:model.context] replay];
+    
+    [mergeSignal subscribeNext:^(CKIModel *updatedObject) {
         [model mergeValuesForKeysFromModel:updatedObject];
+    }];
+    
+    return [mergeSignal map:^(CKIModel *updatedObject) {
         return model;
     }];
 }

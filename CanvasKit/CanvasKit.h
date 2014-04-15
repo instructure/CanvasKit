@@ -48,6 +48,7 @@
 #import "CKITerm.h"
 #import "CKITodoItem.h"
 #import "CKIUser.h"
+#import "CKIEnrollment.h"
 
 #pragma mark - Networking
 
