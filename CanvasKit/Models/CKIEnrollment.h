@@ -23,4 +23,5 @@
 
 @property (nonatomic, strong) NSString *computedCurrentGrade;
 
+@property (nonatomic, readonly) BOOL isStudent;
 @end
