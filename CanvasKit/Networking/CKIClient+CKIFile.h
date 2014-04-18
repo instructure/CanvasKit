@@ -9,11 +9,13 @@
 #import "CKIClient.h"
 
 @class CKIFile;
+@class CKIFolder;
 @class RACSignal;
 
 @interface CKIClient (CKIFile)
 
 - (RACSignal *)fetchFile:(NSString *)fileID;
 - (RACSignal *)deleteFile:(CKIFile *)file;
+- (RACSignal *)uploadFile:(NSData *)fileData ofType:(NSString *)fileType withName:(NSString *)name inFolder:(CKIFolder *)folder;
 
 @end

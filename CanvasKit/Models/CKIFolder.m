@@ -31,7 +31,8 @@
         @"parentFolderID": @"parent_folder_id",
         @"createdAt": @"created_at",
         @"unlockAt": @"unlock_at",
-        @"hiddenForUser": @"hidden_for_user"
+        @"hiddenForUser": @"hidden_for_user",
+        @"position": @"position"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
