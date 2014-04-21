@@ -9,19 +9,19 @@
 
 #import "CKIModel.h"
 
+extern NSString *const CKIEnrollmentTypeStudent;
+extern NSString *const CKIEnrollmentTypeTeacher;
+extern NSString *const CKIEnrollmentTypeTA;
+extern NSString *const CKIEnrollmentTypeObserver;
+
 @interface CKIEnrollment : CKIModel
 
 @property (nonatomic, strong) NSString *type;
-
 @property (nonatomic, strong) NSString *role;
-
 @property (nonatomic, strong) NSNumber *computedFinalScore;
-
 @property (nonatomic, strong) NSNumber *computedCurrentScore;
-
 @property (nonatomic, strong) NSString *computedFinalGrade;
-
 @property (nonatomic, strong) NSString *computedCurrentGrade;
-
 @property (nonatomic, readonly) BOOL isStudent;
+
 @end

@@ -10,10 +10,10 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
-static NSString *const CKIEnrollmentTypeStudent = @"student";
-static NSString *const CKIEnrollmentTypeTeacher = @"teacher";
-static NSString *const CKIEnrollmentTypeTA = @"ta";
-static NSString *const CKIEnrollmentTypeObserver = @"observer";
+NSString *const CKIEnrollmentTypeStudent = @"student";
+NSString *const CKIEnrollmentTypeTeacher = @"teacher";
+NSString *const CKIEnrollmentTypeTA = @"ta";
+NSString *const CKIEnrollmentTypeObserver = @"observer";
 
 @implementation CKIEnrollment
 
@@ -30,7 +30,6 @@ static NSString *const CKIEnrollmentTypeObserver = @"observer";
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }
-
 
 - (BOOL)isStudent
 {
