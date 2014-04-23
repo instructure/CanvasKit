@@ -87,7 +87,7 @@
  @param modelClass the class of the model that is being deleted
  @param context the context for the deleted object
  */
-- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(Class)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
 
 /**
  Fetch a paginated response from the given JSON API endpoint.

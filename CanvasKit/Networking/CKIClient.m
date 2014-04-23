@@ -202,8 +202,9 @@
 
 #pragma mark - JSON API Helpers
 
-- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(Class)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
 {
+    NSAssert([modelClass isKindOfClass:[CKIModel class]], @"Object to delete must be a subclass of CKIModel");
     NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
