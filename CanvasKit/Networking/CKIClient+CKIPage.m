@@ -18,10 +18,10 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
 }
 
-- (RACSignal *)fetchPage:(NSString *)pageId forContext:(id<CKIContext>)context
+- (RACSignal *)fetchPage:(NSString *)pageID forContext:(id<CKIContext>)context
 {
     NSString * path = [context.path stringByAppendingPathComponent:@"pages"];
-    path = [path stringByAppendingPathComponent:pageId];
+    path = [path stringByAppendingPathComponent:pageID];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
 }
 

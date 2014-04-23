@@ -17,11 +17,11 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-        @"sisCourseId": @"sis_course_id",
+        @"sisCourseID": @"sis_course_id",
         @"name": @"name",
         @"courseCode": @"course_code",
         @"workflowState": @"workflow_state",
-        @"accountId": @"account_id",
+        @"accountID": @"account_id",
         @"startAt": @"start_at",
         @"endAt": @"end_at",
         @"enrollments": @"enrollments",
