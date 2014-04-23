@@ -25,4 +25,10 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
 }
 
+- (RACSignal *)fetchFrontPageForContext:(id<CKIContext>)context
+{
+    NSString * path = [context.path stringByAppendingPathComponent:@"front_page"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPage class] context:context];
+}
+
 @end
