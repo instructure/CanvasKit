@@ -10,7 +10,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.ios.deployment_target = '7.0'
+  s.ios.source_files = 'CanvasKit/**/*.{h,m}'
+
   s.osx.deployment_target = '10.9'
+  s.osx.source_files = 'CanvasKit/Helpers/*.{h,m}', 'CanvasKit/Models/*.{h,m}', 'CanvasKit/Networking/*.{h,m}', 'CanvasKit/CanvasKit.h', 'CanvasKit/Constants.h'
 
   s.dependency 'AFNetworking', '2.0'
   s.dependency 'Mantle'

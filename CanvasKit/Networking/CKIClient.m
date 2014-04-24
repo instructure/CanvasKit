@@ -21,7 +21,11 @@
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) CKIUser *currentUser;
+
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 @property (nonatomic, weak) UIViewController *webLoginViewController;
+#endif
+
 @end
 
 @implementation CKIClient
@@ -95,27 +99,6 @@
     }];
 }
 
-- (RACSignal *)login
-{
-    // don't log in again if already logged in
-    if (self.isLoggedIn) {
-        return nil;
-    }
-
-    return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
-        return [self postAuthCode:temporaryCode];
-    }] flattenMap:^RACStream *(NSDictionary *responseObject) {
-        self.accessToken = responseObject[@"access_token"];
-        return [self fetchCurrentUser];
-    }] map:^id(CKIUser *user) {
-        self.currentUser = user;
-        return self;
-    }] doError:^(NSError *error) {
-        NSLog(@"CanvasKit OAuth failed with error: %@", error);
-        [self clearCookiesAndCache];
-    }];
-}
-
 - (RACSignal *)logout
 {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
@@ -153,35 +136,6 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     return request;
-}
-
-- (RACSignal *)authorizeWithServerUsingWebBrowser
-{
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
-        loginViewController.successBlock = ^(NSString *authToken) {
-            [subscriber sendNext:authToken];
-            [subscriber sendCompleted];
-        };
-        loginViewController.failureBlock = ^(NSError *error) {
-            [subscriber sendError:error];
-            [subscriber sendCompleted];
-        };
-
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
-        [loginViewController.navigationItem setRightBarButtonItem:button];
-
-        UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-        [presentingViewController presentViewController:navigationController animated:YES completion:nil];
-        self.webLoginViewController = navigationController;
-
-        return [RACDisposable disposableWithBlock:^{
-            [self.webLoginViewController dismissViewControllerAnimated:YES completion:^void(){
-                self.webLoginViewController = nil;
-            }];
-        }];
-    }];
 }
 
 - (RACSignal *)fetchCurrentUser
@@ -376,5 +330,60 @@
         }];
     }];
 }
+
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+#pragma mark - UIKit Methods
+
+- (RACSignal *)login
+{
+    // don't log in again if already logged in
+    if (self.isLoggedIn) {
+        return nil;
+    }
+
+    return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
+        return [self postAuthCode:temporaryCode];
+    }] flattenMap:^RACStream *(NSDictionary *responseObject) {
+        self.accessToken = responseObject[@"access_token"];
+        return [self fetchCurrentUser];
+    }] map:^id(CKIUser *user) {
+        self.currentUser = user;
+        return self;
+    }] doError:^(NSError *error) {
+        NSLog(@"CanvasKit OAuth failed with error: %@", error);
+        [self clearCookiesAndCache];
+    }];
+}
+
+- (RACSignal *)authorizeWithServerUsingWebBrowser
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
+        loginViewController.successBlock = ^(NSString *authToken) {
+            [subscriber sendNext:authToken];
+            [subscriber sendCompleted];
+        };
+        loginViewController.failureBlock = ^(NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        };
+
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
+        [loginViewController.navigationItem setRightBarButtonItem:button];
+
+        UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+        [presentingViewController presentViewController:navigationController animated:YES completion:nil];
+        self.webLoginViewController = navigationController;
+
+        return [RACDisposable disposableWithBlock:^{
+            [self.webLoginViewController dismissViewControllerAnimated:YES completion:^void(){
+                self.webLoginViewController = nil;
+            }];
+        }];
+    }];
+}
+
+#endif
 
 @end
