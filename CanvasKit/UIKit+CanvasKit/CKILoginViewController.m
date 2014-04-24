@@ -6,15 +6,8 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import <AFHTTPRequestOperation.h>
-#import <FXKeychain/FXKeychain.h>
-#import <Mantle/Mantle.h>
-
 #import "CKILoginViewController.h"
-#import "CKIClient.h"
 #import "NSString+CKIAdditions.h"
-#import "Constants.h"
-#import "CKIUser.h"
 
 @interface CKILoginViewController () <UIWebViewDelegate>
 @property (nonatomic, copy) NSURLRequest *request;

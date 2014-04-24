@@ -474,7 +474,6 @@
 		BDB4B91417E3667A0097D4AC /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BDB4B93417E3BABD0097D4AC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		BDB4B93517E3BABD0097D4AC /* libPods-CanvasKitTests-Expecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CanvasKitTests-Expecta.a"; path = "Pods/build/Debug-iphoneos/libPods-CanvasKitTests-Expecta.a"; sourceTree = "<group>"; };
-		BDB4B93617E3BABD0097D4AC /* libPods-FXKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FXKeychain.a"; path = "Pods/build/Debug-iphoneos/libPods-FXKeychain.a"; sourceTree = "<group>"; };
 		BDB4B93717E3BABD0097D4AC /* libPods-ISO8601DateFormatter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ISO8601DateFormatter.a"; path = "Pods/build/Debug-iphoneos/libPods-ISO8601DateFormatter.a"; sourceTree = "<group>"; };
 		BDB4B93817E3BABD0097D4AC /* libPods-Mantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Mantle.a"; path = "Pods/build/Debug-iphoneos/libPods-Mantle.a"; sourceTree = "<group>"; };
 		BDB4B93917E3BABD0097D4AC /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
@@ -839,7 +838,6 @@
 			children = (
 				BDB4B93417E3BABD0097D4AC /* libPods-AFNetworking.a */,
 				BDB4B93517E3BABD0097D4AC /* libPods-CanvasKitTests-Expecta.a */,
-				BDB4B93617E3BABD0097D4AC /* libPods-FXKeychain.a */,
 				BDB4B93717E3BABD0097D4AC /* libPods-ISO8601DateFormatter.a */,
 				BDB4B93817E3BABD0097D4AC /* libPods-Mantle.a */,
 				BDB4B93917E3BABD0097D4AC /* libPods.a */,

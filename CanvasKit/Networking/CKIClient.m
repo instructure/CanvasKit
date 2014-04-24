@@ -202,22 +202,23 @@
 
 #pragma mark - JSON API Helpers
 
-- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(Class)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
 {
+    NSAssert([modelClass isKindOfClass:[CKIModel class]], @"Object to delete must be a subclass of CKIModel");
     NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        NSURLSessionDataTask *task = [self DELETE:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSURLSessionDataTask *deletionTask = [self DELETE:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
             CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
             [subscriber sendNext:model];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSHTTPURLResponse *response = task.response;
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
             [subscriber sendError:[self errorForResponse:response]];
         }];
         
         return [RACDisposable disposableWithBlock:^{
-            [task cancel];
+            [deletionTask cancel];
         }];
         
     }] setNameWithFormat:@"-deleteObjectAtPath: %@", path];

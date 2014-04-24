@@ -18,7 +18,7 @@
 /**
  the SIS identifier for the course, if defined.
  */
-@property (nonatomic, copy) NSString *sisCourseId;
+@property (nonatomic, copy) NSString *sisCourseID;
 
 /**
  The full name of the course.
@@ -40,7 +40,7 @@
 /**
  The account associated with the course
  */
-@property (nonatomic, copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountID;
 
 /**
  The start date for the course, if applicable

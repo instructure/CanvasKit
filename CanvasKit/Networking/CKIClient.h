@@ -9,7 +9,6 @@
 
 @class CKIModel;
 @class CKIUser;
-@class FXKeychain;
 @class RACSignal;
 
 @protocol CKIContext;
@@ -69,7 +68,7 @@
 - (RACSignal *)logout;
 
 /**
- Checks to see if the user is logged in by checking for the OAuthToken in the keychain.
+ Checks to see if the user is logged in.
  */
 @property (nonatomic) BOOL isLoggedIn;
 
@@ -88,7 +87,7 @@
  @param modelClass the class of the model that is being deleted
  @param context the context for the deleted object
  */
-- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(CKIModel *)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
+- (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(Class)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context;
 
 /**
  Fetch a paginated response from the given JSON API endpoint.

@@ -16,7 +16,7 @@
 
 - (RACSignal *)fetchPagesForContext:(id<CKIContext>)context;
 
-- (RACSignal *)fetchPage:(NSString *)pageId forContext:(id<CKIContext>)context;
+- (RACSignal *)fetchPage:(NSString *)pageID forContext:(id<CKIContext>)context;
 
 - (RACSignal *)fetchFrontPageForContext:(id<CKIContext>)context;
 
