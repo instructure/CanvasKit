@@ -12,9 +12,12 @@
 #import "CKIClient.h"
 #import "CKIModel.h"
 #import "CKIUser.h"
-#import "CKILoginViewController.h"
 #import "NSHTTPURLResponse+Pagination.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+#import "CKILoginViewController.h"
+#endif
 
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
