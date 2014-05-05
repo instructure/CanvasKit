@@ -25,4 +25,10 @@
     return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context];
 }
 
+- (RACSignal *)fetchCurrentUser
+{
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIUser class] context:nil];
+}
+
 @end
