@@ -29,4 +29,6 @@
  */
 - (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id <CKIContext>)context;
 
+- (RACSignal *)fetchCurrentUser;
+
 @end

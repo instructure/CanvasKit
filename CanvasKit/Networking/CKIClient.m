@@ -10,6 +10,7 @@
 #import <Mantle/Mantle.h>
 
 #import "CKIClient.h"
+#import "CKIClient+CKIUser.h"
 #import "CKIModel.h"
 #import "CKIUser.h"
 #import "CKILoginViewController.h"
@@ -60,6 +61,17 @@
     self.clientSecret = clientSecret;
 
     return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    CKIClient *dup = [super copyWithZone:zone];
+    dup.clientID = self.clientID;
+    dup.clientSecret = self.clientSecret;
+    dup.accessToken = self.accessToken;
+    dup.currentUser = [self.currentUser copy];
+    dup.actAsUserID = self.actAsUserID;
+    return dup;
 }
 
 #pragma mark - Properties
@@ -182,12 +194,6 @@
             }];
         }];
     }];
-}
-
-- (RACSignal *)fetchCurrentUser
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIUser class] context:nil];
 }
 
 #pragma mark - Caching & Cookies
