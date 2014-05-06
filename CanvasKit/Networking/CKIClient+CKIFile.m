@@ -58,11 +58,11 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         AFHTTPRequestOperationManager *uploadOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:uploadInfo[@"upload_url"]]];
         uploadOperationManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        NSURLSessionDataTask *task = [uploadOperationManager POST:@"" parameters:uploadInfo[@"upload_params"] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        AFHTTPRequestOperation *uploadOperation = [uploadOperationManager POST:@"" parameters:uploadInfo[@"upload_params"] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:@"application/octet-stream"];
         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            CKIFile *newFile = [self parseModel:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIFile class]] fromJSON:responseObject context:folder.context];
+            CKIFile *newFile = (CKIFile *) [self parseModel:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIFile class]] fromJSON:responseObject context:folder.context];
             [subscriber sendNext:newFile];
             [subscriber sendCompleted];
             
@@ -72,7 +72,7 @@
         }];
         
         return [RACDisposable disposableWithBlock:^{
-            [task cancel];
+            [uploadOperation cancel];
         }];
     }];
 }
