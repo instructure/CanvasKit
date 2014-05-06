@@ -40,7 +40,7 @@
 
 - (void)setUserID:(NSString *)userID
 {
-    _id = userID;
+    self.id = userID;
 }
 
 @end
