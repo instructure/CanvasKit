@@ -10,6 +10,7 @@
 #import <Mantle/Mantle.h>
 
 #import "CKIClient.h"
+#import "CKIClient+CKIUser.h"
 #import "CKIModel.h"
 #import "CKIUser.h"
 #import "NSHTTPURLResponse+Pagination.h"
@@ -67,6 +68,17 @@
     self.clientSecret = clientSecret;
 
     return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    CKIClient *dup = (CKIClient *) [super copyWithZone:zone];
+    dup.clientID = self.clientID;
+    dup.clientSecret = self.clientSecret;
+    dup.accessToken = self.accessToken;
+    dup.currentUser = [self.currentUser copy];
+    dup.actAsUserID = self.actAsUserID;
+    return dup;
 }
 
 #pragma mark - Properties
@@ -141,12 +153,6 @@
     return request;
 }
 
-- (RACSignal *)fetchCurrentUser
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIUser class] context:nil];
-}
-
 #pragma mark - Caching & Cookies
 
 - (void)clearCookiesAndCache
@@ -161,7 +167,6 @@
 
 - (RACSignal *)deleteObjectAtPath:(NSString *)path modelClass:(Class)modelClass parameters:(NSDictionary *)parameters context:(id<CKIContext>)context
 {
-    NSAssert([modelClass isKindOfClass:[CKIModel class]], @"Object to delete must be a subclass of CKIModel");
     NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         

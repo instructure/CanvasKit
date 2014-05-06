@@ -17,7 +17,7 @@
  The client responsible for processing all networking requests to
  the canvas API.
  */
-@interface CKIClient : AFHTTPSessionManager
+@interface CKIClient : AFHTTPSessionManager <NSCopying>
 
 /**
  The access token for making oauth requests (if logged in)
