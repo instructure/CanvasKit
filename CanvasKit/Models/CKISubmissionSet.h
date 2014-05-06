@@ -31,6 +31,12 @@
 @property (nonatomic, copy) NSArray *submissions;
 
 /**
+* The ID of the user that authored the submissions.
+* (alias for id)
+*/
+@property (nonatomic, copy) NSString *userID;
+
+/**
 * The most recent submission in the submission set.
 */
 @property (nonatomic, strong) CKISubmission *mostRecentSubmission;

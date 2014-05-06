@@ -33,4 +33,14 @@
     return self.submissions.lastObject;
 }
 
+- (NSString *)userID
+{
+    return self.id;
+}
+
+- (void)setUserID:(NSString *)userID
+{
+    _id = userID;
+}
+
 @end
