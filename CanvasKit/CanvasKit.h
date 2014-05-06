@@ -71,7 +71,7 @@
 #import "CKIClient+CKIPage.h"
 #import "CKIClient+CKIQuiz.h"
 #import "CKIClient+CKIService.h"
-#import "CKIClient+CKISubmission.h"
+#import "CKIClient+CKISubmissionSet.h"
 #import "CKIClient+CKITab.h"
 #import "CKIClient+CKITodoItem.h"
 #import "CKIClient+CKIUser.h"

@@ -8,11 +8,18 @@
 
 @class CKISubmission;
 
+/**
+* The CKISubmissionSet represents the set of submissions from one
+* user for one specific assignment.
+*
+* The CKISubmissionSet object does not exist in the API. To read more
+* about how the API works, read the documentation in CKIClient+CKISubmissionSet.h
+*/
 @interface CKISubmissionSet : CKIModel
 
 /**
 * @note This property is a little different than on other models,
-*       it is derived from the user_id key since SumbissionSets
+*       it is derived from the user_id key since SubmissionSets
 *       are not a proper canvas object.
 */
 @property (nonatomic, copy) NSString *id;

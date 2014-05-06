@@ -116,7 +116,7 @@
 		80A199881831F674003A7083 /* CKIClient+CKIModuleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199871831F674003A7083 /* CKIClient+CKIModuleItem.m */; };
 		80A1998B1831F73C003A7083 /* CKIClient+CKIQuiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A1998A1831F73C003A7083 /* CKIClient+CKIQuiz.m */; };
 		80A1998E1831F7AA003A7083 /* CKIClient+CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A1998D1831F7AA003A7083 /* CKIClient+CKIService.m */; };
-		80A199911831F808003A7083 /* CKIClient+CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199901831F808003A7083 /* CKIClient+CKISubmission.m */; };
+		80A199911831F808003A7083 /* CKIClient+CKISubmissionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199901831F808003A7083 /* CKIClient+CKISubmissionSet.m */; };
 		80A199941831F8B4003A7083 /* CKIClient+CKITab.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199931831F8B4003A7083 /* CKIClient+CKITab.m */; };
 		80A199971831F916003A7083 /* CKIClient+CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */; };
 		80A8BE6517FF5C15002ED94E /* CKIClient+CKICourseSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A8BE6417FF5C15002ED94E /* CKIClient+CKICourseSpec.m */; };
@@ -149,7 +149,7 @@
 		80DA1F5C1832A10400CC4E84 /* CKIClient+CKIPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199721831AA39003A7083 /* CKIClient+CKIPage.m */; };
 		80DA1F5D1832A10700CC4E84 /* CKIClient+CKIQuiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A1998A1831F73C003A7083 /* CKIClient+CKIQuiz.m */; };
 		80DA1F5E1832A10A00CC4E84 /* CKIClient+CKIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A1998D1831F7AA003A7083 /* CKIClient+CKIService.m */; };
-		80DA1F5F1832A10D00CC4E84 /* CKIClient+CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199901831F808003A7083 /* CKIClient+CKISubmission.m */; };
+		80DA1F5F1832A10D00CC4E84 /* CKIClient+CKISubmissionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199901831F808003A7083 /* CKIClient+CKISubmissionSet.m */; };
 		80DA1F601832A11100CC4E84 /* CKIClient+CKITab.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199931831F8B4003A7083 /* CKIClient+CKITab.m */; };
 		80DA1F611832A11500CC4E84 /* CKIClient+CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */; };
 		80DA1F651832A95F00CC4E84 /* CKIClient+CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DA1F641832A95F00CC4E84 /* CKIClient+CKIUser.m */; };
@@ -398,8 +398,8 @@
 		80A1998A1831F73C003A7083 /* CKIClient+CKIQuiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIQuiz.m"; sourceTree = "<group>"; };
 		80A1998C1831F7AA003A7083 /* CKIClient+CKIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIService.h"; sourceTree = "<group>"; };
 		80A1998D1831F7AA003A7083 /* CKIClient+CKIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIService.m"; sourceTree = "<group>"; };
-		80A1998F1831F808003A7083 /* CKIClient+CKISubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmission.h"; sourceTree = "<group>"; };
-		80A199901831F808003A7083 /* CKIClient+CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmission.m"; sourceTree = "<group>"; };
+		80A1998F1831F808003A7083 /* CKIClient+CKISubmissionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionSet.h"; sourceTree = "<group>"; };
+		80A199901831F808003A7083 /* CKIClient+CKISubmissionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmissionSet.m"; sourceTree = "<group>"; };
 		80A199921831F8B4003A7083 /* CKIClient+CKITab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKITab.h"; sourceTree = "<group>"; };
 		80A199931831F8B4003A7083 /* CKIClient+CKITab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKITab.m"; sourceTree = "<group>"; };
 		80A199951831F916003A7083 /* CKIClient+CKITodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKITodoItem.h"; sourceTree = "<group>"; };
@@ -680,8 +680,8 @@
 				80A1998A1831F73C003A7083 /* CKIClient+CKIQuiz.m */,
 				80A1998C1831F7AA003A7083 /* CKIClient+CKIService.h */,
 				80A1998D1831F7AA003A7083 /* CKIClient+CKIService.m */,
-				80A1998F1831F808003A7083 /* CKIClient+CKISubmission.h */,
-				80A199901831F808003A7083 /* CKIClient+CKISubmission.m */,
+				80A1998F1831F808003A7083 /* CKIClient+CKISubmissionSet.h */,
+				80A199901831F808003A7083 /* CKIClient+CKISubmissionSet.m */,
 				80A199921831F8B4003A7083 /* CKIClient+CKITab.h */,
 				80A199931831F8B4003A7083 /* CKIClient+CKITab.m */,
 				80A199951831F916003A7083 /* CKIClient+CKITodoItem.h */,
@@ -1174,7 +1174,7 @@
 				8027B7BA18283A940008BB07 /* CKIActivityStreamMessageItem.m in Sources */,
 				BD7907B217EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */,
 				809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */,
-				80A199911831F808003A7083 /* CKIClient+CKISubmission.m in Sources */,
+				80A199911831F808003A7083 /* CKIClient+CKISubmissionSet.m in Sources */,
 				4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */,
 				49006E72185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
@@ -1285,7 +1285,7 @@
 				80DA1F661832A95F00CC4E84 /* CKIClient+CKIUser.m in Sources */,
 				80DA1F541832A0E600CC4E84 /* CKIClient+CKIExternalTool.m in Sources */,
 				80B997FF182814D00083798A /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
-				80DA1F5F1832A10D00CC4E84 /* CKIClient+CKISubmission.m in Sources */,
+				80DA1F5F1832A10D00CC4E84 /* CKIClient+CKISubmissionSet.m in Sources */,
 				BDB4B92617E3BA760097D4AC /* CKIAssignment.m in Sources */,
 				80DA1F581832A0F600CC4E84 /* CKIClient+CKIGroup.m in Sources */,
 				BDB4B92817E3BA760097D4AC /* CKIRubricCriterionRating.m in Sources */,
