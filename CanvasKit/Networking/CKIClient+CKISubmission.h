@@ -8,8 +8,10 @@
 
 #import "CKIClient.h"
 
+@class CKIAssignment;
+
 @interface CKIClient (CKISubmission)
 
-- (void)fetchSubmissionsForContext:(CKIModel *)context success:(void (^)(NSArray *submissions))success failure:(void (^)(NSError *error))failure;
+- (RACSignal *)fetchSubmissionsForAssignment:(CKIAssignment *)assignment;
 
 @end

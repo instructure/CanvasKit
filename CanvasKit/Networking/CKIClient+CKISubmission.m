@@ -6,13 +6,24 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa/RACSignal.h>
 #import "CKIClient+CKISubmission.h"
+#import "CKIAssignment.h"
+#import "CKISubmission.h"
+
+static const NSString *CKISubmissionHistory = @"submission_history";
+static const NSString *CKISubmissionComments = @"submission_comments";
+static const NSString *CKISubmissionRubricAssessment = @"rubric_assessment";
+
 
 @implementation CKIClient (CKISubmission)
 
-- (void)fetchSubmissionsForContext:(CKIModel *)context success:(void (^)(NSArray *submissions))success failure:(void (^)(NSError *error))failure
+- (RACSignal *)fetchSubmissionsForAssignment:(CKIAssignment *)assignment
 {
-    NSAssert(NO, @"Apparently I haven't been implemented yet. Implement me, please");
+    NSString *path = [assignment.path stringByAppendingPathComponent:@"submissions"];
+    NSDictionary *parameters = @{@"include" : @[CKISubmissionHistory, CKISubmissionComments, CKISubmissionRubricAssessment]};
+    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKISubmission class] context:assignment];
 }
+
 
 @end
