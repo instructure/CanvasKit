@@ -48,6 +48,7 @@
 		499B4A3417F22C9F00E211C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 499B4A3317F22C9F00E211C9 /* AppDelegate.m */; };
 		499B4A3617F22C9F00E211C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499B4A3517F22C9F00E211C9 /* Images.xcassets */; };
 		49D211F717E22326006359A7 /* submission_array.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D211F617E22326006359A7 /* submission_array.json */; };
+		76507DF65E234845AA5ADF85 /* libPods-CanvasKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F067BA930DF4FD49C009FF5 /* libPods-CanvasKit.a */; };
 		80061C1C17FE05F300A8CDFF /* CKIClient+CKIGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80061C1B17FE05F300A8CDFF /* CKIClient+CKIGroupSpec.m */; };
 		800B2F0617FE3B970069D0CC /* CKIClient+CKIModuleItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 800B2F0517FE3B970069D0CC /* CKIClient+CKIModuleItemSpec.m */; };
 		8024E19F17C6AE7D0031E0F4 /* CKIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8024E19E17C6AE7D0031E0F4 /* CKIModel.m */; };
@@ -439,12 +440,14 @@
 		80F1E0E017FB6BBE005E71E1 /* CKIGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIGroup.m; sourceTree = "<group>"; };
 		80F1E0E217FB6BDE005E71E1 /* CKIGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIGroupSpec.m; sourceTree = "<group>"; };
 		80F1E0E617FB75DC005E71E1 /* group.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = group.json; sourceTree = "<group>"; };
+		9F067BA930DF4FD49C009FF5 /* libPods-CanvasKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54281FB183443C700C2D483 /* CKIClient+CKITodoItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKITodoItemSpec.m"; sourceTree = "<group>"; };
 		B589360F180CA1F200665753 /* CKIExternalToolSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalToolSpec.m; sourceTree = "<group>"; };
 		B5893612180CA20000665753 /* CKIClient+CKIExternalToolSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIExternalToolSpec.m"; sourceTree = "<group>"; };
 		B59520D51805BBEC0055DDCC /* external_tool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = external_tool.json; sourceTree = "<group>"; };
 		B59520DA1805BC090055DDCC /* CKIExternalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIExternalTool.h; sourceTree = "<group>"; };
 		B59520DB1805BC090055DDCC /* CKIExternalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalTool.m; sourceTree = "<group>"; };
+		BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKit.xcconfig"; path = "Pods/Pods-CanvasKit.xcconfig"; sourceTree = "<group>"; };
 		BD158FF417E8F0B5008887E3 /* CKITodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKITodoItem.h; sourceTree = "<group>"; };
 		BD158FF517E8F0B5008887E3 /* CKITodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKITodoItem.m; sourceTree = "<group>"; };
 		BD15900217E91681008887E3 /* CKICalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKICalendarEvent.h; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 				809DC72217C694EC0089E846 /* Foundation.framework in Frameworks */,
 				BDC8B61417E8099100A63864 /* XCTest.framework in Frameworks */,
 				F26D6813C18343709DB2F5F8 /* libPods.a in Frameworks */,
+				76507DF65E234845AA5ADF85 /* libPods-CanvasKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,6 +824,7 @@
 				809DC71F17C694EC0089E846 /* Products */,
 				2C4C27CC89F849148BEC406C /* Pods-CanvasKitTests.xcconfig */,
 				EB5670FCC8F3466B9F75A287 /* Pods.xcconfig */,
+				BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -847,6 +852,7 @@
 				809DC73217C694EC0089E846 /* UIKit.framework */,
 				7A7373B900534292A61BF551 /* libPods-CanvasKitTests.a */,
 				3112BE272369450EB9E316EE /* libPods.a */,
+				9F067BA930DF4FD49C009FF5 /* libPods-CanvasKit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -990,6 +996,8 @@
 			mainGroup = 809DC71517C694EC0089E846;
 			productRefGroup = 809DC71F17C694EC0089E846 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				809DC71D17C694EC0089E846 /* CanvasKit */,
@@ -1115,7 +1123,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-CanvasKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F47D464FDA9D416E81E47A58 /* Check Pods Manifest.lock */ = {
@@ -1467,7 +1475,7 @@
 		};
 		809DC74217C694EC0089E846 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5670FCC8F3466B9F75A287 /* Pods.xcconfig */;
+			baseConfigurationReference = BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/CanvasKit.dst;
@@ -1488,7 +1496,7 @@
 		};
 		809DC74317C694EC0089E846 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5670FCC8F3466B9F75A287 /* Pods.xcconfig */;
+			baseConfigurationReference = BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/CanvasKit.dst;
