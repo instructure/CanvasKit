@@ -11,6 +11,7 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKIAssignment.h"
+#import "CKIFile.h"
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
@@ -79,6 +80,10 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
 + (NSValueTransformer *)assignmentJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
+}
++ (NSValueTransformer *)attachmentsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIFile class]];
 }
 
 @end

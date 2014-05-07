@@ -116,4 +116,9 @@ extern NSString * const CKISubmissionTypeMediaRecording;
  */
 @property (nonatomic) CKIAssignment *assignment;
 
+/**
+* Any file attachments included with this submission.
+* Each attachment is a CKIFile object.
+*/
+@property (nonatomic, copy) NSArray *attachments;
 @end
