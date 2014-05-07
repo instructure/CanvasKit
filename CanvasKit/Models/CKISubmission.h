@@ -1,5 +1,5 @@
 //
-//  CKISubmission.h
+//  CKISubmissionSet.h
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
