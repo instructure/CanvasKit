@@ -44,6 +44,7 @@
 #import "CKIService.h"
 #import "CKISubmission.h"
 #import "CKISubmissionComment.h"
+#import "CKISubmissionSet.h"
 #import "CKITab.h"
 #import "CKITerm.h"
 #import "CKITodoItem.h"
