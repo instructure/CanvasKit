@@ -145,6 +145,13 @@
             , self.baseURL.absoluteString
             , self.clientID];
     if (self.forceCanvasLogin) {
+        NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+        [cookieProperties setObject:@"canvas_sa_delegated" forKey:NSHTTPCookieName];
+        [cookieProperties setObject:@"1" forKey:NSHTTPCookieValue];
+        
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        
         urlString = [urlString stringByAppendingString:@"&canvas_login=1"];
     }
     NSURL *url = [NSURL URLWithString:urlString];
