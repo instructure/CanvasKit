@@ -14,6 +14,7 @@ extern NSString * const CKISubmissionTypeOnlineUpload;
 extern NSString * const CKISubmissionTypeMediaRecording;
 
 @class CKIAssignment;
+@class CKIMediaComment;
 
 @interface CKISubmission : CKIModel
 
@@ -116,4 +117,15 @@ extern NSString * const CKISubmissionTypeMediaRecording;
  */
 @property (nonatomic) CKIAssignment *assignment;
 
+/**
+* Any file attachments included with this submission.
+* Each attachment is a CKIFile object.
+*/
+@property (nonatomic, copy) NSArray *attachments;
+
+/**
+* Media comment associated with submission. nil if
+* no media comment.
+*/
+@property (nonatomic, copy) CKIMediaComment *mediaComment;
 @end
