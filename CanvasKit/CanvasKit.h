@@ -45,6 +45,7 @@
 #import "CKISubmission.h"
 #import "CKISubmissionComment.h"
 #import "CKISubmissionSet.h"
+#import "CKIMediaComment.h"
 #import "CKITab.h"
 #import "CKITerm.h"
 #import "CKITodoItem.h"
