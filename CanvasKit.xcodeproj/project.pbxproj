@@ -78,10 +78,8 @@
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
 		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
 		803282A517D03646001E73FA /* rubric_criterion_rating.json in Resources */ = {isa = PBXBuildFile; fileRef = 803282A417D03646001E73FA /* rubric_criterion_rating.json */; };
-		803282A817D05C7D001E73FA /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 803282A717D05C7D001E73FA /* CKISubmission.m */; };
 		803282AC17D0606D001E73FA /* submission.json in Resources */ = {isa = PBXBuildFile; fileRef = 803282AB17D0606D001E73FA /* submission.json */; };
 		804904C218048B9B00BB8978 /* CKIUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 804904C118048B9B00BB8978 /* CKIUserSpec.m */; };
-		80538A1E17DD132A009095F2 /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A1D17DD132A009095F2 /* CKISubmissionComment.m */; };
 		80538A2217DD1427009095F2 /* submission_comment.json in Resources */ = {isa = PBXBuildFile; fileRef = 80538A2117DD1427009095F2 /* submission_comment.json */; };
 		80538A2417DD1931009095F2 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 80538A2317DD1931009095F2 /* user.json */; };
 		80538A2717DD1A20009095F2 /* CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A2617DD1A20009095F2 /* CKIUser.m */; };
@@ -174,7 +172,12 @@
 		B5893615180CA27200665753 /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
 		B59520D61805BBEC0055DDCC /* external_tool.json in Resources */ = {isa = PBXBuildFile; fileRef = B59520D51805BBEC0055DDCC /* external_tool.json */; };
 		B59520DC1805BC090055DDCC /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
-		BA6E8E662576298A98D292AA /* CKISubmissionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8179B1FAE95ADF5BA663 /* CKISubmissionSet.m */; };
+		BA6E831F54676CAB481C15D7 /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */; };
+		BA6E86B80099DF7CA99806E5 /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */; };
+		BA6E8840BF2D4ACE1D862AB8 /* CKISubmissionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E82C745EE0B8A03032D4A /* CKISubmissionSet.m */; };
+		BA6E89A1129E56FA7B63C7E1 /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */; };
+		BA6E8A80E956A49CF3BEA410 /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */; };
+		BA6E8B62BB45B37D52119717 /* CKIMediaComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E88F264E514EB971EFF10 /* CKIMediaComment.m */; };
 		BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD158FF717E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BD15900317E91681008887E3 /* CKICalendarEvent.m */; };
@@ -209,9 +212,7 @@
 		BDB4B92817E3BA760097D4AC /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
 		BDB4B92917E3BA760097D4AC /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		BDB4B92A17E3BA760097D4AC /* CKILockInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D9EB17CED9B300915729 /* CKILockInfo.m */; };
-		BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 803282A717D05C7D001E73FA /* CKISubmission.m */; };
 		BDB4B92C17E3BA760097D4AC /* CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A2617DD1A20009095F2 /* CKIUser.m */; };
-		BDB4B92D17E3BA760097D4AC /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A1D17DD132A009095F2 /* CKISubmissionComment.m */; };
 		BDB4B92E17E3BA760097D4AC /* CKICourse.m in Sources */ = {isa = PBXBuildFile; fileRef = BD18757B17E0D7AE00138469 /* CKICourse.m */; };
 		BDB4B92F17E3BA760097D4AC /* CKIPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8026FC4117E0DDC000126518 /* CKIPage.m */; };
 		BDB4B93017E3BA760097D4AC /* CKIModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 80785A0D17E1365700339A06 /* CKIModule.m */; };
@@ -340,12 +341,8 @@
 		8032829D17D03380001E73FA /* CKIRubricCriterionRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubricCriterionRating.h; sourceTree = "<group>"; };
 		8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterionRating.m; sourceTree = "<group>"; };
 		803282A417D03646001E73FA /* rubric_criterion_rating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rubric_criterion_rating.json; sourceTree = "<group>"; };
-		803282A617D05C7D001E73FA /* CKISubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmission.h; sourceTree = "<group>"; };
-		803282A717D05C7D001E73FA /* CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmission.m; sourceTree = "<group>"; };
 		803282AB17D0606D001E73FA /* submission.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission.json; sourceTree = "<group>"; };
 		804904C118048B9B00BB8978 /* CKIUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIUserSpec.m; sourceTree = "<group>"; };
-		80538A1C17DD132A009095F2 /* CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionComment.h; sourceTree = "<group>"; };
-		80538A1D17DD132A009095F2 /* CKISubmissionComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionComment.m; sourceTree = "<group>"; };
 		80538A2117DD1427009095F2 /* submission_comment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission_comment.json; sourceTree = "<group>"; };
 		80538A2317DD1931009095F2 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		80538A2517DD1A20009095F2 /* CKIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIUser.h; sourceTree = "<group>"; };
@@ -450,8 +447,14 @@
 		B59520D51805BBEC0055DDCC /* external_tool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = external_tool.json; sourceTree = "<group>"; };
 		B59520DA1805BC090055DDCC /* CKIExternalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIExternalTool.h; sourceTree = "<group>"; };
 		B59520DB1805BC090055DDCC /* CKIExternalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalTool.m; sourceTree = "<group>"; };
-		BA6E8179B1FAE95ADF5BA663 /* CKISubmissionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionSet.m; sourceTree = "<group>"; };
-		BA6E85FC2BA74B94EA8003B1 /* CKISubmissionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionSet.h; sourceTree = "<group>"; };
+		BA6E82C745EE0B8A03032D4A /* CKISubmissionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionSet.m; sourceTree = "<group>"; };
+		BA6E88F264E514EB971EFF10 /* CKIMediaComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaComment.m; sourceTree = "<group>"; };
+		BA6E8A18B1FA9BB4F26BD138 /* CKISubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmission.h; sourceTree = "<group>"; };
+		BA6E8A52AC826AD88D0945BE /* CKIMediaComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaComment.h; sourceTree = "<group>"; };
+		BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmission.m; sourceTree = "<group>"; };
+		BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionComment.m; sourceTree = "<group>"; };
+		BA6E8ECD3C93095E9260B695 /* CKISubmissionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionSet.h; sourceTree = "<group>"; };
+		BA6E8FC5EC9AD90E8E5BA753 /* CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionComment.h; sourceTree = "<group>"; };
 		BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKit.xcconfig"; path = "Pods/Pods-CanvasKit.xcconfig"; sourceTree = "<group>"; };
 		BD158FF417E8F0B5008887E3 /* CKITodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKITodoItem.h; sourceTree = "<group>"; };
 		BD158FF517E8F0B5008887E3 /* CKITodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKITodoItem.m; sourceTree = "<group>"; };
@@ -625,10 +628,6 @@
 				8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */,
 				24EFAD9D180C56FA009E8058 /* CKIService.h */,
 				24EFAD9E180C56FA009E8058 /* CKIService.m */,
-				803282A617D05C7D001E73FA /* CKISubmission.h */,
-				803282A717D05C7D001E73FA /* CKISubmission.m */,
-				80538A1C17DD132A009095F2 /* CKISubmissionComment.h */,
-				80538A1D17DD132A009095F2 /* CKISubmissionComment.m */,
 				BD99E76E17E8A15E00AEC79C /* CKITab.h */,
 				BD99E76F17E8A15E00AEC79C /* CKITab.m */,
 				4914E808183EF18B00CB30B9 /* CKITerm.h */,
@@ -645,6 +644,7 @@
 				BA6E85FC2BA74B94EA8003B1 /* CKISubmissionSet.h */,
 				BD726BD01921B58A00FDE781 /* CKISection.h */,
 				BD726BD11921B58A00FDE781 /* CKISection.m */,
+				BA6E824E3C9F2BB3274DCB3E /* CKISubmissions */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -916,6 +916,21 @@
 				809DC73A17C694EC0089E846 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA6E824E3C9F2BB3274DCB3E /* CKISubmissions */ = {
+			isa = PBXGroup;
+			children = (
+				BA6E8A18B1FA9BB4F26BD138 /* CKISubmission.h */,
+				BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */,
+				BA6E8FC5EC9AD90E8E5BA753 /* CKISubmissionComment.h */,
+				BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */,
+				BA6E8ECD3C93095E9260B695 /* CKISubmissionSet.h */,
+				BA6E82C745EE0B8A03032D4A /* CKISubmissionSet.m */,
+				BA6E88F264E514EB971EFF10 /* CKIMediaComment.m */,
+				BA6E8A52AC826AD88D0945BE /* CKIMediaComment.h */,
+			);
+			path = CKISubmissions;
 			sourceTree = "<group>";
 		};
 		BDB4B8B817E2342F0097D4AC /* UIKit+CanvasKit */ = {
@@ -1191,7 +1206,6 @@
 				8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
 				809A664517EB93F2005C5855 /* NSHTTPURLResponse+Pagination.m in Sources */,
 				80A1996D1831A76F003A7083 /* CKIClient+CKIExternalTool.m in Sources */,
-				803282A817D05C7D001E73FA /* CKISubmission.m in Sources */,
 				4910CE9C17E8F3D000A6A73E /* CKIAPIV1.m in Sources */,
 				802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */,
 				BDF67B3B17EBAD3E008AE5F5 /* CKIFolder.m in Sources */,
@@ -1236,12 +1250,14 @@
 				80A199941831F8B4003A7083 /* CKIClient+CKITab.m in Sources */,
 				8027B7C718284A190008BB07 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				8027B7CA18284F9E0008BB07 /* CKIActivityStreamSubmissionItem.m in Sources */,
-				80538A1E17DD132A009095F2 /* CKISubmissionComment.m in Sources */,
 				BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */,
 				24EFAD9F180C56FA009E8058 /* CKIService.m in Sources */,
 				BD99E77B17E8ABD200AEC79C /* CKIFavorite.m in Sources */,
 				80A199821831C231003A7083 /* CKIClient+CKIGroup.m in Sources */,
-				BA6E8E662576298A98D292AA /* CKISubmissionSet.m in Sources */,
+				BA6E8A80E956A49CF3BEA410 /* CKISubmission.m in Sources */,
+				BA6E89A1129E56FA7B63C7E1 /* CKISubmissionComment.m in Sources */,
+				BA6E8840BF2D4ACE1D862AB8 /* CKISubmissionSet.m in Sources */,
+				BA6E8B62BB45B37D52119717 /* CKIMediaComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1258,7 +1274,6 @@
 				80A8BE6517FF5C15002ED94E /* CKIClient+CKICourseSpec.m in Sources */,
 				80B997F618280A850083798A /* CKIActivityStreamItem.m in Sources */,
 				80DA1F561832A0EE00CC4E84 /* CKIClient+CKIFile.m in Sources */,
-				BDB4B92B17E3BA760097D4AC /* CKISubmission.m in Sources */,
 				49006E74185B951100721DE2 /* CKIDiscussionTopic.m in Sources */,
 				4931A8A5183FA63E00B0D369 /* CKIConversation.m in Sources */,
 				80DA1F6C1832C68000CC4E84 /* CKIClient+CKIModelSpec.m in Sources */,
@@ -1306,7 +1321,6 @@
 				8027B7CC18295B7F0008BB07 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				80DA1F5C1832A10400CC4E84 /* CKIClient+CKIPage.m in Sources */,
 				80DA1F5A1832A0FD00CC4E84 /* CKIClient+CKIModule.m in Sources */,
-				BDB4B92D17E3BA760097D4AC /* CKISubmissionComment.m in Sources */,
 				BD7907B317EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */,
 				8027B7CE18295B9E0008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
 				8027B7BD18283AC90008BB07 /* CKIActivityStreamMessageItemSpec.m in Sources */,
@@ -1342,6 +1356,8 @@
 				B5893615180CA27200665753 /* CKIExternalTool.m in Sources */,
 				BDFB334317E78C35000C6C13 /* CKILoginViewController.m in Sources */,
 				80F1E0E317FB6BDE005E71E1 /* CKIGroupSpec.m in Sources */,
+				BA6E831F54676CAB481C15D7 /* CKISubmission.m in Sources */,
+				BA6E86B80099DF7CA99806E5 /* CKISubmissionComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
