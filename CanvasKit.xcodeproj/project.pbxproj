@@ -186,6 +186,8 @@
 		BD661D9517E784B9004210DD /* oauth_user_data.json in Resources */ = {isa = PBXBuildFile; fileRef = BD661D9417E784B9004210DD /* oauth_user_data.json */; };
 		BD661D9F17E78772004210DD /* CKIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BD661D9917E78772004210DD /* CKIClient.m */; };
 		BD661DA417E789DE004210DD /* CKILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD661DA317E789DE004210DD /* CKILoginViewController.m */; };
+		BD726BD21921B58A00FDE781 /* CKISection.m in Sources */ = {isa = PBXBuildFile; fileRef = BD726BD11921B58A00FDE781 /* CKISection.m */; };
+		BD726BD51921B66400FDE781 /* CKIClient+CKISection.m in Sources */ = {isa = PBXBuildFile; fileRef = BD726BD41921B66400FDE781 /* CKIClient+CKISection.m */; };
 		BD7907B217EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7907B117EA364B006D12D9 /* CKIAssignmentGroup.m */; };
 		BD7907B317EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7907B117EA364B006D12D9 /* CKIAssignmentGroup.m */; };
 		BD7907B517EA3956006D12D9 /* assignment_group_with_assignments.json in Resources */ = {isa = PBXBuildFile; fileRef = BD7907B417EA3956006D12D9 /* assignment_group_with_assignments.json */; };
@@ -465,6 +467,10 @@
 		BD661D9917E78772004210DD /* CKIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIClient.m; sourceTree = "<group>"; };
 		BD661DA217E789DE004210DD /* CKILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKILoginViewController.h; path = "UIKit+CanvasKit/CKILoginViewController.h"; sourceTree = "<group>"; };
 		BD661DA317E789DE004210DD /* CKILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKILoginViewController.m; path = "UIKit+CanvasKit/CKILoginViewController.m"; sourceTree = "<group>"; };
+		BD726BD01921B58A00FDE781 /* CKISection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISection.h; sourceTree = "<group>"; };
+		BD726BD11921B58A00FDE781 /* CKISection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISection.m; sourceTree = "<group>"; };
+		BD726BD31921B66400FDE781 /* CKIClient+CKISection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISection.h"; sourceTree = "<group>"; };
+		BD726BD41921B66400FDE781 /* CKIClient+CKISection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISection.m"; sourceTree = "<group>"; };
 		BD7907B017EA364B006D12D9 /* CKIAssignmentGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIAssignmentGroup.h; sourceTree = "<group>"; };
 		BD7907B117EA364B006D12D9 /* CKIAssignmentGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIAssignmentGroup.m; sourceTree = "<group>"; };
 		BD7907B417EA3956006D12D9 /* assignment_group_with_assignments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = assignment_group_with_assignments.json; sourceTree = "<group>"; };
@@ -637,6 +643,8 @@
 				BDCAA0F518808D3F006C9F28 /* CKIEnrollment.m */,
 				BA6E8179B1FAE95ADF5BA663 /* CKISubmissionSet.m */,
 				BA6E85FC2BA74B94EA8003B1 /* CKISubmissionSet.h */,
+				BD726BD01921B58A00FDE781 /* CKISection.h */,
+				BD726BD11921B58A00FDE781 /* CKISection.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -692,6 +700,8 @@
 				80DA1F6E1832CCAE00CC4E84 /* CKIClient+Login.m */,
 				BD661D9817E78772004210DD /* CKIClient.h */,
 				BD661D9917E78772004210DD /* CKIClient.m */,
+				BD726BD31921B66400FDE781 /* CKIClient+CKISection.h */,
+				BD726BD41921B66400FDE781 /* CKIClient+CKISection.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1001,8 +1011,6 @@
 			mainGroup = 809DC71517C694EC0089E846;
 			productRefGroup = 809DC71F17C694EC0089E846 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				809DC71D17C694EC0089E846 /* CanvasKit */,
@@ -1177,6 +1185,7 @@
 				80A199911831F808003A7083 /* CKIClient+CKISubmissionSet.m in Sources */,
 				4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */,
 				49006E72185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */,
+				BD726BD51921B66400FDE781 /* CKIClient+CKISection.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				8027B7C4182849F60008BB07 /* CKIActivityStreamConferenceItem.m in Sources */,
@@ -1214,6 +1223,7 @@
 				80A199971831F916003A7083 /* CKIClient+CKITodoItem.m in Sources */,
 				80B3676F17D0253000A32E70 /* CKIRubricCriterion.m in Sources */,
 				80A199881831F674003A7083 /* CKIClient+CKIModuleItem.m in Sources */,
+				BD726BD21921B58A00FDE781 /* CKISection.m in Sources */,
 				8026FC4217E0DDC000126518 /* CKIPage.m in Sources */,
 				4931A8F318452C2600B0D369 /* CKIMediaComment.m in Sources */,
 				80A1998E1831F7AA003A7083 /* CKIClient+CKIService.m in Sources */,
