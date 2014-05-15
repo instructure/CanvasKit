@@ -154,7 +154,7 @@
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     
     if (self.forceCanvasLogin) {
-        [request addValue:@"canvas_sa_selegated=\"1\"" forHTTPHeaderField:@"Cookie"];
+        [request addValue:@"canvas_sa_delegated=\"1\"" forHTTPHeaderField:@"Cookie"];
     }
     
     return request;
