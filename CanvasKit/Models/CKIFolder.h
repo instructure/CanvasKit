@@ -53,6 +53,11 @@
 @property (nonatomic, strong) NSDate *updatedAt;
 
 /**
+ When the folder will be unlocked.
+ */
+@property (nonatomic, strong) NSDate *unlockAt;
+
+/**
  The name of the folder.
  */
 @property (nonatomic, strong) NSString *name;
