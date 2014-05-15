@@ -25,7 +25,7 @@
         @"showCorrectAnswers": @"show_correct_answers",
         @"scoringPolicy": @"scoring_policy",
         @"allowedAttempts": @"allowed_attempts",
-        @"oneQuestionnAtATime": @"one_question_at_a_time",
+        @"oneQuestionAtATime": @"one_question_at_a_time",
         @"questionCount": @"question_count",
         @"pointsPossible": @"points_possible",
         @"cantGoBack": @"cant_go_back",
