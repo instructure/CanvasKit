@@ -14,7 +14,7 @@
 - (RACSignal *)fetchSectionsForCourse:(CKICourse *)course
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"sections"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKISection class] context:nil];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKISection class] context:course];
 }
 
 @end
