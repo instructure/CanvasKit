@@ -11,6 +11,7 @@
 #import "CKIClient+CKIUser.h"
 #import "CKIUser.h"
 #import "CKICourse.h"
+#import "CKIEnrollment.h"
 
 @implementation CKIClient (CKIUser)
 
@@ -22,7 +23,15 @@
 - (RACSignal *)fetchUsersWithParameters:(NSDictionary *)parameters context:(id <CKIContext>)context
 {
     NSString *path = [context.path stringByAppendingPathComponent:@"users"];
-    return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context];
+    return [[self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context] map:^id(NSArray *users) {
+        return [users.rac_sequence map:^id(CKIUser *user) {
+            [user.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
+                enrollment.context = context;
+            }];
+            
+            return user;
+        }].array;
+    }];
 }
 
 - (RACSignal *)fetchCurrentUser

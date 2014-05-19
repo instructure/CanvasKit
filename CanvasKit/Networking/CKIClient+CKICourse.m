@@ -28,6 +28,7 @@
         [courses enumerateObjectsUsingBlock:^(CKICourse *course, NSUInteger idx, BOOL *stop) {
             [course.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
                 enrollment.id = [NSString stringWithFormat:@"%@-c-%@", @(idx), course.id];
+                enrollment.context = course;
             }];
         }];
         return courses;
