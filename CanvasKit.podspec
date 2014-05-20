@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'CanvasKit'
-  s.version  = '0.44'
+  s.version  = '0.45'
   s.license  = 'MIT'
   s.summary  = 'A Canvas API integration framework better than bamboo'
   s.homepage = 'https://github.com/instructure/CanvasKit'
   s.authors  = { 'Rick Roberts' => 'elgreco84@gmail.com', 'Jason Larsen' => 'jason.larsen@gmail.com' }
-  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => 'v0.44' }
+  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => 'v0.45' }
   s.requires_arc = true
 
   s.ios.deployment_target = '7.0'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.osx.source_files = 'CanvasKit/Helpers/*.{h,m}', 'CanvasKit/Models/*.{h,m}', 'CanvasKit/Networking/*.{h,m}', 'CanvasKit/CanvasKit.h', 'CanvasKit/Constants.h'
 
   s.dependency 'AFNetworking', '2.0'
-  s.dependency 'Mantle'
+  s.dependency 'Mantle', '1.4.1'
   s.dependency 'ISO8601DateFormatter'
   s.dependency 'ReactiveCocoa'
 end
