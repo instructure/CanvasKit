@@ -18,6 +18,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+        @"positionInGroup": @"position",
         @"descriptionHTML": @"description",
         @"dueAt": @"due_at",
         @"lockAt": @"lock_at",
@@ -29,10 +30,10 @@
         @"groupCategoryID": @"group_category_id",
         @"gradeGroupStudentsIndividually": @"grade_group_students_individually",
         @"needsGradingCount": @"needs_grading_count",
-        @"peerReviews": @"peer_reviews",
-        @"automaticPeerReviews": @"automatic_peer_reviews",
-        @"peerReviewCount": @"peer_review_count",
-        @"peerReviewsAssignAt": @"peer_reviews_assign_at",
+        @"peerReviewRequired": @"peer_reviews",
+        @"peerReviewsAutomaticallyAssigned": @"automatic_peer_reviews",
+        @"peerReviewsAutomaticallyAssignedCount": @"peer_review_count",
+        @"peerReviewDueDate": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
@@ -77,7 +78,7 @@
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-+ (NSValueTransformer *)peerReviewsAssignAtJSONTransformer {
++ (NSValueTransformer *)peerReviewDueDateJSONTransformer {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 

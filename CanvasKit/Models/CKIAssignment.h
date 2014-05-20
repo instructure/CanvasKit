@@ -31,6 +31,11 @@ typedef enum {
 @property (nonatomic, copy) NSString *name;
 
 /**
+* The index of the assignment in it's group.
+*/
+@property (nonatomic) NSInteger positionInGroup;
+
+/**
  The assignment description, in an HTML fragment.
  */
 @property (nonatomic, copy) NSString *descriptionHTML;
@@ -177,20 +182,20 @@ typedef enum {
 /**
  Boolean indicating if peer reviews are required for this assignment
  */
-@property (nonatomic) BOOL peerReviews;
+@property (nonatomic) BOOL peerReviewRequired;
 
 /**
  Boolean indicating peer reviews are assigned automatically.
  If false, the teacher is expected to manually assign peer reviews.
  */
-@property (nonatomic) BOOL automaticPeerReviews;
+@property (nonatomic) BOOL peerReviewsAutomaticallyAssigned;
 
 /**
  Integer representing the amount of reviews each user is assigned.
  
- @note This is NOT valid unless you have automaticPeerReviews.
+ @note This is NOT valid unless you have peerReviewsAutomaticallyAssigned.
  */
-@property (nonatomic) NSInteger peerReviewCount;
+@property (nonatomic) NSInteger peerReviewsAutomaticallyAssignedCount;
 
 /**
  Date the reviews are due by. Must be a date that occurs after the default
@@ -199,6 +204,6 @@ typedef enum {
  
  @note This is NOT valid unless you have automatic_peer_reviews set to true.
  */
-@property (nonatomic, strong) NSDate *peerReviewsAssignAt;
+@property (nonatomic, strong) NSDate *peerReviewDueDate;
 
 @end
