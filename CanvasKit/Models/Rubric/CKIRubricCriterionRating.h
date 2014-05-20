@@ -24,16 +24,16 @@
 @interface CKIRubricCriterionRating : CKIModel
 
 /**
+The points given to the student for the criteria when
+this rating is selected.
+*/
+@property (nonatomic) double points;
+
+/**
  A description for this rating, explaining the reasoning
  behind the points.
  */
-@property (nonatomic, copy) NSString *descriptionText;
-
-/**
- The points given to the student for the criteria when
- this rating is selected.
- */
-@property (nonatomic) double points;
+@property (nonatomic, copy) NSString *ratingDescription;
 
 /**
  Graders can add a comment for the rating when they give

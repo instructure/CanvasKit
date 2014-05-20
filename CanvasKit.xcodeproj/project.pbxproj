@@ -76,7 +76,6 @@
 		8027B7DD182971E70008BB07 /* activity_stream_collaboration_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 8027B7DC182971E70008BB07 /* activity_stream_collaboration_item.json */; };
 		802837F017CCF2BF0019FE30 /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		8031533617ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */; };
-		8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
 		803282A517D03646001E73FA /* rubric_criterion_rating.json in Resources */ = {isa = PBXBuildFile; fileRef = 803282A417D03646001E73FA /* rubric_criterion_rating.json */; };
 		803282AC17D0606D001E73FA /* submission.json in Resources */ = {isa = PBXBuildFile; fileRef = 803282AB17D0606D001E73FA /* submission.json */; };
 		804904C218048B9B00BB8978 /* CKIUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 804904C118048B9B00BB8978 /* CKIUserSpec.m */; };
@@ -118,7 +117,6 @@
 		80A199941831F8B4003A7083 /* CKIClient+CKITab.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199931831F8B4003A7083 /* CKIClient+CKITab.m */; };
 		80A199971831F916003A7083 /* CKIClient+CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */; };
 		80A8BE6517FF5C15002ED94E /* CKIClient+CKICourseSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A8BE6417FF5C15002ED94E /* CKIClient+CKICourseSpec.m */; };
-		80B3676F17D0253000A32E70 /* CKIRubricCriterion.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */; };
 		80B3677B17D02A6500A32E70 /* rubric_criterion.json in Resources */ = {isa = PBXBuildFile; fileRef = 80B3677A17D02A6500A32E70 /* rubric_criterion.json */; };
 		80B3677D17D02AB800A32E70 /* model_string.json in Resources */ = {isa = PBXBuildFile; fileRef = 80B3677C17D02AB800A32E70 /* model_string.json */; };
 		80B997F11828081F0083798A /* CKIActivityStreamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B997F01828081F0083798A /* CKIActivityStreamItem.m */; };
@@ -172,12 +170,17 @@
 		B5893615180CA27200665753 /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
 		B59520D61805BBEC0055DDCC /* external_tool.json in Resources */ = {isa = PBXBuildFile; fileRef = B59520D51805BBEC0055DDCC /* external_tool.json */; };
 		B59520DC1805BC090055DDCC /* CKIExternalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B59520DB1805BC090055DDCC /* CKIExternalTool.m */; };
+		BA6E81C596F3EB19B7F91B59 /* CKIRubricCriterion.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E88E7D52272419D3DF854 /* CKIRubricCriterion.m */; };
 		BA6E831F54676CAB481C15D7 /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */; };
+		BA6E865886AF7439890DA1BE /* CKIRubric.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E855B93059F825E3D51C3 /* CKIRubric.m */; };
 		BA6E86B80099DF7CA99806E5 /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */; };
+		BA6E874B5021FE6466DD5920 /* CKIRubricCriterion.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E88E7D52272419D3DF854 /* CKIRubricCriterion.m */; };
 		BA6E8840BF2D4ACE1D862AB8 /* CKISubmissionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E82C745EE0B8A03032D4A /* CKISubmissionSet.m */; };
 		BA6E89A1129E56FA7B63C7E1 /* CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */; };
+		BA6E89B59B26A9E74A8B4DCE /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E87921EF25C0BA07E0A6A /* CKIRubricCriterionRating.m */; };
 		BA6E8A80E956A49CF3BEA410 /* CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */; };
 		BA6E8B62BB45B37D52119717 /* CKIMediaComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E88F264E514EB971EFF10 /* CKIMediaComment.m */; };
+		BA6E8C335C76F8DAC126E6C6 /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6E87921EF25C0BA07E0A6A /* CKIRubricCriterionRating.m */; };
 		BD158FF617E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD158FF717E8F0B5008887E3 /* CKITodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD158FF517E8F0B5008887E3 /* CKITodoItem.m */; };
 		BD15900417E91681008887E3 /* CKICalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BD15900317E91681008887E3 /* CKICalendarEvent.m */; };
@@ -208,8 +211,6 @@
 		BDB4B92017E3BA6E0097D4AC /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C8471017E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
 		BDB4B92517E3BA760097D4AC /* CKIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8024E19E17C6AE7D0031E0F4 /* CKIModel.m */; };
 		BDB4B92617E3BA760097D4AC /* CKIAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 809808BC17C6D9BB00FC3BF6 /* CKIAssignment.m */; };
-		BDB4B92717E3BA760097D4AC /* CKIRubricCriterion.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */; };
-		BDB4B92817E3BA760097D4AC /* CKIRubricCriterionRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */; };
 		BDB4B92917E3BA760097D4AC /* CKILockableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802837EF17CCF2BF0019FE30 /* CKILockableModel.m */; };
 		BDB4B92A17E3BA760097D4AC /* CKILockInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C7D9EB17CED9B300915729 /* CKILockInfo.m */; };
 		BDB4B92C17E3BA760097D4AC /* CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80538A2617DD1A20009095F2 /* CKIUser.m */; };
@@ -338,8 +339,6 @@
 		802837EE17CCF2BF0019FE30 /* CKILockableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILockableModel.h; sourceTree = "<group>"; };
 		802837EF17CCF2BF0019FE30 /* CKILockableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILockableModel.m; sourceTree = "<group>"; };
 		8031533517ECF3B400F4C294 /* NSHTTPURLResponsePaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPURLResponsePaginationSpec.m; sourceTree = "<group>"; };
-		8032829D17D03380001E73FA /* CKIRubricCriterionRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubricCriterionRating.h; sourceTree = "<group>"; };
-		8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterionRating.m; sourceTree = "<group>"; };
 		803282A417D03646001E73FA /* rubric_criterion_rating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rubric_criterion_rating.json; sourceTree = "<group>"; };
 		803282AB17D0606D001E73FA /* submission.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission.json; sourceTree = "<group>"; };
 		804904C118048B9B00BB8978 /* CKIUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIUserSpec.m; sourceTree = "<group>"; };
@@ -405,8 +404,6 @@
 		80A199961831F916003A7083 /* CKIClient+CKITodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKITodoItem.m"; sourceTree = "<group>"; };
 		80A199981831F995003A7083 /* CKIClient+CKIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIUser.h"; sourceTree = "<group>"; };
 		80A8BE6417FF5C15002ED94E /* CKIClient+CKICourseSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKICourseSpec.m"; sourceTree = "<group>"; };
-		80B3676D17D0253000A32E70 /* CKIRubricCriterion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubricCriterion.h; sourceTree = "<group>"; };
-		80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterion.m; sourceTree = "<group>"; };
 		80B3677A17D02A6500A32E70 /* rubric_criterion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rubric_criterion.json; sourceTree = "<group>"; };
 		80B3677C17D02AB800A32E70 /* model_string.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = model_string.json; sourceTree = "<group>"; };
 		80B997EF1828081F0083798A /* CKIActivityStreamItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIActivityStreamItem.h; sourceTree = "<group>"; };
@@ -448,12 +445,18 @@
 		B59520DA1805BC090055DDCC /* CKIExternalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIExternalTool.h; sourceTree = "<group>"; };
 		B59520DB1805BC090055DDCC /* CKIExternalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIExternalTool.m; sourceTree = "<group>"; };
 		BA6E82C745EE0B8A03032D4A /* CKISubmissionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionSet.m; sourceTree = "<group>"; };
+		BA6E855B93059F825E3D51C3 /* CKIRubric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubric.m; sourceTree = "<group>"; };
+		BA6E85EF64C897D03338EE15 /* CKIRubricCriterionRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubricCriterionRating.h; sourceTree = "<group>"; };
+		BA6E87921EF25C0BA07E0A6A /* CKIRubricCriterionRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterionRating.m; sourceTree = "<group>"; };
+		BA6E88E7D52272419D3DF854 /* CKIRubricCriterion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIRubricCriterion.m; sourceTree = "<group>"; };
 		BA6E88F264E514EB971EFF10 /* CKIMediaComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaComment.m; sourceTree = "<group>"; };
 		BA6E8A18B1FA9BB4F26BD138 /* CKISubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmission.h; sourceTree = "<group>"; };
 		BA6E8A52AC826AD88D0945BE /* CKIMediaComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaComment.h; sourceTree = "<group>"; };
 		BA6E8A790A1880FBE7B0E219 /* CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmission.m; sourceTree = "<group>"; };
+		BA6E8B3C5653B68A506828C2 /* CKIRubricCriterion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubricCriterion.h; sourceTree = "<group>"; };
 		BA6E8EB848C53A8711EE0CD8 /* CKISubmissionComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionComment.m; sourceTree = "<group>"; };
 		BA6E8ECD3C93095E9260B695 /* CKISubmissionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionSet.h; sourceTree = "<group>"; };
+		BA6E8FB52D8783B64EE68B52 /* CKIRubric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIRubric.h; sourceTree = "<group>"; };
 		BA6E8FC5EC9AD90E8E5BA753 /* CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionComment.h; sourceTree = "<group>"; };
 		BC0FE03F64D9433380BEE47E /* Pods-CanvasKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKit.xcconfig"; path = "Pods/Pods-CanvasKit.xcconfig"; sourceTree = "<group>"; };
 		BD158FF417E8F0B5008887E3 /* CKITodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKITodoItem.h; sourceTree = "<group>"; };
@@ -622,10 +625,6 @@
 				8026FC4117E0DDC000126518 /* CKIPage.m */,
 				24D5435E17FCA4DA0056096D /* CKIQuiz.h */,
 				24D5435F17FCA4DA0056096D /* CKIQuiz.m */,
-				80B3676D17D0253000A32E70 /* CKIRubricCriterion.h */,
-				80B3676E17D0253000A32E70 /* CKIRubricCriterion.m */,
-				8032829D17D03380001E73FA /* CKIRubricCriterionRating.h */,
-				8032829E17D03380001E73FA /* CKIRubricCriterionRating.m */,
 				24EFAD9D180C56FA009E8058 /* CKIService.h */,
 				24EFAD9E180C56FA009E8058 /* CKIService.m */,
 				BD99E76E17E8A15E00AEC79C /* CKITab.h */,
@@ -645,6 +644,7 @@
 				BD726BD01921B58A00FDE781 /* CKISection.h */,
 				BD726BD11921B58A00FDE781 /* CKISection.m */,
 				BA6E824E3C9F2BB3274DCB3E /* CKISubmissions */,
+				BA6E8E73839E34630002F15F /* Rubric */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -931,6 +931,19 @@
 				BA6E8A52AC826AD88D0945BE /* CKIMediaComment.h */,
 			);
 			path = CKISubmissions;
+			sourceTree = "<group>";
+		};
+		BA6E8E73839E34630002F15F /* Rubric */ = {
+			isa = PBXGroup;
+			children = (
+				BA6E85EF64C897D03338EE15 /* CKIRubricCriterionRating.h */,
+				BA6E88E7D52272419D3DF854 /* CKIRubricCriterion.m */,
+				BA6E87921EF25C0BA07E0A6A /* CKIRubricCriterionRating.m */,
+				BA6E8B3C5653B68A506828C2 /* CKIRubricCriterion.h */,
+				BA6E855B93059F825E3D51C3 /* CKIRubric.m */,
+				BA6E8FB52D8783B64EE68B52 /* CKIRubric.h */,
+			);
+			path = Rubric;
 			sourceTree = "<group>";
 		};
 		BDB4B8B817E2342F0097D4AC /* UIKit+CanvasKit */ = {
@@ -1227,7 +1240,6 @@
 				80A1997F1831BF43003A7083 /* CKIClient+CKIFolder.m in Sources */,
 				80A1996A1831A6CA003A7083 /* CKIClient+CKIAssignment.m in Sources */,
 				BD99E77017E8A15E00AEC79C /* CKITab.m in Sources */,
-				8032829F17D03380001E73FA /* CKIRubricCriterionRating.m in Sources */,
 				80DA1F731832CD9800CC4E84 /* CKIClient+CKIActivityStreamItem.m in Sources */,
 				24D5436017FCA4DA0056096D /* CKIQuiz.m in Sources */,
 				80785A1317E146B000339A06 /* CKIModuleItem.m in Sources */,
@@ -1235,7 +1247,6 @@
 				4931A8F7184532E500B0D369 /* CKIAttachment.m in Sources */,
 				8024E19F17C6AE7D0031E0F4 /* CKIModel.m in Sources */,
 				80A199971831F916003A7083 /* CKIClient+CKITodoItem.m in Sources */,
-				80B3676F17D0253000A32E70 /* CKIRubricCriterion.m in Sources */,
 				80A199881831F674003A7083 /* CKIClient+CKIModuleItem.m in Sources */,
 				BD726BD21921B58A00FDE781 /* CKISection.m in Sources */,
 				8026FC4217E0DDC000126518 /* CKIPage.m in Sources */,
@@ -1258,6 +1269,9 @@
 				BA6E89A1129E56FA7B63C7E1 /* CKISubmissionComment.m in Sources */,
 				BA6E8840BF2D4ACE1D862AB8 /* CKISubmissionSet.m in Sources */,
 				BA6E8B62BB45B37D52119717 /* CKIMediaComment.m in Sources */,
+				BA6E81C596F3EB19B7F91B59 /* CKIRubricCriterion.m in Sources */,
+				BA6E89B59B26A9E74A8B4DCE /* CKIRubricCriterionRating.m in Sources */,
+				BA6E865886AF7439890DA1BE /* CKIRubric.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,7 +1295,6 @@
 				4931A8F8184532E500B0D369 /* CKIAttachment.m in Sources */,
 				804904C218048B9B00BB8978 /* CKIUserSpec.m in Sources */,
 				4931A8F418452C2600B0D369 /* CKIMediaComment.m in Sources */,
-				BDB4B92717E3BA760097D4AC /* CKIRubricCriterion.m in Sources */,
 				BDF67B3817EBA8AC008AE5F5 /* CKIFile.m in Sources */,
 				BD15900517E91681008887E3 /* CKICalendarEvent.m in Sources */,
 				80B997F5182808DE0083798A /* CKIActivityStreamItemSpec.m in Sources */,
@@ -1313,7 +1326,6 @@
 				80DA1F5F1832A10D00CC4E84 /* CKIClient+CKISubmissionSet.m in Sources */,
 				BDB4B92617E3BA760097D4AC /* CKIAssignment.m in Sources */,
 				80DA1F581832A0F600CC4E84 /* CKIClient+CKIGroup.m in Sources */,
-				BDB4B92817E3BA760097D4AC /* CKIRubricCriterionRating.m in Sources */,
 				BDB4B92C17E3BA760097D4AC /* CKIUser.m in Sources */,
 				24EFADA0180C56FA009E8058 /* CKIService.m in Sources */,
 				496C9A0D17E1080F00E5DB70 /* CKIClient+TestingClient.m in Sources */,
@@ -1358,6 +1370,8 @@
 				80F1E0E317FB6BDE005E71E1 /* CKIGroupSpec.m in Sources */,
 				BA6E831F54676CAB481C15D7 /* CKISubmission.m in Sources */,
 				BA6E86B80099DF7CA99806E5 /* CKISubmissionComment.m in Sources */,
+				BA6E874B5021FE6466DD5920 /* CKIRubricCriterion.m in Sources */,
+				BA6E8C335C76F8DAC126E6C6 /* CKIRubricCriterionRating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

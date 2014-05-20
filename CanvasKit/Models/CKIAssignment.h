@@ -10,6 +10,7 @@
 
 @class CKICourse;
 @class CKISubmission;
+@class CKIRubric;
 
 typedef enum {
     CKIAssignmentScoringTypePoints,
@@ -164,20 +165,13 @@ typedef enum {
 
 #pragma mark - Rubric
 
-
-
 /**
  Array of CKIRubricCriterion
  */
-@property (nonatomic, copy) NSArray *rubric;
-
-
+@property (nonatomic, strong) CKIRubric *rubric;
 
 
 #pragma mark - Peer Review
-
-
-
 
 /**
  Boolean indicating if peer reviews are required for this assignment

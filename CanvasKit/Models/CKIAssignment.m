@@ -12,6 +12,11 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKISubmission.h"
+#import "CKIRubric.h"
+
+@interface CKIAssignment ()
+@property (nonatomic, copy) NSArray *rubricCriteria;
+@end
 
 @implementation CKIAssignment
 
@@ -37,11 +42,15 @@
         @"submissionTypes": @"submission_types",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
-        @"gradingType" : @"grading_type"
+        @"gradingType" : @"grading_type",
+        @"rubricCriteria": @"rubric",
+        @"rubric": @"rubric_settings"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }
+
+#pragma mark - JSON Transformers
 
 + (NSValueTransformer *)dueAtJSONTransformer
 {
@@ -82,15 +91,49 @@
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
-+ (NSValueTransformer *)rubricJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
-}
-
 + (NSValueTransformer *)submissionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
 }
+
+#pragma mark - Rubric
+
+/**
+* Dealing with rubrics is special because we need to coalesce the rubric and rubric_settings
+* keys together. The rubric key is an array of rubric criteria, and the rubric settings has the
+* id, title, pointsPossible, etc.
+*/
+
++ (NSValueTransformer *)rubricCriteriaJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
+}
+
++ (NSValueTransformer *)rubricJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
+}
+
+- (BOOL)rubricExistsWithoutCriteria
+{
+    return _rubric && !_rubric.criteria;
+}
+
+- (CKIRubric *)rubric
+{
+    if ([self rubricExistsWithoutCriteria]) {
+        _rubric.criteria = self.rubricCriteria;
+    }
+    return _rubric;
+}
+
+- (void)setRubricCriteria:(NSArray *)rubricCriteria
+{
+    _rubric.criteria = rubricCriteria;
+    _rubricCriteria = rubricCriteria;
+}
+
+#pragma mark - Other Methods
 
 - (NSString *)path
 {
