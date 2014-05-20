@@ -39,6 +39,7 @@
 #import "CKIModuleItem.h"
 #import "CKIPage.h"
 #import "CKIQuiz.h"
+#import "CKIRubric.h"
 #import "CKIRubricCriterion.h"
 #import "CKIRubricCriterionRating.h"
 #import "CKIService.h"
