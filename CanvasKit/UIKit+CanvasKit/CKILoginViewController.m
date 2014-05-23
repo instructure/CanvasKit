@@ -48,7 +48,7 @@
             }] resume];
 }
 
-#pragma mark - UIALertView Delegate
+#pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -77,11 +77,11 @@
         if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodNTLM] || [challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic]){
             UIAlertView *alertView = [UIAlertView new];
             alertView.delegate = self;
-            alertView.title = @"Login";
+            alertView.title = NSLocalizedString(@"Login", nil);
             alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-            [alertView textFieldAtIndex:0].placeholder = @"Username";
-            [alertView addButtonWithTitle:@"OK"];
-            [alertView addButtonWithTitle:@"Cancel"];
+            [alertView textFieldAtIndex:0].placeholder = NSLocalizedString(@"Username", nil);
+            [alertView addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+            [alertView addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
             
             [alertView show];
         } else if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]){
