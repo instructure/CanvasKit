@@ -7,7 +7,7 @@
 //
 
 #import "CKIClient+CKISection.h"
-#import <CKISection.h>
+#import "CKISection.h"
 
 @implementation CKIClient (CKISection)
 
