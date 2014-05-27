@@ -15,7 +15,7 @@
 
 @implementation CKIClient (CKIOutcomeGroup)
 
-- (RACSignal *)fetchRootOutcomeForCourse:(CKICourse *)course
+- (RACSignal *)fetchRootOutcomeGroupForCourse:(CKICourse *)course
 {
     @weakify(self);
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

@@ -12,6 +12,4 @@
 
 @interface CKIClient (CKIOutcome)
 
-- (RACSignal *)fetchOutcome:(CKIOutcome *)outcome;
-
 @end

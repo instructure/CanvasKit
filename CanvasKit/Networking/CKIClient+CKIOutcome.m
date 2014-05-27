@@ -13,10 +13,4 @@
 
 @implementation CKIClient (CKIOutcome)
 
-- (RACSignal *)fetchOutcome:(CKIOutcome *)outcome
-{
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:[NSString stringWithFormat:@"outcomes/%@", outcome.id]];
-    return [self fetchResponseAtPath:outcome.path parameters:nil modelClass:[CKIOutcome class] context:CKIRootContext];
-}
-
 @end

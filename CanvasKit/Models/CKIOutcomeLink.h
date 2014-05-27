@@ -21,7 +21,7 @@
 /**
  The context owning the outcome. may be null for global outcomes.
  */
-@property (nonatomic, copy) NSNumber *contextID;
+@property (nonatomic, copy) NSString *contextID;
 
 /**
  The URL for fetching/updating the outcome

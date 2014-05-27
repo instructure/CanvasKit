@@ -13,7 +13,7 @@
 
 @interface CKIClient (CKIOutcomeGroup)
 
-- (RACSignal *)fetchRootOutcomeForCourse:(CKICourse *)course;
+- (RACSignal *)fetchRootOutcomeGroupForCourse:(CKICourse *)course;
 - (RACSignal *)fetchOutcomeGroupForCourse:(CKICourse *)course id:(NSString *)identifier;
 - (RACSignal *)fetchSubGroupsForOutcomeGroup:(CKIOutcomeGroup *)group;
 

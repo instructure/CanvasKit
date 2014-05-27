@@ -28,7 +28,7 @@
 /**
  The context owning the outcome group. may be null for global outcome groups. Omitted in the abbreviated form
  */
-@property (nonatomic, copy) NSNumber *contextID;
+@property (nonatomic, copy) NSString *contextID;
 
 /**
  The URL for fetching/updating the outcome group. should be treated as opaque
