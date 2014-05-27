@@ -23,7 +23,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-        @"positionInGroup": @"position",
+        @"position": @"position",
         @"descriptionHTML": @"description",
         @"dueAt": @"due_at",
         @"lockAt": @"lock_at",

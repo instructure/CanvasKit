@@ -12,13 +12,13 @@
 @class CKISubmission;
 @class CKIRubric;
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
     CKIAssignmentScoringTypePoints,
     CKIAssignmentScoringTypePercentage,
     CKIAssignmentScoringTypePassFail,
     CKIAssignmentScoringTypeLetter,
     CKIAssignmentScoringTypeNotGraded
-} CKIAssignmentScoringType;
+};
 
 
 @interface CKIAssignment : CKILockableModel
@@ -34,7 +34,7 @@ typedef enum {
 /**
 * The index of the assignment in it's group.
 */
-@property (nonatomic) NSInteger positionInGroup;
+@property (nonatomic) NSInteger position;
 
 /**
  The assignment description, in an HTML fragment.

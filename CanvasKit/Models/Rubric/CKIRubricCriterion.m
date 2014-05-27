@@ -14,7 +14,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSDictionary *keyPaths = @{
-        @"points": @"@points",
+        @"points": @"points",
         @"criterionDescription": @"description",
         @"longDescription": @"long_description"
     };
