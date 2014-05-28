@@ -20,8 +20,6 @@ NSString *const CKIEnrollmentTypeObserver = @"observer";
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"type": @"type",
-                               @"role": @"role",
                                @"computedFinalScore": @"computed_final_score",
                                @"computedCurrentScore": @"computed_current_score",
                                @"computedFinalGrade": @"computed_final_grade",
