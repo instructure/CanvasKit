@@ -1,0 +1,23 @@
+//
+//  CKIPollSession.h
+//  CanvasKit
+//
+//  Created by Rick Roberts on 5/22/14.
+//  Copyright (c) 2014 Instructure. All rights reserved.
+//
+
+#import "CKIModel.h"
+
+@interface CKIPollSession : CKIModel
+
+@property (nonatomic) BOOL isPublished;
+
+@property (nonatomic) BOOL hasPublicResults;
+
+@property (nonatomic) NSString *courseID;
+
+@property (nonatomic, copy) NSString *courseSectionID;
+
+@property (nonatomic, copy) NSDictionary *results;
+
+@end
