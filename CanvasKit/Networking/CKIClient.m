@@ -178,9 +178,12 @@
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
         NSURLSessionDataTask *deletionTask = [self DELETE:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-            CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
-            [subscriber sendNext:model];
+            if (responseObject) {
+                CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
+                [subscriber sendNext:model];
+            }
             [subscriber sendCompleted];
+            
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
             [subscriber sendError:[self errorForResponse:response]];
@@ -318,6 +321,7 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"TEST");
             [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass] fromJSON:responseObject context:context] subscribe:subscriber];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];
