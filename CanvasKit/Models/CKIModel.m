@@ -13,6 +13,11 @@
     id<CKIContext> _context;
 }
 
++ (NSString *)keyForJSONAPIContent
+{
+    return @"";
+}
+
 + (instancetype)modelWithID:(NSString *)modelID
 {
     return [self modelWithID:modelID context:CKIRootContext];

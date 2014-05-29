@@ -15,5 +15,7 @@
  */
 @property (nonatomic, copy) NSString *question;
 
+@property (nonatomic, copy) NSDate *created;
+
 
 @end

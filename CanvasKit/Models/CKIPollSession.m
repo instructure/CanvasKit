@@ -11,9 +11,16 @@
 
 @implementation CKIPollSession
 
++ (NSString *)keyForJSONAPIContent
+{
+    return @"poll_sessions";
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+                               @"courseID": @"course_id",
+                               @"sectionID": @"course_section_id",
                                @"isPublished": @"is_published",
                                @"hasPublicResults": @"has_public_results",
                                };

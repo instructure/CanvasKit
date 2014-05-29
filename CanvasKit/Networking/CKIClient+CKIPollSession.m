@@ -13,12 +13,29 @@
 - (RACSignal *)createPollSession:(CKIPollSession *)session forPoll:(CKIPoll *)poll
 {
     NSString *path = [poll.path stringByAppendingPathComponent:@"poll_sessions"];
-    return [self createModelAtPath:path parameters:@{@"poll_session": @{@"course_id": session.courseID, @"course_section_id": session.courseSectionID}} modelClass:[CKIPollSession class] context:poll];
+    return [self createModelAtPath:path parameters:@{@"poll_sessions": @[@{@"course_id": session.courseID, @"course_section_id": session.sectionID}]} modelClass:[CKIPollSession class] context:poll];
 }
 
-- (RACSignal *)fetchPublishedPollSessionsForCurrentUser
+- (RACSignal *)deletePollSession:(CKIPollSession *)session
 {
-    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:@"published"];
+    return [self deleteObjectAtPath:session.path modelClass:[CKIPollSession class] parameters:0 context:nil];
+}
+
+- (RACSignal *)fetchOpenPollSessionsForCurrentUser
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:@"opened"];
+    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKIPollSession class] context:nil];
+}
+
+- (RACSignal *)fetchClosedPollSessionsForCurrentUser
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:@"closed"];
+    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKIPollSession class] context:nil];
+}
+
+- (RACSignal *)fetchPollSessionsForPoll:(CKIPoll *)poll
+{
+    NSString *path = [poll.path stringByAppendingPathComponent:@"poll_sessions"];
     return [self fetchResponseAtPath:path parameters:0 modelClass:[CKIPollSession class] context:nil];
 }
 
@@ -28,7 +45,8 @@
         
         NSString *path = [session.path stringByAppendingPathComponent:@"publish"];
         NSURLSessionDataTask *task = [self GET:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
-            [subscriber sendNext:responseObject];
+            responseObject = responseObject[@"poll_sessions"];
+            [subscriber sendNext:[responseObject firstObject]];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];
@@ -46,6 +64,7 @@
         
         NSString *path = [session.path stringByAppendingPathComponent:@"close"];
         NSURLSessionDataTask *task = [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            responseObject = responseObject[@"poll_sessions"];
             [subscriber sendNext:responseObject];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {

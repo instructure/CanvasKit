@@ -11,6 +11,11 @@
 
 @implementation CKIPollSubmission
 
++ (NSString *)keyForJSONAPIContent
+{
+    return @"poll_submissions";
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{

@@ -13,7 +13,7 @@
 - (RACSignal *)createPollSubmission:(CKIPollSubmission *)submission forPoll:(CKIPoll *)poll pollSession:(CKIPollSession *)session
 {
     NSString *path = [session.path stringByAppendingPathComponent:@"poll_submissions"];
-    return [self createModelAtPath:path parameters:@{@"poll_submission": @{@"poll_choice_id": submission.pollChoiceID}} modelClass:[CKIPollSubmission class] context:session];
+    return [self createModelAtPath:path parameters:@{@"poll_submissions": @[@{@"poll_choice_id": submission.pollChoiceID}]} modelClass:[CKIPollSubmission class] context:session];
 }
 
 @end

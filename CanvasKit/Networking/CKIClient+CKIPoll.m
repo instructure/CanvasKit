@@ -20,9 +20,9 @@
 - (RACSignal *)createPoll:(CKIPoll *)poll
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"polls"];
-    NSDictionary *params = @{@"polls": @[
-                                            @{@"question": poll.question}
-                                        ]};
+    NSDictionary *params = @{
+                             @"polls": @[@{@"question": poll.question}]
+                             };
     return [self createModelAtPath:path parameters:params modelClass:[CKIPoll class] context:CKIRootContext];
 }
 

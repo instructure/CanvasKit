@@ -16,4 +16,6 @@
 
 - (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course;
 
+- (RACSignal *)fetchCourseWithCourseID:(NSString *)courseID;
+
 @end
