@@ -224,11 +224,11 @@
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only fetch CKIModels");
 
     NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
-    return [self fetchResponseAtPath:path parameters:parameters transformer:transformer context:context];
+    return [self fetchResponseAtPath:path parameters:parameters jsonAPIKey:[modelClass keyForJSONAPIContent] transformer:transformer context:context];
 }
 
 
-- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
+- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters jsonAPIKey:(NSString *)jsonAPIKey transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
 {
     NSParameterAssert(path);
     NSParameterAssert(transformer);
@@ -245,6 +245,10 @@
             NSURL *currentPage = response.currentPage;
             NSURL *nextPage = response.nextPage;
             NSURL *lastPage = response.lastPage;
+            
+            if ([jsonAPIKey length]) {
+                responseObject = responseObject[jsonAPIKey];
+            }
 
             RACSignal *thisPageSignal = [self parseResponseWithTransformer:transformer fromJSON:responseObject context:context];
             RACSignal *nextPageSignal = [RACSignal empty];
@@ -284,6 +288,7 @@
     NSAssert([responseObject isKindOfClass:NSArray.class] || [responseObject isKindOfClass:NSDictionary.class], @"Response object must be either an array or dictionary");
 
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
         if ([responseObject isKindOfClass:NSArray.class]) {
             NSArray *jsonModels = responseObject;
             NSArray *models = [[jsonModels.rac_sequence map:^id(id jsonModel) {
@@ -314,14 +319,21 @@
     return model;
 }
 
-
 #pragma mark - POSTing
 
 - (RACSignal *)createModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context
 {
+    
+    NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
+
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"TEST");
+            
+            NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
+            if ([jsonContentKey length]) {
+                responseObject = responseObject[jsonContentKey];
+            }
+            
             [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass] fromJSON:responseObject context:context] subscribe:subscriber];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];

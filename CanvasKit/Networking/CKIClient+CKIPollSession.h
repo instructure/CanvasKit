@@ -17,7 +17,9 @@
 - (RACSignal *)createPollSession:(CKIPollSession *)session forPoll:(CKIPoll *)poll;
 - (RACSignal *)closePollSession:(CKIPollSession *)session;
 - (RACSignal *)publishPollSession:(CKIPollSession *)session;
-
-- (RACSignal *)fetchPublishedPollSessionsForCurrentUser;
+- (RACSignal *)deletePollSession:(CKIPollSession *)session;
+- (RACSignal *)fetchOpenPollSessionsForCurrentUser;
+- (RACSignal *)fetchClosedPollSessionsForCurrentUser;
+- (RACSignal *)fetchPollSessionsForPoll:(CKIPoll *)poll;
 
 @end

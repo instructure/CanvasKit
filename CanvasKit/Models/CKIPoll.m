@@ -8,12 +8,19 @@
 
 #import "CKIPoll.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIPoll
+
++ (NSString *)keyForJSONAPIContent
+{
+    return @"polls";
+}
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+                               @"created": @"created_at"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -24,6 +31,11 @@
     return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
         return stringID;
     }];
+}
+
++ (NSValueTransformer *)createdJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
 - (NSString *)path

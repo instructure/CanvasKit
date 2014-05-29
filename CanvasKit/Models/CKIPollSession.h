@@ -14,9 +14,9 @@
 
 @property (nonatomic) BOOL hasPublicResults;
 
-@property (nonatomic) NSString *courseID;
+@property (nonatomic, copy) NSString *courseID;
 
-@property (nonatomic, copy) NSString *courseSectionID;
+@property (nonatomic, copy) NSString *sectionID;
 
 @property (nonatomic, copy) NSDictionary *results;
 
