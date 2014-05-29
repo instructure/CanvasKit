@@ -228,6 +228,11 @@
 }
 
 
+- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
+{
+    return [self fetchResponseAtPath:path parameters:parameters jsonAPIKey:nil transformer:transformer context:context];
+}
+
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters jsonAPIKey:(NSString *)jsonAPIKey transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
 {
     NSParameterAssert(path);
@@ -254,7 +259,7 @@
             RACSignal *nextPageSignal = [RACSignal empty];
 
             if (nextPage && ![currentPage isEqual:lastPage]) {
-                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
+                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters jsonAPIKey:jsonAPIKey transformer:transformer context:context];
             }
 
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
