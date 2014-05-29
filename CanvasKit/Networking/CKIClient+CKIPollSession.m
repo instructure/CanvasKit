@@ -43,7 +43,7 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        NSString *path = [session.path stringByAppendingPathComponent:@"publish"];
+        NSString *path = [session.path stringByAppendingPathComponent:@"open"];
         NSURLSessionDataTask *task = [self GET:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
             responseObject = responseObject[@"poll_sessions"];
             [subscriber sendNext:[responseObject firstObject]];
