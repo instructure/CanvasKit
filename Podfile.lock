@@ -28,26 +28,26 @@ PODS:
   - Mantle (1.4.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
-  - ReactiveCocoa (2.3):
+  - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
-  - ReactiveCocoa/Core (2.3):
+  - ReactiveCocoa/Core (2.3.1):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3)
-  - ReactiveCocoa/UI (2.3):
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
   - AFNetworking (= 2.0)
   - ISO8601DateFormatter
   - Kiwi/XCTest
-  - Mantle
+  - Mantle (= 1.4.1)
   - ReactiveCocoa
 
 SPEC CHECKSUMS:
-  AFNetworking: 3fa983b1beaba69566a3374612511e2a6e3fe845
-  ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
-  Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
-  Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
-  ReactiveCocoa: dde7b11a14954edf789e7343b2c32e595caabd01
+  AFNetworking: 6d4a33f2a7edf1d394455c543b446fdfae6b4082
+  ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
+  Kiwi: c73667f2b84cbf36f1a3830267c5a4ae8dcbd8ba
+  Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
 
 COCOAPODS: 0.32.1
