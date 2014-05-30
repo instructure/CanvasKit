@@ -8,6 +8,7 @@
 
 #import "CKIPollSession.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIPollSession
 
@@ -40,6 +41,9 @@
     return [[self.context.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:self.id];
 }
 
-- (NSValueTransformer *)
+- (NSValueTransformer *)courseIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
 
 @end

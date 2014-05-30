@@ -28,7 +28,7 @@
     return [[self.context.path stringByAppendingPathComponent:@"sections"] stringByAppendingPathComponent:self.id];
 }
 
-- (NSValueTransformer *)courseIDJSONTransformer
++ (NSValueTransformer *)courseIDJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
