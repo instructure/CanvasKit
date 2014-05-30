@@ -38,7 +38,15 @@
 - (RACSignal *)fetchCourseWithCourseID:(NSString *)courseID
 {
     NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"courses"] stringByAppendingPathComponent:courseID];
-    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKICourse class] context:nil];
+    return [[self fetchResponseAtPath:path parameters:0 modelClass:[CKICourse class] context:nil] map:^id(CKICourse *course) {
+        CKICourse *courseCopy = [course copy];
+        
+        [course.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
+            enrollment.id = [NSString stringWithFormat:@"%@-c-%@", @(idx), course.id];
+            enrollment.context = courseCopy;
+        }];
+        return course;
+    }];
 }
 
 - (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course
