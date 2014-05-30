@@ -14,7 +14,14 @@
 - (RACSignal *)fetchPollsForCurrentUser
 {
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"polls"];
-    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPoll class] context:nil];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPoll class] context:CKIRootContext];
+}
+
+- (RACSignal *)fetchPollWithID:(NSString *)pollID
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"polls"] stringByAppendingPathComponent:pollID];
+    
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPoll class] context:CKIRootContext];
 }
 
 - (RACSignal *)createPoll:(CKIPoll *)poll

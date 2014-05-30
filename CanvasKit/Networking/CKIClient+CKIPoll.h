@@ -13,6 +13,8 @@
 
 - (RACSignal *)fetchPollsForCurrentUser;
 
+- (RACSignal *)fetchPollWithID:(NSString *)pollID;
+
 - (RACSignal *)createPoll:(CKIPoll *)poll;
 
 - (RACSignal *)deletePoll:(CKIPoll *)poll;

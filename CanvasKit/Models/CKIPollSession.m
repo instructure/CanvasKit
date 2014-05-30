@@ -24,6 +24,7 @@
                                @"sectionID": @"course_section_id",
                                @"isPublished": @"is_published",
                                @"hasPublicResults": @"has_public_results",
+                               @"pollID": @"poll_id",
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
