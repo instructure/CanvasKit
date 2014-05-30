@@ -40,4 +40,6 @@
     return [[self.context.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:self.id];
 }
 
+- (NSValueTransformer *)
+
 @end
