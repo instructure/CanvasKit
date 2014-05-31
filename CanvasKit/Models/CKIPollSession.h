@@ -22,4 +22,6 @@
 
 @property (nonatomic, copy) NSDictionary *results;
 
+@property (nonatomic) BOOL hasSubmitted;
+
 @end

@@ -20,6 +20,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+                               @"hasSubmitted":@"has_submitted",
                                @"courseID": @"course_id",
                                @"sectionID": @"course_section_id",
                                @"isPublished": @"is_published",
