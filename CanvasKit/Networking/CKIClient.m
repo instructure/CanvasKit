@@ -20,6 +20,8 @@
 #import "CKILoginViewController.h"
 #endif
 
+NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessTokenExpiredNotification";
+
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
@@ -265,10 +267,17 @@
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            if ([self errorCausedByRevokedAuthToken:error task:task]) {
-                [self revokeClient];
+            if ([self isUnauthorizedError:error]) {
+                // if the user gets a 401 that might be a server issue, lets
+                // do one more check to see if our access token has expired
+                // or been revoked
+                [[self fetchCurrentUser] subscribeError:^(NSError *error) {
+                    if ([self isUnauthorizedError:error]) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:CKIClientAccessTokenExpiredNotification object:self userInfo:nil];
+                        [self revokeClient];
+                    }
+                }];
             }
-
             [subscriber sendError:error];
         }];
 
@@ -279,11 +288,10 @@
             replay];
 }
 
-- (BOOL)errorCausedByRevokedAuthToken:(NSError *)error task:(NSURLSessionDataTask *)task
+- (BOOL)isUnauthorizedError:(NSError *)error
 {
-    return [error.domain isEqualToString:AFNetworkingErrorDomain] &&
-            error.code == NSURLErrorBadServerResponse &&
-            [error.localizedDescription hasPrefix:@"Request failed: unauthorized (401)"];
+    NSHTTPURLResponse *failingResponse = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+    return failingResponse != nil || failingResponse.statusCode == 401;
 }
 
 - (RACSignal *)parseResponseWithTransformer:(NSValueTransformer *)transformer fromJSON:(id)responseObject context:(id<CKIContext>)context
