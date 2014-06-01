@@ -24,4 +24,6 @@
 
 @property (nonatomic) BOOL hasSubmitted;
 
+@property (nonatomic, copy) NSArray *submissions;
+
 @end

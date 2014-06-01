@@ -10,6 +10,10 @@
 
 @interface CKIPollSubmission : CKIModel
 
-@property (nonatomic) NSNumber *pollChoiceID;
+@property (nonatomic) NSString *pollChoiceID;
+
+@property (nonatomic, copy) NSString *userID;
+
+@property (nonatomic, copy) NSDate *created;
 
 @end

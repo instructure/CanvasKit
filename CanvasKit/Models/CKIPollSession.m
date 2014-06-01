@@ -7,6 +7,7 @@
 //
 
 #import "CKIPollSession.h"
+#import "CKIPollSubmission.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
@@ -20,6 +21,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+                               @"submissions": @"poll_submissions",
                                @"hasSubmitted":@"has_submitted",
                                @"courseID": @"course_id",
                                @"sectionID": @"course_section_id",
@@ -36,6 +38,11 @@
     return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
         return stringID;
     }];
+}
+
++ (NSValueTransformer *)submissionsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIPollSubmission class]];
 }
 
 - (NSString *)path

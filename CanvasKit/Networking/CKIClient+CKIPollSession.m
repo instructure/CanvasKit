@@ -39,6 +39,11 @@
     return [self fetchResponseAtPath:path parameters:0 modelClass:[CKIPollSession class] context:nil];
 }
 
+- (RACSignal *)fetchResultsForPollSession:(CKIPollSession *)pollSession
+{
+    return [self fetchResponseAtPath:pollSession.path parameters:0 modelClass:[CKIPollSession class] context:nil];
+}
+
 - (RACSignal *)publishPollSession:(CKIPollSession *)session
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

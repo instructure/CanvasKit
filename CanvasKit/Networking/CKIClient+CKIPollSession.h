@@ -21,5 +21,6 @@
 - (RACSignal *)fetchOpenPollSessionsForCurrentUser;
 - (RACSignal *)fetchClosedPollSessionsForCurrentUser;
 - (RACSignal *)fetchPollSessionsForPoll:(CKIPoll *)poll;
+- (RACSignal *)fetchResultsForPollSession:(CKIPollSession *)pollSession;
 
 @end
