@@ -364,6 +364,15 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self PUT:model.path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            Class modelClass = model.class;
+            NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
+
+            NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
+            
+            if ([jsonContentKey length]) {
+                responseObject = responseObject[jsonContentKey];
+            }
+            
             [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[model class]] fromJSON:responseObject context:model.context] subscribe:subscriber];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];
