@@ -28,6 +28,7 @@
                                @"isPublished": @"is_published",
                                @"hasPublicResults": @"has_public_results",
                                @"pollID": @"poll_id",
+                               @"created": @"created_at",
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -43,6 +44,11 @@
 + (NSValueTransformer *)submissionsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIPollSubmission class]];
+}
+
++ (NSValueTransformer *)createdJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
 - (NSString *)path
