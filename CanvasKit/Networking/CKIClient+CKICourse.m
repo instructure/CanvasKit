@@ -35,6 +35,27 @@
     }];
 }
 
+- (NSDictionary *)parametersForFetchingCoursesCurrentDomain
+{
+    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions"],
+             @"current_domain_only": @"true"};
+}
+
+- (RACSignal *)fetchCoursesForCurrentUserCurrentDomain
+{
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"courses"];
+    
+    return [[self fetchResponseAtPath:path parameters:[self parametersForFetchingCoursesCurrentDomain] modelClass:[CKICourse class] context:nil] map:^id(NSArray *courses) {
+        [courses enumerateObjectsUsingBlock:^(CKICourse *course, NSUInteger idx, BOOL *stop) {
+            [course.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
+                enrollment.id = [NSString stringWithFormat:@"%@-c-%@", @(idx), course.id];
+                enrollment.context = course;
+            }];
+        }];
+        return courses;
+    }];
+}
+
 - (RACSignal *)fetchCourseWithCourseID:(NSString *)courseID
 {
     NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"courses"] stringByAppendingPathComponent:courseID];
