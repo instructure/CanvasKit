@@ -14,6 +14,8 @@
 
 - (RACSignal *)fetchCoursesForCurrentUser;
 
+- (RACSignal *)fetchCoursesForCurrentUserCurrentDomain;
+
 - (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course;
 
 - (RACSignal *)fetchCourseWithCourseID:(NSString *)courseID;
