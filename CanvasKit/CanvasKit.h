@@ -54,6 +54,8 @@
 #import "CKITodoItem.h"
 #import "CKIUser.h"
 #import "CKIEnrollment.h"
+#import "CKILiveAssessment.h"
+#import "CKILiveAssessmentResult.h"
 
 #pragma mark - Networking
 
@@ -84,3 +86,5 @@
 #import "CKIClient+CKITodoItem.h"
 #import "CKIClient+CKIUser.h"
 #import "CKIClient+CKIDiscussionTopic.h"
+#import "CKIClient+CKILiveAssessment.h"
+#import "CKIClient+CKILiveAssessmentResult.h"
