@@ -249,9 +249,18 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
         }
         NSURLSessionDataTask *task = [self GET:path parameters:finalParameters success:^(NSURLSessionDataTask *task, id responseObject) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+            
+            // check for pagination in the headers
             NSURL *currentPage = response.currentPage;
             NSURL *nextPage = response.nextPage;
             NSURL *lastPage = response.lastPage;
+
+            // check for JSONAPI pagination
+            if (currentPage == nil && [responseObject isKindOfClass:[NSDictionary class]]){
+                currentPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.current"]];
+                nextPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.next"]];
+                lastPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.last"]];
+            }
             
             if ([jsonAPIKey length]) {
                 responseObject = responseObject[jsonAPIKey];

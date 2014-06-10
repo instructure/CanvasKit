@@ -47,6 +47,10 @@
 		499B4A3017F22C9F00E211C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 499B4A2F17F22C9F00E211C9 /* main.m */; };
 		499B4A3417F22C9F00E211C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 499B4A3317F22C9F00E211C9 /* AppDelegate.m */; };
 		499B4A3617F22C9F00E211C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499B4A3517F22C9F00E211C9 /* Images.xcassets */; };
+		49AEBA7819466A62008CC2C1 /* CKILiveAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEBA7719466A62008CC2C1 /* CKILiveAssessment.m */; };
+		49AEBA7B19466AD1008CC2C1 /* CKILiveAssessmentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEBA7A19466AD1008CC2C1 /* CKILiveAssessmentResult.m */; };
+		49AEBA7F19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEBA7E19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.m */; };
+		49AEBA8219466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEBA8119466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.m */; };
 		49D211F717E22326006359A7 /* submission_array.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D211F617E22326006359A7 /* submission_array.json */; };
 		5E4EDF66192EBC1000F7A8A1 /* CKIOutcomeLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4EDF65192EBC1000F7A8A1 /* CKIOutcomeLink.m */; };
 		5E4EDF69192EC0E500F7A8A1 /* CKIClient+CKIOutcomeLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4EDF68192EC0E500F7A8A1 /* CKIClient+CKIOutcomeLink.m */; };
@@ -320,6 +324,14 @@
 		499B4A3217F22C9F00E211C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		499B4A3317F22C9F00E211C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		499B4A3517F22C9F00E211C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		49AEBA7619466A62008CC2C1 /* CKILiveAssessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILiveAssessment.h; sourceTree = "<group>"; };
+		49AEBA7719466A62008CC2C1 /* CKILiveAssessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILiveAssessment.m; sourceTree = "<group>"; };
+		49AEBA7919466AD1008CC2C1 /* CKILiveAssessmentResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKILiveAssessmentResult.h; sourceTree = "<group>"; };
+		49AEBA7A19466AD1008CC2C1 /* CKILiveAssessmentResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKILiveAssessmentResult.m; sourceTree = "<group>"; };
+		49AEBA7D19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKILiveAssessment.h"; sourceTree = "<group>"; };
+		49AEBA7E19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKILiveAssessment.m"; sourceTree = "<group>"; };
+		49AEBA8019466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKILiveAssessmentResult.h"; sourceTree = "<group>"; };
+		49AEBA8119466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKILiveAssessmentResult.m"; sourceTree = "<group>"; };
 		49D211F617E22326006359A7 /* submission_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submission_array.json; sourceTree = "<group>"; };
 		5E4EDF64192EBC1000F7A8A1 /* CKIOutcomeLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIOutcomeLink.h; sourceTree = "<group>"; };
 		5E4EDF65192EBC1000F7A8A1 /* CKIOutcomeLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIOutcomeLink.m; sourceTree = "<group>"; };
@@ -618,9 +630,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49AEBA7C19466D8C008CC2C1 /* Live Assessments */ = {
+			isa = PBXGroup;
+			children = (
+				49AEBA7D19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.h */,
+				49AEBA7E19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.m */,
+				49AEBA8019466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.h */,
+				49AEBA8119466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.m */,
+			);
+			path = "Live Assessments";
+			sourceTree = "<group>";
+		};
+		49B01068193BA65B009F3CEC /* Live Assessments */ = {
+			isa = PBXGroup;
+			children = (
+				49AEBA7619466A62008CC2C1 /* CKILiveAssessment.h */,
+				49AEBA7719466A62008CC2C1 /* CKILiveAssessment.m */,
+				49AEBA7919466AD1008CC2C1 /* CKILiveAssessmentResult.h */,
+				49AEBA7A19466AD1008CC2C1 /* CKILiveAssessmentResult.m */,
+			);
+			path = "Live Assessments";
+			sourceTree = "<group>";
+		};
 		8024E19B17C6AE1B0031E0F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				49B01068193BA65B009F3CEC /* Live Assessments */,
 				BD74D663192EA5A600786BCD /* Polling */,
 				8027B7CB18284FBB0008BB07 /* CKIActivityStreamItems */,
 				4910CE9A17E8F3D000A6A73E /* CKIAPIV1.h */,
@@ -699,6 +734,7 @@
 		8024E19C17C6AE250031E0F4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				49AEBA7C19466D8C008CC2C1 /* Live Assessments */,
 				BD74D66D192EB05500786BCD /* Polling */,
 				80DA1F711832CD9800CC4E84 /* CKIClient+CKIActivityStreamItem.h */,
 				80DA1F721832CD9800CC4E84 /* CKIClient+CKIActivityStreamItem.m */,
@@ -1276,6 +1312,7 @@
 				B59520DC1805BC090055DDCC /* CKIExternalTool.m in Sources */,
 				80A199731831AA39003A7083 /* CKIClient+CKIPage.m in Sources */,
 				80A199851831C31C003A7083 /* CKIClient+CKIModule.m in Sources */,
+				49AEBA8219466DD7008CC2C1 /* CKIClient+CKILiveAssessmentResult.m in Sources */,
 				80A199671831A639003A7083 /* CKIClient+CKICourse.m in Sources */,
 				BDB4B8BF17E236330097D4AC /* NSString+CKIAdditions.m in Sources */,
 				BD18757C17E0D7AE00138469 /* CKICourse.m in Sources */,
@@ -1283,8 +1320,10 @@
 				8027B7BA18283A940008BB07 /* CKIActivityStreamMessageItem.m in Sources */,
 				BD7907B217EA364B006D12D9 /* CKIAssignmentGroup.m in Sources */,
 				809808BD17C6D9BB00FC3BF6 /* CKIAssignment.m in Sources */,
+				49AEBA7F19466DBB008CC2C1 /* CKIClient+CKILiveAssessment.m in Sources */,
 				80A199911831F808003A7083 /* CKIClient+CKISubmissionSet.m in Sources */,
 				4914E80A183EF18B00CB30B9 /* CKITerm.m in Sources */,
+				49AEBA7B19466AD1008CC2C1 /* CKILiveAssessmentResult.m in Sources */,
 				49006E72185B950D00721DE2 /* CKIClient+CKIDiscussionTopic.m in Sources */,
 				BD726BD51921B66400FDE781 /* CKIClient+CKISection.m in Sources */,
 				80C8471117E1141F00AF25AE /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
@@ -1336,6 +1375,7 @@
 				4931A8F318452C2600B0D369 /* CKIMediaComment.m in Sources */,
 				80A1998E1831F7AA003A7083 /* CKIClient+CKIService.m in Sources */,
 				BD74D676192FA23E00786BCD /* CKIClient+CKIPollSubmission.m in Sources */,
+				49AEBA7819466A62008CC2C1 /* CKILiveAssessment.m in Sources */,
 				80DA1F691832C52800CC4E84 /* CKIClient+CKIModel.m in Sources */,
 				4931A8A8183FE3C700B0D369 /* CKIClient+CKIConversation.m in Sources */,
 				4931A8A4183FA63E00B0D369 /* CKIConversation.m in Sources */,
