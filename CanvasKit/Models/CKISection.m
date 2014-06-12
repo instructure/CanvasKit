@@ -8,6 +8,7 @@
 
 #import "CKISection.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKISection
 
@@ -25,6 +26,11 @@
 - (NSString *)path
 {
     return [[self.context.path stringByAppendingPathComponent:@"sections"] stringByAppendingPathComponent:self.id];
+}
+
++ (NSValueTransformer *)courseIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 @end

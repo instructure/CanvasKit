@@ -35,6 +35,12 @@
     }];
 }
 
+- (RACSignal *)fetchCourseWithCourseID:(NSString *)courseID
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"courses"] stringByAppendingPathComponent:courseID];
+    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKICourse class] context:nil];
+}
+
 - (RACSignal *)courseWithUpdatedPermissionsSignalForCourse:(CKICourse *)course
 {
     return [self refreshModel:course parameters:[self parametersForFetchingCourses]];

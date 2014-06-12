@@ -17,4 +17,10 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKISection class] context:course];
 }
 
+- (RACSignal *)fetchSectionWithID:(NSString *)sectionID
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"sections"] stringByAppendingPathComponent:sectionID];
+    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKISection class] context:nil];
+}
+
 @end
