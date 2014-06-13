@@ -13,12 +13,18 @@
 
 @implementation CKILiveAssessmentResult
 
++ (NSString *)keyForJSONAPIContent
+{
+    return @"results";
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
         @"assessedAt": @"assessed_at",
         @"assessedUserID": @"links.user",
-        @"assessorUserID": @"links.assessor"
+        @"assessorUserID": @"links.assessor",
+        @"context": [NSNull null],
     };
     
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];

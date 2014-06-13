@@ -18,7 +18,12 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return [[super JSONKeyPathsByPropertyKey] dictionaryByAddingObjectsFromDictionary:@{@"context": [NSNull null]}];
+    NSDictionary *pathsByProperty = @{
+        @"context": [NSNull null],
+        @"outcomeID": @"links.outcome",
+    };
+    
+    return [[super JSONKeyPathsByPropertyKey] dictionaryByAddingObjectsFromDictionary:pathsByProperty];
 }
 
 + (NSValueTransformer *)idJSONTransformer
@@ -28,4 +33,8 @@
     }];
 }
 
+- (NSString *)path
+{
+    return [[self.context.path stringByAppendingPathComponent:@"live_assessments"] stringByAppendingPathComponent:self.id];
+}
 @end
