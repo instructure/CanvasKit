@@ -7,7 +7,7 @@
 //
 
 #import "CKIClient+CKISection.h"
-#import <CKISection.h>
+#import "CKISection.h"
 
 @implementation CKIClient (CKISection)
 
@@ -15,6 +15,12 @@
 {
     NSString *path = [course.path stringByAppendingPathComponent:@"sections"];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKISection class] context:course];
+}
+
+- (RACSignal *)fetchSectionWithID:(NSString *)sectionID
+{
+    NSString *path = [[CKIRootContext.path stringByAppendingPathComponent:@"sections"] stringByAppendingPathComponent:sectionID];
+    return [self fetchResponseAtPath:path parameters:0 modelClass:[CKISection class] context:nil];
 }
 
 @end

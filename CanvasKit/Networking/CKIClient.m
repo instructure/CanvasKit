@@ -20,6 +20,8 @@
 #import "CKILoginViewController.h"
 #endif
 
+NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessTokenExpiredNotification";
+
 @interface CKIClient ()
 @property (nonatomic, strong) NSString *clientID;
 @property (nonatomic, strong) NSString *clientSecret;
@@ -150,7 +152,15 @@
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     
     if (self.forceCanvasLogin) {
-        [request addValue:@"canvas_sa_delegated=\"1\"" forHTTPHeaderField:@"Cookie"];
+        [request setHTTPShouldHandleCookies:YES];
+        NSDictionary *cookieProperties = @{
+                                           NSHTTPCookieValue: @"1",
+                                           NSHTTPCookieDomain: self.baseURL.host,
+                                           NSHTTPCookieName: @"canvas_sa_delegated",
+                                           NSHTTPCookiePath: @"/"
+                                           };
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     }
     
     return request;
@@ -174,9 +184,12 @@
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
         NSURLSessionDataTask *deletionTask = [self DELETE:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-            CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
-            [subscriber sendNext:model];
+            if (responseObject) {
+                CKIModel *model = [self parseModel:transformer fromJSON:responseObject context:nil];
+                [subscriber sendNext:model];
+            }
             [subscriber sendCompleted];
+            
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
             [subscriber sendError:[self errorForResponse:response]];
@@ -217,11 +230,16 @@
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only fetch CKIModels");
 
     NSValueTransformer *transformer = [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass];
-    return [self fetchResponseAtPath:path parameters:parameters transformer:transformer context:context];
+    return [self fetchResponseAtPath:path parameters:parameters jsonAPIKey:[modelClass keyForJSONAPIContent] transformer:transformer context:context];
 }
 
 
 - (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
+{
+    return [self fetchResponseAtPath:path parameters:parameters jsonAPIKey:nil transformer:transformer context:context];
+}
+
+- (RACSignal *)fetchResponseAtPath:(NSString *)path parameters:(NSDictionary *)parameters jsonAPIKey:(NSString *)jsonAPIKey transformer:(NSValueTransformer *)transformer context:(id<CKIContext>)context
 {
     NSParameterAssert(path);
     NSParameterAssert(transformer);
@@ -235,24 +253,44 @@
         }
         NSURLSessionDataTask *task = [self GET:path parameters:finalParameters success:^(NSURLSessionDataTask *task, id responseObject) {
             NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+            
+            // check for pagination in the headers
             NSURL *currentPage = response.currentPage;
             NSURL *nextPage = response.nextPage;
             NSURL *lastPage = response.lastPage;
+
+            // check for JSONAPI pagination
+            if (currentPage == nil && [responseObject isKindOfClass:[NSDictionary class]]){
+                currentPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.current"]];
+                nextPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.next"]];
+                lastPage = [NSURL URLWithString:[responseObject valueForKeyPath:@"meta.pagination.last"]];
+            }
+            
+            if ([jsonAPIKey length]) {
+                responseObject = responseObject[jsonAPIKey];
+            }
 
             RACSignal *thisPageSignal = [self parseResponseWithTransformer:transformer fromJSON:responseObject context:context];
             RACSignal *nextPageSignal = [RACSignal empty];
 
             if (nextPage && ![currentPage isEqual:lastPage]) {
-                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters transformer:transformer context:context];
+                nextPageSignal = [self fetchResponseAtPath:nextPage.relativeString parameters:newParameters jsonAPIKey:jsonAPIKey transformer:transformer context:context];
             }
 
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            if ([self errorCausedByRevokedAuthToken:error task:task]) {
-                [self revokeClient];
+            if ([self isUnauthorizedError:error]) {
+                // if the user gets a 401 that might be a server issue, lets
+                // do one more check to see if our access token has expired
+                // or been revoked
+                [[self fetchCurrentUser] subscribeError:^(NSError *error) {
+                    if ([self isUnauthorizedError:error]) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:CKIClientAccessTokenExpiredNotification object:self userInfo:nil];
+                        [self revokeClient];
+                    }
+                }];
             }
-
             [subscriber sendError:error];
         }];
 
@@ -263,11 +301,10 @@
             replay];
 }
 
-- (BOOL)errorCausedByRevokedAuthToken:(NSError *)error task:(NSURLSessionDataTask *)task
+- (BOOL)isUnauthorizedError:(NSError *)error
 {
-    return [error.domain isEqualToString:AFNetworkingErrorDomain] &&
-            error.code == NSURLErrorBadServerResponse &&
-            [error.localizedDescription hasPrefix:@"Request failed: unauthorized (401)"];
+    NSHTTPURLResponse *failingResponse = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+    return failingResponse != nil || failingResponse.statusCode == 401;
 }
 
 - (RACSignal *)parseResponseWithTransformer:(NSValueTransformer *)transformer fromJSON:(id)responseObject context:(id<CKIContext>)context
@@ -277,6 +314,7 @@
     NSAssert([responseObject isKindOfClass:NSArray.class] || [responseObject isKindOfClass:NSDictionary.class], @"Response object must be either an array or dictionary");
 
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
         if ([responseObject isKindOfClass:NSArray.class]) {
             NSArray *jsonModels = responseObject;
             NSArray *models = [[jsonModels.rac_sequence map:^id(id jsonModel) {
@@ -307,13 +345,21 @@
     return model;
 }
 
-
 #pragma mark - POSTing
 
 - (RACSignal *)createModelAtPath:(NSString *)path parameters:(NSDictionary *)parameters modelClass:(Class)modelClass context:(id<CKIContext>)context
 {
+    
+    NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
+
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
+            if ([jsonContentKey length]) {
+                responseObject = responseObject[jsonContentKey];
+            }
+            
             [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:modelClass] fromJSON:responseObject context:context] subscribe:subscriber];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];
@@ -331,6 +377,15 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self PUT:model.path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+            Class modelClass = model.class;
+            NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
+
+            NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
+            
+            if ([jsonContentKey length]) {
+                responseObject = responseObject[jsonContentKey];
+            }
+            
             [[self parseResponseWithTransformer:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[model class]] fromJSON:responseObject context:model.context] subscribe:subscriber];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [subscriber sendError:error];

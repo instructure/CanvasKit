@@ -37,6 +37,9 @@
 #import "CKIModel.h"
 #import "CKIModule.h"
 #import "CKIModuleItem.h"
+#import "CKIOutcome.h"
+#import "CKIOutcomeGroup.h"
+#import "CKIOutcomeLink.h"
 #import "CKIPage.h"
 #import "CKIQuiz.h"
 #import "CKIRubricCriterion.h"
@@ -51,6 +54,8 @@
 #import "CKITodoItem.h"
 #import "CKIUser.h"
 #import "CKIEnrollment.h"
+#import "CKILiveAssessment.h"
+#import "CKILiveAssessmentResult.h"
 
 #pragma mark - Networking
 
@@ -70,6 +75,9 @@
 #import "CKIClient+CKIModel.h"
 #import "CKIClient+CKIModule.h"
 #import "CKIClient+CKIModuleItem.h"
+#import "CKIClient+CKIOutcome.h"
+#import "CKIClient+CKIOutcomeGroup.h"
+#import "CKIClient+CKIOutcomeLink.h"
 #import "CKIClient+CKIPage.h"
 #import "CKIClient+CKIQuiz.h"
 #import "CKIClient+CKIService.h"
@@ -78,3 +86,5 @@
 #import "CKIClient+CKITodoItem.h"
 #import "CKIClient+CKIUser.h"
 #import "CKIClient+CKIDiscussionTopic.h"
+#import "CKIClient+CKILiveAssessment.h"
+#import "CKIClient+CKILiveAssessmentResult.h"

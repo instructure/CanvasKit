@@ -11,6 +11,8 @@
 
 @interface CKIModel : MTLModel <MTLJSONSerializing, CKIContext>
 
++ (NSString *)keyForJSONAPIContent;
+
 /**
  Creates an empty model with the given ID assumes the `CKIRootContext`
  */

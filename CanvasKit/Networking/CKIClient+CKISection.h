@@ -12,5 +12,6 @@
 @interface CKIClient (CKISection)
 
 - (RACSignal *)fetchSectionsForCourse:(CKICourse *)course;
+- (RACSignal *)fetchSectionWithID:(NSString *)sectionID;
 
 @end
