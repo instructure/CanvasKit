@@ -18,6 +18,12 @@
 
 @property (nonatomic, copy) NSString *sectionID;
 
+@property (nonatomic, copy) NSString *pollID;
+
 @property (nonatomic, copy) NSDictionary *results;
+
+@property (nonatomic) BOOL hasSubmitted;
+
+@property (nonatomic, copy) NSArray *submissions;
 
 @end

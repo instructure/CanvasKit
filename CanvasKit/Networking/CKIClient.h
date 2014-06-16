@@ -11,6 +11,8 @@
 @class CKIUser;
 @class RACSignal;
 
+extern NSString *const CKIClientAccessTokenExpiredNotification;
+
 @protocol CKIContext;
 
 /**
