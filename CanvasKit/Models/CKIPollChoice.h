@@ -14,6 +14,8 @@
 
 @property (nonatomic, copy) NSString *text;
 
-@property (nonatomic) NSNumber* pollID;
+@property (nonatomic) NSNumber *pollID;
+
+@property (nonatomic) NSNumber *index;
 
 @end

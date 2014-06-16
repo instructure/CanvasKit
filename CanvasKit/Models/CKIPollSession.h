@@ -20,6 +20,8 @@
 
 @property (nonatomic, copy) NSString *pollID;
 
+@property (nonatomic, copy) NSDate *created;
+
 @property (nonatomic, copy) NSDictionary *results;
 
 @property (nonatomic) BOOL hasSubmitted;

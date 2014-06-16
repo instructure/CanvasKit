@@ -20,7 +20,8 @@
 {
     NSDictionary *keyPaths = @{
                                @"isCorrect": @"is_correct",
-                               @"pollID": @"poll_id"
+                               @"pollID": @"poll_id",
+                               @"index": @"position"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

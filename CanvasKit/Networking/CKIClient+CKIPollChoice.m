@@ -19,7 +19,9 @@
 - (RACSignal *)createPollChoice:(CKIPollChoice *)pollChoice forPoll:(CKIPoll *)poll
 {
     NSString *path = [poll.path stringByAppendingPathComponent:@"poll_choices"];
-    return [self createModelAtPath:path parameters:@{@"poll_choices": @[@{@"text": pollChoice.text, @"is_correct": @(pollChoice.isCorrect)}]} modelClass:[CKIPollChoice class] context:poll];
+    NSDictionary *parameters = @{@"poll_choices": @[@{@"text": pollChoice.text, @"is_correct": @(pollChoice.isCorrect), @"position": pollChoice.index}]};
+    return [self createModelAtPath:path parameters:parameters modelClass:[CKIPollChoice class] context:poll];
 }
+
 
 @end
