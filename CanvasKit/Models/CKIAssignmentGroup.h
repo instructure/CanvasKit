@@ -23,7 +23,7 @@
 /**
  The weight of the Assignment Group
  */
-@property (nonatomic) NSInteger groupWeight;
+@property (nonatomic) double weight;
 
 /**
  The assignments in this Assignment Group

@@ -33,6 +33,7 @@
         @"publicSyllabus" : @"public_syllabus",
         @"canCreateDiscussionTopics" : @"permissions.create_discussion_topic",
         @"hideFinalGrades" : @"hide_final_grades",
+        @"needsGradingCount" : @"needs_grading_count"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

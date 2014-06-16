@@ -12,12 +12,18 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKISubmission.h"
+#import "CKIRubric.h"
+
+@interface CKIAssignment ()
+@property (nonatomic, copy) NSArray *rubricCriteria;
+@end
 
 @implementation CKIAssignment
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
+        @"position": @"position",
         @"descriptionHTML": @"description",
         @"dueAt": @"due_at",
         @"lockAt": @"lock_at",
@@ -29,18 +35,22 @@
         @"groupCategoryID": @"group_category_id",
         @"gradeGroupStudentsIndividually": @"grade_group_students_individually",
         @"needsGradingCount": @"needs_grading_count",
-        @"peerReviews": @"peer_reviews",
-        @"automaticPeerReviews": @"automatic_peer_reviews",
-        @"peerReviewCount": @"peer_review_count",
-        @"peerReviewsAssignAt": @"peer_reviews_assign_at",
+        @"peerReviewRequired": @"peer_reviews",
+        @"peerReviewsAutomaticallyAssigned": @"automatic_peer_reviews",
+        @"peerReviewsAutomaticallyAssignedCount": @"peer_review_count",
+        @"peerReviewDueDate": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
-        @"gradingType" : @"grading_type"
+        @"gradingType" : @"grading_type",
+        @"rubricCriteria": @"rubric",
+        @"rubric": @"rubric_settings"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }
+
+#pragma mark - JSON Transformers
 
 + (NSValueTransformer *)dueAtJSONTransformer
 {
@@ -77,19 +87,53 @@
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-+ (NSValueTransformer *)peerReviewsAssignAtJSONTransformer {
++ (NSValueTransformer *)peerReviewDueDateJSONTransformer {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
-}
-
-+ (NSValueTransformer *)rubricJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
 }
 
 + (NSValueTransformer *)submissionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
 }
+
+#pragma mark - Rubric
+
+/**
+* Dealing with rubrics is special because we need to coalesce the rubric and rubric_settings
+* keys together. The rubric key is an array of rubric criteria, and the rubric settings has the
+* id, title, pointsPossible, etc.
+*/
+
++ (NSValueTransformer *)rubricCriteriaJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
+}
+
++ (NSValueTransformer *)rubricJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
+}
+
+- (BOOL)rubricExistsWithoutCriteria
+{
+    return _rubric && !_rubric.criteria;
+}
+
+- (CKIRubric *)rubric
+{
+    if ([self rubricExistsWithoutCriteria]) {
+        _rubric.criteria = self.rubricCriteria;
+    }
+    return _rubric;
+}
+
+- (void)setRubricCriteria:(NSArray *)rubricCriteria
+{
+    _rubric.criteria = rubricCriteria;
+    _rubricCriteria = rubricCriteria;
+}
+
+#pragma mark - Other Methods
 
 - (NSString *)path
 {

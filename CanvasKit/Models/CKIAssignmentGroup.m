@@ -15,12 +15,12 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"name": @"name"
-                               ,@"position": @"position"
-                               ,@"groupWeight": @"group_weight"
-                               ,@"assignments": @"assignments"
-                               ,@"rules": @"rules"
-                               };
+       @"name": @"name",
+       @"position": @"position",
+       @"weight": @"group_weight",
+       @"assignments": @"assignments",
+       @"rules": @"rules"
+   };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
 }

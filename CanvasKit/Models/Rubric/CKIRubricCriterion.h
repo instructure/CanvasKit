@@ -28,7 +28,7 @@
 /**
  Description of the criterion.
  */
-@property (nonatomic, copy) NSString *descriptionText;
+@property (nonatomic, copy) NSString *criterionDescription;
 
 /**
  A more detailed description of the criterion.

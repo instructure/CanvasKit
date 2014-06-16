@@ -10,14 +10,15 @@
 
 @class CKICourse;
 @class CKISubmission;
+@class CKIRubric;
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
     CKIAssignmentScoringTypePoints,
     CKIAssignmentScoringTypePercentage,
     CKIAssignmentScoringTypePassFail,
     CKIAssignmentScoringTypeLetter,
     CKIAssignmentScoringTypeNotGraded
-} CKIAssignmentScoringType;
+};
 
 
 @interface CKIAssignment : CKILockableModel
@@ -29,6 +30,11 @@ typedef enum {
  The name of the assignment.
  */
 @property (nonatomic, copy) NSString *name;
+
+/**
+* The index of the assignment in it's group.
+*/
+@property (nonatomic) NSInteger position;
 
 /**
  The assignment description, in an HTML fragment.
@@ -159,38 +165,31 @@ typedef enum {
 
 #pragma mark - Rubric
 
-
-
 /**
  Array of CKIRubricCriterion
  */
-@property (nonatomic, copy) NSArray *rubric;
-
-
+@property (nonatomic, strong) CKIRubric *rubric;
 
 
 #pragma mark - Peer Review
 
-
-
-
 /**
  Boolean indicating if peer reviews are required for this assignment
  */
-@property (nonatomic) BOOL peerReviews;
+@property (nonatomic) BOOL peerReviewRequired;
 
 /**
  Boolean indicating peer reviews are assigned automatically.
  If false, the teacher is expected to manually assign peer reviews.
  */
-@property (nonatomic) BOOL automaticPeerReviews;
+@property (nonatomic) BOOL peerReviewsAutomaticallyAssigned;
 
 /**
  Integer representing the amount of reviews each user is assigned.
  
- @note This is NOT valid unless you have automaticPeerReviews.
+ @note This is NOT valid unless you have peerReviewsAutomaticallyAssigned.
  */
-@property (nonatomic) NSInteger peerReviewCount;
+@property (nonatomic) NSInteger peerReviewsAutomaticallyAssignedCount;
 
 /**
  Date the reviews are due by. Must be a date that occurs after the default
@@ -199,6 +198,6 @@ typedef enum {
  
  @note This is NOT valid unless you have automatic_peer_reviews set to true.
  */
-@property (nonatomic, strong) NSDate *peerReviewsAssignAt;
+@property (nonatomic, strong) NSDate *peerReviewDueDate;
 
 @end
