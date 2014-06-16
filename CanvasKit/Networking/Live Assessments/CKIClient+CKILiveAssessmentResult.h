@@ -8,6 +8,8 @@
 
 #import "CKIClient.h"
 
-@interface CKIClient (CKILiveAssessmentResult)
+@class CKILiveAssessment;
 
+@interface CKIClient (CKILiveAssessmentResult)
+- (RACSignal *)createResults:(NSArray *)results forLiveAssessment:(CKILiveAssessment *)assessment;
 @end

@@ -11,4 +11,5 @@
 @interface CKILiveAssessment : CKIModel <MTLJSONSerializing>
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *outcomeID;
 @end

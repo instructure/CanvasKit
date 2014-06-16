@@ -31,7 +31,7 @@
 }
 
 - (RACSignal *)createLiveAssessments:(NSArray *)assessments {
-
+    
     NSMutableDictionary *assessmentsByCourseID = [NSMutableDictionary dictionary];
     for (CKILiveAssessment *assessment in assessments) {
         NSString *courseID = ((CKICourse *)assessment.context).id;
