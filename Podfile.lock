@@ -37,6 +37,7 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - AFNetworking
   - AFNetworking (= 2.0)
   - ISO8601DateFormatter
   - Kiwi/XCTest
@@ -50,4 +51,4 @@ SPEC CHECKSUMS:
   Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
