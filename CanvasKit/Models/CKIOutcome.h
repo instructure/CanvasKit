@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *title;
 
 /**
- The title for the outcome.
+ The courseID for the outcome.
  */
 @property (nonatomic, copy) NSString *courseID;
 

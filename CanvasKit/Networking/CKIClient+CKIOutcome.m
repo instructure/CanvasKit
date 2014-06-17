@@ -16,7 +16,6 @@
 
 - (RACSignal *)refreshOutcome:(CKIOutcome *)outcome courseID:(NSString *)courseID
 {
-    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"polls"];
     return [[self refreshModel:outcome parameters:nil] map:^id(CKIOutcome *outcome) {
         outcome.courseID = courseID;
         return outcome;
