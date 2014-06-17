@@ -12,4 +12,6 @@
 
 @interface CKIClient (CKIOutcome)
 
+- (RACSignal *)refreshOutcome:(CKIOutcome *)outcome courseID:(NSString *)courseID;
+
 @end
