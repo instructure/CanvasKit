@@ -7,6 +7,13 @@
 
 #import <AFNetworking/AFHTTPSessionManager.h>
 
+typedef NS_ENUM(NSUInteger, CKIAuthenticationMethod) {
+    CKIAuthenticationMethodDefault,
+    CKIAuthenticationMethodForcedCanvasLogin,
+    CKIAuthenticationMethodSiteAdmin,
+    CKIAuthenticationMethodCount,
+};
+
 @class CKIModel;
 @class CKIUser;
 @class RACSignal;
@@ -65,12 +72,6 @@ extern NSString *const CKIClientAccessTokenExpiredNotification;
  Checks to see if the user is logged in.
  */
 @property (nonatomic) BOOL isLoggedIn;
-
-/**
- Forces the OAuth process to use canvas_login=1. This allows admins/support etc to login with a
- standard canvas login page instead of a school's custom login page.
-*/
-@property(nonatomic) BOOL forceCanvasLogin;
 
 #pragma mark - JSON API Helpers
 
@@ -133,6 +134,8 @@ extern NSString *const CKIClientAccessTokenExpiredNotification;
  @see CanvasKit.h
  */
 - (RACSignal *)login;
+
+- (RACSignal *)loginWithAuthenticationMethod:(CKIAuthenticationMethod)method;
 #endif
 
 @end

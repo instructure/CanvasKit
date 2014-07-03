@@ -141,17 +141,36 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     self.currentUser = nil;
 }
 
-- (NSURLRequest *)initialOAuthRequest
+- (void)clearExistingSessionsForDomain:(NSString *)domain {
+    // remove cookies to dispose of previous login session
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *oldCookies = [storage.cookies.rac_sequence filter:^BOOL(NSHTTPCookie *cookie) {
+        return [cookie.domain containsString:domain];
+    }].array;
+    for (NSHTTPCookie *oldCookie in oldCookies) {
+        [storage deleteCookie:oldCookie];
+    }
+}
+
+- (NSURLRequest *)authenticationRequestWithMethod:(CKIAuthenticationMethod)method
 {
+    NSAssert(method < CKIAuthenticationMethodCount, @"Invalid authentication method");
+    
+    [self clearExistingSessionsForDomain:self.baseURL.host];
+    
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
                            , self.baseURL.absoluteString
                            , self.clientID];
+    
+    if (method == CKIAuthenticationMethodForcedCanvasLogin) {
+        urlString = [urlString stringByAppendingString:@"&canvas_login=1"];
+    }
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     
-    if (self.forceCanvasLogin) {
+    if (method == CKIAuthenticationMethodSiteAdmin) {
         [request setHTTPShouldHandleCookies:YES];
         NSDictionary *cookieProperties = @{
                                            NSHTTPCookieValue: @"1",
@@ -400,14 +419,18 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #pragma mark - UIKit Methods
 
-- (RACSignal *)login
+- (RACSignal *)login {
+    return [self loginWithAuthenticationMethod:CKIAuthenticationMethodDefault];
+}
+
+- (RACSignal *)loginWithAuthenticationMethod:(CKIAuthenticationMethod)method
 {
     // don't log in again if already logged in
     if (self.isLoggedIn) {
         return nil;
     }
 
-    return [[[[[self authorizeWithServerUsingWebBrowser] flattenMap:^RACStream *(NSString *temporaryCode) {
+    return [[[[[self authorizeWithServerUsingWebBrowserUsingAuthenticationMethod:method] flattenMap:^RACStream *(NSString *temporaryCode) {
         return [self postAuthCode:temporaryCode];
     }] flattenMap:^RACStream *(NSDictionary *responseObject) {
         self.accessToken = responseObject[@"access_token"];
@@ -421,10 +444,10 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     }];
 }
 
-- (RACSignal *)authorizeWithServerUsingWebBrowser
+- (RACSignal *)authorizeWithServerUsingWebBrowserUsingAuthenticationMethod:(CKIAuthenticationMethod)method
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:self.initialOAuthRequest];
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:[self authenticationRequestWithMethod:method]];
         loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
