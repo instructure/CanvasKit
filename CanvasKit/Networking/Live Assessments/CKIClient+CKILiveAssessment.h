@@ -7,7 +7,6 @@
 //
 
 #import "CKIClient.h"
-#import <CKIClient.h>
 
 @interface CKIClient (CKILiveAssessment)
 - (RACSignal *)createLiveAssessments:(NSArray *)assessments;
