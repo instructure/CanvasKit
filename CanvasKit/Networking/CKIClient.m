@@ -145,7 +145,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     // remove cookies to dispose of previous login session
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray *oldCookies = [storage.cookies.rac_sequence filter:^BOOL(NSHTTPCookie *cookie) {
-        return [cookie.domain containsString:domain];
+        return [cookie.domain rangeOfString:domain options:NSCaseInsensitiveSearch].location != NSNotFound;
     }].array;
     for (NSHTTPCookie *oldCookie in oldCookies) {
         [storage deleteCookie:oldCookie];
