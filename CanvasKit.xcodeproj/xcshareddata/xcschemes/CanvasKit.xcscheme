@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "809DC71D17C694EC0089E846"
-               BuildableName = "libCanvasKit.a"
+               BlueprintIdentifier = "BDC2C2FA1965F5910017CCA4"
+               BuildableName = "CanvasKit.framework"
                BlueprintName = "CanvasKit"
                ReferencedContainer = "container:CanvasKit.xcodeproj">
             </BuildableReference>
@@ -32,9 +32,29 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "809DC72D17C694EC0089E846"
+               BlueprintIdentifier = "BDC2C3041965F5910017CCA4"
                BuildableName = "CanvasKitTests.xctest"
                BlueprintName = "CanvasKitTests"
+               ReferencedContainer = "container:CanvasKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BD216EB01965DBD3004AA6FA"
+               BuildableName = "CanvasKit Tests.xctest"
+               BlueprintName = "CanvasKit Tests"
+               ReferencedContainer = "container:CanvasKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BDC2C2E61965F24C0017CCA4"
+               BuildableName = "CanvasKitUnitTests.xctest"
+               BlueprintName = "CanvasKitUnitTests"
                ReferencedContainer = "container:CanvasKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

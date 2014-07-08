@@ -6,6 +6,15 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
+//! Project version number for CanvasKit.
+FOUNDATION_EXPORT double CanvasKitVersionNumber;
+
+//! Project version string for CanvasKit.
+FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <CanvasKit/PublicHeader.h>
+
+
 #import <Foundation/Foundation.h>
 #import "CKIUser.h"
 #import "Constants.h"
