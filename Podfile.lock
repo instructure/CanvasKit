@@ -23,7 +23,7 @@ PODS:
   - ISO8601DateFormatter (0.7)
   - Mantle (1.4.1):
     - Mantle/extobjc
-  - Mantle/extobjc (1.4.1)
+  - Mantle/extobjc (1.5)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
