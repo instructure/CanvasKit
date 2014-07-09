@@ -18,6 +18,6 @@
 
 @property (nonatomic, strong) NSURL *resourceDomain;
 
-@property (nonatomic, strong) NSURL *rmtpDomain;
+@property (nonatomic, strong) NSURL *rtmp;
 
 @end
