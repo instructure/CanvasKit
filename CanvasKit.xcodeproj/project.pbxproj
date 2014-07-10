@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD945334196D102F009641F1 /* CKIQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD945333196D102E009641F1 /* CKIQuizTests.swift */; };
+		BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */; };
+		BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */; };
 		BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3061965F5910017CCA4 /* CanvasKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC2C2FB1965F5910017CCA4 /* CanvasKit.framework */; };
 		BDC2C3D91965F5EF0017CCA4 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3141965F5EE0017CCA4 /* Constants.h */; };
@@ -233,6 +236,7 @@
 		BDC5BE791965FD3B006090FF /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE541965FD3B006090FF /* user.json */; };
 		BDC5BE7A1965FD3B006090FF /* users_array.json in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE551965FD3B006090FF /* users_array.json */; };
 		BDC5BE7E1965FD90006090FF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE7D1965FD90006090FF /* Helpers.swift */; };
+		BDC5ECB4196CA12F00DCC430 /* CKIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5ECB3196CA12F00DCC430 /* CKIServiceTests.swift */; };
 		BE3F6F132B4E4A66B6D82268 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B40771FC1418D99B1736D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -278,6 +282,9 @@
 		19789C0FAF75450C919672BA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		787B40771FC1418D99B1736D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC37272FC06C48518F5BD725 /* libPods-CanvasKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD945333196D102E009641F1 /* CKIQuizTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIQuizTests.swift; sourceTree = "<group>"; };
+		BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIGroupTests.swift; sourceTree = "<group>"; };
+		BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIFileTests.swift; sourceTree = "<group>"; };
 		BDC2C2FB1965F5910017CCA4 /* CanvasKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CanvasKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CanvasKit.h; sourceTree = "<group>"; };
 		BDC2C3051965F5910017CCA4 /* CanvasKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,6 +514,7 @@
 		BDC5BE541965FD3B006090FF /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		BDC5BE551965FD3B006090FF /* users_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_array.json; sourceTree = "<group>"; };
 		BDC5BE7D1965FD90006090FF /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		BDC5ECB3196CA12F00DCC430 /* CKIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -588,6 +596,10 @@
 				BDC5BE261965FB6D006090FF /* CKIUserTests.swift */,
 				BDC5BE2C1965FC04006090FF /* CanvasKitTests-Bridging-Header.h */,
 				BDC5BE7D1965FD90006090FF /* Helpers.swift */,
+				BDC5ECB3196CA12F00DCC430 /* CKIServiceTests.swift */,
+				BD945333196D102E009641F1 /* CKIQuizTests.swift */,
+				BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */,
+				BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */,
 			);
 			path = CanvasKitTests;
 			sourceTree = "<group>";
@@ -1271,7 +1283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD945334196D102F009641F1 /* CKIQuizTests.swift in Sources */,
 				BDC5BE271965FB6D006090FF /* CKIUserTests.swift in Sources */,
+				BDC5ECB4196CA12F00DCC430 /* CKIServiceTests.swift in Sources */,
+				BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */,
+				BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */,
 				BDC5BE7E1965FD90006090FF /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

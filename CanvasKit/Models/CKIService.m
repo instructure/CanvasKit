@@ -16,7 +16,7 @@
     NSDictionary *keyPaths = @{
                                @"partnerID": @"partner_id",
                                @"resourceDomain": @"resource_domain",
-                               @"rmtpDomain": @"rmtp_domain"
+                               @"rtmp": @"rtmp_domain"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -32,7 +32,7 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)rmtpDomainJSONTransformer
++ (NSValueTransformer *)rtmpJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }

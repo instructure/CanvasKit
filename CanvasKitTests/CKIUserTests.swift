@@ -22,12 +22,9 @@ class CKIUserTests: XCTestCase {
     
     func testJSONModelConversion() {
         
-        
         var userDictionary = Helpers.loadJSONFixture("user") as NSDictionary
         var user = CKIUser(fromJSONDictionary: userDictionary)
-        
-        println(user)
-        
+                
         XCTAssertEqualObjects(user.id, "1", "User id was not parsed correctly")
         XCTAssertEqualObjects(user.name, "Sheldon Cooper", "User name was not parsed correctly")
         XCTAssertEqualObjects(user.sortableName, "Cooper, Sheldon", "User sortable name was not parsed correctly")
