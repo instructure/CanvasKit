@@ -8,6 +8,7 @@
 
 #import "CKIFavorite.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIFavorite
 
@@ -19,6 +20,11 @@
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
+}
+
++ (NSValueTransformer *)contextIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 @end

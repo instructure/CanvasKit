@@ -107,6 +107,11 @@ extern NSString * const CKIModuleItemCompletionRequirementMinimumScore;
  */
 @property (nonatomic, readonly) NSString *itemID;
 
+// These properties store JSON data to be used
+// to create the derived itemID property.
+@property (nonatomic, readonly) NSString *contentID;
+@property (nonatomic, strong) NSURL *pageID;
+
 /**
  Link to the item's web page in Canvas.
  */
@@ -156,6 +161,16 @@ extern NSString * const CKIModuleItemCompletionRequirementMinimumScore;
  nor incomplete.
  */
 @property (nonatomic) BOOL completed;
+
+#pragma margk - Content Details
+
+@property (nonatomic) double pointsPossible;
+
+@property (nonatomic, strong) NSDate *dueAt;
+
+@property (nonatomic, strong) NSDate *unlockAt;
+
+@property (nonatomic, strong) NSDate *lockAt;
 
 
 @property (nonatomic) CKIModule *context;

@@ -41,6 +41,10 @@
  */
 @property (nonatomic, strong) NSDate *updatedAt;
 
+@property (nonatomic, strong) NSDate *unlockAt;
+
+@property (nonatomic, strong) NSDate *lockAt;
+
 /**
  If the file should be hidden from the current user.
  */
@@ -51,13 +55,11 @@
  */
 @property (nonatomic, strong) NSURL *thumbnailURL;
 
-@property (nonatomic, strong) NSDate *unlockAt;
-
 @property (nonatomic, getter = isLocked) BOOL locked;
 
 @property (nonatomic, getter = isHidden) BOOL hidden;
 
-@property (nonatomic, strong) NSDate *lockedAt;
+
 
 @end
 

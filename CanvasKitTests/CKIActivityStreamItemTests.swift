@@ -22,33 +22,33 @@ class CKIActivityStreamItemTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        var activityStreamItemDictionary = Helpers.loadJSONFixture("activity_stream_item") as NSDictionary
-        var streamItem = CKIActivityStreamMessageItem(fromJSONDictionary: activityStreamItemDictionary)
+        let activityStreamItemDictionary = Helpers.loadJSONFixture("activity_stream_item") as NSDictionary
+        let streamItem = CKIActivityStreamMessageItem(fromJSONDictionary: activityStreamItemDictionary)
         
         var formatter = ISO8601DateFormatter()
         formatter.includeTime = true
     
-        XCTAssertEqualObjects(streamItem.id, "1234", "Activity Stream Item id was not parsed correctly")
+        XCTAssertEqual(streamItem.id!, "1234", "Activity Stream Item id was not parsed correctly")
         
-        XCTAssertEqualObjects(streamItem.title, "Stream Item Subject", "Activity Stream Item title was not parsed correctly")
+        XCTAssertEqual(streamItem.title!, "Stream Item Subject", "Activity Stream Item title was not parsed correctly")
         
-        XCTAssertEqualObjects(streamItem.message, "This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.", "Activity Stream Item message was not parsed correctly")
+        XCTAssertEqual(streamItem.message!, "This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.", "Activity Stream Item message was not parsed correctly")
 
-        XCTAssertEqualObjects(streamItem.courseID, "1", "Activity Stream Item courseID was not parsed correctly")
+        XCTAssertEqual(streamItem.courseID!, "1", "Activity Stream Item courseID was not parsed correctly")
         
-        XCTAssertEqualObjects(streamItem.groupID, "1", "Activity Stream Item groupID was not parsed correctly")
+        XCTAssertEqual(streamItem.groupID!, "1", "Activity Stream Item groupID was not parsed correctly")
         
         var date = formatter.dateFromString("2011-07-13T09:12:00Z")
-        XCTAssertEqualObjects(streamItem.createdAt, date, "Activity Stream Item createdAt date was not parsed correctly")
+        XCTAssertEqual(streamItem.createdAt!, date, "Activity Stream Item createdAt date was not parsed correctly")
         
         date = formatter.dateFromString("2011-07-25T08:52:41Z")
-        XCTAssertEqualObjects(streamItem.updatedAt, date, "Activity Stream Item updatedAt date was not parsed correctly")
+        XCTAssertEqual(streamItem.updatedAt!, date, "Activity Stream Item updatedAt date was not parsed correctly")
         
         var url = NSURL.URLWithString("http://canvas.instructure.com/api/v1/foo")
-        XCTAssertEqualObjects(streamItem.url, url, "Activity Stream Item url was not parsed correctly")
+        XCTAssertEqual(streamItem.url!, url, "Activity Stream Item url was not parsed correctly")
 
         url = NSURL.URLWithString("http://canvas.instructure.com/api/v1/foo")
-        XCTAssertEqualObjects(streamItem.htmlURL, url, "Activity Stream Item htmlURL was not parsed correctly")
+        XCTAssertEqual(streamItem.htmlURL!, url, "Activity Stream Item htmlURL was not parsed correctly")
         
         XCTAssert(streamItem.isRead, "Activity Stream Item isRead was not parsed correctly")
         

@@ -23,18 +23,18 @@ class CKIGroupTests: XCTestCase {
 
     func testJSONModelConversion() {
         
-        var groupDictionary = Helpers.loadJSONFixture("group") as NSDictionary
-        var group = CKIGroup(fromJSONDictionary: groupDictionary)
+        let groupDictionary = Helpers.loadJSONFixture("group") as NSDictionary
+        let group = CKIGroup(fromJSONDictionary: groupDictionary)
         
-        XCTAssertEqualObjects(group.id, "17", "Group id was not parsed correctly")
-        XCTAssertEqualObjects(group.groupDescription, "An awesome group about math", "Group description was not parsed correctly")
+        XCTAssertEqual(group.id!, "17", "Group id was not parsed correctly")
+        XCTAssertEqual(group.groupDescription!, "An awesome group about math", "Group description was not parsed correctly")
         XCTAssert(group.isPublic, "Group is public was not parsed correctly")
         XCTAssert(group.followedByUser, "Group followed by user was not parsed correctly")
         XCTAssertEqual(group.membersCount, 7, "Group members count was not parsed correctly")
-        XCTAssertEqualObjects(group.joinLevel, CKIGroupJoinLevelInvitationOnly, "Group join level was not parsed correctly")
-        XCTAssertEqualObjects(group.avatarURL, NSURL(string: "https://instructure.com/files/avatar_image.png"), "Group avatar url was not parsed correctly")
-        XCTAssertEqualObjects(group.courseID, "3", "Group course id was not parsed correctly")
-        
+        XCTAssertEqual(group.joinLevel!, CKIGroupJoinLevelInvitationOnly, "Group join level was not parsed correctly")
+        XCTAssertEqual(group.avatarURL!, NSURL(string: "https://instructure.com/files/avatar_image.png"), "Group avatar url was not parsed correctly")
+        XCTAssertEqual(group.courseID!, "3", "Group course id was not parsed correctly")
+        XCTAssertEqual(group.path!, "/api/v1/groups/17", "Group path was not parsed correctly")
     }
 
     func testPerformanceExample() {

@@ -20,7 +20,7 @@
                                @"contextType": @"context_type",
                                @"details": @"description",
                                @"pointsPossible": @"points_possible",
-                               @"masteryPoints": @"master_points",
+                               @"masteryPoints": @"mastery_points",
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

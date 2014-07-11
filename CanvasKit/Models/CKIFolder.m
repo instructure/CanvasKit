@@ -31,11 +31,20 @@
         @"parentFolderID": @"parent_folder_id",
         @"createdAt": @"created_at",
         @"unlockAt": @"unlock_at",
-        @"hiddenForUser": @"hidden_for_user",
-        @"position": @"position"
+        @"hiddenForUser": @"hidden_for_user"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
+}
+
++ (NSValueTransformer *)contextIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)parentFolderIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)createdAtJSONTransformer
