@@ -34,4 +34,9 @@ NSString * const CKIMediaCommentMediaTypeVideo = @"video";
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+// override the CKIModel version because mediaID is already a string
++ (NSValueTransformer *)idJSONTransformer {
+    return nil;
+}
+
 @end
