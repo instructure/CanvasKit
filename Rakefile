@@ -7,6 +7,29 @@ require 'open3'
 
 namespace :release do
 
+  desc 'Deploy the cocoapod to the public or private repo'
+  task :pod do
+
+    STDOUT.puts "> Is this a public cocoapod? [yes, no]"
+    input = STDIN.gets.chomp
+    raise "#{input} is not a valid response" unless input == "yes" || input == "no"
+
+
+    cmd = ''
+    if input == 'yes'
+      cmd = 'pod trunk push'
+    else
+      cmp = 'pod push'
+    end
+
+    Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+
+      puts stdout.read
+
+    end
+
+  end
+
   desc 'Used to release a version of the library that contains bug fixes. This new version should be backwards compatible.'
   task :patch do
 
