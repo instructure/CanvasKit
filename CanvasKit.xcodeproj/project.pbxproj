@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24E9A60E1974675700536C93 /* CKIURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9A60D1974675700536C93 /* CKIURLProtocol.swift */; };
+		24E9A6101974827400536C93 /* CKIFakeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9A60F1974827400536C93 /* CKIFakeNetwork.swift */; };
 		B5B1CFBD196DB43C00D48707 /* CKIExternalToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1CFBC196DB43C00D48707 /* CKIExternalToolTests.swift */; };
 		B5BB1B39196F010500F3D987 /* CKIDiscussionTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB1B38196F010500F3D987 /* CKIDiscussionTopicTests.swift */; };
 		B5DE6E1C196F38DC0027FA85 /* CKIActivityStreamMessageItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE6E1B196F38DC0027FA85 /* CKIActivityStreamMessageItemTests.swift */; };
-		BD945334196D102F009641F1 /* CKIQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD945333196D102E009641F1 /* CKIQuizTests.swift */; };
-		BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */; };
-		BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */; };
 		B5DE6E1E196F3F0D0027FA85 /* CKIActivityStreamItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE6E1D196F3F0D0027FA85 /* CKIActivityStreamItemTests.swift */; };
 		B5DE6E20196F44330027FA85 /* CKIActivityStreamDiscussionTopicItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE6E1F196F44330027FA85 /* CKIActivityStreamDiscussionTopicItemTests.swift */; };
 		B5DE6E22196F46FC0027FA85 /* CKIActivityStreamConversationItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE6E21196F46FC0027FA85 /* CKIActivityStreamConversationItemTests.swift */; };
+		BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */; };
+		BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */; };
 		BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3061965F5910017CCA4 /* CanvasKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC2C2FB1965F5910017CCA4 /* CanvasKit.framework */; };
 		BDC2C3D91965F5EF0017CCA4 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3141965F5EE0017CCA4 /* Constants.h */; };
@@ -247,6 +248,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		24F707D619817350008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		24F707D819817350008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		24F707DA19817555008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
 		BDC2C3071965F5910017CCA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
@@ -286,6 +308,8 @@
 
 /* Begin PBXFileReference section */
 		19789C0FAF75450C919672BA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		24E9A60D1974675700536C93 /* CKIURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIURLProtocol.swift; sourceTree = "<group>"; };
+		24E9A60F1974827400536C93 /* CKIFakeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIFakeNetwork.swift; sourceTree = "<group>"; };
 		787B40771FC1418D99B1736D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1CFBC196DB43C00D48707 /* CKIExternalToolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIExternalToolTests.swift; sourceTree = "<group>"; };
 		B5BB1B38196F010500F3D987 /* CKIDiscussionTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIDiscussionTopicTests.swift; sourceTree = "<group>"; };
@@ -618,6 +642,8 @@
 				BD945333196D102E009641F1 /* CKIQuizTests.swift */,
 				BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */,
 				BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */,
+				24E9A60D1974675700536C93 /* CKIURLProtocol.swift */,
+				24E9A60F1974827400536C93 /* CKIFakeNetwork.swift */,
 			);
 			path = CanvasKitTests;
 			sourceTree = "<group>";
@@ -1069,6 +1095,9 @@
 				BDC5BE251965FB49006090FF /* PBXTargetDependency */,
 				BDC5BE291965FB86006090FF /* PBXTargetDependency */,
 				BDC5BE2B1965FB8C006090FF /* PBXTargetDependency */,
+				24F707D719817350008233F5 /* PBXTargetDependency */,
+				24F707D919817350008233F5 /* PBXTargetDependency */,
+				24F707DB19817555008233F5 /* PBXTargetDependency */,
 			);
 			name = CanvasKitTests;
 			productName = CanvasKitTests;
@@ -1312,12 +1341,29 @@
 				B5BB1B39196F010500F3D987 /* CKIDiscussionTopicTests.swift in Sources */,
 				B5B1CFBD196DB43C00D48707 /* CKIExternalToolTests.swift in Sources */,
 				BDC5BE7E1965FD90006090FF /* Helpers.swift in Sources */,
+				24E9A60E1974675700536C93 /* CKIURLProtocol.swift in Sources */,
+				24E9A6101974827400536C93 /* CKIFakeNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24F707D719817350008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707D619817350008233F5 /* PBXContainerItemProxy */;
+		};
+		24F707D919817350008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707D819817350008233F5 /* PBXContainerItemProxy */;
+		};
+		24F707DB19817555008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707DA19817555008233F5 /* PBXContainerItemProxy */;
+		};
 		BDC2C3081965F5910017CCA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
