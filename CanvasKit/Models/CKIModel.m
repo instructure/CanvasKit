@@ -60,7 +60,13 @@
 
 + (instancetype)modelFromJSONDictionary:(NSDictionary *)dictionaryValue
 {
-    return [MTLJSONAdapter modelOfClass:self fromJSONDictionary:dictionaryValue error:nil];
+    NSError *error = nil;
+    id model = [MTLJSONAdapter modelOfClass:self fromJSONDictionary:dictionaryValue error:&error];
+    if (error){
+        NSLog(@"Error parsing model %@", error);
+    }
+    
+    return model;
 }
 
 - (NSDictionary *)JSONDictionary

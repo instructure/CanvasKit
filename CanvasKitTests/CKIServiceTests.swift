@@ -23,14 +23,14 @@ class CKIServiceTests: XCTestCase {
 
     func testJSONModelConversion() {
         
-        var serviceDictionary = Helpers.loadJSONFixture("service") as NSDictionary
-        var service = CKIService(fromJSONDictionary: serviceDictionary)
+        let serviceDictionary = Helpers.loadJSONFixture("service") as NSDictionary
+        let service = CKIService(fromJSONDictionary: serviceDictionary)
         
-        XCTAssertEqualObjects(service.domain, NSURL(string: "kaltura.example.com"), "service domain not parsed correctly")
+        XCTAssertEqual(service.domain!, NSURL(string: "kaltura.example.com"), "service domain not parsed correctly")
         XCTAssert(service.enabled, "service enabled not parsed correctly")
-        XCTAssertEqualObjects(service.partnerID, "123456", "service partner id not parsed correctly")
-        XCTAssertEqualObjects(service.resourceDomain, NSURL(string: "cdn.kaltura.example.com"), "service resource domain not parsed correctly")
-        XCTAssertEqualObjects(service.rtmp, NSURL(string: "rtmp.example.com"), "service rmtp domain not parsed correctly")
+        XCTAssertEqual(service.partnerID!, "123456", "service partner id not parsed correctly")
+        XCTAssertEqual(service.resourceDomain!, NSURL(string: "cdn.kaltura.example.com"), "service resource domain not parsed correctly")
+        XCTAssertEqual(service.rtmp!, NSURL(string: "rtmp.example.com"), "service rmtp domain not parsed correctly")
     }
 
     func testPerformanceExample() {

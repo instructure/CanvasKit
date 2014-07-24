@@ -1,6 +1,4 @@
 {
-    "locked_for_user": true,
-    "lock_info": {
         "asset_string": "wiki_page_1664923",
         "context_module": {
             "cloned_item_id": null,
@@ -38,6 +36,4 @@
             "updated_at": "2013-07-22T21:22:06Z",
             "workflow_state": "active"
         }
-    },
-    "lock_explanation": "This page is part of the module <b>Unit 4</b> and hasn&#39;t been unlocked yet.<br/><a href='/courses/710747/modules'>Visit the course modules page for information on how to unlock this content.</a><a href='/courses/710747/modules/843260/prerequisites/wiki_page_1664923' style='display: none;' id='module_prerequisites_lookup_link'>&nbsp;</a>"
 }

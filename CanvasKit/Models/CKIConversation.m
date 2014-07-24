@@ -15,7 +15,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKIConversation ()
-@property (nonatomic) NSArray *properties;
+
 @end
 
 @implementation CKIConversation

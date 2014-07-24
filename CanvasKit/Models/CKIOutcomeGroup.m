@@ -21,6 +21,7 @@
                                @"subgroupsURL": @"subgroups_url",
                                @"details": @"description",
                                @"outcomesURL": @"outcomes_url",
+                               @"parent": @"parent_outcome_group",
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

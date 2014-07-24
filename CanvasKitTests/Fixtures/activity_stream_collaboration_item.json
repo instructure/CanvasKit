@@ -9,5 +9,6 @@
     "course_id": 1,
     "group_id": 1,
     "html_url": "http://canvas.instructure.com/api/v1/foo",
-    "type": "Collaboration"
+    "type": "Collaboration",
+    "collaboration_id": 1234
 }

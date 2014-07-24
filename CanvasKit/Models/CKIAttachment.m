@@ -15,9 +15,9 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-                               @"contentType": @"content_type",
+                               @"contentType": @"content-type",
                                @"displayName": @"display_name",
-                               @"fileName": @"file_name",
+                               @"fileName": @"filename",
                                @"URL": @"url",
                                @"createdAt": @"created_at",
                                @"updatedAt": @"updated_at",

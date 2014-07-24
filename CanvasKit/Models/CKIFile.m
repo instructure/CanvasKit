@@ -24,7 +24,7 @@
        @"unlockAt" : @"unlock_at",
        @"locked" : @"locked",
        @"hidden" : @"hidden",
-       @"lockedAt" : @"locked_at"
+       @"lockAt" : @"lock_at"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
