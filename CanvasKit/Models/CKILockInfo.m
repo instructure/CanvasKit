@@ -14,13 +14,13 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{
-        @"assetString": @"asset_string"
-        ,@"unlockAt": @"context_module.unlock_at"
-        ,@"startAt": @"context_module.start_at"
-        ,@"endAt": @"context_module.end_at"
-        ,@"moduleID": @"context_module.id"
-        ,@"moduleName": @"context_module.name"
-        ,@"moduleCourseID": @"context_module.context_id"
+        @"assetString": @"asset_string",
+        @"unlockAt": @"context_module.unlock_at",
+        @"startAt": @"context_module.start_at",
+        @"endAt": @"context_module.end_at",
+        @"moduleID": @"context_module.id",
+        @"moduleName": @"context_module.name",
+        @"moduleCourseID": @"context_module.context_id"
     };
 }
 
