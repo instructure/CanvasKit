@@ -52,6 +52,10 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIOutcomeGroup.h>
 #import <CKIOutcomeLink.h>
 #import <CKIPage.h>
+#import <CKIPoll.h>
+#import <CKIPollSubmission.h>
+#import <CKIPollSession.h>
+#import <CKIPollChoice.h>
 #import <CKIQuiz.h>
 #import <CKIRubric.h>
 #import <CKIRubricCriterion.h>

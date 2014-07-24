@@ -23,7 +23,6 @@
                                @"pollChoiceID": @"poll_choice_id",
                                @"created": @"created_at",
                                @"userID": @"user_id",
-                               @"pollChoiceID": [NSNull null],
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -31,9 +30,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
-        return stringID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)createdJSONTransformer
@@ -43,19 +40,15 @@
 
 + (NSValueTransformer *)userIDJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id userID) {
-        return userID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)pollChoiceIDJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id pollChoiceID) {
-        return pollChoiceID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-- (NSString *)path
+- (NSString *)path 
 {
     return [[self.context.path stringByAppendingPathComponent:@"poll_submissions"] stringByAppendingPathComponent:self.id];
 }

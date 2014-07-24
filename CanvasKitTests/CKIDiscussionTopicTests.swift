@@ -42,7 +42,7 @@ class CKIDiscussionTopicTests: XCTestCase {
         XCTAssert(topic.isRead, "Discussion Topic isRead was not parsed correctly")
         XCTAssertEqual(topic.unreadCount, 5, "Discussion Topic unreadCount was not parsed correctly")
         XCTAssert(topic.isSubscribed, "Discussion Topic isSubscribed was not parsed correctly")
-        XCTAssertEqual(topic.subscriptionHold, CKIDiscussionTopicSubscriptionHold.NotInGroupSet, "Discussion Topic subscriptionHold was not parsed correctly")
+        XCTAssertEqual(topic.subscriptionHold, CKIDiscussionTopicSubscriptionHold.InitialPostRequired, "Discussion Topic subscriptionHold was not parsed correctly")
         XCTAssertEqual(topic.assignmentID!, "847", "Discussion Topic assignmentID was not parsed correctly")
         
         date = formatter.dateFromString("2037-07-21T13:29:31Z")
