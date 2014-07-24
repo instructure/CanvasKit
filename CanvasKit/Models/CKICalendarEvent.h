@@ -14,7 +14,7 @@
 /**
  The title of the calendar event
  */
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 /**
  The start timestamp of the event
@@ -29,36 +29,36 @@
 /**
  The HTML description of the event
  */
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, copy) NSString *description;
 
 /**
  The location name of the event
  */
-@property (nonatomic, strong) NSString *locationName;
+@property (nonatomic, copy) NSString *locationName;
 
 /**
  The address where the event is taking place
  */
-@property (nonatomic, strong) NSString *locationAddress;
+@property (nonatomic, copy) NSString *locationAddress;
 
 /**
  The context code of the calendar this event belongs to (course, user, or group)
  */
-@property (nonatomic, strong) NSString *contextCode;
+@property (nonatomic, copy) NSString *contextCode;
 
 /**
  If specified, it indicates which calendar this event should be displayed on.
  For example, a section-level event would have the course's context code here,
  while the section's context code would be returned above
  */
-@property (nonatomic, strong) NSString *effectiveContextCode;
+//@property (nonatomic, copy) NSString *effectiveContextCode;
 
 /**
  Current state of the event ('active', 'locked', or 'deleted')
  'locked' -> indicates that the start_at/end_at cannot be changed (though the event could be deleted). 
              Normally only reservations or time slots with reservations are locked (see the Appointment Groups API api.instructure.com)
  */
-@property (nonatomic, strong) NSString *workflowState;
+@property (nonatomic, copy) NSString *workflowState;
 
 /**
  Whether this event should be displayed on the calendar. Only true for course-level events with section-level child events.
@@ -69,13 +69,13 @@
  Normally null. If this is a reservation (see the Appointment Groups API api.instructure.com), the id will indicate the time
  slot it is for. If this is a section-level event, this will be the course-level parent event.
  */
-@property (nonatomic, strong) NSString *parentEventID;
+@property (nonatomic, copy) NSString *parentEventID;
 
 /**
  If this is a time slot this will be a list of any reservations. If this is a course-level event, this will be a list
  of section-level events (if any)
  */
-//@property (nonatomic, strong) NSArray *childEvents;
+@property (nonatomic, strong) NSArray *childEvents;
 
 /**
  The number of |childEvents|
@@ -115,7 +115,7 @@
 /**
  The id of the appointment group
  */
-@property (nonatomic, strong) NSString *appointmentGroupID;
+@property (nonatomic, copy) NSString *appointmentGroupID;
 
 /**
  The API URL of the appointment group
@@ -130,7 +130,7 @@
 /**
  If the event is a time slot, the API URL for reserving it
  */
-@property (nonatomic, strong) NSURL *reserveUrl;
+@property (nonatomic, strong) NSURL *reserveURL;
 
 /**
  If the event is a time slot, a boolean indicating whether the user has already made a reservation for it

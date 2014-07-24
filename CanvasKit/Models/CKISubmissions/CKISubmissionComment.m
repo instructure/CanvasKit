@@ -18,8 +18,7 @@
     NSDictionary *keyPaths = @{
        @"createdAt": @"created_at",
        @"authorID": @"author_id",
-       @"authorName": @"author_name",
-       @"avatarURL": @"avatar_url"
+       @"authorName": @"author_name"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

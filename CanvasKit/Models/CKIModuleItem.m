@@ -27,10 +27,7 @@ NSString * const CKIModuleItemCompletionRequirementMustContribute = @"must_contr
 NSString * const CKIModuleItemCompletionRequirementMinimumScore = @"min_score";
 
 @interface CKIModuleItem ()
-// These properties store JSON data to be used
-// to create the derived itemID property.
-@property (nonatomic, copy) NSString *contentID;
-@property (nonatomic, copy) NSString *pageID;
+
 @end
 
 @implementation CKIModuleItem
@@ -45,7 +42,11 @@ NSString * const CKIModuleItemCompletionRequirementMinimumScore = @"min_score";
         @"externalURL": @"external_url",
         @"completionRequirement": @"completion_requirement.type",
         @"minimumScore": @"completion_requirement.min_score",
-        @"completed": @"completion_requirement.completed"
+        @"completed": @"completion_requirement.completed",
+        @"pointsPossible": @"content_details.points_possible",
+        @"dueAt": @"content_details.due_at",
+        @"unlockAt": @"content_details.unlock_at",
+        @"lockAt": @"content_details.lock_at"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -69,6 +70,21 @@ NSString * const CKIModuleItemCompletionRequirementMinimumScore = @"min_score";
 + (NSValueTransformer *)externalURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)dueAtJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)unlockAtJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)lockAtJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
 - (NSString *)itemID

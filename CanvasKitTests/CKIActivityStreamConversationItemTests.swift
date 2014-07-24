@@ -21,14 +21,14 @@ class CKIActivityStreamConversationItemTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        var activityStreamConversationItemDictionary = Helpers.loadJSONFixture("activity_stream_conversation_item") as NSDictionary
-        var streamConversationItem = CKIActivityStreamConversationItem(fromJSONDictionary: activityStreamConversationItemDictionary)
+        let activityStreamConversationItemDictionary = Helpers.loadJSONFixture("activity_stream_conversation_item") as NSDictionary
+        let streamConversationItem = CKIActivityStreamConversationItem(fromJSONDictionary: activityStreamConversationItemDictionary)
         
         XCTAssert(streamConversationItem.isPrivate, "Stream Conversation Item isPrivate was not parsed correctly")
         
         XCTAssertEqual(streamConversationItem.participantCount, 3, "Stream Discussion Item participantCount was not parsed correctly")
         
-        XCTAssertEqualObjects(streamConversationItem.conversationID, "1234", "Stream Discussion Item conversationID was not parsed correctly")
+        XCTAssertEqual(streamConversationItem.conversationID!, "1234", "Stream Discussion Item conversationID was not parsed correctly")
     }
 
     func testPerformanceExample() {

@@ -9,5 +9,7 @@
     "course_id": 1,
     "group_id": 1,
     "html_url": "http://canvas.instructure.com/api/v1/foo",
-    "type": "Submission"
+    "type": "Submission",
+    "submission_id": 1234,
+    "assignment_id": 1234
 }

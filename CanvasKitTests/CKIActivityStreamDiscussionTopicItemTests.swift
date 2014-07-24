@@ -22,10 +22,10 @@ class CKIActivityStreamDiscussionTopicItemTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        var activityStreamDiscussionTopicItemDictionary = Helpers.loadJSONFixture("activity_stream_discussion_topic_item") as NSDictionary
-        var streamDiscussionItem = CKIActivityStreamDiscussionTopicItem(fromJSONDictionary: activityStreamDiscussionTopicItemDictionary)
+        let activityStreamDiscussionTopicItemDictionary = Helpers.loadJSONFixture("activity_stream_discussion_topic_item") as NSDictionary
+        let streamDiscussionItem = CKIActivityStreamDiscussionTopicItem(fromJSONDictionary: activityStreamDiscussionTopicItemDictionary)
         
-        XCTAssertEqualObjects(streamDiscussionItem.totalRootDiscussionEntries, 5, "Stream Discussion Item totalRootDiscussionEntries was not parsed correctly")
+        XCTAssertEqual(streamDiscussionItem.totalRootDiscussionEntries, 5, "Stream Discussion Item totalRootDiscussionEntries was not parsed correctly")
         
         XCTAssert(streamDiscussionItem.requireInitialPost, "Stream Discussion Item requireInitialPost was not parsed correctly")
         

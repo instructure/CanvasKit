@@ -11,6 +11,7 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIQuiz
+@synthesize description;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {

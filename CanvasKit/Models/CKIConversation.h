@@ -89,6 +89,7 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
  */
 @property (nonatomic, copy) NSArray *participants;
 
+@property (nonatomic) NSArray *properties;
 
 #pragma mark - Messages and Submissions
 /**

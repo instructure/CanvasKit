@@ -11,6 +11,7 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIExternalTool
+@synthesize description;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {

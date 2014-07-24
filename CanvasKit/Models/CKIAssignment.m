@@ -145,14 +145,11 @@
     NSString *scoringTypeString = self.gradingType;
     if ([scoringTypeString isEqual:@"pass_fail"]) {
         return CKIAssignmentScoringTypePassFail;
-    }
-    else if ([scoringTypeString isEqual:@"percent"]) {
+    } else if ([scoringTypeString isEqual:@"percent"]) {
         return CKIAssignmentScoringTypePercentage;
-    }
-    else if ([scoringTypeString isEqual:@"letter_grade"]) {
+    } else if ([scoringTypeString isEqual:@"letter_grade"]) {
         return CKIAssignmentScoringTypeLetter;
-    }
-    else if ([scoringTypeString isEqual:@"not_graded"]) {
+    } else if ([scoringTypeString isEqual:@"not_graded"]) {
         return CKIAssignmentScoringTypeNotGraded;
     }
     

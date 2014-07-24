@@ -21,10 +21,10 @@ class CKIActivityStreamMessageItemTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        var activityStreamMessageItemDictionary = Helpers.loadJSONFixture("activity_stream_message_item") as NSDictionary
-        var streamItem = CKIActivityStreamMessageItem(fromJSONDictionary: activityStreamMessageItemDictionary)
+        let activityStreamMessageItemDictionary = Helpers.loadJSONFixture("activity_stream_message_item") as NSDictionary
+        let streamItem = CKIActivityStreamMessageItem(fromJSONDictionary: activityStreamMessageItemDictionary)
         
-        XCTAssertEqualObjects(streamItem.notificationCategory, "Assignment Graded", "Activity Stream Item notificationCategory was not parsed correctly")
+        XCTAssertEqual(streamItem.notificationCategory!, "Assignment Graded", "Activity Stream Item notificationCategory was not parsed correctly")
     }
 
     func testPerformanceExample() {
