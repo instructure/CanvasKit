@@ -1,15 +1,14 @@
 //
-//  CKIPollChoiceTests.swift
+//  CKIAssignmentNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/24/14.
+//  Created by Nathan Lambson on 7/28/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
-class CKIPollChoiceTests: XCTestCase {
+class CKIAssignmentNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

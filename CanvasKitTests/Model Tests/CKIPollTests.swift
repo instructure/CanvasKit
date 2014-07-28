@@ -31,6 +31,7 @@ class CKIPollTests: XCTestCase {
         formatter.includeTime = true
         let date = formatter.dateFromString("2014-01-07T15:16:18Z")
         XCTAssertEqual(poll.created!, date, "Poll created was not parsed correctly")
+        XCTAssertEqual(CKIPoll.keyForJSONAPIContent()!, "polls", "CKIPoll keyForJSONAPIContent was not parsed correctly")
         XCTAssertEqual(poll.path!, "/api/v1/polls/1023", "Poll path was not parsed correctly")
     }
 

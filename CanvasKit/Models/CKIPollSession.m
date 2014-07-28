@@ -36,9 +36,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
-        return stringID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)submissionsJSONTransformer
@@ -51,14 +49,24 @@
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
 
++ (NSValueTransformer *)courseIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)pollIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)sectionIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
 - (NSString *)path
 {
     return [[self.context.path stringByAppendingPathComponent:@"poll_sessions"] stringByAppendingPathComponent:self.id];
-}
-
-- (NSValueTransformer *)courseIDJSONTransformer
-{
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 @end
