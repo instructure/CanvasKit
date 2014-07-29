@@ -1,14 +1,14 @@
 //
-//  CKIAssignmentNetworkingTests.swift
+//  CKITodoItemNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/28/14.
+//  Created by Nathan Lambson on 7/29/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
 import XCTest
 
-class CKIAssignmentNetworkingTests: XCTestCase {
+class CKITodoItemNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -20,18 +20,20 @@ class CKIAssignmentNetworkingTests: XCTestCase {
         super.tearDown()
     }
 
-    func testNotReallyMockingButKindOf() {
+    func testFetchTodoItemsForCourse() {
         let courseDictionary = Helpers.loadJSONFixture("course") as NSDictionary
         let course = CKICourse(fromJSONDictionary: courseDictionary)
         let client = MockCKIClient()
-        
-        client.fetchAssignmentsForContext(course)
-        XCTAssertEqual(client.capturedPath!, "/api/v1/courses/\(course.id)/assignments", "Returned API path for fetchCourseWithCourseID was incorrect")
+
+        client.fetchTodoItemsForCourse(course)
+        XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/todo", "CKITodoItem returned API path for testFetchTodoItemsForCourse was incorrect")
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+
+    func testFetchTodoItemsForCurrentUser() {
+        let client = MockCKIClient()
+
+        client.fetchTodoItemsForCurrentUser()
+        XCTAssertEqual(client.capturedPath!, "/api/v1/users/self/todo", "CKITodoItem returned API path for testFetchTodoItemsForCurrentUser was incorrect")
     }
 
     func testPerformanceExample() {

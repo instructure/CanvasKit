@@ -48,7 +48,7 @@ class CKIConversationTests: XCTestCase {
         XCTAssertEqual(conversation.participants.count, 3, "conversation participants was not parsed correctly")
         XCTAssertEqual(conversation.messages.count, 2, "conversation messages was not parsed correctly")
         XCTAssertEqual(conversation.path!, "/api/v1/conversations/2", "conversation path was not parsed correctly")
-
+        
         var secondConversation = CKIConversation()
         secondConversation.mergeNewMessageFromConversation(conversation)
         XCTAssertNotNil(secondConversation.lastMessage, "conversation mergeNewMessageFromCOnversation did not work correctly")

@@ -96,7 +96,13 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKIOutcomeGroup.h>
 #import <CKIClient+CKIOutcomeLink.h>
 #import <CKIClient+CKIPage.h>
+#import <CKIClient+CKIPollSession.h>
+#import <CKIClient+CKIPoll.h>
+#import <CKIClient+CKIPollSubmission.h>
+#import <CKIClient+CKIPollChoice.h>
+#import <CKIClient+CKIPage.h>
 #import <CKIClient+CKIQuiz.h>
+#import <CKIClient+CKISection.h>
 #import <CKIClient+CKIService.h>
 #import <CKIClient+CKISubmissionSet.h>
 #import <CKIClient+CKITab.h>

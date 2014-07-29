@@ -43,12 +43,9 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:context];
 }
 
-//Currently only supports courses
 - (RACSignal *)fetchGroupsForContext:(id <CKIContext>)context
 {
-    NSString *path = [context.path stringByAppendingPathComponent:@"courses"];
-    path = [path stringByAppendingPathComponent:[context description]];
-    path = [path stringByAppendingPathComponent:@"groups"];
+    NSString *path = [context.path stringByAppendingPathComponent:@"groups"];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:context];
 }
 

@@ -39,7 +39,8 @@ class CKICourseTests: XCTestCase {
         
         date = formatter.dateFromString("2010-14-02T00:00:00-07:00")
         XCTAssertEqual(course.endAt!, date, "course endAt was not parsed correctly")
-//        XCTAssertEqual(course.enrollments!, "____", "course enrollments was not parsed correctly")
+        XCTAssertNil(course.enrollments, "course enrollments was not parsed correctly")
+        XCTAssertNil(course.term, "course term was not parsed correctly")
         
         let url = NSURL.URLWithString("https://mobiledev.instructure.com/feeds/calendars/course_56093f00-e060-012d-6ee9-4040654c8f83.ics")
         XCTAssertEqual(course.calendar!, url, "course calendar was not parsed correctly")

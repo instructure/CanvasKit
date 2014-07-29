@@ -1,14 +1,14 @@
 //
-//  CKIAssignmentNetworkingTests.swift
+//  CKIAssignmentGroupNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/28/14.
+//  Created by Nathan Lambson on 7/29/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
 import XCTest
 
-class CKIAssignmentNetworkingTests: XCTestCase {
+class CKIAssignmentGroupNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -20,20 +20,16 @@ class CKIAssignmentNetworkingTests: XCTestCase {
         super.tearDown()
     }
 
-    func testNotReallyMockingButKindOf() {
+    func testFetchAssignmentGroupsForContext() {
+        let client = MockCKIClient()
         let courseDictionary = Helpers.loadJSONFixture("course") as NSDictionary
         let course = CKICourse(fromJSONDictionary: courseDictionary)
-        let client = MockCKIClient()
         
-        client.fetchAssignmentsForContext(course)
-        XCTAssertEqual(client.capturedPath!, "/api/v1/courses/\(course.id)/assignments", "Returned API path for fetchCourseWithCourseID was incorrect")
+        client.fetchAssignmentGroupsForContext(course)
+        XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/assignment_groups", "CKIAssignmentGroups returned API path for testFetchAssignmentGroupsForContext was incorrect")
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {

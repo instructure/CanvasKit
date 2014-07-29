@@ -18,10 +18,10 @@ class Helpers: NSObject {
         
         var data = NSData(contentsOfFile: filePath)
         
-        var error: NSError?
+        var error: NSError? = nil
         var result: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
         
-        if(error) {
+        if(error != nil) {
             return nil;
         }
         
