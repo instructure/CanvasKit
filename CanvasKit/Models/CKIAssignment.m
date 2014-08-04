@@ -32,6 +32,7 @@
         @"htmlURL": @"html_url",
         @"allowedExtensions": @"allowed_extensions",
         @"assignmentGroupID": @"assignment_group_id",
+        @"automaticPeerReviews": @"automatic_peer_reviews",
         @"groupCategoryID": @"group_category_id",
         @"gradeGroupStudentsIndividually": @"grade_group_students_individually",
         @"needsGradingCount": @"needs_grading_count",

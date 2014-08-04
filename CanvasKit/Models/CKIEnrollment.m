@@ -24,10 +24,16 @@ NSString *const CKIEnrollmentTypeDesigner = @"designer";
                                @"computedFinalScore": @"computed_final_score",
                                @"computedCurrentScore": @"computed_current_score",
                                @"computedFinalGrade": @"computed_final_grade",
-                               @"computedCurrentGrade": @"computed_current_grade"
+                               @"computedCurrentGrade": @"computed_current_grade",
+                               @"sectionID": @"course_section_id"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
+}
+
++ (NSValueTransformer *)sectionIDJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 - (BOOL)isStudent
