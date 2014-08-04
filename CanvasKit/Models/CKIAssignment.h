@@ -102,6 +102,11 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
 @property (nonatomic) BOOL muted;
 
 /**
+ Boolean indicating peer reviews are assigned automatically. If false, the teacher is expected to manually assign peer reviews.
+ */
+@property (nonatomic) BOOL automaticPeerReviews;
+
+/**
  The assignment is published
  
  @note Only visible if 'enable draft' account setting is on
