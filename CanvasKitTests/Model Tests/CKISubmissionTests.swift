@@ -65,10 +65,10 @@ class CKISubmissionTests: XCTestCase {
         
         XCTAssertNotNil(submission.attachments, "Submission attachments was not parsed correctly")
         
-//        XCTAssertNotNil(submission.mediaComment, "Submission mediaComment was not parsed correctly")
+        XCTAssertNil(submission.mediaComment, "Submission mediaComment was not parsed correctly")
         
-//        XCTAssertNotNil(submission.assignment, "Submission assignment was not parsed correctly")
-
+        XCTAssertNil(submission.assignment, "Submission assignment was not parsed correctly")
+        
     }
 
     func testPerformanceExample() {

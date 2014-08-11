@@ -28,6 +28,7 @@ class CKIModuleTests: XCTestCase {
         XCTAssertEqual(module.state!, "started", "Module state was not parsed correctly")
         XCTAssertEqual(module.workflowState!, "active", "Module workflow_state was not parsed correctly")
         XCTAssertEqual(module.name!, "Imaginary Numbers and You", "Module Imaginary Numbers and You was not parsed correctly")
+        XCTAssertEqual(module.prerequisiteModuleIDs.count, 2, "Module prerequisiteModuleIDs was not parsed correctly")
         
         let formatter = ISO8601DateFormatter()
         formatter.includeTime = true

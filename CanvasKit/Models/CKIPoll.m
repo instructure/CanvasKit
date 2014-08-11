@@ -28,9 +28,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
-        return stringID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)createdJSONTransformer

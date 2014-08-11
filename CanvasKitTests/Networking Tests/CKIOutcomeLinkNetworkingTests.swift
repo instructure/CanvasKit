@@ -1,15 +1,14 @@
 //
-//  CKIActivityStreamAnnouncementItemTests.swift
+//  CKIOutcomeLinkNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/17/14.
+//  Created by Nathan Lambson on 7/29/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
-class CKIActivityStreamAnnouncementItemTests: XCTestCase {
+class CKIOutcomeLinkNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -21,11 +20,13 @@ class CKIActivityStreamAnnouncementItemTests: XCTestCase {
         super.tearDown()
     }
 
-    func testJSONModelConversion() {
-        let activityStreamAnnouncementItemDictionary = Helpers.loadJSONFixture("activity_stream_announcement_item") as NSDictionary
-        let streamItem = CKIActivityStreamAnnouncementItem(fromJSONDictionary: activityStreamAnnouncementItemDictionary)
+    func testFetchOutcomeLinksForOutcomeGroup() {
+        let outcomeGroupDictionary = Helpers.loadJSONFixture("outcome_group") as NSDictionary
+        let outcomeGroup = CKIOutcomeGroup(fromJSONDictionary: outcomeGroupDictionary)
+        let client = MockCKIClient()
         
-        XCTAssertEqual(streamItem.announcementID!, "1234", "Stream Announcement Item id was not parsed correctly")
+        client.fetchOutcomeLinksForOutcomeGroup(outcomeGroup)
+        XCTAssertEqual(client.capturedPath!, "/api/v1/outcome_groups/1/outcomes", "CKIOutcomeLink returned API path for testFetchOutcomeLinksForOutcomeGroup was incorrect")
     }
 
     func testPerformanceExample() {

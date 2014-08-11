@@ -1,15 +1,14 @@
 //
-//  CKIPollTests.swift
+//  CKIAssignmentGroupNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/21/14.
+//  Created by Nathan Lambson on 7/29/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
-class CKIPollTests: XCTestCase {
+class CKIAssignmentGroupNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -21,11 +20,16 @@ class CKIPollTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testFetchAssignmentGroupsForContext() {
+        let client = MockCKIClient()
+        let courseDictionary = Helpers.loadJSONFixture("course") as NSDictionary
+        let course = CKICourse(fromJSONDictionary: courseDictionary)
+        
+        client.fetchAssignmentGroupsForContext(course)
+        XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/assignment_groups", "CKIAssignmentGroups returned API path for testFetchAssignmentGroupsForContext was incorrect")
     }
-
+    
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {

@@ -1,30 +1,27 @@
-
 //
-//  CKISubmissionSetTests.swift
+//  CKISubmissionSetNetworkingTests.swift
 //  CanvasKit
 //
-//  Created by Nathan Lambson on 7/14/14.
+//  Created by Nathan Lambson on 7/29/14.
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
 import XCTest
 
-class CKISubmissionSetTests: XCTestCase {
+class CKISubmissionSetNetworkingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    func testJSONModelConversion() {
-        //See the comments in CKISubmissionSet. I don't think we currently have json to test this code
-//        let submissionDictionary = Helpers.loadJSONFixture("????????_????????") as NSDictionary
-//        let submissionSet = CKISubmissionSet(fromJSONDictionary: submissionDictionary)
-        XCTAssert(true, "Pass")
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
 
     func testExample() {
-        // This is an example of a functional test case.
+//      See the comments in CKISubmissionSet & CKISubmissionSetTests. I don't think we currently have json to test this code
         XCTAssert(true, "Pass")
     }
 

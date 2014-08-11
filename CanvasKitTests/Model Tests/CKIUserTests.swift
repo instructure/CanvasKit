@@ -34,6 +34,7 @@ class CKIUserTests: XCTestCase {
         XCTAssertEqual(user.email!, "sheldon@caltech.example.com", "user email was not parsed correctly")
         XCTAssertEqual(user.avatarURL!, NSURL(string: "http://instructure.com/sheldon.png"), "user avatar url was not parsed correctly")
         XCTAssertEqual(user.locale!, "tlh", "user local was not parsed correctly")
+        XCTAssertNil(user.calendar, "user calendar was not parsed correctly")
         
         var formatter = ISO8601DateFormatter()
         formatter.includeTime = true

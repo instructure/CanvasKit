@@ -29,9 +29,8 @@ class CKIOutcomeLinkTests: XCTestCase {
         XCTAssertEqual(outcomeLink.contextID!, "1", "outcomeLink contextID did not parse correctly")
         XCTAssertEqual(outcomeLink.url!, "/api/v1/account/1/outcome_groups/1/outcomes/1", "outcomeLink url did not parse correctly")
         XCTAssertEqual(outcomeLink.path!, "/api/v1/outcomes", "outcomeLink url did not parse correctly")
-//        XCTAssertNil(outcomeLink.outcome, "outcomeLink outcome did not parse correctly")
-//        XCTAssertNil(outcomeLink.outcomeGroup, "outcomeGroup details did not parse correctly")
-
+        XCTAssertNil(outcomeLink.outcome, "outcomeLink outcome did not parse correctly")
+        XCTAssertNil(outcomeLink.outcomeGroup, "outcomeGroup details did not parse correctly")
     }
 
     func testPerformanceExample() {

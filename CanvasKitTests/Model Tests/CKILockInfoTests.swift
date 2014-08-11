@@ -24,9 +24,9 @@ class CKILockInfoTests: XCTestCase {
     func testJSONModelConversion() {
         
         let lockInfoDictionary = Helpers.loadJSONFixture("lock_info") as NSDictionary
-        var error: NSError?
+        var error: NSError? = nil
         let lockInfo: CKILockInfo = MTLJSONAdapter.modelOfClass(CKILockInfo.self, fromJSONDictionary: lockInfoDictionary, error: &error) as CKILockInfo
-        if error {
+        if error != nil {
             println("Error parsing model \(error)");
         }
         

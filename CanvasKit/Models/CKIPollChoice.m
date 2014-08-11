@@ -8,6 +8,7 @@
 
 #import "CKIPollChoice.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 
 @implementation CKIPollChoice
 
@@ -29,9 +30,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id stringID) {
-        return stringID;
-    }];
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 - (NSString *)path
