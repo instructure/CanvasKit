@@ -26,6 +26,14 @@
     return self;
 }
 
+- (void)clearExistingSessions {
+    // remove cookies to dispose of previous login session
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *oldCookie in storage.cookies) {
+        [storage deleteCookie:oldCookie];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,6 +45,8 @@
     [self.webView setBackgroundColor:[UIColor blackColor]];
     self.view = self.webView;
     
+    
+    [self clearExistingSessions];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     [[session dataTaskWithURL:[self.request URL]
@@ -44,6 +54,7 @@
                                 NSURLResponse *response,
                                 NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self clearExistingSessions];
                     [self.webView loadRequest:self.request];
                 });
             }] resume];
