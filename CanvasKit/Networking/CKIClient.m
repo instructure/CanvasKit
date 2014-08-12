@@ -141,22 +141,9 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     self.currentUser = nil;
 }
 
-- (void)clearExistingSessionsForDomain:(NSString *)domain {
-    // remove cookies to dispose of previous login session
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *oldCookies = [storage.cookies.rac_sequence filter:^BOOL(NSHTTPCookie *cookie) {
-        return [cookie.domain rangeOfString:domain options:NSCaseInsensitiveSearch].location != NSNotFound;
-    }].array;
-    for (NSHTTPCookie *oldCookie in oldCookies) {
-        [storage deleteCookie:oldCookie];
-    }
-}
-
 - (NSURLRequest *)authenticationRequestWithMethod:(CKIAuthenticationMethod)method
 {
     NSAssert(method < CKIAuthenticationMethodCount, @"Invalid authentication method");
-    
-    [self clearExistingSessionsForDomain:self.baseURL.host];
     
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
                            , self.baseURL.absoluteString
