@@ -16,7 +16,7 @@ namespace :pod do
 
     cmd = ''
     if input == 'yes' || input == 'y'
-      cmd = "pod trunk push #{get_podspec_name}"
+      cmd = "pod trunk push --verbose #{get_podspec_name}"
     else
       raise '> This is not ready for prime time. Were working on it.'
       # cmd = "pod push #{get_podspec_name}"
