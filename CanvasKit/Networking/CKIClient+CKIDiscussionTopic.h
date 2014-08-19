@@ -8,10 +8,12 @@
 
 #import "CKIClient.h"
 
-@class CKICourse;
+@class CKICourse, CKIDiscussionTopic;
 
 @interface CKIClient (CKIDiscussionTopic)
 - (RACSignal *)fetchDiscussionTopicsForContext:(id<CKIContext>)context;
 - (RACSignal *)fetchDiscussionTopicForContext:(id<CKIContext>)context topicID:(NSString *)topicID;
 - (RACSignal *)fetchAnnouncementsForContext:(id<CKIContext>)context;
+
+- (RACSignal *)markTopicAsRead:(CKIDiscussionTopic *)topic;
 @end

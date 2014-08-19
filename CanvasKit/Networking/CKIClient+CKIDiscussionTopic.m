@@ -9,6 +9,8 @@
 #import "CKIClient+CKIDiscussionTopic.h"
 #import "CKICourse.h"
 #import "CKIDiscussionTopic.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Mantle/EXTScope.h>
 
 @implementation CKIClient (CKIDiscussionTopic)
 
@@ -33,4 +35,31 @@
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIDiscussionTopic class] context:context];
 }
 
+
+- (RACSignal *)markTopicAsRead:(CKIDiscussionTopic *)topic {
+    NSParameterAssert(topic);
+    
+    NSString *path = [topic.path stringByAppendingPathComponent:@"read"];
+    
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        if (self) {
+            NSURLSessionDataTask *task = [self PUT:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                [subscriber sendCompleted];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [subscriber sendError:error];
+            }];
+            
+            return [RACDisposable disposableWithBlock:^{
+                [task cancel];
+            }];
+        }
+        [subscriber sendError:[NSError errorWithDomain:@"com.instructure.icanvas" code:topic.id.integerValue userInfo:@{NSLocalizedDescriptionKey: @"The client died before you got around to marking this topic \"read\""}]];
+        
+        return [RACDisposable disposableWithBlock:^{
+            // empty on purpose yo
+        }];
+    }];
+}
 @end
