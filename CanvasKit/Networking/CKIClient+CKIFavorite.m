@@ -26,14 +26,14 @@
     return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses/"] stringByAppendingPathComponent:course.id];
 }
 
-- (RACSignal *)addCourse:(CKICourse *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)addCourseToFavorites:(CKICourse *)course
 {
     NSString *path = [self currentUserFavoritesPathStringForCourse:course];
     
     return [self createModelAtPath:path parameters:nil modelClass:[CKIFavorite class] context:nil];
 }
 
-- (RACSignal *)removeCourse:(CKICourse *)course fromFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)removeCourseFromFavorites:(CKICourse *)course
 {
     NSString *path = [self currentUserFavoritesPathStringForCourse:course];
     
