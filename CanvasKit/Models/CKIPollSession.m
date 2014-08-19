@@ -36,7 +36,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 + (NSValueTransformer *)submissionsJSONTransformer
@@ -51,17 +51,17 @@
 
 + (NSValueTransformer *)courseIDJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 + (NSValueTransformer *)pollIDJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 + (NSValueTransformer *)sectionIDJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 - (NSString *)path
