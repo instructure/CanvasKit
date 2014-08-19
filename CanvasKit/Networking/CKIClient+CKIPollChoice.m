@@ -16,6 +16,12 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPollChoice class] context:poll];
 }
 
+- (RACSignal *)fetchPollChoiceWithId:(NSString *)pollChoiceId fromPoll:(CKIPoll *)poll
+{
+    NSString *path = [[poll.path stringByAppendingPathComponent:@"poll_choices"] stringByAppendingPathComponent:pollChoiceId];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIPollChoice class] context:poll];
+}
+
 - (RACSignal *)createPollChoice:(CKIPollChoice *)pollChoice forPoll:(CKIPoll *)poll
 {
     NSString *path = [poll.path stringByAppendingPathComponent:@"poll_choices"];

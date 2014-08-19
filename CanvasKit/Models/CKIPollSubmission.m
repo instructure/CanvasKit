@@ -30,7 +30,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 + (NSValueTransformer *)createdJSONTransformer
@@ -40,12 +40,12 @@
 
 + (NSValueTransformer *)userIDJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 + (NSValueTransformer *)pollChoiceIDJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 - (NSString *)path 
