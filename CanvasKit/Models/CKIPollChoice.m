@@ -30,7 +30,7 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+    return nil;
 }
 
 - (NSString *)path
