@@ -32,7 +32,7 @@ class CKIFavoriteNetworkingTests: XCTestCase {
         let courseDictionary = Helpers.loadJSONFixture("course") as NSDictionary
         let course = CKICourse(fromJSONDictionary: courseDictionary)
         
-        client.addCourse(course, toFavoritesWithSuccess: nil, failure: nil)
+        client.addCourseToFavorites(course)
         XCTAssertEqual(client.capturedPath!, "/api/v1/users/self/favorites/courses/1", "CKIFavorite returned API path for testAddCourseToFavoritesWithSuccessFailure was incorrect")
     }
 
@@ -41,7 +41,7 @@ class CKIFavoriteNetworkingTests: XCTestCase {
         let courseDictionary = Helpers.loadJSONFixture("course") as NSDictionary
         let course = CKICourse(fromJSONDictionary: courseDictionary)
         
-        client.removeCourse(course, fromFavoritesWithSuccess: nil, failure: nil)
+        client.removeCourseFromFavorites(course)
         XCTAssertEqual(client.capturedPath!, "/api/v1/users/self/favorites/courses/1", "CKIFavorite returned API path for testAddCourseToFavoritesWithSuccessFailure was incorrect")
     }
 
