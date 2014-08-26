@@ -157,18 +157,6 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     
-    if (method == CKIAuthenticationMethodSiteAdmin) {
-        [request setHTTPShouldHandleCookies:YES];
-        NSDictionary *cookieProperties = @{
-                                           NSHTTPCookieValue: @"1",
-                                           NSHTTPCookieDomain: self.baseURL.host,
-                                           NSHTTPCookieName: @"canvas_sa_delegated",
-                                           NSHTTPCookiePath: @"/"
-                                           };
-        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    }
-    
     return request;
 }
 
@@ -434,7 +422,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 - (RACSignal *)authorizeWithServerUsingWebBrowserUsingAuthenticationMethod:(CKIAuthenticationMethod)method
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:[self authenticationRequestWithMethod:method]];
+        NSURLRequest *request = [self authenticationRequestWithMethod:method];
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:request method:method];
         loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
