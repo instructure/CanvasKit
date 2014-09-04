@@ -33,7 +33,7 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.0)
+  - AFNetworking (~> 2.3.1)
   - ISO8601DateFormatter
   - Mantle (~> 1.0)
   - ReactiveCocoa
