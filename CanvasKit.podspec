@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.ios.source_files = 'CanvasKit/**/*.{h,m}'
 
-  s.dependency 'AFNetworking', '~> 2.0'
+  s.dependency 'AFNetworking', '~> 2.3.1'
   s.dependency 'Mantle', '~> 1.0'
   s.dependency 'ISO8601DateFormatter'
   s.dependency 'ReactiveCocoa'
