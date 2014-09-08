@@ -33,8 +33,8 @@
 @property (nonatomic, copy) NSString *authorName;
 
 /**
- The url for the submitters avatar.
+ The path for the submitters avatar.
  */
-//@property (nonatomic, copy) NSURL *avatarURL;
+@property (nonatomic, copy) NSURL *avatarPath;
 
 @end

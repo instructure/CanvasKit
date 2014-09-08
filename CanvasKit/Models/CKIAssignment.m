@@ -115,25 +115,6 @@
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
 }
 
-- (BOOL)rubricExistsWithoutCriteria
-{
-    return _rubric && !_rubric.criteria;
-}
-
-- (CKIRubric *)rubric
-{
-    if ([self rubricExistsWithoutCriteria]) {
-        _rubric.criteria = self.rubricCriteria;
-    }
-    return _rubric;
-}
-
-- (void)setRubricCriteria:(NSArray *)rubricCriteria
-{
-    _rubric.criteria = rubricCriteria;
-    _rubricCriteria = rubricCriteria;
-}
-
 #pragma mark - Other Methods
 
 - (NSString *)path
@@ -152,6 +133,8 @@
         return CKIAssignmentScoringTypeLetter;
     } else if ([scoringTypeString isEqual:@"not_graded"]) {
         return CKIAssignmentScoringTypeNotGraded;
+    } else if ([scoringTypeString isEqual:@"gpa_scale"]) {
+        return CKIAssignmentScoringTypeGPAScale;
     }
     
     return CKIAssignmentScoringTypePoints;

@@ -14,6 +14,11 @@
 extern NSString * const CKINumberStringTransformerName;
 
 /**
+ The name for a value transfomer that converts NSNumbers or NSStrings to NSStrings.
+ */
+extern NSString * const CKINumberOrStringToStringTransformerName;
+
+/**
  The name for a value transfomer that converts ISO8601 date-strings to NSDates and back.
  */
 extern NSString * const CKIDateTransformerName;

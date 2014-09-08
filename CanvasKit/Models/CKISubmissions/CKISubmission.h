@@ -1,5 +1,5 @@
 //
-//  CKISubmissionSet.h
+//  CKISubmission.h
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -107,11 +107,6 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 @property (nonatomic) BOOL late;
 
 /**
- Comments left by graders. An array of CKISubmissionComment objects.
- */
-@property (nonatomic, copy) NSArray *comments;
-
-/**
  When a submission appears in a conversation, the assignment is also
  available as part of the submission.
  */
@@ -128,4 +123,5 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 * no media comment.
 */
 @property (nonatomic, copy) CKIMediaComment *mediaComment;
+
 @end

@@ -11,6 +11,7 @@
 #import "ISO8601DateFormatter.h"
 
 NSString * const CKINumberStringTransformerName = @"CKINumberStringTransformerName";
+NSString * const CKINumberOrStringToStringTransformerName = @"CKINumberOrStringToStringTransformerName";
 NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
 
 @implementation NSValueTransformer (CKIPredefinedTransformerAdditions)
@@ -22,6 +23,10 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
 		MTLValueTransformer *NumberStringTransformer = [NSValueTransformer numberStringTransformer];
 		
 		[NSValueTransformer setValueTransformer:NumberStringTransformer forName:CKINumberStringTransformerName];
+        
+        MTLValueTransformer *NumberOrStringToStringTransformer = [NSValueTransformer numberOrStringToStringTransformer];
+        
+        [NSValueTransformer setValueTransformer:NumberOrStringToStringTransformer forName:CKINumberOrStringToStringTransformerName];
         
 		MTLValueTransformer *ISODateTransfomer = [NSValueTransformer ISODateTransformer];
         
@@ -35,6 +40,19 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
         return [number stringValue];
     } reverseBlock:^ id (NSString *stringifiedNumber) {
         return [NSNumber numberWithLongLong:[stringifiedNumber longLongValue]];
+    }];
+}
+
++ (MTLValueTransformer *)numberOrStringToStringTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^ id (id value) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return [value stringValue];
+        }
+
+        return value;
+    } reverseBlock:^ id (NSString *stringifiedNumber) {
+        return stringifiedNumber;
     }];
 }
 

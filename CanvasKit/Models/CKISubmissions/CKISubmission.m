@@ -1,5 +1,5 @@
 //
-//  CKISubmissionSet.m
+//  CKISubmission.m
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -32,8 +32,7 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
         @"submissionType": @"submission_type",
         @"userID": @"user_id",
         @"graderID": @"grader_id",
-        @"comments": @"submission_comments",
-        @"mediaComment" : @"media_comment"
+        @"mediaComment" : @"media_comment",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -74,9 +73,9 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-+ (NSValueTransformer *)commentsJSONTransformer
++ (NSValueTransformer *)gradeJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKISubmissionComment class]];
+    return [NSValueTransformer valueTransformerForName:CKINumberOrStringToStringTransformerName];
 }
 
 + (NSValueTransformer *)assignmentJSONTransformer
@@ -91,6 +90,10 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
 + (NSValueTransformer *)mediaCommentJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
+}
+
+- (NSString *)path {
+    return [[[[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.assignmentID] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
 }
 
 @end

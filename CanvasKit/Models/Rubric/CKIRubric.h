@@ -24,17 +24,6 @@
 @property (nonatomic, copy) NSString *title;
 
 /**
-* An array of CKICriterion that compose the criteria for the rubric.
-*
-* @see CKIRubricCriterion
-* @warning This property must be set with the criteria found in the "rubric" key
-* on the assignment object. The API returns the rubric criteria and the settings
-* in separate keys. Thus we must coalesce them into one object manually. CKIAssignment
-* should handle this when it parses itself, given that it has a rubric.
-*/
-@property (nonatomic, copy) NSArray *criteria;
-
-/**
 * The total number of points possible.
 *
 * @note a submission may score over 100%, and therefore the actual points
