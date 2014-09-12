@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
     CKIAssignmentScoringTypePercentage,
     CKIAssignmentScoringTypePassFail,
     CKIAssignmentScoringTypeLetter,
+    CKIAssignmentScoringTypeGPAScale,
     CKIAssignmentScoringTypeNotGraded
 };
 
