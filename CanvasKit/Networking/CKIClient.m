@@ -274,7 +274,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            if ([self isUnauthorizedError:error]) {
+            // don't try this if we are attempting to masquerade!
+            if ([self isUnauthorizedError:error] && [self actAsUserID].length == 0) {
                 // if the user gets a 401 that might be a server issue, lets
                 // do one more check to see if our access token has expired
                 // or been revoked
