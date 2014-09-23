@@ -38,6 +38,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIContext.h>
 #import <CKICourse.h>
 #import <CKIDiscussionTopic.h>
+#import <CKIDiscussionEntry.h>
 #import <CKIExternalTool.h>
 #import <CKIFavorite.h>
 #import <CKIFile.h>

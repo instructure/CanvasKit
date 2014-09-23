@@ -67,4 +67,9 @@
     return [path stringByAppendingPathComponent:self.id];
 }
 
+
+- (BOOL)isMediaAttachment {
+    return [self.contentType hasPrefix:@"video"] || [self.contentType hasPrefix:@"audio"];
+}
+
 @end

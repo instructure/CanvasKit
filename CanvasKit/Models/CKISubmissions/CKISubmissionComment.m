@@ -8,6 +8,7 @@
 
 #import "CKISubmissionComment.h"
 #import "CKIUser.h"
+#import "CKIMediaComment.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
@@ -20,7 +21,8 @@
        @"authorID": @"author_id",
        @"authorName": @"author_name",
        @"avatarPath" : @"avatar_path",
-       @"comment" : @"comment"
+       @"comment" : @"comment",
+       @"mediaComment" : @"media_comment",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -34,6 +36,11 @@
 + (NSValueTransformer *)authorIDJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)mediaCommentJSONTransformer
+{
+    return [MTLValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
 }
 
 

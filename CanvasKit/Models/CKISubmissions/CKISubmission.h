@@ -1,3 +1,4 @@
+
 //
 //  CKISubmission.h
 //  CanvasKit
@@ -12,6 +13,9 @@ extern NSString * const CKISubmissionTypeOnlineTextEntry;
 extern NSString * const CKISubmissionTypeOnlineURL;
 extern NSString * const CKISubmissionTypeOnlineUpload;
 extern NSString * const CKISubmissionTypeMediaRecording;
+extern NSString * const CKISubmissionTypeQuiz;
+extern NSString * const CKISubmissionTypeDiscussion;
+extern NSString * const CKISubmissionTypeExternalTool;
 
 @class CKIAssignment;
 @class CKIMediaComment;
@@ -124,4 +128,13 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 */
 @property (nonatomic, copy) CKIMediaComment *mediaComment;
 
+
+/**
+ An array containing the submitted `CKIDiscussionEntry`s for
+ `CKISubmissionTypeDiscussion` type submissions
+ */
+@property (nonatomic, copy) NSArray *discussionEntries;
+
+
 @end
+

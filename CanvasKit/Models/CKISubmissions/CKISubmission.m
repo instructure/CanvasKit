@@ -13,11 +13,16 @@
 #import "CKIAssignment.h"
 #import "CKIFile.h"
 #import "CKIMediaComment.h"
+#import "CKIDiscussionEntry.h"
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
 NSString * const CKISubmissionTypeOnlineUpload = @"online_upload";
 NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
+NSString * const CKISubmissionTypeQuiz = @"online_quiz";
+NSString * const CKISubmissionTypeDiscussion = @"discussion_topic";
+NSString * const CKISubmissionTypeExternalTool = @"external_tool";
+
 
 @implementation CKISubmission
 
@@ -33,6 +38,7 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
         @"userID": @"user_id",
         @"graderID": @"grader_id",
         @"mediaComment" : @"media_comment",
+        @"discussionEntries": @"discussion_entries"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -90,6 +96,10 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
 + (NSValueTransformer *)mediaCommentJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
+}
+
++ (NSValueTransformer *)discussionEntriesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIDiscussionEntry class]];
 }
 
 - (NSString *)path {

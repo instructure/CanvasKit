@@ -11,6 +11,7 @@
 @interface CKIClient (CKISubmissionRecord)
 
 - (RACSignal *)fetchSubmissionRecordsForAssignment:(CKIAssignment *)assignment;
+- (RACSignal *)fetchSubmissionRecordsForAssignment:(CKIAssignment *)assignment forStudentWithID:(NSString *)studentID;
 - (RACSignal *)updateGrade:(NSString *)gradeString forSubmissionRecord:(CKISubmission *)submission;
 - (RACSignal *)updateGrade:(NSString *)gradeString assessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmission *)submission;
 - (RACSignal *)updateRubricAssessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmission *)submission;
