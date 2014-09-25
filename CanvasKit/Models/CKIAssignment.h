@@ -185,6 +185,11 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
 @property (nonatomic) BOOL peerReviewRequired;
 
 /**
+ Boolean indicating if rubric should be used to grade assignment
+ */
+@property (nonatomic) BOOL useRubricForGrading;
+
+/**
  Boolean indicating peer reviews are assigned automatically.
  If false, the teacher is expected to manually assign peer reviews.
  */
