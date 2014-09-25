@@ -10,6 +10,7 @@
 
 #import "CKISubmissionComment.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
+#import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "CKIMediaComment.h"
 
 @implementation CKISubmissionRecord
@@ -18,7 +19,8 @@
 {
     NSDictionary *keyPaths = @{
                                @"comments": @"submission_comments",
-                               @"submissionHistory" : @"submission_history"
+                               @"submissionHistory" : @"submission_history",
+                               @"rubricAssessment" : @"rubric_assessment"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -32,6 +34,11 @@
 + (NSValueTransformer *)submissionHistoryJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKISubmission class]];
+}
+
++ (NSValueTransformer *)rubricAssessmentJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIRubricAssessmentTransformerName];
 }
 
 - (NSString *)path {

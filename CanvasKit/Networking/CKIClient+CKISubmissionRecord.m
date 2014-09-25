@@ -17,6 +17,10 @@ static const NSString *CKISubmissionHistory = @"submission_history";
 static const NSString *CKISubmissionComments = @"submission_comments";
 static const NSString *CKISubmissionRubricAssessment = @"rubric_assessment";
 
+static const NSString *CKISubmissionPutParameter = @"submission";
+static const NSString *CKISubmissionPostedGradeParameter = @"posted_grade";
+static const NSString *CKISubmissionRubricAssessmentParameter = @"rubric_assessment";
+
 @implementation CKIClient (CKISubmissionRecord)
 
 - (RACSignal *)fetchSubmissionRecordsForAssignment:(CKIAssignment *)assignment
@@ -27,15 +31,7 @@ static const NSString *CKISubmissionRubricAssessment = @"rubric_assessment";
 }
 
 - (RACSignal *)updateGrade:(NSString *)gradeString forSubmissionRecord:(CKISubmissionRecord *)submission {
-    return [self updateModel:submission parameters:@{@"submission": @{@"posted_grade": gradeString}}];
-}
-
-- (RACSignal *)updateGrade:(NSString *)gradeString assessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmissionRecord *)submission {
-    return [self updateModel:submission parameters:@{@"submission": @{@"posted_grade": gradeString}}];
-}
-
-- (RACSignal *)updateRubricAssessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmissionRecord *)submission {
-    return [self updateModel:submission parameters:[assessment parametersDictionary]];
+    return [self updateModel:submission parameters:@{CKISubmissionPutParameter: @{CKISubmissionPostedGradeParameter: gradeString}, CKISubmissionRubricAssessmentParameter: [submission.rubricAssessment parametersDictionary]}];
 }
 
 - (RACSignal *)addComment:(NSString *)comment forSubmissionRecord:(CKISubmissionRecord *)submission {

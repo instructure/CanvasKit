@@ -15,6 +15,7 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 
 @class CKIAssignment;
 @class CKIMediaComment;
+@class CKIRubricAssessment;
 
 @interface CKISubmission : CKIModel
 

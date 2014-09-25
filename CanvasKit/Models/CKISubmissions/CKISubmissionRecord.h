@@ -21,4 +21,9 @@
  */
 @property (nonatomic, copy) NSArray *submissionHistory;
 
+/**
+ * RubricAssessment associated with submission, nil if no assessment
+ */
+@property (nonatomic, copy) CKIRubricAssessment *rubricAssessment;
+
 @end

@@ -333,6 +333,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSParameterAssert(jsonDictionary);
 
     id tranformedValue = [transformer transformedValue:jsonDictionary];
+    
     NSAssert([tranformedValue isKindOfClass:CKIModel.class], @"Transformer gave back an object of type %@, expected a CKIModel subclass.", [tranformedValue class]);
     CKIModel *model = (CKIModel *)tranformedValue;
     model.context = context;

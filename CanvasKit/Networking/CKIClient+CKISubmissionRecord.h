@@ -12,8 +12,6 @@
 
 - (RACSignal *)fetchSubmissionRecordsForAssignment:(CKIAssignment *)assignment;
 - (RACSignal *)updateGrade:(NSString *)gradeString forSubmissionRecord:(CKISubmission *)submission;
-- (RACSignal *)updateGrade:(NSString *)gradeString assessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmission *)submission;
-- (RACSignal *)updateRubricAssessment:(CKIRubricAssessment *)assessment forSubmissionRecord:(CKISubmission *)submission;
 - (RACSignal *)addComment:(NSString *)comment forSubmissionRecord:(CKISubmission *)submission;
 
 @end

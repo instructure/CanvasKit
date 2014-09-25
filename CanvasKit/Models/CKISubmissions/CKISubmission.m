@@ -13,6 +13,7 @@
 #import "CKIAssignment.h"
 #import "CKIFile.h"
 #import "CKIMediaComment.h"
+#import "CKIRubricAssessment.h"
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
@@ -32,7 +33,7 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
         @"submissionType": @"submission_type",
         @"userID": @"user_id",
         @"graderID": @"grader_id",
-        @"mediaComment" : @"media_comment",
+        @"mediaComment" : @"media_comment"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
