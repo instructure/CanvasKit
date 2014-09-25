@@ -45,7 +45,8 @@
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
         @"rubricCriteria": @"rubric",
-        @"rubric": @"rubric_settings"
+        @"rubric": @"rubric_settings",
+        @"useRubricForGrading": @"use_rubric_for_grading"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

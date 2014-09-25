@@ -28,10 +28,12 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [self.ratings enumerateObjectsUsingBlock:^(CKIRubricCriterionRating *rating, NSUInteger idx, BOOL *stop) {
         
-        params[[NSString stringWithFormat:@"rubric_assessment[%@][points]", rating.id]] = [NSString stringWithFormat:@"%g", rating.points];
+        NSMutableDictionary *ratingInfo = [NSMutableDictionary new];
+        ratingInfo[@"points"] = [NSString stringWithFormat:@"%g", rating.points];
         
         NSString *comments = rating.comments ? rating.comments : @"";
-        params[[NSString stringWithFormat:@"rubric_assessment[%@][comments]", rating.id]] = comments;
+        ratingInfo[@"comments"] = comments;
+        [params setObject:ratingInfo forKey:rating.id];
     }];
     
     return params;
