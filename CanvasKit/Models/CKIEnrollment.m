@@ -25,7 +25,8 @@ NSString *const CKIEnrollmentTypeDesigner = @"designer";
                                @"computedCurrentScore": @"computed_current_score",
                                @"computedFinalGrade": @"computed_final_grade",
                                @"computedCurrentGrade": @"computed_current_grade",
-                               @"sectionID": @"course_section_id"
+                               @"sectionID": @"course_section_id",
+                               @"state": @"enrollment_state"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

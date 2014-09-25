@@ -18,6 +18,7 @@ extern NSString *const CKIEnrollmentTypeObserver;
 
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *role;
+@property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSNumber *computedFinalScore;
 @property (nonatomic, strong) NSNumber *computedCurrentScore;
 @property (nonatomic, strong) NSString *computedFinalGrade;
