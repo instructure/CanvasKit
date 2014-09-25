@@ -107,6 +107,8 @@
 
 @property (nonatomic) BOOL hideFinalGrades;
 
+@property (nonatomic, readonly) BOOL currentUserEnrolledAsStudentOrObserver;
+
 @end
 
 

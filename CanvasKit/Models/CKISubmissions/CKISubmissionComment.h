@@ -8,7 +8,7 @@
 
 #import "CKIModel.h"
 
-@class CKIUser;
+@class CKIUser, CKIMediaComment;
 
 @interface CKISubmissionComment : CKIModel
 
@@ -35,6 +35,11 @@
 /**
  The path for the submitters avatar.
  */
-@property (nonatomic, copy) NSURL *avatarPath;
+@property (nonatomic, copy) NSString *avatarPath;
+
+/**
+ media comment for this submission comment
+ */
+@property (nonatomic) CKIMediaComment *mediaComment;
 
 @end
