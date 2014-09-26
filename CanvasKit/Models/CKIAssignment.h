@@ -211,4 +211,14 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  */
 @property (nonatomic, strong) NSDate *peerReviewDueDate;
 
+/**
+ the url of the external tool
+ */
+@property (nonatomic) NSURL *url;
+
+/**
+ the id of the quiz if this assignment represents a quiz
+ */
+@property (nonatomic) NSString *quizID;
+
 @end

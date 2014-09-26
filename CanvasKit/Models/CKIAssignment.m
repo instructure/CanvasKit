@@ -46,7 +46,9 @@
         @"gradingType" : @"grading_type",
         @"rubricCriteria": @"rubric",
         @"rubric": @"rubric_settings",
-        @"useRubricForGrading": @"use_rubric_for_grading"
+        @"useRubricForGrading": @"use_rubric_for_grading",
+        @"quizID": @"quiz_id",
+        @"url": @"url",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -96,6 +98,14 @@
 + (NSValueTransformer *)submissionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
+}
+
++ (NSValueTransformer *)urlJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)quizIDJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 #pragma mark - Rubric

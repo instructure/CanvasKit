@@ -7,6 +7,7 @@
 //
 
 #import <CanvasKit/CanvasKit.h>
+#import "CKIAssignment.h"
 
 @interface CKISubmissionRecord : CKISubmission
 
@@ -25,5 +26,7 @@
  * RubricAssessment associated with submission, nil if no assessment
  */
 @property (nonatomic, copy) CKIRubricAssessment *rubricAssessment;
+
+@property (nonatomic) CKIAssignment *context;
 
 @end
