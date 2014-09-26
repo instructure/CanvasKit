@@ -30,7 +30,7 @@ static const NSString *CKISubmissionRubricAssessmentParameter = @"rubric_assessm
     return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKISubmissionRecord class] context:assignment];
 }
 
-- (RACSignal *)fetchSubmissionRecordsForAssignment:(CKIAssignment *)assignment forStudentWithID:(NSString *)studentID {
+- (RACSignal *)fetchSubmissionRecordForAssignment:(CKIAssignment *)assignment forStudentWithID:(NSString *)studentID {
     NSString *path = [[assignment.path stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:studentID];
     NSDictionary *parameters = @{@"include" : @[CKISubmissionHistory, CKISubmissionComments, CKISubmissionRubricAssessment]};
     return [self fetchResponseAtPath:path parameters:parameters modelClass:[CKISubmissionRecord class] context:assignment];

@@ -13,8 +13,13 @@
 @implementation CKIClient (CKISubmissionComment)
 
 - (RACSignal *)createSubmissionComment:(CKISubmissionComment *)comment {
-    NSString *path = comment.path;
-    return [self createModelAtPath:path parameters:nil modelClass:[CKISubmissionComment class] context:comment.context];
+    NSMutableDictionary *commentDictionary = [@{ @"text_comment" : comment.comment } mutableCopy];
+    if (comment.mediaComment.mediaID) {
+        commentDictionary[@"media_comment_id"] = comment.mediaComment.mediaID;
+        commentDictionary[@"media_comment_type"] = comment.mediaComment.mediaType;
+    }
+    NSDictionary *params = @{@"comment" : commentDictionary};
+    return [self updateModel:comment.context parameters:params];
 }
 
 @end
