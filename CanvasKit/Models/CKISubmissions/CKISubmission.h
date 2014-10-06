@@ -123,12 +123,6 @@ extern NSString * const CKISubmissionTypeExternalTool;
 */
 @property (nonatomic, copy) NSArray *attachments;
 
-/**
-* Media comment associated with submission. nil if
-* no media comment.
-*/
-@property (nonatomic, copy) CKIMediaComment *mediaComment;
-
 
 /**
  An array containing the submitted `CKIDiscussionEntry`s for

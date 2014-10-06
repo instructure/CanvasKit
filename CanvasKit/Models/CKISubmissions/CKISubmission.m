@@ -37,7 +37,6 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
         @"submissionType": @"submission_type",
         @"userID": @"user_id",
         @"graderID": @"grader_id",
-        @"mediaComment" : @"media_comment",
         @"discussionEntries": @"discussion_entries"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
@@ -91,11 +90,6 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
 + (NSValueTransformer *)attachmentsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIFile class]];
-}
-
-+ (NSValueTransformer *)mediaCommentJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
 }
 
 + (NSValueTransformer *)discussionEntriesJSONTransformer {
