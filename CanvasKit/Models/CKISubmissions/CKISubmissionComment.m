@@ -40,7 +40,7 @@
 
 + (NSValueTransformer *)mediaCommentJSONTransformer
 {
-    return [MTLValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
 }
 
 
