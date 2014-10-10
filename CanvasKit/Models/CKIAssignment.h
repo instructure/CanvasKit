@@ -172,9 +172,14 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
 #pragma mark - Rubric
 
 /**
- Array of CKIRubricCriterion
+ Rubric Settings Object
  */
 @property (nonatomic, strong) CKIRubric *rubric;
+
+/**
+ Array of CKIRubricCriterion
+ */
+@property (nonatomic, copy) NSArray *rubricCriterion;
 
 
 #pragma mark - Peer Review

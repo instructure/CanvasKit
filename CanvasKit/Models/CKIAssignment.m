@@ -15,7 +15,6 @@
 #import "CKIRubric.h"
 
 @interface CKIAssignment ()
-@property (nonatomic, copy) NSArray *rubricCriteria;
 @end
 
 @implementation CKIAssignment
@@ -44,7 +43,7 @@
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
-        @"rubricCriteria": @"rubric",
+        @"rubricCriterion": @"rubric",
         @"rubric": @"rubric_settings",
         @"useRubricForGrading": @"use_rubric_for_grading",
         @"quizID": @"quiz_id",
@@ -116,7 +115,7 @@
 * id, title, pointsPossible, etc.
 */
 
-+ (NSValueTransformer *)rubricCriteriaJSONTransformer
++ (NSValueTransformer *)rubricCriterionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
 }
