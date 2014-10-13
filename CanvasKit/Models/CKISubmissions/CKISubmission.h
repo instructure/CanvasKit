@@ -118,6 +118,11 @@ extern NSString * const CKISubmissionTypeExternalTool;
 @property (nonatomic) CKIAssignment *assignment;
 
 /**
+ When submission appears as a media_recording the media comment object is available
+ */
+@property (nonatomic) CKIMediaComment *mediaComment;
+
+/**
 * Any file attachments included with this submission.
 * Each attachment is a CKIFile object.
 */
