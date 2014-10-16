@@ -1,5 +1,5 @@
 //
-//  CKISubmissionSet.m
+//  CKISubmission.m
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -13,11 +13,16 @@
 #import "CKIAssignment.h"
 #import "CKIFile.h"
 #import "CKIMediaComment.h"
+#import "CKIDiscussionEntry.h"
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
 NSString * const CKISubmissionTypeOnlineUpload = @"online_upload";
 NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
+NSString * const CKISubmissionTypeQuiz = @"online_quiz";
+NSString * const CKISubmissionTypeDiscussion = @"discussion_topic";
+NSString * const CKISubmissionTypeExternalTool = @"external_tool";
+
 
 @implementation CKISubmission
 
@@ -32,8 +37,8 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
         @"submissionType": @"submission_type",
         @"userID": @"user_id",
         @"graderID": @"grader_id",
-        @"comments": @"submission_comments",
-        @"mediaComment" : @"media_comment"
+        @"discussionEntries": @"discussion_entries",
+        @"mediaComment": @"media_comment"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -74,9 +79,9 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-+ (NSValueTransformer *)commentsJSONTransformer
++ (NSValueTransformer *)gradeJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKISubmissionComment class]];
+    return [NSValueTransformer valueTransformerForName:CKINumberOrStringToStringTransformerName];
 }
 
 + (NSValueTransformer *)assignmentJSONTransformer
@@ -88,9 +93,16 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIFile class]];
 }
 
-+ (NSValueTransformer *)mediaCommentJSONTransformer
-{
++ (NSValueTransformer *)discussionEntriesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIDiscussionEntry class]];
+}
+
++ (NSValueTransformer *)mediaCommentJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
+}
+
+- (NSString *)path {
+    return [[[[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.assignmentID] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
 }
 
 @end

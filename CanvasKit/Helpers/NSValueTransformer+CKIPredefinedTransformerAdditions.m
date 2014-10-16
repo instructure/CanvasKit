@@ -10,8 +10,17 @@
 #import "MTLValueTransformer.h"
 #import "ISO8601DateFormatter.h"
 
+#import "CKIRubricAssessment.h"
+#import "CKIRubricCriterionRating.h"
+
 NSString * const CKINumberStringTransformerName = @"CKINumberStringTransformerName";
+NSString * const CKINumberOrStringToStringTransformerName = @"CKINumberOrStringToStringTransformerName";
 NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
+NSString * const CKIRubricAssessmentTransformerName = @"CKIRubricAssessmentTransformerName";
+
+
+static NSString *const CKIRubricCriterionRatingCommentsKey = @"comments";
+static NSString *const CKIRubricCriterionRatingPointsKey = @"points";
 
 @implementation NSValueTransformer (CKIPredefinedTransformerAdditions)
 
@@ -23,9 +32,17 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
 		
 		[NSValueTransformer setValueTransformer:NumberStringTransformer forName:CKINumberStringTransformerName];
         
+        MTLValueTransformer *NumberOrStringToStringTransformer = [NSValueTransformer numberOrStringToStringTransformer];
+        
+        [NSValueTransformer setValueTransformer:NumberOrStringToStringTransformer forName:CKINumberOrStringToStringTransformerName];
+        
 		MTLValueTransformer *ISODateTransfomer = [NSValueTransformer ISODateTransformer];
         
 		[NSValueTransformer setValueTransformer:ISODateTransfomer forName:CKIDateTransformerName];
+        
+        MTLValueTransformer *RubricAssessmentTransformer = [NSValueTransformer rubricAssessmentTransformer];
+        
+        [NSValueTransformer setValueTransformer:RubricAssessmentTransformer forName:CKIRubricAssessmentTransformerName];
 	}
 }
 
@@ -35,6 +52,19 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
         return [number stringValue];
     } reverseBlock:^ id (NSString *stringifiedNumber) {
         return [NSNumber numberWithLongLong:[stringifiedNumber longLongValue]];
+    }];
+}
+
++ (MTLValueTransformer *)numberOrStringToStringTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^ id (id value) {
+        if ([value isKindOfClass:[NSNumber class]]) {
+            return [value stringValue];
+        }
+
+        return value;
+    } reverseBlock:^ id (NSString *stringifiedNumber) {
+        return stringifiedNumber;
     }];
 }
 
@@ -57,6 +87,44 @@ NSString * const CKIDateTransformerName = @"CKIDateTransformerName";
             return nil;
         }
         return [dateFormatter stringFromDate:date];
+    }];
+}
+
++ (MTLValueTransformer *)rubricAssessmentTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^ id (NSDictionary *value) {
+        CKIRubricAssessment *assessment = [CKIRubricAssessment new];
+        
+        NSMutableArray *ratings = [NSMutableArray array];
+        NSMutableString *assessmentID = [NSMutableString new];
+        [value.allKeys enumerateObjectsUsingBlock:^(NSString *idString, NSUInteger idx, BOOL *stop) {
+            CKIRubricCriterionRating *rating = [CKIRubricCriterionRating new];
+            rating.id = idString;
+            [assessmentID appendString:idString];
+                
+            NSDictionary *contentDictionary = [value objectForKey:idString];
+            rating.comments = [contentDictionary objectForKey:CKIRubricCriterionRatingCommentsKey];
+            rating.points = [[contentDictionary objectForKey:CKIRubricCriterionRatingPointsKey] floatValue];
+            [ratings addObject:rating];
+        }];
+        
+        assessment.ratings = ratings;
+        assessment.id = assessmentID;
+        return assessment;
+    } reverseBlock:^ id (CKIRubricAssessment *assessment) {
+        NSMutableDictionary *assessmentDictionary = [NSMutableDictionary new];
+        
+        [assessment.ratings enumerateObjectsUsingBlock:^(CKIRubricCriterionRating *rating, NSUInteger idx, BOOL *stop) {
+            NSDictionary *ratingDictionary = @{
+                                              CKIRubricCriterionRatingPointsKey : @(rating.points),
+                                              CKIRubricCriterionRatingCommentsKey : @(rating.points),
+                                              };
+         
+            [assessmentDictionary setObject:ratingDictionary forKey:rating.id];
+
+        }];
+        
+        return assessmentDictionary;
     }];
 }
 

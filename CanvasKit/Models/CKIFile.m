@@ -24,7 +24,8 @@
        @"unlockAt" : @"unlock_at",
        @"locked" : @"locked",
        @"hidden" : @"hidden",
-       @"lockAt" : @"lock_at"
+       @"lockAt" : @"lock_at",
+       @"url" : @"url"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -65,6 +66,11 @@
     NSString *path = self.context.path;
     path = [path stringByAppendingPathComponent:@"files"];
     return [path stringByAppendingPathComponent:self.id];
+}
+
+
+- (BOOL)isMediaAttachment {
+    return [self.contentType hasPrefix:@"video"] || [self.contentType hasPrefix:@"audio"];
 }
 
 @end

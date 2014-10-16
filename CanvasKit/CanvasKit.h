@@ -38,6 +38,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIContext.h>
 #import <CKICourse.h>
 #import <CKIDiscussionTopic.h>
+#import <CKIDiscussionEntry.h>
 #import <CKIExternalTool.h>
 #import <CKIFavorite.h>
 #import <CKIFile.h>
@@ -58,13 +59,14 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIPollChoice.h>
 #import <CKIQuiz.h>
 #import <CKIRubric.h>
+#import <CKIRubricAssessment.h>
 #import <CKIRubricCriterion.h>
 #import <CKIRubricCriterionRating.h>
 #import <CKISection.h>
 #import <CKIService.h>
 #import <CKISubmission.h>
 #import <CKISubmissionComment.h>
-#import <CKISubmissionSet.h>
+#import <CKISubmissionRecord.h>
 #import <CKIMediaComment.h>
 #import <CKITab.h>
 #import <CKITerm.h>
@@ -104,10 +106,16 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKIQuiz.h>
 #import <CKIClient+CKISection.h>
 #import <CKIClient+CKIService.h>
-#import <CKIClient+CKISubmissionSet.h>
 #import <CKIClient+CKITab.h>
 #import <CKIClient+CKITodoItem.h>
+#import <CKIClient+CKISubmission.h>
+#import <CKIClient+CKISubmissionComment.h>
+#import <CKIClient+CKISubmissionRecord.h>
 #import <CKIClient+CKIUser.h>
 #import <CKIClient+CKIDiscussionTopic.h>
 #import <CKIClient+CKILiveAssessment.h>
 #import <CKIClient+CKILiveAssessmentResult.h>
+
+#pragma mark - Utilities
+
+#import <NSDictionary+DictionaryByAddingObjectsFromDictionary.h>

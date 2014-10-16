@@ -1,5 +1,6 @@
+
 //
-//  CKISubmissionSet.h
+//  CKISubmission.h
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -12,9 +13,13 @@ extern NSString * const CKISubmissionTypeOnlineTextEntry;
 extern NSString * const CKISubmissionTypeOnlineURL;
 extern NSString * const CKISubmissionTypeOnlineUpload;
 extern NSString * const CKISubmissionTypeMediaRecording;
+extern NSString * const CKISubmissionTypeQuiz;
+extern NSString * const CKISubmissionTypeDiscussion;
+extern NSString * const CKISubmissionTypeExternalTool;
 
 @class CKIAssignment;
 @class CKIMediaComment;
+@class CKIRubricAssessment;
 
 @interface CKISubmission : CKIModel
 
@@ -107,15 +112,15 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 @property (nonatomic) BOOL late;
 
 /**
- Comments left by graders. An array of CKISubmissionComment objects.
- */
-@property (nonatomic, copy) NSArray *comments;
-
-/**
  When a submission appears in a conversation, the assignment is also
  available as part of the submission.
  */
 @property (nonatomic) CKIAssignment *assignment;
+
+/**
+ When submission appears as a media_recording the media comment object is available
+ */
+@property (nonatomic) CKIMediaComment *mediaComment;
 
 /**
 * Any file attachments included with this submission.
@@ -123,9 +128,13 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 */
 @property (nonatomic, copy) NSArray *attachments;
 
+
 /**
-* Media comment associated with submission. nil if
-* no media comment.
-*/
-@property (nonatomic, copy) CKIMediaComment *mediaComment;
+ An array containing the submitted `CKIDiscussionEntry`s for
+ `CKISubmissionTypeDiscussion` type submissions
+ */
+@property (nonatomic, copy) NSArray *discussionEntries;
+
+
 @end
+

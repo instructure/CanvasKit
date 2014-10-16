@@ -12,6 +12,8 @@
 #import "CKIAssignmentGroup.h"
 #import "CKIAssignment.h"
 #import "CKICourse.h"
+#import "CKIRubricCriterion.h"
+#import "CKIRubricCriterionRating.h"
 
 @implementation CKIClient (CKIAssignmentGroup)
 
@@ -23,6 +25,11 @@
         for (CKIAssignmentGroup *group in assignmentGroups) {
             for (CKIAssignment *assignment in group.assignments) {
                 assignment.context = context;
+                
+                // set properties on rubricCriterionRating for easy sorting/retrieval
+                [assignment.rubricCriterion enumerateObjectsUsingBlock:^(CKIRubricCriterion *criterion, NSUInteger idx, BOOL *stop) {
+                    criterion.position = idx;
+                }];
             }
         }
         return assignmentGroups;

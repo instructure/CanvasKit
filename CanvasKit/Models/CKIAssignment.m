@@ -15,7 +15,6 @@
 #import "CKIRubric.h"
 
 @interface CKIAssignment ()
-@property (nonatomic, copy) NSArray *rubricCriteria;
 @end
 
 @implementation CKIAssignment
@@ -44,8 +43,11 @@
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
-        @"rubricCriteria": @"rubric",
-        @"rubric": @"rubric_settings"
+        @"rubricCriterion": @"rubric",
+        @"rubric": @"rubric_settings",
+        @"useRubricForGrading": @"use_rubric_for_grading",
+        @"quizID": @"quiz_id",
+        @"url": @"url",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -97,6 +99,14 @@
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
 }
 
++ (NSValueTransformer *)urlJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)quizIDJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
 #pragma mark - Rubric
 
 /**
@@ -105,7 +115,7 @@
 * id, title, pointsPossible, etc.
 */
 
-+ (NSValueTransformer *)rubricCriteriaJSONTransformer
++ (NSValueTransformer *)rubricCriterionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
 }
@@ -113,25 +123,6 @@
 + (NSValueTransformer *)rubricJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
-}
-
-- (BOOL)rubricExistsWithoutCriteria
-{
-    return _rubric && !_rubric.criteria;
-}
-
-- (CKIRubric *)rubric
-{
-    if ([self rubricExistsWithoutCriteria]) {
-        _rubric.criteria = self.rubricCriteria;
-    }
-    return _rubric;
-}
-
-- (void)setRubricCriteria:(NSArray *)rubricCriteria
-{
-    _rubric.criteria = rubricCriteria;
-    _rubricCriteria = rubricCriteria;
 }
 
 #pragma mark - Other Methods
@@ -152,6 +143,8 @@
         return CKIAssignmentScoringTypeLetter;
     } else if ([scoringTypeString isEqual:@"not_graded"]) {
         return CKIAssignmentScoringTypeNotGraded;
+    } else if ([scoringTypeString isEqual:@"gpa_scale"]) {
+        return CKIAssignmentScoringTypeGPAScale;
     }
     
     return CKIAssignmentScoringTypePoints;

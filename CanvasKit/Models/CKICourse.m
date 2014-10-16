@@ -11,6 +11,7 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKITerm.h"
 #import "CKIEnrollment.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation CKICourse
 
@@ -69,4 +70,9 @@
     return [[self.context.path stringByAppendingPathComponent:@"courses"] stringByAppendingPathComponent:self.id];
 }
 
+- (BOOL)currentUserEnrolledAsStudentOrObserver {
+    return [self.enrollments.rac_sequence filter:^BOOL(CKIEnrollment *enrollment) {
+        return [enrollment.type isEqualToString:CKIEnrollmentTypeStudent] || [enrollment.type isEqualToString:CKIEnrollmentTypeObserver];
+    }].array.count > 0;
+}
 @end

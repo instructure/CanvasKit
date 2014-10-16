@@ -61,5 +61,8 @@
 
 
 
+
+@property (nonatomic, readonly) BOOL isMediaAttachment;
+
 @end
 
