@@ -41,8 +41,4 @@
     return [NSValueTransformer valueTransformerForName:CKIRubricAssessmentTransformerName];
 }
 
-- (NSString *)path {
-    return [[self.context.path stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
-}
-
 @end
