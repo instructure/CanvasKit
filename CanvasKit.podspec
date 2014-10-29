@@ -10,6 +10,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '7.0'
   s.ios.source_files = 'CanvasKit/**/*.{h,m}'
+  
+  s.resources = 'CanvasKit/**/*.{js}','CanvasKit/**/*.{css}'
 
   s.dependency 'AFNetworking', '~> 2.3.1'
   s.dependency 'Mantle', '~> 1.0'

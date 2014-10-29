@@ -16,6 +16,14 @@
 		5EB09CBE19BA062800AEC7C1 /* CKISubmissionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB09CBC19BA062800AEC7C1 /* CKISubmissionRecord.m */; };
 		5EB09CC419BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */; };
 		5EB09CC519BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB09CC319BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m */; };
+		5EB740921A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB7408E1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.h */; };
+		5EB740931A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7408F1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m */; };
+		5EB740941A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB740901A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.h */; };
+		5EB740951A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB740911A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m */; };
+		5EB7409B1A0048AA00F7F6C3 /* discussion_submissions.css in Resources */ = {isa = PBXBuildFile; fileRef = 5EB740971A0048AA00F7F6C3 /* discussion_submissions.css */; };
+		5EB7409C1A0048AA00F7F6C3 /* discussion_submissions.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EB740981A0048AA00F7F6C3 /* discussion_submissions.js */; };
+		5EB7409D1A0048AA00F7F6C3 /* jquery-1.4.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EB740991A0048AA00F7F6C3 /* jquery-1.4.2.min.js */; };
+		5EB7409E1A0048AA00F7F6C3 /* jquery.json-2.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EB7409A1A0048AA00F7F6C3 /* jquery.json-2.2.min.js */; };
 		5ECDD9A019AE4A990012605E /* CKIClient+CKISubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 5ECDD99E19AE4A990012605E /* CKIClient+CKISubmission.h */; };
 		5ECDD9A119AE4A990012605E /* CKIClient+CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */; };
 		5EFD1D7819B0435400374944 /* CKIClient+CKISubmissionComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */; };
@@ -462,6 +470,14 @@
 		5EB09CBC19BA062800AEC7C1 /* CKISubmissionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionRecord.m; sourceTree = "<group>"; };
 		5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionRecord.h"; sourceTree = "<group>"; };
 		5EB09CC319BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmissionRecord.m"; sourceTree = "<group>"; };
+		5EB7408E1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKISubmission+DiscussionSubmissionHTMLFile.h"; sourceTree = "<group>"; };
+		5EB7408F1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKISubmission+DiscussionSubmissionHTMLFile.m"; sourceTree = "<group>"; };
+		5EB740901A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKISubmission+TextEntrySubmissionHTMLFile.h"; sourceTree = "<group>"; };
+		5EB740911A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKISubmission+TextEntrySubmissionHTMLFile.m"; sourceTree = "<group>"; };
+		5EB740971A0048AA00F7F6C3 /* discussion_submissions.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = discussion_submissions.css; sourceTree = "<group>"; };
+		5EB740981A0048AA00F7F6C3 /* discussion_submissions.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = discussion_submissions.js; sourceTree = "<group>"; };
+		5EB740991A0048AA00F7F6C3 /* jquery-1.4.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.4.2.min.js"; sourceTree = "<group>"; };
+		5EB7409A1A0048AA00F7F6C3 /* jquery.json-2.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery.json-2.2.min.js"; sourceTree = "<group>"; };
 		5ECDD99E19AE4A990012605E /* CKIClient+CKISubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmission.h"; sourceTree = "<group>"; };
 		5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmission.m"; sourceTree = "<group>"; };
 		5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionComment.h"; sourceTree = "<group>"; };
@@ -810,6 +826,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EB740961A0048AA00F7F6C3 /* DiscussionSubmissionHTML */ = {
+			isa = PBXGroup;
+			children = (
+				5EB740971A0048AA00F7F6C3 /* discussion_submissions.css */,
+				5EB740981A0048AA00F7F6C3 /* discussion_submissions.js */,
+				5EB740991A0048AA00F7F6C3 /* jquery-1.4.2.min.js */,
+				5EB7409A1A0048AA00F7F6C3 /* jquery.json-2.2.min.js */,
+			);
+			path = DiscussionSubmissionHTML;
+			sourceTree = "<group>";
+		};
 		809DC71517C694EC0089E846 = {
 			isa = PBXGroup;
 			children = (
@@ -1095,10 +1122,15 @@
 		BDC2C3701965F5EF0017CCA4 /* CKISubmissions */ = {
 			isa = PBXGroup;
 			children = (
+				5EB740961A0048AA00F7F6C3 /* DiscussionSubmissionHTML */,
 				BDC2C3711965F5EF0017CCA4 /* CKIMediaComment.h */,
 				BDC2C3721965F5EF0017CCA4 /* CKIMediaComment.m */,
 				BDC2C3731965F5EF0017CCA4 /* CKISubmission.h */,
 				BDC2C3741965F5EF0017CCA4 /* CKISubmission.m */,
+				5EB7408E1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.h */,
+				5EB7408F1A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m */,
+				5EB740901A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.h */,
+				5EB740911A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m */,
 				BDC2C3751965F5EF0017CCA4 /* CKISubmissionComment.h */,
 				BDC2C3761965F5EF0017CCA4 /* CKISubmissionComment.m */,
 				5EB09CBB19BA062800AEC7C1 /* CKISubmissionRecord.h */,
@@ -1357,6 +1389,7 @@
 				BDC2C4751965F5EF0017CCA4 /* CKIClient+CKIPollChoice.h in Headers */,
 				BDC2C42B1965F5EF0017CCA4 /* CKIPollSubmission.h in Headers */,
 				BDC2C43F1965F5EF0017CCA4 /* CKITodoItem.h in Headers */,
+				5EB740921A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.h in Headers */,
 				BDC2C4131965F5EF0017CCA4 /* CKILockInfo.h in Headers */,
 				B5106E4E199142FF00449E76 /* CKIFavorite.h in Headers */,
 				BDC2C4371965F5EF0017CCA4 /* CKISubmissionComment.h in Headers */,
@@ -1402,6 +1435,7 @@
 				BDC2C45F1965F5EF0017CCA4 /* CKIClient+CKIFile.h in Headers */,
 				BDC2C4191965F5EF0017CCA4 /* CKIModule.h in Headers */,
 				BDC2C4691965F5EF0017CCA4 /* CKIClient+CKIModuleItem.h in Headers */,
+				5EB740941A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.h in Headers */,
 				BDC2C4351965F5EF0017CCA4 /* CKISubmission.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1493,6 +1527,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB7409C1A0048AA00F7F6C3 /* discussion_submissions.js in Resources */,
+				5EB7409D1A0048AA00F7F6C3 /* jquery-1.4.2.min.js in Resources */,
+				5EB7409E1A0048AA00F7F6C3 /* jquery.json-2.2.min.js in Resources */,
+				5EB7409B1A0048AA00F7F6C3 /* discussion_submissions.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,6 +1722,8 @@
 				BDC2C4381965F5EF0017CCA4 /* CKISubmissionComment.m in Sources */,
 				BDC2C42A1965F5EF0017CCA4 /* CKIPollSession.m in Sources */,
 				BDC2C44E1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.m in Sources */,
+				5EB740931A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m in Sources */,
+				5EB740951A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m in Sources */,
 				BDC2C47D1965F5EF0017CCA4 /* CKIClient+CKIQuiz.m in Sources */,
 				5ECDD9A119AE4A990012605E /* CKIClient+CKISubmission.m in Sources */,
 				B5F9D6AF19708BD8008C7DF5 /* CKIUser.m in Sources */,
