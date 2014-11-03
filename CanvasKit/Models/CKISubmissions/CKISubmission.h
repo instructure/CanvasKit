@@ -17,6 +17,17 @@ extern NSString * const CKISubmissionTypeQuiz;
 extern NSString * const CKISubmissionTypeDiscussion;
 extern NSString * const CKISubmissionTypeExternalTool;
 
+typedef NS_ENUM(NSInteger, CKISubmissionEnumType) {
+    CKISubmissionEnumTypeUnknown            = -1,
+    CKISubmissionEnumTypeOnlineTextEntry    = 0,
+    CKISubmissionEnumTypeOnlineURL          = 1,
+    CKISubmissionEnumTypeOnlineUpload       = 2,
+    CKISubmissionEnumTypeMediaRecording     = 3,
+    CKISubmissionEnumTypeQuiz               = 4,
+    CKISubmissionEnumTypeDiscussion         = 5,
+    CKISubmissionEnumTypeExternalTool       = 6,
+};
+
 @class CKIAssignment;
 @class CKIMediaComment;
 @class CKIRubricAssessment;
@@ -89,12 +100,17 @@ extern NSString * const CKISubmissionTypeExternalTool;
 @property (nonatomic, strong) NSDate *submittedAt;
 
 /**
- The type of submission.
+ The type of submission.  Returns the string value.  Users should check type when comparing so public values are not available
  
  @see CKISubmissionTypeOnlineTextEntry, CKISubmissionTypeOnlineURL,
  CKISubmissionTypeOnlineUpload, CKISubmissionTypeMediaRecording
  */
 @property (nonatomic, copy) NSString *submissionType;
+
+/**
+ The type of submission enum
+ */
+@property (nonatomic, readonly) CKISubmissionEnumType type;
 
 /**
  The ID of the user that created the submission.

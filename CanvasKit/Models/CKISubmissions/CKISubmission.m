@@ -15,6 +15,12 @@
 #import "CKIMediaComment.h"
 #import "CKIDiscussionEntry.h"
 
+@interface CKISubmission ()
+
+@property(nonatomic, readwrite) CKISubmissionEnumType type;
+
+@end
+
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
 NSString * const CKISubmissionTypeOnlineUpload = @"online_upload";
@@ -103,6 +109,42 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
 
 - (NSString *)path {
     return [[[[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.assignmentID] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
+}
+
+- (void)setSubmissionType:(NSString *)submissionType {
+    if (_submissionType == submissionType) {
+        return;
+    }
+    
+    _submissionType = submissionType;
+    self.type = [self typeForSubmissionType:_submissionType];
+}
+
+- (CKISubmissionEnumType)typeForSubmissionType:(NSString *)submissionType {
+    
+    CKISubmissionEnumType type = CKISubmissionEnumTypeUnknown;
+    if ([submissionType isEqualToString:CKISubmissionTypeOnlineUpload]) {
+        type = CKISubmissionEnumTypeOnlineUpload;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeOnlineTextEntry]) {
+        type = CKISubmissionEnumTypeOnlineTextEntry;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeOnlineURL]) {
+        type = CKISubmissionEnumTypeOnlineURL;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeMediaRecording]) {
+        type = CKISubmissionEnumTypeMediaRecording;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeQuiz]) {
+        type = CKISubmissionEnumTypeQuiz;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeDiscussion]) {
+        type = CKISubmissionEnumTypeDiscussion;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeExternalTool]) {
+        type = CKISubmissionEnumTypeExternalTool;
+    }
+    return type;
 }
 
 @end
