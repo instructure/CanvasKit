@@ -55,6 +55,11 @@
  */
 @property (nonatomic, strong) NSURL *thumbnailURL;
 
+/**
+ The URL of the preview for the file.
+ */
+@property (nonatomic, strong) NSString *previewURLPath;
+
 @property (nonatomic, getter = isLocked) BOOL locked;
 
 @property (nonatomic, getter = isHidden) BOOL hidden;

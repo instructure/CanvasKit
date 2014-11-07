@@ -21,6 +21,7 @@
        @"updatedAt" : @"updated_at",
        @"hiddenForUser" : @"hidden_for_user",
        @"thumbnailURL" : @"thumbnail_url",
+       @"previewURLPath" : @"preview_url",
        @"unlockAt" : @"unlock_at",
        @"locked" : @"locked",
        @"hidden" : @"hidden",
