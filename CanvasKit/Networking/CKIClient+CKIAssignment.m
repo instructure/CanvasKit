@@ -17,7 +17,7 @@
 - (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignments"];
-    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"submission", @"needs_grading_count"]} modelClass:[CKIAssignment class] context:context];
+    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"submission", @"needs_grading_count", @"needs_grading_count_by_section"]} modelClass:[CKIAssignment class] context:context];
 }
 
 @end
