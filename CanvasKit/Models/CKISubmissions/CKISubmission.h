@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger, CKISubmissionEnumType) {
 /**
  The raw score of this submission.
  */
-@property (nonatomic) double score;
+@property (nonatomic, strong) NSNumber *score;
 
 /**
  The date the submission was submitted.

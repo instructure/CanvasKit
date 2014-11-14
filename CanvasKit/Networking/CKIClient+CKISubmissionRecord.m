@@ -37,7 +37,15 @@ static const NSString *CKISubmissionRubricAssessmentParameter = @"rubric_assessm
 }
 
 - (RACSignal *)updateGrade:(NSString *)gradeString forSubmissionRecord:(CKISubmissionRecord *)submission {
-    return [self updateModel:submission parameters:@{CKISubmissionPutParameter: @{CKISubmissionPostedGradeParameter: gradeString}, CKISubmissionRubricAssessmentParameter: [submission.rubricAssessment parametersDictionary]}];
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    if (gradeString) {
+        parameters[CKISubmissionPutParameter] = @{CKISubmissionPostedGradeParameter: gradeString};
+    }
+    if ([submission.rubricAssessment parametersDictionary]) {
+        parameters[CKISubmissionRubricAssessmentParameter] = [submission.rubricAssessment parametersDictionary];
+    }
+    
+    return [self updateModel:submission parameters:parameters];
 }
 
 - (RACSignal *)addComment:(NSString *)comment forSubmissionRecord:(CKISubmissionRecord *)submission {
