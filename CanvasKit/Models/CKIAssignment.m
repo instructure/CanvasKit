@@ -40,6 +40,7 @@
         @"peerReviewsAutomaticallyAssignedCount": @"peer_review_count",
         @"peerReviewDueDate": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
+        @"discussionTopicID": @"discussion_topic_id",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
@@ -97,6 +98,11 @@
 + (NSValueTransformer *)submissionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
+}
+
++ (NSValueTransformer *)discussionTopicIDJSONValueTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
 + (NSValueTransformer *)urlJSONTransformer {
