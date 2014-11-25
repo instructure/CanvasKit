@@ -93,10 +93,6 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
 }
-+ (NSValueTransformer *)contextJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
-}
 + (NSValueTransformer *)attachmentsJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIFile class]];
@@ -111,7 +107,7 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
 }
 
 - (NSString *)path {
-    return [[[self.context path] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
+    return [[[[[self.context path] stringByAppendingPathComponent:@"assignments"] stringByAppendingPathComponent:self.assignmentID] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
 }
 
 - (void)setSubmissionType:(NSString *)submissionType {

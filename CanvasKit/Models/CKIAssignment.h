@@ -114,9 +114,15 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  */
 @property (nonatomic) BOOL published;
 
+/**
+The discussion topic corresponding to this assignment.
+
+@note Only valid if submissionTypes includes "discussion_topic"
+*/
+@property (nonatomic, copy) NSString *discussionTopicID;
+
 
 #pragma mark - Grading
-
 
 /**
  The maximum points possible for the assignment.
@@ -140,9 +146,8 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  */
 @property (nonatomic, assign) CKIAssignmentScoringType scoringType;
 
+
 #pragma mark - Submissions
-
-
 
 /**
  The types of submissions allowed for this assignment list
