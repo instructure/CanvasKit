@@ -214,8 +214,10 @@
 		BD84D7211A24D7D10065F3F2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD84D7201A24D7D10065F3F2 /* libxml2.dylib */; };
 		BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */; };
 		BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */; };
-		BDB24FAF1A25024500A828F2 /* CKIXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB24FAD1A25024500A828F2 /* CKIXMLParser.h */; };
-		BDB24FB01A25024500A828F2 /* CKIXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB24FAE1A25024500A828F2 /* CKIXMLParser.m */; };
+		BDAE93821A252C9D00F7B009 /* CKIMediaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */; };
+		BDAE93831A252C9D00F7B009 /* CKIMediaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */; };
+		BDB24FAF1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */; };
+		BDB24FB01A25024500A828F2 /* CKIMediaFileUploadTokenParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */; };
 		BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3D91965F5EF0017CCA4 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3141965F5EE0017CCA4 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3DA1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3161965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -586,8 +588,10 @@
 		BD84D7201A24D7D10065F3F2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIGroupTests.swift; sourceTree = "<group>"; };
 		BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIFileTests.swift; sourceTree = "<group>"; };
-		BDB24FAD1A25024500A828F2 /* CKIXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIXMLParser.h; sourceTree = "<group>"; };
-		BDB24FAE1A25024500A828F2 /* CKIXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIXMLParser.m; sourceTree = "<group>"; };
+		BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaServer.h; sourceTree = "<group>"; };
+		BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaServer.m; sourceTree = "<group>"; };
+		BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaFileUploadTokenParser.h; sourceTree = "<group>"; };
+		BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaFileUploadTokenParser.m; sourceTree = "<group>"; };
 		BDC2C2FB1965F5910017CCA4 /* CanvasKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CanvasKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CanvasKit.h; sourceTree = "<group>"; };
 		BDC2C3051965F5910017CCA4 /* CanvasKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1038,8 +1042,8 @@
 				BDC2C31B1965F5EE0017CCA4 /* NSString+CKIAdditions.m */,
 				BDC2C31C1965F5EE0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h */,
 				BDC2C31D1965F5EE0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m */,
-				BDB24FAD1A25024500A828F2 /* CKIXMLParser.h */,
-				BDB24FAE1A25024500A828F2 /* CKIXMLParser.m */,
+				BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */,
+				BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1261,6 +1265,8 @@
 				5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */,
 				5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */,
 				5EB09CC319BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m */,
+				BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */,
+				BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1371,7 +1377,7 @@
 				5EB09CBD19BA062800AEC7C1 /* CKISubmissionRecord.h in Headers */,
 				BDC2C3DC1965F5EF0017CCA4 /* NSHTTPURLResponse+Pagination.h in Headers */,
 				BDC2C44F1965F5EF0017CCA4 /* CKIClient+CKIAssignment.h in Headers */,
-				BDB24FAF1A25024500A828F2 /* CKIXMLParser.h in Headers */,
+				BDB24FAF1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h in Headers */,
 				BDC2C4271965F5EF0017CCA4 /* CKIPollChoice.h in Headers */,
 				BDC2C4921965F5EF0017CCA4 /* CanvasKit-Prefix.pch in Headers */,
 				BDC2C48C1965F5EF0017CCA4 /* CKIClient.h in Headers */,
@@ -1442,6 +1448,7 @@
 				BDC2C4631965F5EF0017CCA4 /* CKIClient+CKIGroup.h in Headers */,
 				BDC2C47A1965F5EF0017CCA4 /* CKIClient+CKIPollSubmission.h in Headers */,
 				BDC2C4611965F5EF0017CCA4 /* CKIClient+CKIFolder.h in Headers */,
+				BDAE93821A252C9D00F7B009 /* CKIMediaServer.h in Headers */,
 				BDC2C3EA1965F5EF0017CCA4 /* CKIActivityStreamDiscussionTopicItem.h in Headers */,
 				BDC2C4471965F5EF0017CCA4 /* CKIRubric.h in Headers */,
 				5E0315E019B0DAB2000393B6 /* CKIRubricAssessment.h in Headers */,
@@ -1737,6 +1744,7 @@
 				BDC2C3E51965F5EF0017CCA4 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				BDC2C4261965F5EF0017CCA4 /* CKIPoll.m in Sources */,
 				BDC2C4241965F5EF0017CCA4 /* CKIPage.m in Sources */,
+				BDAE93831A252C9D00F7B009 /* CKIMediaServer.m in Sources */,
 				BDC2C4301965F5EF0017CCA4 /* CKISection.m in Sources */,
 				BDC2C4601965F5EF0017CCA4 /* CKIClient+CKIFile.m in Sources */,
 				BDC2C3F11965F5EF0017CCA4 /* CKIActivityStreamSubmissionItem.m in Sources */,
@@ -1763,7 +1771,7 @@
 				BDC2C48B1965F5EF0017CCA4 /* CKIClient+Login.m in Sources */,
 				BDC2C3F91965F5EF0017CCA4 /* CKIAttachment.m in Sources */,
 				BDC2C45C1965F5EF0017CCA4 /* CKIClient+CKIExternalTool.m in Sources */,
-				BDB24FB01A25024500A828F2 /* CKIXMLParser.m in Sources */,
+				BDB24FB01A25024500A828F2 /* CKIMediaFileUploadTokenParser.m in Sources */,
 				BDC2C4521965F5EF0017CCA4 /* CKIClient+CKIAssignmentGroup.m in Sources */,
 				BDC2C3EF1965F5EF0017CCA4 /* CKIActivityStreamMessageItem.m in Sources */,
 				BDC2C3E71965F5EF0017CCA4 /* CKIActivityStreamConferenceItem.m in Sources */,
