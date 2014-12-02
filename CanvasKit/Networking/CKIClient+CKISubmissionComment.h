@@ -12,13 +12,6 @@
 
 @class CKISubmissionRecord;
 
-typedef enum {
-    CKIAttachmentMediaTypeUnknown,
-    CKIAttachmentMediaTypeVideo,
-    CKIAttachmentMediaTypeAudio,
-    CKIAttachmentMediaTypeImage
-} CKIAttachmentMediaType;
-
 @interface CKIClient (CKISubmissionComment)
 
 - (RACSignal *)createSubmissionComment:(CKISubmissionComment *)comment;
