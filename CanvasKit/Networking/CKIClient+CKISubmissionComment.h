@@ -16,6 +16,6 @@
 
 - (RACSignal *)createSubmissionComment:(CKISubmissionComment *)comment;
 - (void)createCommentWithMedia:(CKIMediaComment *)mediaComment forSubmissionRecord:(CKISubmissionRecord *)submissionRecord success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
-- (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+- (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment ofSize:(CGSize)size success:(void(^)(UIImage *image))success failure:(void(^)(NSError *error))failure;
 
 @end
