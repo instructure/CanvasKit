@@ -84,6 +84,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKIAssignmentGroup.h>
 #import <CKIClient+CKICalendarEvent.h>
 #import <CKIClient+CKIConversation.h>
+#import <CKIClient+CKIConversationRecipient.h>
 #import <CKIClient+CKICourse.h>
 #import <CKIClient+CKIExternalTool.h>
 #import <CKIClient+CKIFavorite.h>

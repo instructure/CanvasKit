@@ -13,6 +13,8 @@ extern NSString *const CKIEnrollmentTypeStudent;
 extern NSString *const CKIEnrollmentTypeTeacher;
 extern NSString *const CKIEnrollmentTypeTA;
 extern NSString *const CKIEnrollmentTypeObserver;
+extern NSString *const CKIEnrollmentTypeMember;
+extern NSString *const CKIEnrollmentTypeDesigner;
 
 @interface CKIEnrollment : CKIModel
 
