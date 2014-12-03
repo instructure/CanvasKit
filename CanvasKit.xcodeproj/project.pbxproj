@@ -28,14 +28,12 @@
 		5ECDD9A119AE4A990012605E /* CKIClient+CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */; };
 		5EFD1D7819B0435400374944 /* CKIClient+CKISubmissionComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */; };
 		5EFD1D7919B0435400374944 /* CKIClient+CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */; };
-		612C67541A2E24A5005936AA /* CKIClient+CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 612C67521A2E24A5005936AA /* CKIClient+CKIConversationRecipient.h */; };
-		612C67551A2E24A5005936AA /* CKIClient+CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 612C67531A2E24A5005936AA /* CKIClient+CKIConversationRecipient.m */; };
-		612C675C1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 612C675A1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */; };
-		612C675D1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 612C675B1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
-		612C67601A2E40F6005936AA /* NSArray+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 612C675E1A2E40F6005936AA /* NSArray+CKIAdditions.h */; };
-		612C67611A2E40F6005936AA /* NSArray+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 612C675F1A2E40F6005936AA /* NSArray+CKIAdditions.m */; };
-		614511701A2D15B70048A951 /* CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6145116E1A2D15B70048A951 /* CKIConversationRecipient.h */; };
-		614511711A2D15B70048A951 /* CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6145116F1A2D15B70048A951 /* CKIConversationRecipient.m */; };
+		615A579A1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */; };
+		615A579B1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */; };
+		615A579E1A2FA909001FAE62 /* CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */; };
+		615A579F1A2FA909001FAE62 /* CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */; };
+		615A57A21A2FA913001FAE62 /* NSArray+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */; };
+		615A57A31A2FA913001FAE62 /* NSArray+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */; };
 		B50050EF1986E2E4009CB9F5 /* CKIPollChoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050EB1986E2E4009CB9F5 /* CKIPollChoiceTests.swift */; };
 		B50050F01986E2E4009CB9F5 /* CKIPollSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050EC1986E2E4009CB9F5 /* CKIPollSessionTests.swift */; };
 		B50050F11986E2E4009CB9F5 /* CKIPollSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050ED1986E2E4009CB9F5 /* CKIPollSubmissionTests.swift */; };
@@ -118,6 +116,7 @@
 		B589119819943AC40027C0E2 /* media_comment.json in Resources */ = {isa = PBXBuildFile; fileRef = B589119719943AC40027C0E2 /* media_comment.json */; };
 		B589119A19943B340027C0E2 /* CKIMediaCommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589119919943B340027C0E2 /* CKIMediaCommentTests.swift */; };
 		B589119C19943CCE0027C0E2 /* CKIFavoriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589119B19943CCE0027C0E2 /* CKIFavoriteTests.swift */; };
+		B59FC49F19709440008C1E93 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C3171965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
 		B59FC4A019709440008C1E93 /* NSHTTPURLResponse+Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C3191965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.m */; };
 		B59FC4A119709440008C1E93 /* NSString+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C31B1965F5EE0017CCA4 /* NSString+CKIAdditions.m */; };
 		B59FC4A219709440008C1E93 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C31D1965F5EE0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m */; };
@@ -217,10 +216,18 @@
 		B5EFCE08197DA32E0063F268 /* attachment.json in Resources */ = {isa = PBXBuildFile; fileRef = B5EFCE07197DA32E0063F268 /* attachment.json */; };
 		B5F9D6AF19708BD8008C7DF5 /* CKIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C3801965F5EF0017CCA4 /* CKIUser.m */; };
 		B5F9D6B219708C35008C7DF5 /* ___ZZZ999CodeCoverageDump.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F9D6AC19708873008C7DF5 /* ___ZZZ999CodeCoverageDump.m */; };
+		BD84D71F1A24D7C50065F3F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD84D71E1A24D7C50065F3F2 /* libz.dylib */; };
+		BD84D7211A24D7D10065F3F2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD84D7201A24D7D10065F3F2 /* libxml2.dylib */; };
 		BD96F2E8196D89E0006DABB9 /* CKIGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */; };
 		BD96F2EA196D9627006DABB9 /* CKIFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */; };
+		BDAE93821A252C9D00F7B009 /* CKIMediaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */; };
+		BDAE93831A252C9D00F7B009 /* CKIMediaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */; };
+		BDB24FAF1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */; };
+		BDB24FB01A25024500A828F2 /* CKIMediaFileUploadTokenParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */; };
 		BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3D91965F5EF0017CCA4 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3141965F5EE0017CCA4 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDC2C3DA1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3161965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDC2C3DB1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C3171965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
 		BDC2C3DC1965F5EF0017CCA4 /* NSHTTPURLResponse+Pagination.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C3181965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC2C3DD1965F5EF0017CCA4 /* NSHTTPURLResponse+Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2C3191965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.m */; };
 		BDC2C3DE1965F5EF0017CCA4 /* NSString+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC2C31A1965F5EE0017CCA4 /* NSString+CKIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -486,14 +493,12 @@
 		5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmission.m"; sourceTree = "<group>"; };
 		5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionComment.h"; sourceTree = "<group>"; };
 		5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmissionComment.m"; sourceTree = "<group>"; };
-		612C67521A2E24A5005936AA /* CKIClient+CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIConversationRecipient.h"; sourceTree = "<group>"; };
-		612C67531A2E24A5005936AA /* CKIClient+CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIConversationRecipient.m"; sourceTree = "<group>"; };
-		612C675A1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"; sourceTree = "<group>"; };
-		612C675B1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.m"; sourceTree = "<group>"; };
-		612C675E1A2E40F6005936AA /* NSArray+CKIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CKIAdditions.h"; sourceTree = "<group>"; };
-		612C675F1A2E40F6005936AA /* NSArray+CKIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CKIAdditions.m"; sourceTree = "<group>"; };
-		6145116E1A2D15B70048A951 /* CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIConversationRecipient.h; sourceTree = "<group>"; };
-		6145116F1A2D15B70048A951 /* CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIConversationRecipient.m; sourceTree = "<group>"; };
+		615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIConversationRecipient.h"; sourceTree = "<group>"; };
+		615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIConversationRecipient.m"; sourceTree = "<group>"; };
+		615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIConversationRecipient.h; sourceTree = "<group>"; };
+		615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIConversationRecipient.m; sourceTree = "<group>"; };
+		615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CKIAdditions.h"; sourceTree = "<group>"; };
+		615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CKIAdditions.m"; sourceTree = "<group>"; };
 		6A66D55911554316AD2F2222 /* libPods-CanvasKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		760CC08987C2FE44935E9769 /* Pods-CanvasKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasKitTests/Pods-CanvasKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		787B40771FC1418D99B1736D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -591,13 +596,21 @@
 		B5EFCE07197DA32E0063F268 /* attachment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = attachment.json; path = ../attachment.json; sourceTree = "<group>"; };
 		B5F9D6AC19708873008C7DF5 /* ___ZZZ999CodeCoverageDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___ZZZ999CodeCoverageDump.m"; sourceTree = "<group>"; };
 		BC37272FC06C48518F5BD725 /* libPods-CanvasKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD84D71E1A24D7C50065F3F2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BD84D7201A24D7D10065F3F2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIGroupTests.swift; sourceTree = "<group>"; };
 		BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIFileTests.swift; sourceTree = "<group>"; };
+		BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaServer.h; sourceTree = "<group>"; };
+		BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaServer.m; sourceTree = "<group>"; };
+		BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIMediaFileUploadTokenParser.h; sourceTree = "<group>"; };
+		BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIMediaFileUploadTokenParser.m; sourceTree = "<group>"; };
 		BDC2C2FB1965F5910017CCA4 /* CanvasKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CanvasKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC2C2FF1965F5910017CCA4 /* CanvasKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CanvasKit.h; sourceTree = "<group>"; };
 		BDC2C3051965F5910017CCA4 /* CanvasKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC2C30B1965F5910017CCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDC2C3141965F5EE0017CCA4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BDC2C3161965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"; sourceTree = "<group>"; };
+		BDC2C3171965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryByAddingObjectsFromDictionary.m"; sourceTree = "<group>"; };
 		BDC2C3181965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+Pagination.h"; sourceTree = "<group>"; };
 		BDC2C3191965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+Pagination.m"; sourceTree = "<group>"; };
 		BDC2C31A1965F5EE0017CCA4 /* NSString+CKIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CKIAdditions.h"; sourceTree = "<group>"; };
@@ -823,6 +836,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD84D7211A24D7D10065F3F2 /* libxml2.dylib in Frameworks */,
+				BD84D71F1A24D7C50065F3F2 /* libz.dylib in Frameworks */,
 				BE3F6F132B4E4A66B6D82268 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,6 +898,8 @@
 		809DC72017C694EC0089E846 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD84D7201A24D7D10065F3F2 /* libxml2.dylib */,
+				BD84D71E1A24D7C50065F3F2 /* libz.dylib */,
 				787B40771FC1418D99B1736D /* libPods.a */,
 				BC37272FC06C48518F5BD725 /* libPods-CanvasKit.a */,
 				F7AAD525A6A1457C9FA62563 /* libPods-TestHostApp.a */,
@@ -1029,16 +1046,18 @@
 		BDC2C3151965F5EE0017CCA4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				612C675A1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */,
-				612C675B1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */,
+				615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */,
+				615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */,
+				BDC2C3161965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */,
+				BDC2C3171965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */,
 				BDC2C3181965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.h */,
 				BDC2C3191965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.m */,
 				BDC2C31A1965F5EE0017CCA4 /* NSString+CKIAdditions.h */,
 				BDC2C31B1965F5EE0017CCA4 /* NSString+CKIAdditions.m */,
 				BDC2C31C1965F5EE0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h */,
 				BDC2C31D1965F5EE0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m */,
-				612C675E1A2E40F6005936AA /* NSArray+CKIAdditions.h */,
-				612C675F1A2E40F6005936AA /* NSArray+CKIAdditions.m */,
+				BDB24FAD1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h */,
+				BDB24FAE1A25024500A828F2 /* CKIMediaFileUploadTokenParser.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1046,6 +1065,8 @@
 		BDC2C31E1965F5EE0017CCA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */,
+				615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */,
 				BDC2C31F1965F5EE0017CCA4 /* CKIActivityStreamAnnouncementItem.h */,
 				BDC2C3201965F5EE0017CCA4 /* CKIActivityStreamAnnouncementItem.m */,
 				BDC2C3211965F5EE0017CCA4 /* CKIActivityStreamCollaborationItem.h */,
@@ -1138,8 +1159,6 @@
 				BDC2C3801965F5EF0017CCA4 /* CKIUser.m */,
 				BDC2C3811965F5EF0017CCA4 /* Live Assessments */,
 				BDC2C3861965F5EF0017CCA4 /* Rubric */,
-				6145116E1A2D15B70048A951 /* CKIConversationRecipient.h */,
-				6145116F1A2D15B70048A951 /* CKIConversationRecipient.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1193,6 +1212,8 @@
 		BDC2C38D1965F5EF0017CCA4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */,
+				615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */,
 				BDC2C38E1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.h */,
 				BDC2C38F1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.m */,
 				BDC2C3901965F5EF0017CCA4 /* CKIClient+CKIAssignment.h */,
@@ -1262,8 +1283,8 @@
 				5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */,
 				5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */,
 				5EB09CC319BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m */,
-				612C67521A2E24A5005936AA /* CKIClient+CKIConversationRecipient.h */,
-				612C67531A2E24A5005936AA /* CKIClient+CKIConversationRecipient.m */,
+				BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */,
+				BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1366,7 +1387,6 @@
 				BDC2C46F1965F5EF0017CCA4 /* CKIClient+CKIOutcomeLink.h in Headers */,
 				BDC2C40D1965F5EF0017CCA4 /* CKIFolder.h in Headers */,
 				BDC2C4671965F5EF0017CCA4 /* CKIClient+CKIModule.h in Headers */,
-				614511701A2D15B70048A951 /* CKIConversationRecipient.h in Headers */,
 				BDC2C3FA1965F5EF0017CCA4 /* CKICalendarEvent.h in Headers */,
 				BDC2C4861965F5EF0017CCA4 /* CKIClient+CKITodoItem.h in Headers */,
 				BDC2C4551965F5EF0017CCA4 /* CKIClient+CKIConversation.h in Headers */,
@@ -1375,6 +1395,7 @@
 				5EB09CBD19BA062800AEC7C1 /* CKISubmissionRecord.h in Headers */,
 				BDC2C3DC1965F5EF0017CCA4 /* NSHTTPURLResponse+Pagination.h in Headers */,
 				BDC2C44F1965F5EF0017CCA4 /* CKIClient+CKIAssignment.h in Headers */,
+				BDB24FAF1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h in Headers */,
 				BDC2C4271965F5EF0017CCA4 /* CKIPollChoice.h in Headers */,
 				BDC2C4921965F5EF0017CCA4 /* CanvasKit-Prefix.pch in Headers */,
 				BDC2C48C1965F5EF0017CCA4 /* CKIClient.h in Headers */,
@@ -1387,6 +1408,7 @@
 				BDC2C47C1965F5EF0017CCA4 /* CKIClient+CKIQuiz.h in Headers */,
 				BDC2C46D1965F5EF0017CCA4 /* CKIClient+CKIOutcomeGroup.h in Headers */,
 				BDC2C3FF1965F5EF0017CCA4 /* CKIConversationMessage.h in Headers */,
+				615A579E1A2FA909001FAE62 /* CKIConversationRecipient.h in Headers */,
 				BDC2C4451965F5EF0017CCA4 /* CKILiveAssessmentResult.h in Headers */,
 				BDC2C4881965F5EF0017CCA4 /* CKIClient+CKIUser.h in Headers */,
 				BDC2C44B1965F5EF0017CCA4 /* CKIRubricCriterionRating.h in Headers */,
@@ -1394,7 +1416,6 @@
 				BDC2C3F01965F5EF0017CCA4 /* CKIActivityStreamSubmissionItem.h in Headers */,
 				BDC2C43B1965F5EF0017CCA4 /* CKITab.h in Headers */,
 				BDC2C4591965F5EF0017CCA4 /* CKIClient+CKIDiscussionTopic.h in Headers */,
-				612C675C1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */,
 				BDC2C4311965F5EF0017CCA4 /* CKIService.h in Headers */,
 				5EFD1D7819B0435400374944 /* CKIClient+CKISubmissionComment.h in Headers */,
 				497CDE9319CC9C2900C2BF7B /* CKIDiscussionEntry.h in Headers */,
@@ -1410,6 +1431,7 @@
 				BDC2C4711965F5EF0017CCA4 /* CKIClient+CKIPage.h in Headers */,
 				BDC2C4491965F5EF0017CCA4 /* CKIRubricCriterion.h in Headers */,
 				BDC2C3FC1965F5EF0017CCA4 /* CKIContext.h in Headers */,
+				615A57A21A2FA913001FAE62 /* NSArray+CKIAdditions.h in Headers */,
 				5EB09CC419BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h in Headers */,
 				BDC2C4331965F5EF0017CCA4 /* CKIMediaComment.h in Headers */,
 				BDC2C3F41965F5EF0017CCA4 /* CKIAssignment.h in Headers */,
@@ -1432,10 +1454,11 @@
 				BDC2C3E01965F5EF0017CCA4 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h in Headers */,
 				BDC2C4931965F5EF0017CCA4 /* CKILoginViewController.h in Headers */,
 				BDC2C45B1965F5EF0017CCA4 /* CKIClient+CKIExternalTool.h in Headers */,
-				612C67601A2E40F6005936AA /* NSArray+CKIAdditions.h in Headers */,
 				BDC2C4011965F5EF0017CCA4 /* CKICourse.h in Headers */,
 				BDC2C3F81965F5EF0017CCA4 /* CKIAttachment.h in Headers */,
+				BDC2C3DA1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */,
 				BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */,
+				615A579A1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h in Headers */,
 				BDC2C3FD1965F5EF0017CCA4 /* CKIConversation.h in Headers */,
 				BDC2C4571965F5EF0017CCA4 /* CKIClient+CKICourse.h in Headers */,
 				BDC2C3EE1965F5EF0017CCA4 /* CKIActivityStreamMessageItem.h in Headers */,
@@ -1444,9 +1467,9 @@
 				BDC2C4171965F5EF0017CCA4 /* CKIModel.h in Headers */,
 				BDC2C3E81965F5EF0017CCA4 /* CKIActivityStreamConversationItem.h in Headers */,
 				BDC2C4631965F5EF0017CCA4 /* CKIClient+CKIGroup.h in Headers */,
-				612C67541A2E24A5005936AA /* CKIClient+CKIConversationRecipient.h in Headers */,
 				BDC2C47A1965F5EF0017CCA4 /* CKIClient+CKIPollSubmission.h in Headers */,
 				BDC2C4611965F5EF0017CCA4 /* CKIClient+CKIFolder.h in Headers */,
+				BDAE93821A252C9D00F7B009 /* CKIMediaServer.h in Headers */,
 				BDC2C3EA1965F5EF0017CCA4 /* CKIActivityStreamDiscussionTopicItem.h in Headers */,
 				BDC2C4471965F5EF0017CCA4 /* CKIRubric.h in Headers */,
 				5E0315E019B0DAB2000393B6 /* CKIRubricAssessment.h in Headers */,
@@ -1714,7 +1737,6 @@
 				BDC2C48F1965F5EF0017CCA4 /* CKIClient+CKILiveAssessment.m in Sources */,
 				BDC2C45E1965F5EF0017CCA4 /* CKIClient+CKIFavorite.m in Sources */,
 				BDC2C4481965F5EF0017CCA4 /* CKIRubric.m in Sources */,
-				612C67551A2E24A5005936AA /* CKIClient+CKIConversationRecipient.m in Sources */,
 				BDC2C41C1965F5EF0017CCA4 /* CKIModuleItem.m in Sources */,
 				5E0315E119B0DAB2000393B6 /* CKIRubricAssessment.m in Sources */,
 				BDC2C4041965F5EF0017CCA4 /* CKIDiscussionTopic.m in Sources */,
@@ -1723,7 +1745,6 @@
 				BDC2C3F31965F5EF0017CCA4 /* CKIAPIV1.m in Sources */,
 				BDC2C47B1965F5EF0017CCA4 /* CKIClient+CKIPollSubmission.m in Sources */,
 				BDC2C4081965F5EF0017CCA4 /* CKIExternalTool.m in Sources */,
-				614511711A2D15B70048A951 /* CKIConversationRecipient.m in Sources */,
 				BDC2C3EB1965F5EF0017CCA4 /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
 				BDC2C4581965F5EF0017CCA4 /* CKIClient+CKICourse.m in Sources */,
 				BDC2C46C1965F5EF0017CCA4 /* CKIClient+CKIOutcome.m in Sources */,
@@ -1732,22 +1753,24 @@
 				BDC2C4181965F5EF0017CCA4 /* CKIModel.m in Sources */,
 				BDC2C45A1965F5EF0017CCA4 /* CKIClient+CKIDiscussionTopic.m in Sources */,
 				BDC2C40C1965F5EF0017CCA4 /* CKIFile.m in Sources */,
-				612C675D1A2E40A8005936AA /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BDC2C4851965F5EF0017CCA4 /* CKIClient+CKITab.m in Sources */,
 				BDC2C46A1965F5EF0017CCA4 /* CKIClient+CKIModuleItem.m in Sources */,
 				BDC2C4341965F5EF0017CCA4 /* CKIMediaComment.m in Sources */,
 				BDC2C41E1965F5EF0017CCA4 /* CKIOutcome.m in Sources */,
 				BDC2C4741965F5EF0017CCA4 /* CKIClient+CKIPoll.m in Sources */,
 				BDC2C4891965F5EF0017CCA4 /* CKIClient+CKIUser.m in Sources */,
+				615A57A31A2FA913001FAE62 /* NSArray+CKIAdditions.m in Sources */,
 				BDC2C3FB1965F5EF0017CCA4 /* CKICalendarEvent.m in Sources */,
 				BDC2C3ED1965F5EF0017CCA4 /* CKIActivityStreamItem.m in Sources */,
 				497CDE9419CC9C2900C2BF7B /* CKIDiscussionEntry.m in Sources */,
 				BDC2C3E51965F5EF0017CCA4 /* CKIActivityStreamCollaborationItem.m in Sources */,
 				BDC2C4261965F5EF0017CCA4 /* CKIPoll.m in Sources */,
 				BDC2C4241965F5EF0017CCA4 /* CKIPage.m in Sources */,
+				BDAE93831A252C9D00F7B009 /* CKIMediaServer.m in Sources */,
 				BDC2C4301965F5EF0017CCA4 /* CKISection.m in Sources */,
 				BDC2C4601965F5EF0017CCA4 /* CKIClient+CKIFile.m in Sources */,
 				BDC2C3F11965F5EF0017CCA4 /* CKIActivityStreamSubmissionItem.m in Sources */,
+				615A579F1A2FA909001FAE62 /* CKIConversationRecipient.m in Sources */,
 				BDC2C3E31965F5EF0017CCA4 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				BDC2C4541965F5EF0017CCA4 /* CKIClient+CKICalendarEvent.m in Sources */,
 				BDC2C4811965F5EF0017CCA4 /* CKIClient+CKIService.m in Sources */,
@@ -1764,7 +1787,6 @@
 				BDC2C3FE1965F5EF0017CCA4 /* CKIConversation.m in Sources */,
 				BDC2C4791965F5EF0017CCA4 /* CKIClient+CKIPollSession.m in Sources */,
 				BDC2C4501965F5EF0017CCA4 /* CKIClient+CKIAssignment.m in Sources */,
-				612C67611A2E40F6005936AA /* NSArray+CKIAdditions.m in Sources */,
 				BDC2C44A1965F5EF0017CCA4 /* CKIRubricCriterion.m in Sources */,
 				BDC2C3F71965F5EF0017CCA4 /* CKIAssignmentGroup.m in Sources */,
 				BDC2C4661965F5EF0017CCA4 /* CKIClient+CKIModel.m in Sources */,
@@ -1772,10 +1794,13 @@
 				BDC2C48B1965F5EF0017CCA4 /* CKIClient+Login.m in Sources */,
 				BDC2C3F91965F5EF0017CCA4 /* CKIAttachment.m in Sources */,
 				BDC2C45C1965F5EF0017CCA4 /* CKIClient+CKIExternalTool.m in Sources */,
+				BDB24FB01A25024500A828F2 /* CKIMediaFileUploadTokenParser.m in Sources */,
 				BDC2C4521965F5EF0017CCA4 /* CKIClient+CKIAssignmentGroup.m in Sources */,
+				615A579B1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m in Sources */,
 				BDC2C3EF1965F5EF0017CCA4 /* CKIActivityStreamMessageItem.m in Sources */,
 				BDC2C3E71965F5EF0017CCA4 /* CKIActivityStreamConferenceItem.m in Sources */,
 				BDC2C43C1965F5EF0017CCA4 /* CKITab.m in Sources */,
+				BDC2C3DB1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				BDC2C4761965F5EF0017CCA4 /* CKIClient+CKIPollChoice.m in Sources */,
 				BDC2C4561965F5EF0017CCA4 /* CKIClient+CKIConversation.m in Sources */,
 				BDC2C4221965F5EF0017CCA4 /* CKIOutcomeLink.m in Sources */,
@@ -1882,6 +1907,7 @@
 				B5106E4B198AD50A00449E76 /* CKILiveAssessmentTests.swift in Sources */,
 				B59FC4E119709449008C1E93 /* CKILockInfo.m in Sources */,
 				B59FC4CC19709449008C1E93 /* CKIActivityStreamConversationItem.m in Sources */,
+				B59FC49F19709440008C1E93 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */,
 				B59FC4E219709449008C1E93 /* CKIModel.m in Sources */,
 				B5106E1B1988516A00449E76 /* CKIPollNetworkingTests.swift in Sources */,
 				B5106E23198851E600449E76 /* CKISectionNetworkingTests.swift in Sources */,
