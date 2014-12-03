@@ -61,17 +61,26 @@
     }];
 }
 
-- (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment ofSize:(CGSize)size success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
-    NSString *urlString = [NSString stringWithFormat:@"/p/%@/thumbnail/entry_id/%@/width/%@/height/%@/bgcolor/000000/type/1/vid_sec/5", self.mediaServer.partnerId, mediaComment.mediaID, size.width, size.height];
+- (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment ofSize:(CGSize)size success:(void(^)(UIImage *image))success failure:(void(^)(NSError *error))failure {
     
     [self configureMediaServerWithSuccess:^{
-        [self GET:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"Got the url for thumb");
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *urlString = [NSString stringWithFormat:@"p/%@/thumbnail/entry_id/%@/width/%@/height/%@/bgcolor/000000/type/1/vid_sec/5", @(self.mediaServer.partnerId), mediaComment.mediaID, @(size.width), @(size.height)];
+        
+        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:self.mediaServer.resourceDomain];
+        manager.responseSerializer = [AFImageResponseSerializer serializer];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            UIImage *image = responseObject;
+            if (success) {
+                success(image);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (failure) {
                 failure(error);
             }
         }];
+
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
