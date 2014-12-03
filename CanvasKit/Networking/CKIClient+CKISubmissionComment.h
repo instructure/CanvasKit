@@ -8,8 +8,14 @@
 
 #import <CanvasKit/CanvasKit.h>
 
+#import "CKIMediaComment.h"
+
+@class CKISubmissionRecord;
+
 @interface CKIClient (CKISubmissionComment)
 
 - (RACSignal *)createSubmissionComment:(CKISubmissionComment *)comment;
+- (void)createCommentWithMedia:(CKIMediaComment *)mediaComment forSubmissionRecord:(CKISubmissionRecord *)submissionRecord success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+- (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
 @end
