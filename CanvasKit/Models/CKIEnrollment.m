@@ -14,6 +14,7 @@ NSString *const CKIEnrollmentTypeStudent = @"student";
 NSString *const CKIEnrollmentTypeTeacher = @"teacher";
 NSString *const CKIEnrollmentTypeTA = @"ta";
 NSString *const CKIEnrollmentTypeObserver = @"observer";
+NSString *const CKIEnrollmentTypeMember = @"member";
 NSString *const CKIEnrollmentTypeDesigner = @"designer";
 
 @implementation CKIEnrollment

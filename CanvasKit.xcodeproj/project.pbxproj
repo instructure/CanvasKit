@@ -28,6 +28,12 @@
 		5ECDD9A119AE4A990012605E /* CKIClient+CKISubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */; };
 		5EFD1D7819B0435400374944 /* CKIClient+CKISubmissionComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */; };
 		5EFD1D7919B0435400374944 /* CKIClient+CKISubmissionComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */; };
+		615A579A1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */; };
+		615A579B1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */; };
+		615A579E1A2FA909001FAE62 /* CKIConversationRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */; };
+		615A579F1A2FA909001FAE62 /* CKIConversationRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */; };
+		615A57A21A2FA913001FAE62 /* NSArray+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */; };
+		615A57A31A2FA913001FAE62 /* NSArray+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */; };
 		B50050EF1986E2E4009CB9F5 /* CKIPollChoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050EB1986E2E4009CB9F5 /* CKIPollChoiceTests.swift */; };
 		B50050F01986E2E4009CB9F5 /* CKIPollSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050EC1986E2E4009CB9F5 /* CKIPollSessionTests.swift */; };
 		B50050F11986E2E4009CB9F5 /* CKIPollSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50050ED1986E2E4009CB9F5 /* CKIPollSubmissionTests.swift */; };
@@ -487,6 +493,12 @@
 		5ECDD99F19AE4A990012605E /* CKIClient+CKISubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmission.m"; sourceTree = "<group>"; };
 		5EFD1D7619B0435400374944 /* CKIClient+CKISubmissionComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionComment.h"; sourceTree = "<group>"; };
 		5EFD1D7719B0435400374944 /* CKIClient+CKISubmissionComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKISubmissionComment.m"; sourceTree = "<group>"; };
+		615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIConversationRecipient.h"; sourceTree = "<group>"; };
+		615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIConversationRecipient.m"; sourceTree = "<group>"; };
+		615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIConversationRecipient.h; sourceTree = "<group>"; };
+		615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIConversationRecipient.m; sourceTree = "<group>"; };
+		615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CKIAdditions.h"; sourceTree = "<group>"; };
+		615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CKIAdditions.m"; sourceTree = "<group>"; };
 		6A66D55911554316AD2F2222 /* libPods-CanvasKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CanvasKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		760CC08987C2FE44935E9769 /* Pods-CanvasKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasKitTests/Pods-CanvasKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		787B40771FC1418D99B1736D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1034,6 +1046,8 @@
 		BDC2C3151965F5EE0017CCA4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				615A57A01A2FA913001FAE62 /* NSArray+CKIAdditions.h */,
+				615A57A11A2FA913001FAE62 /* NSArray+CKIAdditions.m */,
 				BDC2C3161965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */,
 				BDC2C3171965F5EE0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */,
 				BDC2C3181965F5EE0017CCA4 /* NSHTTPURLResponse+Pagination.h */,
@@ -1051,6 +1065,8 @@
 		BDC2C31E1965F5EE0017CCA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				615A579C1A2FA909001FAE62 /* CKIConversationRecipient.h */,
+				615A579D1A2FA909001FAE62 /* CKIConversationRecipient.m */,
 				BDC2C31F1965F5EE0017CCA4 /* CKIActivityStreamAnnouncementItem.h */,
 				BDC2C3201965F5EE0017CCA4 /* CKIActivityStreamAnnouncementItem.m */,
 				BDC2C3211965F5EE0017CCA4 /* CKIActivityStreamCollaborationItem.h */,
@@ -1196,6 +1212,8 @@
 		BDC2C38D1965F5EF0017CCA4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				615A57981A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h */,
+				615A57991A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m */,
 				BDC2C38E1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.h */,
 				BDC2C38F1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.m */,
 				BDC2C3901965F5EF0017CCA4 /* CKIClient+CKIAssignment.h */,
@@ -1390,6 +1408,7 @@
 				BDC2C47C1965F5EF0017CCA4 /* CKIClient+CKIQuiz.h in Headers */,
 				BDC2C46D1965F5EF0017CCA4 /* CKIClient+CKIOutcomeGroup.h in Headers */,
 				BDC2C3FF1965F5EF0017CCA4 /* CKIConversationMessage.h in Headers */,
+				615A579E1A2FA909001FAE62 /* CKIConversationRecipient.h in Headers */,
 				BDC2C4451965F5EF0017CCA4 /* CKILiveAssessmentResult.h in Headers */,
 				BDC2C4881965F5EF0017CCA4 /* CKIClient+CKIUser.h in Headers */,
 				BDC2C44B1965F5EF0017CCA4 /* CKIRubricCriterionRating.h in Headers */,
@@ -1412,6 +1431,7 @@
 				BDC2C4711965F5EF0017CCA4 /* CKIClient+CKIPage.h in Headers */,
 				BDC2C4491965F5EF0017CCA4 /* CKIRubricCriterion.h in Headers */,
 				BDC2C3FC1965F5EF0017CCA4 /* CKIContext.h in Headers */,
+				615A57A21A2FA913001FAE62 /* NSArray+CKIAdditions.h in Headers */,
 				5EB09CC419BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h in Headers */,
 				BDC2C4331965F5EF0017CCA4 /* CKIMediaComment.h in Headers */,
 				BDC2C3F41965F5EF0017CCA4 /* CKIAssignment.h in Headers */,
@@ -1438,6 +1458,7 @@
 				BDC2C3F81965F5EF0017CCA4 /* CKIAttachment.h in Headers */,
 				BDC2C3DA1965F5EF0017CCA4 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */,
 				BDC2C3001965F5910017CCA4 /* CanvasKit.h in Headers */,
+				615A579A1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.h in Headers */,
 				BDC2C3FD1965F5EF0017CCA4 /* CKIConversation.h in Headers */,
 				BDC2C4571965F5EF0017CCA4 /* CKIClient+CKICourse.h in Headers */,
 				BDC2C3EE1965F5EF0017CCA4 /* CKIActivityStreamMessageItem.h in Headers */,
@@ -1738,6 +1759,7 @@
 				BDC2C41E1965F5EF0017CCA4 /* CKIOutcome.m in Sources */,
 				BDC2C4741965F5EF0017CCA4 /* CKIClient+CKIPoll.m in Sources */,
 				BDC2C4891965F5EF0017CCA4 /* CKIClient+CKIUser.m in Sources */,
+				615A57A31A2FA913001FAE62 /* NSArray+CKIAdditions.m in Sources */,
 				BDC2C3FB1965F5EF0017CCA4 /* CKICalendarEvent.m in Sources */,
 				BDC2C3ED1965F5EF0017CCA4 /* CKIActivityStreamItem.m in Sources */,
 				497CDE9419CC9C2900C2BF7B /* CKIDiscussionEntry.m in Sources */,
@@ -1748,6 +1770,7 @@
 				BDC2C4301965F5EF0017CCA4 /* CKISection.m in Sources */,
 				BDC2C4601965F5EF0017CCA4 /* CKIClient+CKIFile.m in Sources */,
 				BDC2C3F11965F5EF0017CCA4 /* CKIActivityStreamSubmissionItem.m in Sources */,
+				615A579F1A2FA909001FAE62 /* CKIConversationRecipient.m in Sources */,
 				BDC2C3E31965F5EF0017CCA4 /* CKIActivityStreamAnnouncementItem.m in Sources */,
 				BDC2C4541965F5EF0017CCA4 /* CKIClient+CKICalendarEvent.m in Sources */,
 				BDC2C4811965F5EF0017CCA4 /* CKIClient+CKIService.m in Sources */,
@@ -1773,6 +1796,7 @@
 				BDC2C45C1965F5EF0017CCA4 /* CKIClient+CKIExternalTool.m in Sources */,
 				BDB24FB01A25024500A828F2 /* CKIMediaFileUploadTokenParser.m in Sources */,
 				BDC2C4521965F5EF0017CCA4 /* CKIClient+CKIAssignmentGroup.m in Sources */,
+				615A579B1A2FA8FC001FAE62 /* CKIClient+CKIConversationRecipient.m in Sources */,
 				BDC2C3EF1965F5EF0017CCA4 /* CKIActivityStreamMessageItem.m in Sources */,
 				BDC2C3E71965F5EF0017CCA4 /* CKIActivityStreamConferenceItem.m in Sources */,
 				BDC2C43C1965F5EF0017CCA4 /* CKITab.m in Sources */,
