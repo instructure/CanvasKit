@@ -64,6 +64,15 @@ extern NSString *const CKIClientAccessTokenExpiredNotification;
  */
 - (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret;
 
+
+/**
+ This method is intended for testing only. It should not be used in a production app
+ 
+ @param baseURL the base URL to be used by the client
+ @param token the auth token acquired from Canvas web for the user
+ */
+- (instancetype)initWithBaseURL:(NSURL *)url token:(NSString *)token;
+
 #pragma mark - OAuth
 
 /**

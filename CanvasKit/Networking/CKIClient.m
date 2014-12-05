@@ -72,6 +72,15 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     return self;
 }
 
+- (instancetype)initWithBaseURL:(NSURL *)url token:(NSString *)token {
+    self = [self initWithBaseURL:url];
+    if (!self) {
+        return nil;
+    }
+    [self setAccessToken:token];
+    return self;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     CKIClient *dup = (CKIClient *) [super copyWithZone:zone];
