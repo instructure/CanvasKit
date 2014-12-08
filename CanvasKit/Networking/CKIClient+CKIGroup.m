@@ -49,4 +49,60 @@
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:context];
 }
 
+- (RACSignal *)fetchGroupUsersForContext:(id <CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"users"];
+    return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIGroup class] context:context];
+}
+
+- (RACSignal *)deleteGroup:(CKIGroup *)group
+{
+    NSString *path = [[group.context.path stringByAppendingPathComponent:@"groups"] stringByAppendingPathComponent:group.id];
+    return [self deleteObjectAtPath:path modelClass:[CKIGroup class] parameters:nil context:group.context];
+}
+
+- (RACSignal *)createGroup:(CKIGroup *)group
+{
+    NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"groups"];
+    NSDictionary *params = @{@"name": group.name, @"description": group.groupDescription, @"is_public": @(group.isPublic), @"join_level": group.joinLevel};
+    return [self createModelAtPath:path parameters:params modelClass:[CKIGroup class] context:CKIRootContext];
+}
+
+- (RACSignal *)inviteUser:(NSString *)userEmail toGroup:(CKIGroup *)group
+{
+    NSString *path = [[[group.context.path stringByAppendingPathComponent:@"groups"] stringByAppendingPathComponent:group.id] stringByAppendingPathComponent:@"invite"];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self POST:path parameters:@{@"invitees": @[userEmail]} success:^(NSURLSessionDataTask *task, id responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+}
+
+- (RACSignal *)createGroupMemebershipForUser:(NSString *)userID inGroup:(CKIGroup *)group
+{
+    NSString *path = [[[group.context.path stringByAppendingPathComponent:@"groups"] stringByAppendingPathComponent:group.id] stringByAppendingPathComponent:@"memberships"];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self POST:path parameters:@{@"user_id": userID} success:^(NSURLSessionDataTask *task, id responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [subscriber sendError:error];
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+}
+
+
 @end

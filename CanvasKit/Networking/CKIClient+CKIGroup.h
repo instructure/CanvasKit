@@ -23,4 +23,15 @@
 - (RACSignal *)fetchGroup:(NSString *)groupID forContext:(id<CKIContext>)context;
 
 - (RACSignal *)fetchGroupsForContext:(id <CKIContext>)context;
+
+- (RACSignal *)fetchGroupUsersForContext:(id <CKIContext>)context;
+
+- (RACSignal *)deleteGroup:(CKIGroup *)group;
+
+- (RACSignal *)createGroup:(CKIGroup *)group;
+
+- (RACSignal *)inviteUser:(NSString *)userEmail toGroup:(CKIGroup *)group;
+
+- (RACSignal *)createGroupMemebershipForUser:(NSString *)userID inGroup:(CKIGroup *)group;
+
 @end
