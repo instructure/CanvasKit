@@ -12,6 +12,10 @@
 		497CDE9419CC9C2900C2BF7B /* CKIDiscussionEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CDE9219CC9C2900C2BF7B /* CKIDiscussionEntry.m */; };
 		5E0315E019B0DAB2000393B6 /* CKIRubricAssessment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E0315DE19B0DAB2000393B6 /* CKIRubricAssessment.h */; };
 		5E0315E119B0DAB2000393B6 /* CKIRubricAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0315DF19B0DAB2000393B6 /* CKIRubricAssessment.m */; };
+		5E0594DB1A364E850042B46F /* CKIGroupCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E0594D91A364E850042B46F /* CKIGroupCategory.h */; };
+		5E0594DC1A364E850042B46F /* CKIGroupCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0594DA1A364E850042B46F /* CKIGroupCategory.m */; };
+		5E0594DF1A36528A0042B46F /* CKIClient+CKIGroupCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E0594DD1A36528A0042B46F /* CKIClient+CKIGroupCategory.h */; };
+		5E0594E01A36528A0042B46F /* CKIClient+CKIGroupCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0594DE1A36528A0042B46F /* CKIClient+CKIGroupCategory.m */; };
 		5EB09CBD19BA062800AEC7C1 /* CKISubmissionRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB09CBB19BA062800AEC7C1 /* CKISubmissionRecord.h */; };
 		5EB09CBE19BA062800AEC7C1 /* CKISubmissionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB09CBC19BA062800AEC7C1 /* CKISubmissionRecord.m */; };
 		5EB09CC419BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */; };
@@ -477,6 +481,10 @@
 		4C7B2CA58151550016D45DB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0315DE19B0DAB2000393B6 /* CKIRubricAssessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKIRubricAssessment.h; path = ../CKIRubricAssessment.h; sourceTree = "<group>"; };
 		5E0315DF19B0DAB2000393B6 /* CKIRubricAssessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKIRubricAssessment.m; path = ../CKIRubricAssessment.m; sourceTree = "<group>"; };
+		5E0594D91A364E850042B46F /* CKIGroupCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIGroupCategory.h; sourceTree = "<group>"; };
+		5E0594DA1A364E850042B46F /* CKIGroupCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIGroupCategory.m; sourceTree = "<group>"; };
+		5E0594DD1A36528A0042B46F /* CKIClient+CKIGroupCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIGroupCategory.h"; sourceTree = "<group>"; };
+		5E0594DE1A36528A0042B46F /* CKIClient+CKIGroupCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIGroupCategory.m"; sourceTree = "<group>"; };
 		5EB09CBB19BA062800AEC7C1 /* CKISubmissionRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISubmissionRecord.h; sourceTree = "<group>"; };
 		5EB09CBC19BA062800AEC7C1 /* CKISubmissionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISubmissionRecord.m; sourceTree = "<group>"; };
 		5EB09CC219BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKISubmissionRecord.h"; sourceTree = "<group>"; };
@@ -1159,6 +1167,8 @@
 				BDC2C3801965F5EF0017CCA4 /* CKIUser.m */,
 				BDC2C3811965F5EF0017CCA4 /* Live Assessments */,
 				BDC2C3861965F5EF0017CCA4 /* Rubric */,
+				5E0594D91A364E850042B46F /* CKIGroupCategory.h */,
+				5E0594DA1A364E850042B46F /* CKIGroupCategory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1285,6 +1295,8 @@
 				5EB09CC319BA0AAD00AEC7C1 /* CKIClient+CKISubmissionRecord.m */,
 				BDAE93801A252C9D00F7B009 /* CKIMediaServer.h */,
 				BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */,
+				5E0594DD1A36528A0042B46F /* CKIClient+CKIGroupCategory.h */,
+				5E0594DE1A36528A0042B46F /* CKIClient+CKIGroupCategory.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1397,6 +1409,7 @@
 				BDC2C44F1965F5EF0017CCA4 /* CKIClient+CKIAssignment.h in Headers */,
 				BDB24FAF1A25024500A828F2 /* CKIMediaFileUploadTokenParser.h in Headers */,
 				BDC2C4271965F5EF0017CCA4 /* CKIPollChoice.h in Headers */,
+				5E0594DB1A364E850042B46F /* CKIGroupCategory.h in Headers */,
 				BDC2C4921965F5EF0017CCA4 /* CanvasKit-Prefix.pch in Headers */,
 				BDC2C48C1965F5EF0017CCA4 /* CKIClient.h in Headers */,
 				BDC2C4531965F5EF0017CCA4 /* CKIClient+CKICalendarEvent.h in Headers */,
@@ -1444,6 +1457,7 @@
 				BDC2C4131965F5EF0017CCA4 /* CKILockInfo.h in Headers */,
 				B5106E4E199142FF00449E76 /* CKIFavorite.h in Headers */,
 				BDC2C4371965F5EF0017CCA4 /* CKISubmissionComment.h in Headers */,
+				5E0594DF1A36528A0042B46F /* CKIClient+CKIGroupCategory.h in Headers */,
 				BDC2C48A1965F5EF0017CCA4 /* CKIClient+Login.h in Headers */,
 				BDC2C4841965F5EF0017CCA4 /* CKIClient+CKITab.h in Headers */,
 				BDC2C4231965F5EF0017CCA4 /* CKIPage.h in Headers */,
@@ -1780,6 +1794,7 @@
 				BDC2C44E1965F5EF0017CCA4 /* CKIClient+CKIActivityStreamItem.m in Sources */,
 				5EB740931A00472300F7F6C3 /* CKISubmission+DiscussionSubmissionHTMLFile.m in Sources */,
 				5EB740951A00472300F7F6C3 /* CKISubmission+TextEntrySubmissionHTMLFile.m in Sources */,
+				5E0594DC1A364E850042B46F /* CKIGroupCategory.m in Sources */,
 				BDC2C47D1965F5EF0017CCA4 /* CKIClient+CKIQuiz.m in Sources */,
 				5ECDD9A119AE4A990012605E /* CKIClient+CKISubmission.m in Sources */,
 				B5F9D6AF19708BD8008C7DF5 /* CKIUser.m in Sources */,
@@ -1790,6 +1805,7 @@
 				BDC2C44A1965F5EF0017CCA4 /* CKIRubricCriterion.m in Sources */,
 				BDC2C3F71965F5EF0017CCA4 /* CKIAssignmentGroup.m in Sources */,
 				BDC2C4661965F5EF0017CCA4 /* CKIClient+CKIModel.m in Sources */,
+				5E0594E01A36528A0042B46F /* CKIClient+CKIGroupCategory.m in Sources */,
 				BDC2C4201965F5EF0017CCA4 /* CKIOutcomeGroup.m in Sources */,
 				BDC2C48B1965F5EF0017CCA4 /* CKIClient+Login.m in Sources */,
 				BDC2C3F91965F5EF0017CCA4 /* CKIAttachment.m in Sources */,
