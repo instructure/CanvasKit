@@ -19,9 +19,18 @@
 
 - (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context
 {
+    [self fetchAssignmentGroupsForContext:context includeAssignments:YES];
+}
+
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments
+{
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignment_groups"];
-    NSDictionary *parameters = @{@"include" : @[@"assignments"]};
+    NSDictionary *parameters = includeAssignments ? @{@"include" : @[@"assignments"]} : nil;
     return [[self fetchResponseAtPath:path parameters:parameters modelClass:[CKIAssignmentGroup class] context:context] map:^id(NSArray *assignmentGroups) {
+        if (!includeAssignments) {
+            return assignmentGroups;
+        }
+        
         for (CKIAssignmentGroup *group in assignmentGroups) {
             for (CKIAssignment *assignment in group.assignments) {
                 assignment.context = context;
