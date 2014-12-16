@@ -8,7 +8,7 @@
 
 #import "CKIClient+CKISubmissionRecord.h"
 
-#import <ReactiveCocoa/ReactiveCocoa/RACSignal.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CKIAssignment.h"
 #import "CKISubmission.h"
 #import "CKIRubricAssessment.h"

@@ -13,6 +13,7 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKISubmission.h"
 #import "CKIRubric.h"
+#import "CKIDiscussionTopic.h"
 
 @interface CKIAssignment ()
 @end
@@ -41,6 +42,7 @@
         @"peerReviewDueDate": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
         @"discussionTopicID": @"discussion_topic_id",
+        @"discussionTopic": @"discussion_topic",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
@@ -103,6 +105,11 @@
 + (NSValueTransformer *)discussionTopicIDJSONValueTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)discussionTopicJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIDiscussionTopic class]];
 }
 
 + (NSValueTransformer *)urlJSONTransformer {
