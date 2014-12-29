@@ -29,4 +29,8 @@
 
 @property (nonatomic) CKIAssignment *context;
 
+- (BOOL)isDummySubmission;
+
+- (CKISubmission *)defaultAttempt;
+
 @end

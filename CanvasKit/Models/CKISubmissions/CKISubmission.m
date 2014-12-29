@@ -146,4 +146,15 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
     return type;
 }
 
+- (CKIFile *)defaultAttachment {
+    if (![self.attachments count]) {
+        return nil;
+    }
+    
+    NSArray *sortedAttachments = [self.attachments sortedArrayUsingComparator:^NSComparisonResult(CKIFile *attachment1, CKIFile *attachment2) {
+        return [attachment1.createdAt compare:attachment2.createdAt];
+    }];
+    return sortedAttachments.firstObject;
+}
+
 @end

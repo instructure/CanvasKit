@@ -119,6 +119,9 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKILiveAssessment.h>
 #import <CKIClient+CKILiveAssessmentResult.h>
 
+#import "CKISubmission+TextEntrySubmissionHTMLFile.h"
+#import "CKISubmission+DiscussionSubmissionHTMLFile.h"
+
 #pragma mark - Utilities
 
 #import <NSDictionary+DictionaryByAddingObjectsFromDictionary.h>

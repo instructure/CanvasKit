@@ -81,11 +81,11 @@ NSString *const CKIRecipientTypeContext = @"context";
         for (NSNumber *key in [json allKeys]) {
             NSArray *jsonEnrollmentTypes = json[key];
             NSArray *enrollmentTypes = [jsonEnrollmentTypes arrayByMappingValues:@{
-                                                                                   @"StudentEnrollment": CKIEnrollmentTypeStudent,
-                                                                                   @"TeacherEnrollment": CKIEnrollmentTypeTeacher,
-                                                                                   @"TaEnrollment": CKIEnrollmentTypeTA,
-                                                                                   @"ObserverEnrollment": CKIEnrollmentTypeObserver,
-                                                                                   @"Member": CKIEnrollmentTypeMember
+                                                                                   @"StudentEnrollment": @"student",
+                                                                                   @"TeacherEnrollment": @"teacher",
+                                                                                   @"TaEnrollment": @"ta",
+                                                                                   @"ObserverEnrollment": @"observer",
+                                                                                   @"Member": @"member"
                                                                                    }];
             result[key] = enrollmentTypes;
         }
@@ -95,11 +95,11 @@ NSString *const CKIRecipientTypeContext = @"context";
         for (NSNumber *key in [map allKeys]) {
             NSArray *enrollmentTypes = map[key];
             NSMutableArray *jsonEnrollmentTypes = [enrollmentTypes arrayByMappingValues:@{
-                                                                                          CKIEnrollmentTypeStudent: @"StudentEnrollment",
-                                                                                          CKIEnrollmentTypeTeacher: @"TeacherEnrollment",
-                                                                                          CKIEnrollmentTypeTA: @"TaEnrollment",
-                                                                                          CKIEnrollmentTypeObserver: @"ObserverEnrollment",
-                                                                                          CKIEnrollmentTypeMember: @"Member"
+                                                                                          @"student": @"StudentEnrollment",
+                                                                                          @"teacher": @"TeacherEnrollment",
+                                                                                          @"ta": @"TaEnrollment",
+                                                                                          @"observer": @"ObserverEnrollment",
+                                                                                          @"member": @"Member"
                                                                                           }];
             result[key] = jsonEnrollmentTypes;
         }
