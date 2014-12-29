@@ -72,7 +72,7 @@
 
 - (BOOL)currentUserEnrolledAsStudentOrObserver {
     return [self.enrollments.rac_sequence filter:^BOOL(CKIEnrollment *enrollment) {
-        return [enrollment.type isEqualToString:CKIEnrollmentTypeStudent] || [enrollment.type isEqualToString:CKIEnrollmentTypeObserver];
+        return enrollment.type == CKIEnrollmentTypeStudent || enrollment.type == CKIEnrollmentTypeObserver;
     }].array.count > 0;
 }
 @end

@@ -41,4 +41,19 @@
     return [NSValueTransformer valueTransformerForName:CKIRubricAssessmentTransformerName];
 }
 
+- (BOOL)isDummySubmission {
+    return self.attempt == 0;
+}
+
+- (CKISubmission *)defaultAttempt {
+    if (![self.submissionHistory count]) {
+        return nil;
+    }
+    
+    NSArray *sortedAttempts = [self.submissionHistory sortedArrayUsingComparator:^NSComparisonResult(CKISubmission *submission1, CKISubmission *submission2) {
+        return [@(submission1.attempt) compare:@(submission2.attempt)];
+    }];
+    return sortedAttempts.firstObject;
+}
+
 @end
