@@ -7,7 +7,7 @@
 //
 
 #import "CKIClient.h"
-#import <ReactiveCocoa.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CKIPollSession.h"
 #import "CKIPoll.h"

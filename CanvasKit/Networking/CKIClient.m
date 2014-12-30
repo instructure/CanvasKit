@@ -341,11 +341,12 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 {
     NSParameterAssert(transformer);
     NSParameterAssert(jsonDictionary);
-
+    
     id tranformedValue = [transformer transformedValue:jsonDictionary];
     
     NSAssert([tranformedValue isKindOfClass:CKIModel.class], @"Transformer gave back an object of type %@, expected a CKIModel subclass.", [tranformedValue class]);
     CKIModel *model = (CKIModel *)tranformedValue;
+    model.baseURL = self.baseURL;
     model.context = context;
     return model;
 }
@@ -361,6 +362,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
         NSURLSessionDataTask *task = [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
             
             NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
+            NSLog(@"created a model %@", responseObject);
             if ([jsonContentKey length]) {
                 responseObject = responseObject[jsonContentKey];
             }

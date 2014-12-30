@@ -116,6 +116,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKIDiscussionTopic.h>
 #import <CKIClient+CKILiveAssessment.h>
 #import <CKIClient+CKILiveAssessmentResult.h>
+#import <NSValueTransformer+CKIPredefinedTransformerAdditions.h>
 
 #pragma mark - Utilities
 
