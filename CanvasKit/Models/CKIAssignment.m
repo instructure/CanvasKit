@@ -46,11 +46,17 @@
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
+<<<<<<< Updated upstream
         @"rubricCriterion": @"rubric",
         @"rubric": @"rubric_settings",
         @"useRubricForGrading": @"use_rubric_for_grading",
         @"quizID": @"quiz_id",
         @"url": @"url",
+=======
+        @"rubricCriteria": @"rubric",
+        @"rubric": @"rubric_settings",
+        @"needsGradingCountBySection": @"needs_grading_count_by_section",
+>>>>>>> Stashed changes
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -137,6 +143,56 @@
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
 }
+
+- (BOOL)rubricExistsWithoutCriteria
+{
+    return _rubric && !_rubric.criteria;
+}
+
+- (CKIRubric *)rubric
+{
+    if ([self rubricExistsWithoutCriteria]) {
+        _rubric.criteria = self.rubricCriteria;
+    }
+    return _rubric;
+}
+
+- (void)setRubricCriteria:(NSArray *)rubricCriteria
+{
+    _rubric.criteria = rubricCriteria;
+    _rubricCriteria = rubricCriteria;
+}
+
+
+#pragma mark - Needs Grading Count By Section
+
++ (NSValueTransformer *)needsGradingCountBySection {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *needsGradingCounts) {
+        NSMutableDictionary *returnValue = [NSMutableDictionary new];
+        for (NSDictionary *needsGradingCount in needsGradingCounts) {
+            NSString *key = needsGradingCount[@"section_id"];
+            NSNumber *value = needsGradingCount[@"needs_grading_count"];
+            
+            returnValue[key] = value;
+        }
+        
+        return returnValue;
+        
+    } reverseBlock:^id(NSDictionary *needsGradingCounts) {
+        NSMutableArray *returnValue = [NSMutableArray new];
+        
+        for (NSString *key in needsGradingCounts.allKeys) {
+            NSMutableDictionary *sectionWithGradingCount = [NSMutableDictionary new];
+            sectionWithGradingCount[@"section_id"] = key;
+            sectionWithGradingCount[@"needs_grading_count"] = needsGradingCounts[key];
+            
+            [returnValue addObject:sectionWithGradingCount];
+        }
+        
+        return returnValue;
+    }];
+}
+
 
 #pragma mark - Other Methods
 
