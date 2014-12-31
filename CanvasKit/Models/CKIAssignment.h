@@ -239,4 +239,11 @@ The discussion topic corresponding to this assignment.
  */
 @property (nonatomic) NSString *quizID;
 
+/** 
+ Dictionary containing section id as key and number of assignments
+ for that section id that need grading as the value
+ */
+@property (nonatomic, strong) NSDictionary *needsGradingCountBySection;
+
+
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24E9A60E1974675700536C93 /* CKIURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9A60D1974675700536C93 /* CKIURLProtocol.swift */; };
+		24E9A6101974827400536C93 /* CKIFakeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E9A60F1974827400536C93 /* CKIFakeNetwork.swift */; };
 		2793FF7932374A4CA627045E /* libPods-CanvasKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A66D55911554316AD2F2222 /* libPods-CanvasKitTests.a */; };
 		497CDE9319CC9C2900C2BF7B /* CKIDiscussionEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 497CDE9119CC9C2900C2BF7B /* CKIDiscussionEntry.h */; };
 		497CDE9419CC9C2900C2BF7B /* CKIDiscussionEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CDE9219CC9C2900C2BF7B /* CKIDiscussionEntry.m */; };
@@ -451,7 +453,42 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B54DA07E19707BAB007E29FB /* PBXContainerItemProxy */ = {
+		24F707D619817350008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		24F707D819817350008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		24F707DA19817555008233F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		BDC2C3071965F5910017CCA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		BDC5BE221965FB49006090FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC2C2FA1965F5910017CCA4;
+			remoteInfo = CanvasKit;
+		};
+		BDC5BE241965FB49006090FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 809DC71617C694EC0089E846 /* Project object */;
 			proxyType = 1;
@@ -958,6 +995,11 @@
 				B50AC60D1979BB560023F7C9 /* CKIRubricCriterionTests.swift */,
 				B50AC6151979C4A60023F7C9 /* CKISectionTests.swift */,
 				BDC5ECB3196CA12F00DCC430 /* CKIServiceTests.swift */,
+				BD945333196D102E009641F1 /* CKIQuizTests.swift */,
+				BD96F2E7196D89E0006DABB9 /* CKIGroupTests.swift */,
+				BD96F2E9196D9627006DABB9 /* CKIFileTests.swift */,
+				24E9A60D1974675700536C93 /* CKIURLProtocol.swift */,
+				24E9A60F1974827400536C93 /* CKIFakeNetwork.swift */,
 				B51D75F619747C8E0010C176 /* CKISubmissionCommentTests.swift */,
 				B51D75EC197448880010C176 /* CKISubmissionTests.swift */,
 				B51D75F419747AB90010C176 /* CKITabTests.swift */,
@@ -1544,6 +1586,9 @@
 			);
 			dependencies = (
 				BDC5BE2B1965FB8C006090FF /* PBXTargetDependency */,
+				24F707D719817350008233F5 /* PBXTargetDependency */,
+				24F707D919817350008233F5 /* PBXTargetDependency */,
+				24F707DB19817555008233F5 /* PBXTargetDependency */,
 				B54DA07F19707BAB007E29FB /* PBXTargetDependency */,
 				B54DA08119707BAB007E29FB /* PBXTargetDependency */,
 			);
@@ -2016,7 +2061,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B54DA07F19707BAB007E29FB /* PBXTargetDependency */ = {
+		24F707D719817350008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707D619817350008233F5 /* PBXContainerItemProxy */;
+		};
+		24F707D919817350008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707D819817350008233F5 /* PBXContainerItemProxy */;
+		};
+		24F707DB19817555008233F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = 24F707DA19817555008233F5 /* PBXContainerItemProxy */;
+		};
+		BDC2C3081965F5910017CCA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = BDC2C3071965F5910017CCA4 /* PBXContainerItemProxy */;
+		};
+		BDC5BE231965FB49006090FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
+			targetProxy = BDC5BE221965FB49006090FF /* PBXContainerItemProxy */;
+		};
+		BDC5BE251965FB49006090FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BDC2C2FA1965F5910017CCA4 /* CanvasKit */;
 			targetProxy = B54DA07E19707BAB007E29FB /* PBXContainerItemProxy */;
