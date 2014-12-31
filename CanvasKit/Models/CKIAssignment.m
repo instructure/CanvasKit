@@ -46,17 +46,12 @@
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
-<<<<<<< Updated upstream
         @"rubricCriterion": @"rubric",
         @"rubric": @"rubric_settings",
         @"useRubricForGrading": @"use_rubric_for_grading",
         @"quizID": @"quiz_id",
         @"url": @"url",
-=======
-        @"rubricCriteria": @"rubric",
-        @"rubric": @"rubric_settings",
         @"needsGradingCountBySection": @"needs_grading_count_by_section",
->>>>>>> Stashed changes
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
