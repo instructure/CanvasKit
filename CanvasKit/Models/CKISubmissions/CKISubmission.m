@@ -1,5 +1,5 @@
 //
-//  CKISubmissionSet.m
+//  CKISubmission.m
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -13,11 +13,22 @@
 #import "CKIAssignment.h"
 #import "CKIFile.h"
 #import "CKIMediaComment.h"
+#import "CKIDiscussionEntry.h"
+
+@interface CKISubmission ()
+
+@property(nonatomic, readwrite) CKISubmissionEnumType type;
+
+@end
 
 NSString * const CKISubmissionTypeOnlineTextEntry = @"online_text_entry";
 NSString * const CKISubmissionTypeOnlineURL = @"online_url";
 NSString * const CKISubmissionTypeOnlineUpload = @"online_upload";
 NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
+NSString * const CKISubmissionTypeQuiz = @"online_quiz";
+NSString * const CKISubmissionTypeDiscussion = @"discussion_topic";
+NSString * const CKISubmissionTypeExternalTool = @"external_tool";
+
 
 @implementation CKISubmission
 
@@ -32,8 +43,8 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
         @"submissionType": @"submission_type",
         @"userID": @"user_id",
         @"graderID": @"grader_id",
-        @"comments": @"submission_comments",
-        @"mediaComment" : @"media_comment"
+        @"discussionEntries": @"discussion_entries",
+        @"mediaComment": @"media_comment"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -74,11 +85,10 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
-+ (NSValueTransformer *)commentsJSONTransformer
++ (NSValueTransformer *)gradeJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKISubmissionComment class]];
+    return [NSValueTransformer valueTransformerForName:CKINumberOrStringToStringTransformerName];
 }
-
 + (NSValueTransformer *)assignmentJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAssignment class]];
@@ -88,9 +98,63 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIFile class]];
 }
 
-+ (NSValueTransformer *)mediaCommentJSONTransformer
-{
++ (NSValueTransformer *)discussionEntriesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIDiscussionEntry class]];
+}
+
++ (NSValueTransformer *)mediaCommentJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIMediaComment class]];
+}
+
+- (NSString *)path {
+    return [[[self.context path] stringByAppendingPathComponent:@"submissions"] stringByAppendingPathComponent:self.userID];
+}
+
+- (void)setSubmissionType:(NSString *)submissionType {
+    if (_submissionType == submissionType) {
+        return;
+    }
+    
+    _submissionType = submissionType;
+    self.type = [self typeForSubmissionType:_submissionType];
+}
+
+- (CKISubmissionEnumType)typeForSubmissionType:(NSString *)submissionType {
+    
+    CKISubmissionEnumType type = CKISubmissionEnumTypeUnknown;
+    if ([submissionType isEqualToString:CKISubmissionTypeOnlineUpload]) {
+        type = CKISubmissionEnumTypeOnlineUpload;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeOnlineTextEntry]) {
+        type = CKISubmissionEnumTypeOnlineTextEntry;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeOnlineURL]) {
+        type = CKISubmissionEnumTypeOnlineURL;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeMediaRecording]) {
+        type = CKISubmissionEnumTypeMediaRecording;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeQuiz]) {
+        type = CKISubmissionEnumTypeQuiz;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeDiscussion]) {
+        type = CKISubmissionEnumTypeDiscussion;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypeExternalTool]) {
+        type = CKISubmissionEnumTypeExternalTool;
+    }
+    return type;
+}
+
+- (CKIFile *)defaultAttachment {
+    if (![self.attachments count]) {
+        return nil;
+    }
+    
+    NSArray *sortedAttachments = [self.attachments sortedArrayUsingComparator:^NSComparisonResult(CKIFile *attachment1, CKIFile *attachment2) {
+        return [attachment1.createdAt compare:attachment2.createdAt];
+    }];
+    return sortedAttachments.firstObject;
 }
 
 @end

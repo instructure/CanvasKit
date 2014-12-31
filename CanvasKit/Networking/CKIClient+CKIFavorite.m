@@ -9,8 +9,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CKIClient+CKIFavorite.h"
-#import "CKIFavorite.h"
 #import "CKICourse.h"
+#import "CKIFavorite.h"
 
 @implementation CKIClient (CKIFavorite)
 
@@ -26,35 +26,18 @@
     return [[CKIRootContext.path stringByAppendingPathComponent:@"users/self/favorites/courses/"] stringByAppendingPathComponent:course.id];
 }
 
-- (void)addCourse:(CKICourse *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)addCourseToFavorites:(CKICourse *)course
 {
     NSString *path = [self currentUserFavoritesPathStringForCourse:course];
     
-    [self POST:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            success();
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
+    return [self createModelAtPath:path parameters:nil modelClass:[CKIFavorite class] context:nil];
 }
 
-- (void)removeCourse:(CKICourse *)course fromFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure
+- (RACSignal *)removeCourseFromFavorites:(CKICourse *)course
 {
     NSString *path = [self currentUserFavoritesPathStringForCourse:course];
     
-    [self DELETE:path parameters:0 success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            success();
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-    
+    return [self deleteObjectAtPath:path modelClass:[CKIFavorite class] parameters:nil context:nil];
 }
 
 @end

@@ -14,7 +14,9 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     NSDictionary *keyPaths = @{
-        @"ratingDescription": @"description"
+                               @"points": @"points",
+                               @"comments": @"comments",
+                               @"ratingDescription": @"description"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

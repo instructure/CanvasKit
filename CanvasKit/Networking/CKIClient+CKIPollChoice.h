@@ -13,6 +13,7 @@
 @interface CKIClient (CKIPollChoice)
 
 - (RACSignal *)fetchPollChoicesForPoll:(CKIPoll *)poll;
+- (RACSignal *)fetchPollChoiceWithId:(NSString *)pollChoiceId fromPoll:(CKIPoll *)poll;
 - (RACSignal *)createPollChoice:(CKIPollChoice *)pollChoice forPoll:(CKIPoll *)poll;
 
 @end

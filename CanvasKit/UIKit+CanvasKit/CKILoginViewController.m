@@ -9,21 +9,32 @@
 #import "CKILoginViewController.h"
 #import "NSString+CKIAdditions.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "CKIClient.h"
 
 @interface CKILoginViewController () <UIWebViewDelegate, NSURLSessionTaskDelegate, UIAlertViewDelegate>
 @property (nonatomic, copy) NSURLRequest *request;
+@property (nonatomic) CKIAuthenticationMethod method;
 @property (nonatomic, copy) void(^completionHandler)(NSURLSessionAuthChallengeDisposition, NSURLCredential *);
 @end
 
 @implementation CKILoginViewController
 
-- (id)initWithRequest:(NSURLRequest *)request
+- (id)initWithRequest:(NSURLRequest *)request method:(CKIAuthenticationMethod)method
 {
     self = [super init];
     if (self) {
         self.request = request;
+        self.method = method;
     }
     return self;
+}
+
+- (void)clearExistingSessions {
+    // remove cookies to dispose of previous login session
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *oldCookie in storage.cookies) {
+        [storage deleteCookie:oldCookie];
+    }
 }
 
 - (void)viewDidLoad
@@ -37,6 +48,7 @@
     [self.webView setBackgroundColor:[UIColor blackColor]];
     self.view = self.webView;
     
+    [self clearExistingSessions];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     [[session dataTaskWithURL:[self.request URL]
@@ -44,9 +56,26 @@
                                 NSURLResponse *response,
                                 NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.webView loadRequest:self.request];
+                    [self loadLoginRequest];
                 });
             }] resume];
+}
+
+- (void)loadLoginRequest {
+    [self clearExistingSessions];
+    NSMutableURLRequest *request = [self.request mutableCopy];
+    if (self.method == CKIAuthenticationMethodSiteAdmin) {
+        [request setHTTPShouldHandleCookies:YES];
+        NSDictionary *cookieProperties = @{
+                                           NSHTTPCookieValue: @"1",
+                                           NSHTTPCookieDomain: request.URL.host,
+                                           NSHTTPCookieName: @"canvas_sa_delegated",
+                                           NSHTTPCookiePath: @"/"
+                                           };
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    }
+    [self.webView loadRequest:request];
 }
 
 #pragma mark - UIAlertView Delegate

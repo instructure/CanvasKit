@@ -5,33 +5,33 @@ require 'open3'
 @new_version = ""
 @podspec_name
 
-namespace :release do
+namespace :pod do
 
-  desc 'Deploy the cocoapod to the public or private repo'
-  task :pod do
+  desc 'push the cocoapod to the public or private specs repo'
+  task :submit do
 
     STDOUT.puts "> Is this a public cocoapod? [yes, no]"
     input = STDIN.gets.chomp
-    raise "#{input} is not a valid response" unless input == "yes" || input == "no"
-
+    raise "#{input} is not a valid response" unless ['yes', 'y', 'no', 'n'].include?(input)
 
     cmd = ''
-    if input == 'yes'
-      cmd = 'pod trunk push'
+    if input == 'yes' || input == 'y'
+      cmd = "pod trunk push --verbose #{get_podspec_name}"
     else
-      cmp = 'pod push'
+      raise '> This is not ready for prime time. Were working on it.'
+      # cmd = "pod push #{get_podspec_name}"
     end
 
-    Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-
-      puts stdout.read
-
-    end
+    %x(#{cmd})
 
   end
 
-  desc 'Used to release a version of the library that contains bug fixes. This new version should be backwards compatible.'
-  task :patch do
+  desc 'Updates the podspec with the new version, pushes changes and tags for release.'
+  task :release do
+
+    STDOUT.puts "> What kind of release are we dealing with here? [major, minor, patch]"
+    input = STDIN.gets.chomp
+    raise "#{input} is not a valid release type. Try again." unless ["major", "minor", "patch"].include?(input)
 
     @podspec_name = get_podspec_name
 
@@ -40,65 +40,26 @@ namespace :release do
     new_version = ''
 
     if is_valid_version_scheme(current_version)
-      new_version = incremented_patch_version_for_version(current_version)
+      new_version =
+
+      case input
+      when "major"
+        incremented_major_version_for_version(current_version)
+      when "minor"
+        incremented_minor_version_for_version(current_version)
+      when "patch"
+        incremented_patch_version_for_version(current_version)
+      else
+      end
     else
       new_version = prompt_user_for_valid_version_string
     end
 
-    @new_version = new_version
-    verify_changes(new_version)
+    verify_changes(@new_version)
 
     update_podspec_for_new_version(@podspec_name, new_version)
     prompt_for_remote_name
     wrap_up
-  end
-
-  desc "Used to release a new minor version of the library. A minor version should contain new features that are backwards compatible."
-  task :minor do
-
-    @podspec_name = get_podspec_name
-
-    current_version = current_version_for_podspec(@podspec_name)
-    @current_version = current_version
-    new_version = ''
-
-    if is_valid_version_scheme(current_version)
-      new_version = incremented_minor_version_for_version(current_version)
-    else
-      new_version = prompt_user_for_valid_version_string
-    end
-
-    @new_version = new_version
-    verify_changes(new_version)
-
-    update_podspec_for_new_version(@podspec_name, new_version)
-    prompt_for_remote_name
-    wrap_up
-
-  end
-
-  desc "Used to release a new major version of the library. A major version will contain changes that are not backwards compatible."
-  task :major do
-
-    @podspec_name = get_podspec_name
-
-    current_version = current_version_for_podspec(@podspec_name)
-    @current_version = current_version
-    new_version = ''
-
-    if is_valid_version_scheme(current_version)
-      new_version = incremented_major_version_for_version(current_version)
-    else
-      new_version = prompt_user_for_valid_version_string
-    end
-
-    @new_version = new_version
-    verify_changes(new_version)
-
-    update_podspec_for_new_version(@podspec_name, new_version)
-    prompt_for_remote_name
-    wrap_up
-
   end
 
   desc 'Convenience task to ensure the correct podspec is being identified'
@@ -117,9 +78,9 @@ namespace :release do
 
   def verify_changes(new_version)
 
-    STDOUT.puts "> The version has been updated from #{@current_version} to #{new_version}, would you like to proceed? [Yes, no]"
+    STDOUT.puts "> The version has been updated from #{@current_version} to #{new_version}, would you like to proceed? [yes, no]"
     input = STDIN.gets.chomp
-    raise "Release cancelled by user" unless input == "Yes"
+    raise "Release cancelled by user" unless input == "yes"
 
   end
 
@@ -207,29 +168,25 @@ namespace :release do
   end
 
   def incremented_patch_version_for_version(version_string)
-    # version_string.gsub(/\d*\.\d*\.(\d*)/) do |match|
-    #   version_string = match.gsub("#{$1}", $1.next.to_s)
-    # end
-
     version_string.gsub(/(\d*\.\d*\.)(\d*)/) do |match|
-      version_string = "#{Regexp.last_match[1]}#{Regexp.last_match[2].to_i.next}"
+      @new_version = "#{Regexp.last_match[1]}#{Regexp.last_match[2].to_i.next}"
     end
 
-    version_string
+    @new_version
   end
 
   def incremented_minor_version_for_version(version_string)
     version_string.gsub(/(\d*\.)(\d*)(\.\d*)/) do |match|
-      version_string = "#{Regexp.last_match[1]}#{Regexp.last_match[2].to_i.next}.0"
+      @new_version = "#{Regexp.last_match[1]}#{Regexp.last_match[2].to_i.next}.0"
     end
-    version_string
+    @new_version
   end
 
   def incremented_major_version_for_version(version_string)
     version_string.gsub(/(\d*\.)(\d*)(\.\d*)/) do |match|
-      version_string = "#{Regexp.last_match[1].to_i.next}.0.0"
+      @new_version = "#{Regexp.last_match[1].to_i.next}.0.0"
     end
-    version_string
+    @new_version
   end
 
   def is_valid_version_scheme(version_string)

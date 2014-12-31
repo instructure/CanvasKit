@@ -11,7 +11,7 @@
     "read_state":"read",
     "unread_count":5,
     "subscribed":true,
-    "subscription_hold":"not_in_group_set",
+    "subscription_hold":"initial_post_required",
     "assignment_id": 847,
     "delayed_post_at": "2037-07-21T13:29:31Z",
     "published":true,

@@ -11,12 +11,14 @@
 @class CKICourse;
 @class CKISubmission;
 @class CKIRubric;
+@class CKIDiscussionTopic;
 
 typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
     CKIAssignmentScoringTypePoints,
     CKIAssignmentScoringTypePercentage,
     CKIAssignmentScoringTypePassFail,
     CKIAssignmentScoringTypeLetter,
+    CKIAssignmentScoringTypeGPAScale,
     CKIAssignmentScoringTypeNotGraded
 };
 
@@ -102,15 +104,33 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
 @property (nonatomic) BOOL muted;
 
 /**
+ Boolean indicating peer reviews are assigned automatically. If false, the teacher is expected to manually assign peer reviews.
+ */
+@property (nonatomic) BOOL automaticPeerReviews;
+
+/**
  The assignment is published
  
  @note Only visible if 'enable draft' account setting is on
  */
 @property (nonatomic) BOOL published;
 
+/**
+The discussion topic corresponding to this assignment.
+
+@note Only valid if submissionTypes includes "discussion_topic"
+*/
+@property (nonatomic, copy) NSString *discussionTopicID;
+
+/**
+ The discussion topic corresponding to this assignment.
+ 
+ @note Only valid if submissionTypes includes "discussion_topic"
+ */
+@property (nonatomic, strong) CKIDiscussionTopic *discussionTopic;
+
 
 #pragma mark - Grading
-
 
 /**
  The maximum points possible for the assignment.
@@ -134,9 +154,8 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  */
 @property (nonatomic, assign) CKIAssignmentScoringType scoringType;
 
+
 #pragma mark - Submissions
-
-
 
 /**
  The types of submissions allowed for this assignment list
@@ -166,9 +185,14 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
 #pragma mark - Rubric
 
 /**
- Array of CKIRubricCriterion
+ Rubric Settings Object
  */
 @property (nonatomic, strong) CKIRubric *rubric;
+
+/**
+ Array of CKIRubricCriterion
+ */
+@property (nonatomic, copy) NSArray *rubricCriterion;
 
 
 #pragma mark - Peer Review
@@ -177,6 +201,11 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  Boolean indicating if peer reviews are required for this assignment
  */
 @property (nonatomic) BOOL peerReviewRequired;
+
+/**
+ Boolean indicating if rubric should be used to grade assignment
+ */
+@property (nonatomic) BOOL useRubricForGrading;
 
 /**
  Boolean indicating peer reviews are assigned automatically.
@@ -199,5 +228,15 @@ typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
  @note This is NOT valid unless you have automatic_peer_reviews set to true.
  */
 @property (nonatomic, strong) NSDate *peerReviewDueDate;
+
+/**
+ the url of the external tool
+ */
+@property (nonatomic) NSURL *url;
+
+/**
+ the id of the quiz if this assignment represents a quiz
+ */
+@property (nonatomic) NSString *quizID;
 
 @end

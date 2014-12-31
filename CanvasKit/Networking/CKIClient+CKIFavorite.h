@@ -15,8 +15,8 @@
 
 - (RACSignal *)fetchFavoriteCourses;
 
-- (void)addCourse:(CKICourse *)course toFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)addCourseToFavorites:(CKICourse *)course;
 
-- (void)removeCourse:(CKICourse *)course fromFavoritesWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+- (RACSignal *)removeCourseFromFavorites:(CKICourse *)course;
 
 @end

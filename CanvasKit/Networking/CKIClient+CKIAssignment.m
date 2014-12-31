@@ -16,8 +16,20 @@
 
 - (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context
 {
+    return [self fetchAssignmentsForContext:context includeSubmissions:YES];
+}
+
+- (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context includeSubmissions:(BOOL)includeSubmissions
+{
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignments"];
-    return [self fetchResponseAtPath:path parameters:@{@"include": @[@"submission", @"needs_grading_count"]} modelClass:[CKIAssignment class] context:context];
+    NSDictionary *params = nil;
+    if (includeSubmissions) {
+        params = @{@"include": @[@"submission", @"needs_grading_count", @"needs_grading_count_by_section"]};
+    } else {
+        params = @{@"include": @[@"needs_grading_count", @"needs_grading_count_by_section"]};
+    }
+    
+    return [self fetchResponseAtPath:path parameters:params modelClass:[CKIAssignment class] context:context];
 }
 
 @end

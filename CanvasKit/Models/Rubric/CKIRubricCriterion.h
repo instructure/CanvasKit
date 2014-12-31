@@ -41,6 +41,11 @@
 @property (nonatomic, copy) NSArray *ratings;
 
 /**
+ The position of the Rubric Criterion
+ */
+@property (nonatomic) NSInteger position;
+
+/**
  The currently selected rating for this criterion, if any.
  */
 @property (nonatomic, readonly) CKIRubricCriterionRating *selectedRating;

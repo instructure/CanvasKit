@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class CKIClient;
+#import "CKIClient.h"
 
 @interface CKILoginViewController : UIViewController
 
@@ -24,7 +23,7 @@
  */
 @property (nonatomic, copy) void (^failureBlock)(NSError *error);
 
-- (id)initWithRequest:(NSURLRequest *)request;
+- (id)initWithRequest:(NSURLRequest *)request method:(CKIAuthenticationMethod)method;
 - (void)cancelOAuth;
 
 @end

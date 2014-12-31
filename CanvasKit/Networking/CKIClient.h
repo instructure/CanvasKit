@@ -6,6 +6,7 @@
 //
 
 #import <AFNetworking/AFHTTPSessionManager.h>
+@class CKIMediaServer;
 
 typedef NS_ENUM(NSUInteger, CKIAuthenticationMethod) {
     CKIAuthenticationMethodDefault,
@@ -27,6 +28,8 @@ extern NSString *const CKIClientAccessTokenExpiredNotification;
  the canvas API.
  */
 @interface CKIClient : AFHTTPSessionManager <NSCopying>
+
+@property (nonatomic, strong) CKIMediaServer *mediaServer;
 
 /**
  The access token for making oauth requests (if logged in)
@@ -60,6 +63,15 @@ extern NSString *const CKIClientAccessTokenExpiredNotification;
  @param clientSecret the client secret for the application
  */
 - (instancetype)initWithBaseURL:(NSURL *)baseURL clientID:(NSString *)clientID clientSecret:(NSString *)clientSecret;
+
+
+/**
+ This method is intended for testing only. It should not be used in a production app
+ 
+ @param baseURL the base URL to be used by the client
+ @param token the auth token acquired from Canvas web for the user
+ */
+- (instancetype)initWithBaseURL:(NSURL *)url token:(NSString *)token;
 
 #pragma mark - OAuth
 

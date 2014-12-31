@@ -16,7 +16,8 @@
     NSDictionary *keyPaths = @{
         @"points": @"points",
         @"criterionDescription": @"description",
-        @"longDescription": @"long_description"
+        @"longDescription": @"long_description",
+        @"ratings": @"ratings"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

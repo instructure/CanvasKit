@@ -1,5 +1,6 @@
+
 //
-//  CKISubmissionSet.h
+//  CKISubmission.h
 //  CanvasKit
 //
 //  Created by Jason Larsen on 8/29/13.
@@ -12,9 +13,25 @@ extern NSString * const CKISubmissionTypeOnlineTextEntry;
 extern NSString * const CKISubmissionTypeOnlineURL;
 extern NSString * const CKISubmissionTypeOnlineUpload;
 extern NSString * const CKISubmissionTypeMediaRecording;
+extern NSString * const CKISubmissionTypeQuiz;
+extern NSString * const CKISubmissionTypeDiscussion;
+extern NSString * const CKISubmissionTypeExternalTool;
+
+typedef NS_ENUM(NSInteger, CKISubmissionEnumType) {
+    CKISubmissionEnumTypeUnknown            = -1,
+    CKISubmissionEnumTypeOnlineTextEntry    = 0,
+    CKISubmissionEnumTypeOnlineURL          = 1,
+    CKISubmissionEnumTypeOnlineUpload       = 2,
+    CKISubmissionEnumTypeMediaRecording     = 3,
+    CKISubmissionEnumTypeQuiz               = 4,
+    CKISubmissionEnumTypeDiscussion         = 5,
+    CKISubmissionEnumTypeExternalTool       = 6,
+};
 
 @class CKIAssignment;
 @class CKIMediaComment;
+@class CKIRubricAssessment;
+@class CKIFile;
 
 @interface CKISubmission : CKIModel
 
@@ -76,7 +93,7 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 /**
  The raw score of this submission.
  */
-@property (nonatomic) double score;
+@property (nonatomic, strong) NSNumber *score;
 
 /**
  The date the submission was submitted.
@@ -84,12 +101,17 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 @property (nonatomic, strong) NSDate *submittedAt;
 
 /**
- The type of submission.
+ The type of submission.  Returns the string value.  Users should check type when comparing so public values are not available
  
  @see CKISubmissionTypeOnlineTextEntry, CKISubmissionTypeOnlineURL,
  CKISubmissionTypeOnlineUpload, CKISubmissionTypeMediaRecording
  */
 @property (nonatomic, copy) NSString *submissionType;
+
+/**
+ The type of submission enum
+ */
+@property (nonatomic, readonly) CKISubmissionEnumType type;
 
 /**
  The ID of the user that created the submission.
@@ -107,15 +129,15 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 @property (nonatomic) BOOL late;
 
 /**
- Comments left by graders. An array of CKISubmissionComment objects.
- */
-@property (nonatomic, copy) NSArray *comments;
-
-/**
  When a submission appears in a conversation, the assignment is also
  available as part of the submission.
  */
 @property (nonatomic) CKIAssignment *assignment;
+
+/**
+ When submission appears as a media_recording the media comment object is available
+ */
+@property (nonatomic) CKIMediaComment *mediaComment;
 
 /**
 * Any file attachments included with this submission.
@@ -123,9 +145,15 @@ extern NSString * const CKISubmissionTypeMediaRecording;
 */
 @property (nonatomic, copy) NSArray *attachments;
 
+
 /**
-* Media comment associated with submission. nil if
-* no media comment.
-*/
-@property (nonatomic, copy) CKIMediaComment *mediaComment;
+ An array containing the submitted `CKIDiscussionEntry`s for
+ `CKISubmissionTypeDiscussion` type submissions
+ */
+@property (nonatomic, copy) NSArray *discussionEntries;
+
+- (CKIFile *)defaultAttachment;
+
+
 @end
+

@@ -13,9 +13,9 @@
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 #import "CKISubmission.h"
 #import "CKIRubric.h"
+#import "CKIDiscussionTopic.h"
 
 @interface CKIAssignment ()
-@property (nonatomic, copy) NSArray *rubricCriteria;
 @end
 
 @implementation CKIAssignment
@@ -32,6 +32,7 @@
         @"htmlURL": @"html_url",
         @"allowedExtensions": @"allowed_extensions",
         @"assignmentGroupID": @"assignment_group_id",
+        @"automaticPeerReviews": @"automatic_peer_reviews",
         @"groupCategoryID": @"group_category_id",
         @"gradeGroupStudentsIndividually": @"grade_group_students_individually",
         @"needsGradingCount": @"needs_grading_count",
@@ -40,11 +41,16 @@
         @"peerReviewsAutomaticallyAssignedCount": @"peer_review_count",
         @"peerReviewDueDate": @"peer_reviews_assign_at",
         @"submissionTypes": @"submission_types",
+        @"discussionTopicID": @"discussion_topic_id",
+        @"discussionTopic": @"discussion_topic",
         @"lockedForUser" : @"locked_for_user",
         @"pointsPossible" : @"points_possible",
         @"gradingType" : @"grading_type",
-        @"rubricCriteria": @"rubric",
-        @"rubric": @"rubric_settings"
+        @"rubricCriterion": @"rubric",
+        @"rubric": @"rubric_settings",
+        @"useRubricForGrading": @"use_rubric_for_grading",
+        @"quizID": @"quiz_id",
+        @"url": @"url",
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -96,6 +102,24 @@
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
 }
 
++ (NSValueTransformer *)discussionTopicIDJSONValueTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
++ (NSValueTransformer *)discussionTopicJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIDiscussionTopic class]];
+}
+
++ (NSValueTransformer *)urlJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)quizIDJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
+}
+
 #pragma mark - Rubric
 
 /**
@@ -104,7 +128,7 @@
 * id, title, pointsPossible, etc.
 */
 
-+ (NSValueTransformer *)rubricCriteriaJSONTransformer
++ (NSValueTransformer *)rubricCriterionJSONTransformer
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIRubricCriterion class]];
 }
@@ -112,25 +136,6 @@
 + (NSValueTransformer *)rubricJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
-}
-
-- (BOOL)rubricExistsWithoutCriteria
-{
-    return _rubric && !_rubric.criteria;
-}
-
-- (CKIRubric *)rubric
-{
-    if ([self rubricExistsWithoutCriteria]) {
-        _rubric.criteria = self.rubricCriteria;
-    }
-    return _rubric;
-}
-
-- (void)setRubricCriteria:(NSArray *)rubricCriteria
-{
-    _rubric.criteria = rubricCriteria;
-    _rubricCriteria = rubricCriteria;
 }
 
 #pragma mark - Other Methods
@@ -151,6 +156,8 @@
         return CKIAssignmentScoringTypeLetter;
     } else if ([scoringTypeString isEqual:@"not_graded"]) {
         return CKIAssignmentScoringTypeNotGraded;
+    } else if ([scoringTypeString isEqual:@"gpa_scale"]) {
+        return CKIAssignmentScoringTypeGPAScale;
     }
     
     return CKIAssignmentScoringTypePoints;

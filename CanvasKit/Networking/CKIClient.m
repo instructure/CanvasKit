@@ -72,6 +72,15 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     return self;
 }
 
+- (instancetype)initWithBaseURL:(NSURL *)url token:(NSString *)token {
+    self = [self initWithBaseURL:url];
+    if (!self) {
+        return nil;
+    }
+    [self setAccessToken:token];
+    return self;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     CKIClient *dup = (CKIClient *) [super copyWithZone:zone];
@@ -141,22 +150,9 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     self.currentUser = nil;
 }
 
-- (void)clearExistingSessionsForDomain:(NSString *)domain {
-    // remove cookies to dispose of previous login session
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *oldCookies = [storage.cookies.rac_sequence filter:^BOOL(NSHTTPCookie *cookie) {
-        return [cookie.domain rangeOfString:domain options:NSCaseInsensitiveSearch].location != NSNotFound;
-    }].array;
-    for (NSHTTPCookie *oldCookie in oldCookies) {
-        [storage deleteCookie:oldCookie];
-    }
-}
-
 - (NSURLRequest *)authenticationRequestWithMethod:(CKIAuthenticationMethod)method
 {
     NSAssert(method < CKIAuthenticationMethodCount, @"Invalid authentication method");
-    
-    [self clearExistingSessionsForDomain:self.baseURL.host];
     
     NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
                            , self.baseURL.absoluteString
@@ -169,18 +165,6 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
-    
-    if (method == CKIAuthenticationMethodSiteAdmin) {
-        [request setHTTPShouldHandleCookies:YES];
-        NSDictionary *cookieProperties = @{
-                                           NSHTTPCookieValue: @"1",
-                                           NSHTTPCookieDomain: self.baseURL.host,
-                                           NSHTTPCookieName: @"canvas_sa_delegated",
-                                           NSHTTPCookiePath: @"/"
-                                           };
-        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    }
     
     return request;
 }
@@ -299,7 +283,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
             [[thisPageSignal concat:nextPageSignal] subscribe:subscriber];
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            if ([self isUnauthorizedError:error]) {
+            // don't try this if we are attempting to masquerade!
+            if ([self isUnauthorizedError:error] && [self actAsUserID].length == 0) {
                 // if the user gets a 401 that might be a server issue, lets
                 // do one more check to see if our access token has expired
                 // or been revoked
@@ -358,6 +343,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSParameterAssert(jsonDictionary);
 
     id tranformedValue = [transformer transformedValue:jsonDictionary];
+    
     NSAssert([tranformedValue isKindOfClass:CKIModel.class], @"Transformer gave back an object of type %@, expected a CKIModel subclass.", [tranformedValue class]);
     CKIModel *model = (CKIModel *)tranformedValue;
     model.context = context;
@@ -447,7 +433,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 - (RACSignal *)authorizeWithServerUsingWebBrowserUsingAuthenticationMethod:(CKIAuthenticationMethod)method
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:[self authenticationRequestWithMethod:method]];
+        NSURLRequest *request = [self authenticationRequestWithMethod:method];
+        CKILoginViewController *loginViewController = [[CKILoginViewController alloc] initWithRequest:request method:method];
         loginViewController.successBlock = ^(NSString *authToken) {
             [subscriber sendNext:authToken];
             [subscriber sendCompleted];
