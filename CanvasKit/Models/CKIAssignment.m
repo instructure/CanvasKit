@@ -139,25 +139,6 @@
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIRubric class]];
 }
 
-- (BOOL)rubricExistsWithoutCriteria
-{
-    return _rubric && !_rubric.criteria;
-}
-
-- (CKIRubric *)rubric
-{
-    if ([self rubricExistsWithoutCriteria]) {
-        _rubric.criteria = self.rubricCriteria;
-    }
-    return _rubric;
-}
-
-- (void)setRubricCriteria:(NSArray *)rubricCriteria
-{
-    _rubric.criteria = rubricCriteria;
-    _rubricCriteria = rubricCriteria;
-}
-
 
 #pragma mark - Needs Grading Count By Section
 

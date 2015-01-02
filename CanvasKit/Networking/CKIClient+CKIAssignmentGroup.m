@@ -19,7 +19,7 @@
 
 - (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context
 {
-    [self fetchAssignmentGroupsForContext:context includeAssignments:YES];
+    return [self fetchAssignmentGroupsForContext:context includeAssignments:YES];
 }
 
 - (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments
