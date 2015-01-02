@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
   s.name     = 'CanvasKit'
-  s.version  = '0.6.22'
+  s.version  = '0.6.23'
   s.license  = 'MIT'
   s.summary  = 'A Canvas API integration framework better than bamboo'
   s.homepage = 'https://github.com/instructure/CanvasKit'
   s.authors  = { 'Rick Roberts' => 'elgreco84@gmail.com', 'Jason Larsen' => 'jason.larsen@gmail.com' }
 <<<<<<< HEAD
-  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => '0.6.21' }
+  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => '0.6.23' }
 =======
-  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => '0.6.22' }
+  s.source   = { :git => 'https://github.com/instructure/CanvasKit.git', :tag => '0.6.23' }
 >>>>>>> instructure/master
   s.requires_arc = true
 
