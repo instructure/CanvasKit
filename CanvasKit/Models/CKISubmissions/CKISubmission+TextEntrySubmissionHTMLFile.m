@@ -11,8 +11,8 @@
 @implementation CKISubmission (TextEntrySubmissionHTMLFile)
 
 - (NSURL *)urlForTextEntryLocalHTMLFile {
-    NSString *subdirectory = [[NSUUID UUID] UUIDString];
-    NSString *filename = @"text-entry.html";
+    NSString *subdirectory = [[NSUUID UUID] UUIDString];    
+    NSString *filename = [NSString stringWithFormat:@"text-entry%lu.html", (unsigned long)self.attempt];
     
     
     NSArray *cachePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
