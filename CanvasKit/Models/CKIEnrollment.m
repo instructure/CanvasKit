@@ -10,12 +10,23 @@
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
-NSString *const CKIEnrollmentTypeStudent = @"student";
-NSString *const CKIEnrollmentTypeTeacher = @"teacher";
-NSString *const CKIEnrollmentTypeTA = @"ta";
-NSString *const CKIEnrollmentTypeObserver = @"observer";
-NSString *const CKIEnrollmentTypeMember = @"member";
-NSString *const CKIEnrollmentTypeDesigner = @"designer";
+static NSString *const STUDENT_ENROLLMENT_KEY1 = @"student";
+static NSString *const STUDENT_ENROLLMENT_KEY2 = @"StudentEnrollment";
+
+static NSString *const TEACHER_ENROLLMENT_KEY1 = @"teacher";
+static NSString *const TEACHER_ENROLLMENT_KEY2 = @"TeacherEnrollment";
+
+static NSString *const TA_ENROLLMENT_KEY1 = @"ta";
+static NSString *const TA_ENROLLMENT_KEY2 = @"TAEnrollment";
+
+static NSString *const OBSERVER_ENROLLMENT_KEY1 = @"observer";
+static NSString *const OBSERVER_ENROLLMENT_KEY2 = @"ObserverEnrollment";
+
+static NSString *const MEMBER_ENROLLMENT_KEY1 = @"member";
+static NSString *const MEMBER_ENROLLMENT_KEY2 = @"MemberEnrollment";
+
+static NSString *const DESIGNER_ENROLLMENT_KEY1 = @"designer";
+static NSString *const DESIGNER_ENROLLMENT_KEY2 = @"DesignerEnrollment";
 
 @implementation CKIEnrollment
 
@@ -38,9 +49,43 @@ NSString *const CKIEnrollmentTypeDesigner = @"designer";
     return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
 }
 
++ (NSValueTransformer *)typeJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *type) {
+        if ([type isEqualToString:STUDENT_ENROLLMENT_KEY1] || [type isEqualToString:STUDENT_ENROLLMENT_KEY2]) {
+            return @(CKIEnrollmentTypeStudent);
+        } else if ([type isEqualToString:TEACHER_ENROLLMENT_KEY1] || [type isEqualToString:TEACHER_ENROLLMENT_KEY2]) {
+            return @(CKIEnrollmentTypeTeacher);
+        } else if ([type isEqualToString:TA_ENROLLMENT_KEY1] || [type isEqualToString:TA_ENROLLMENT_KEY2]) {
+            return @(CKIEnrollmentTypeTA);
+        } else if ([type isEqualToString:OBSERVER_ENROLLMENT_KEY1] || [type isEqualToString:OBSERVER_ENROLLMENT_KEY2]) {
+            return @(CKIEnrollmentTypeObserver);
+        } else if ([type isEqualToString:DESIGNER_ENROLLMENT_KEY1] || [type isEqualToString:DESIGNER_ENROLLMENT_KEY2]) {
+            return @(CKIEnrollmentTypeStudent);
+        }
+        return @(CKIEnrollmentTypeUnknown);
+    } reverseBlock:^id(NSNumber *state) {
+        switch ([state integerValue]) {
+            case CKIEnrollmentTypeStudent:
+                return STUDENT_ENROLLMENT_KEY1;
+            case CKIEnrollmentTypeTeacher:
+                return TEACHER_ENROLLMENT_KEY1;
+            case CKIEnrollmentTypeTA:
+                return TA_ENROLLMENT_KEY1;
+            case CKIEnrollmentTypeObserver:
+                return OBSERVER_ENROLLMENT_KEY1;
+            case CKIEnrollmentTypeDesigner:
+                return DESIGNER_ENROLLMENT_KEY1;
+            default:
+                return @"";
+        }
+        return @"";
+    }];
+}
+
 - (BOOL)isStudent
 {
-    return [self.type isEqualToString:CKIEnrollmentTypeStudent];
+    return self.type == CKIEnrollmentTypeStudent;
 }
 
 @end

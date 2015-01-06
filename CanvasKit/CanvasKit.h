@@ -44,6 +44,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIFile.h>
 #import <CKIFolder.h>
 #import <CKIGroup.h>
+#import <CKIGroupCategory.h>
 #import <CKILockableModel.h>
 #import <CKILockInfo.h>
 #import <CKIModel.h>
@@ -91,6 +92,7 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKIFile.h>
 #import <CKIClient+CKIFolder.h>
 #import <CKIClient+CKIGroup.h>
+#import <CKIClient+CKIGroupCategory.h>
 #import <CKIClient+CKIModule.h>
 #import <CKIClient+CKIModel.h>
 #import <CKIClient+CKIModule.h>
@@ -117,6 +119,9 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CKIClient+CKILiveAssessment.h>
 #import <CKIClient+CKILiveAssessmentResult.h>
 #import <NSValueTransformer+CKIPredefinedTransformerAdditions.h>
+
+#import "CKISubmission+TextEntrySubmissionHTMLFile.h"
+#import "CKISubmission+DiscussionSubmissionHTMLFile.h"
 
 #pragma mark - Utilities
 

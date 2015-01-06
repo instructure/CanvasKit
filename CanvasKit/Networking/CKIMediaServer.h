@@ -12,7 +12,7 @@
 @property (nonatomic, assign, getter = isEnabled) BOOL enabled;
 @property (nonatomic, strong) NSURL *domain;
 @property (nonatomic, strong) NSURL *resourceDomain;
-@property (nonatomic, assign) uint64_t partnerId;
+@property (nonatomic, strong) NSString *partnerId;
 
 - (id)initWithInfo:(NSDictionary *)info;
 

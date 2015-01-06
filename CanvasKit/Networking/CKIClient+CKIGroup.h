@@ -9,6 +9,7 @@
 #import "CKIClient.h"
 
 @class CKIGroup;
+@class CKIGroupCategory;
 @class CKICourse;
 @class RACSignal;
 
@@ -24,14 +25,20 @@
 
 - (RACSignal *)fetchGroupsForContext:(id <CKIContext>)context;
 
+- (RACSignal *)fetchGroupsForGroupCategory:(CKIGroupCategory *)category;
+
 - (RACSignal *)fetchGroupUsersForContext:(id <CKIContext>)context;
 
 - (RACSignal *)deleteGroup:(CKIGroup *)group;
 
 - (RACSignal *)createGroup:(CKIGroup *)group;
 
+- (RACSignal *)createGroup:(CKIGroup *)group category:(CKIGroupCategory *)category;
+
 - (RACSignal *)inviteUser:(NSString *)userEmail toGroup:(CKIGroup *)group;
 
 - (RACSignal *)createGroupMemebershipForUser:(NSString *)userID inGroup:(CKIGroup *)group;
+
+- (RACSignal *)removeGroupMemebershipForUser:(NSString *)userID inGroup:(CKIGroup *)group;
 
 @end

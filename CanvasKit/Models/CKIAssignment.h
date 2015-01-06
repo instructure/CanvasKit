@@ -11,6 +11,7 @@
 @class CKICourse;
 @class CKISubmission;
 @class CKIRubric;
+@class CKIDiscussionTopic;
 
 typedef NS_ENUM(NSUInteger, CKIAssignmentScoringType) {
     CKIAssignmentScoringTypePoints,
@@ -121,6 +122,13 @@ The discussion topic corresponding to this assignment.
 */
 @property (nonatomic, copy) NSString *discussionTopicID;
 
+/**
+ The discussion topic corresponding to this assignment.
+ 
+ @note Only valid if submissionTypes includes "discussion_topic"
+ */
+@property (nonatomic, strong) CKIDiscussionTopic *discussionTopic;
+
 
 #pragma mark - Grading
 
@@ -230,5 +238,12 @@ The discussion topic corresponding to this assignment.
  the id of the quiz if this assignment represents a quiz
  */
 @property (nonatomic) NSString *quizID;
+
+/** 
+ Dictionary containing section id as key and number of assignments
+ for that section id that need grading as the value
+ */
+@property (nonatomic, strong) NSDictionary *needsGradingCountBySection;
+
 
 @end

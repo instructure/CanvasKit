@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, CKISubmissionEnumType) {
 @class CKIAssignment;
 @class CKIMediaComment;
 @class CKIRubricAssessment;
+@class CKIFile;
 
 @interface CKISubmission : CKIModel
 
@@ -150,6 +151,8 @@ typedef NS_ENUM(NSInteger, CKISubmissionEnumType) {
  `CKISubmissionTypeDiscussion` type submissions
  */
 @property (nonatomic, copy) NSArray *discussionEntries;
+
+- (CKIFile *)defaultAttachment;
 
 
 @end

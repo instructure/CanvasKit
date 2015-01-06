@@ -9,16 +9,19 @@
 
 #import "CKIModel.h"
 
-extern NSString *const CKIEnrollmentTypeStudent;
-extern NSString *const CKIEnrollmentTypeTeacher;
-extern NSString *const CKIEnrollmentTypeTA;
-extern NSString *const CKIEnrollmentTypeObserver;
-extern NSString *const CKIEnrollmentTypeMember;
-extern NSString *const CKIEnrollmentTypeDesigner;
+typedef NS_ENUM(NSUInteger, CKIEnrollmentType) {
+    CKIEnrollmentTypeStudent,
+    CKIEnrollmentTypeTeacher,
+    CKIEnrollmentTypeTA,
+    CKIEnrollmentTypeObserver,
+    CKIEnrollmentTypeMember,
+    CKIEnrollmentTypeDesigner,
+    CKIEnrollmentTypeUnknown
+};
 
 @interface CKIEnrollment : CKIModel
 
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic) CKIEnrollmentType type;
 @property (nonatomic, strong) NSString *role;
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSNumber *computedFinalScore;

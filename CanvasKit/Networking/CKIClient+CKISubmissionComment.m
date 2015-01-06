@@ -64,7 +64,7 @@
 - (void)getThumbnailForMediaComment:(CKIMediaComment *)mediaComment ofSize:(CGSize)size success:(void(^)(UIImage *image))success failure:(void(^)(NSError *error))failure {
     
     [self configureMediaServerWithSuccess:^{
-        NSString *urlString = [NSString stringWithFormat:@"p/%@/thumbnail/entry_id/%@/width/%@/height/%@/bgcolor/000000/type/1/vid_sec/5", @(self.mediaServer.partnerId), mediaComment.mediaID, @(size.width), @(size.height)];
+        NSString *urlString = [NSString stringWithFormat:@"p/%@/thumbnail/entry_id/%@/width/%@/height/%@/bgcolor/000000/type/1/vid_sec/5", self.mediaServer.partnerId, mediaComment.mediaID, @(size.width), @(size.height)];
         
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:self.mediaServer.resourceDomain];
         manager.responseSerializer = [AFImageResponseSerializer serializer];
