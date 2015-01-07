@@ -51,7 +51,7 @@
     }
     
     NSArray *sortedAttempts = [self.submissionHistory sortedArrayUsingComparator:^NSComparisonResult(CKISubmission *submission1, CKISubmission *submission2) {
-        return [@(submission1.attempt) compare:@(submission2.attempt)];
+        return [@(submission2.attempt) compare:@(submission1.attempt)];
     }];
     return sortedAttempts.firstObject;
 }
