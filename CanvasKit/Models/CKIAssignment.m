@@ -146,7 +146,7 @@
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSArray *needsGradingCounts) {
         NSMutableDictionary *returnValue = [NSMutableDictionary new];
         for (NSDictionary *needsGradingCount in needsGradingCounts) {
-            NSString *key = needsGradingCount[@"section_id"];
+            NSString *key = [needsGradingCount[@"section_id"] description];
             NSNumber *value = needsGradingCount[@"needs_grading_count"];
             
             returnValue[key] = value;
