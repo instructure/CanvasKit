@@ -29,6 +29,11 @@
 @property (nonatomic, copy) NSString *id;
 
 /**
+ the base url for this model object
+ */
+@property (nonatomic) NSURL *baseURL;
+
+/**
  Checks to see if two models are equivalent based on their ID.
  
  @param object the object to compare

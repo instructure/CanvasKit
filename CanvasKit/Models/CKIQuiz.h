@@ -29,6 +29,7 @@
  The description for the quiz.
  */
 @property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *descriptionHTML;
 
 /**
  The type for the quiz.
@@ -44,7 +45,7 @@
 /**
  The time limit in minutes for the quiz.
  */
-@property (nonatomic) double timeLimitMinutes;
+@property (nonatomic) NSInteger timeLimitMinutes;
 
 /**
  Indicates if answers are shuffled for the quiz.
@@ -73,7 +74,7 @@
  The number of times a student can take the quiz.
  -1 = unlimited attempts
  */
-@property (nonatomic) int allowedAttempts;
+@property (nonatomic) NSInteger allowedAttempts;
 
 /**
  Indicates if one questions should be shown at a time for the quiz.
@@ -83,12 +84,12 @@
 /**
  The number of questions for the quiz.
  */
-@property (nonatomic) int questionCount;
+@property (nonatomic) NSInteger questionCount;
 
 /**
  The number of points possible for the quiz.
  */
-@property (nonatomic) int pointsPossible;
+@property (nonatomic) NSInteger pointsPossible;
 
 /**
  Indicates if questions should be locked after answering for the quiz.

@@ -2178,6 +2178,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C7B2CA58151550016D45DB5 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -2210,6 +2211,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47AA79D25B840E6F9BE23C47 /* Pods.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

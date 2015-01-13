@@ -32,7 +32,9 @@
         @"cantGoBack": @"cant_go_back",
         @"accessCode": @"access_code",
         @"ipFilter": @"ip_filter",
-        @"dueAt": @"due_at"
+        @"dueAt": @"due_at",
+        @"description": @"description",
+        @"descriptionHTML": @"description"
     };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];

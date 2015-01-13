@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.3.1):
-    - AFNetworking/NSURLConnection (= 2.3.1)
-    - AFNetworking/NSURLSession (= 2.3.1)
-    - AFNetworking/Reachability (= 2.3.1)
-    - AFNetworking/Security (= 2.3.1)
-    - AFNetworking/Serialization (= 2.3.1)
-    - AFNetworking/UIKit (= 2.3.1)
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
   - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -22,10 +22,10 @@ PODS:
     - AFNetworking/NSURLSession
   - ISO8601DateFormatter (0.7)
   - Mantle (1.5.1):
-    - Mantle/extobjc (= 1.5.1)
+    - Mantle/extobjc
   - Mantle/extobjc (1.5.1)
   - ReactiveCocoa (2.4.2):
-    - ReactiveCocoa/UI (= 2.4.2)
+    - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.4.2):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.4.2)
@@ -44,4 +44,4 @@ SPEC CHECKSUMS:
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   ReactiveCocoa: 8418a82b67af2f1b7587baf29c329040a23c2063
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.34.4
