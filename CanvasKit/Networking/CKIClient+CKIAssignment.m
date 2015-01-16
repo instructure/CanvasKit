@@ -32,4 +32,12 @@
     return [self fetchResponseAtPath:path parameters:params modelClass:[CKIAssignment class] context:context];
 }
 
+- (RACSignal *)updateMutedForAssignment:(CKIAssignment *)assignment
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    parameters[CKIAssignmentPutParameter] = @{CKIAssignmentMutedParameter:@(assignment.muted)};
+    
+    return [self updateModel:assignment parameters:parameters];
+}
+
 @end
