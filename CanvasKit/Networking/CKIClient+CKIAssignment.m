@@ -12,6 +12,9 @@
 #import "CKIAssignment.h"
 #import "CKICourse.h"
 
+static const NSString *CKIAssignmentPutParameter = @"assignment";
+static const NSString *CKIAssignmentMutedParameter = @"muted";
+
 @implementation CKIClient (CKIAssignment)
 
 - (RACSignal *)fetchAssignmentsForContext:(id<CKIContext>)context
