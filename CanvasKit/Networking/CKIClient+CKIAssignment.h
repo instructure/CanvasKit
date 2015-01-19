@@ -8,6 +8,7 @@
 
 #import "CKIClient.h"
 
+@class CKIAssignment;
 @class CKICourse;
 @class RACSignal;
 
