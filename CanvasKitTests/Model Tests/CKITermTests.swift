@@ -36,12 +36,4 @@ class CKITermTests: XCTestCase {
         date = formatter.dateFromString("2014-05-16T05:00:00-04:00")
         XCTAssertEqual(term.endAt!, date, "term endAt was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

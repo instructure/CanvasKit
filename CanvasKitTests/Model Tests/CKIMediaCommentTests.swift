@@ -31,8 +31,8 @@ class CKIMediaCommentTests: XCTestCase {
         XCTAssertEqual(mediaComment.contentType!, "video/mp4", "CKIMediaComment contentType did not parse correctly")
         XCTAssertEqual(mediaComment.mediaType!, "video", "CKIMediaComment mediaType did not parse correctly")
 
-        let url = NSURL.URLWithString("https://mobiledev.instructure.com/users/4301217/media_download?entryId=0_1175s92f&redirect=1&type=mp4")
-        XCTAssertEqual(mediaComment.url!, url, "CKIMediaComment url did not parse correctly")
+        let url = NSURL(string:"https://mobiledev.instructure.com/users/4301217/media_download?entryId=0_1175s92f&redirect=1&type=mp4")
+        XCTAssertEqual(mediaComment.url!, url!, "CKIMediaComment url did not parse correctly")
     }
     func testPerformanceExample() {
         // This is an example of a performance test case.

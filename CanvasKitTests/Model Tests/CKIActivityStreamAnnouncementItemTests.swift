@@ -22,18 +22,13 @@ class CKIActivityStreamAnnouncementItemTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        let activityStreamAnnouncementItemDictionary = Helpers.loadJSONFixture("activity_stream_announcement_item") as NSDictionary
+        let activityStreamAnnouncementItemDictionary = Helpers.loadJSONFixture("activity_stream_announcement_item") as NSDictionary?
+        println("item = \(activityStreamAnnouncementItemDictionary)")
         let streamItem = CKIActivityStreamAnnouncementItem(fromJSONDictionary: activityStreamAnnouncementItemDictionary)
         
-        XCTAssertEqual(streamItem.announcementID!, "1234", "Stream Announcement Item id was not parsed correctly")
+        let id: String = streamItem.announcementID
+        println("id = \(id)")
+        XCTAssertEqual(id, "1234", "Stream Announcement Item id was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
 

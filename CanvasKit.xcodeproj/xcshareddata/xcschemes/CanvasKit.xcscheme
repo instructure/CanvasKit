@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDC2C2FA1965F5910017CCA4"
-               BuildableName = "CanvasKit.framework"
+               BlueprintIdentifier = "49B65F431A85654B00E17B0C"
+               BuildableName = "libCanvasKit.a"
                BlueprintName = "CanvasKit"
                ReferencedContainer = "container:CanvasKit.xcodeproj">
             </BuildableReference>
@@ -32,33 +32,22 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDC2C3041965F5910017CCA4"
+               BlueprintIdentifier = "49B65F4D1A85654C00E17B0C"
                BuildableName = "CanvasKitTests.xctest"
                BlueprintName = "CanvasKitTests"
                ReferencedContainer = "container:CanvasKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD216EB01965DBD3004AA6FA"
-               BuildableName = "CanvasKit Tests.xctest"
-               BlueprintName = "CanvasKit Tests"
-               ReferencedContainer = "container:CanvasKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDC2C2E61965F24C0017CCA4"
-               BuildableName = "CanvasKitUnitTests.xctest"
-               BlueprintName = "CanvasKitUnitTests"
-               ReferencedContainer = "container:CanvasKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "49B65F431A85654B00E17B0C"
+            BuildableName = "libCanvasKit.a"
+            BlueprintName = "CanvasKit"
+            ReferencedContainer = "container:CanvasKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = ""
@@ -73,8 +62,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BDC2C2FA1965F5910017CCA4"
-            BuildableName = "CanvasKit.framework"
+            BlueprintIdentifier = "49B65F431A85654B00E17B0C"
+            BuildableName = "libCanvasKit.a"
             BlueprintName = "CanvasKit"
             ReferencedContainer = "container:CanvasKit.xcodeproj">
          </BuildableReference>
@@ -88,6 +77,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "49B65F431A85654B00E17B0C"
+            BuildableName = "libCanvasKit.a"
+            BlueprintName = "CanvasKit"
+            ReferencedContainer = "container:CanvasKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

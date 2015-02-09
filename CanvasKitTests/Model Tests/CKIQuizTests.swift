@@ -27,9 +27,9 @@ class CKIQuizTests: XCTestCase {
         
         XCTAssertEqual(quiz.id!, "5", "Quiz id was not parsed correctly")
         XCTAssertEqual(quiz.title!, "Hamlet Act 3 Quiz", "Quiz title was not parsed correctly")
-        XCTAssertEqual(quiz.htmlURL!, NSURL(string: "http://canvas.example.edu/courses/1/quizzes/2"), "Quiz html url was not parsed correctly")
-        XCTAssertEqual(quiz.mobileURL!, NSURL(string: "http://canvas.example.edu/courses/1/quizzes/2?persist_healdess=1&force_user=1"), "Quiz mobile url was not parsed correctly")
-        XCTAssertEqual(quiz.description!, "This is a quiz on Act 3 of Hamlet", "Quiz description url was not parsed correctly")
+        XCTAssertEqual(quiz.htmlURL!, NSURL(string: "http://canvas.example.edu/courses/1/quizzes/2")!, "Quiz html url was not parsed correctly")
+        XCTAssertEqual(quiz.mobileURL!, NSURL(string: "http://canvas.example.edu/courses/1/quizzes/2?persist_healdess=1&force_user=1")!, "Quiz mobile url was not parsed correctly")
+        XCTAssertEqual(quiz.description, "This is a quiz on Act 3 of Hamlet", "Quiz description url was not parsed correctly")
         XCTAssertEqual(quiz.quizType!, "assignment", "Quiz quiz type was not parsed correctly")
         XCTAssertEqual(quiz.assignmentGroupID!, "3", "Quiz assignment group id was not parsed correctly")
         XCTAssertEqual(quiz.timeLimitMinutes, 5, "Quiz time limit was not parsed correctly")

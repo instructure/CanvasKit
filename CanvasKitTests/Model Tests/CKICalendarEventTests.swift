@@ -31,7 +31,7 @@ class CKICalendarEventTests: XCTestCase {
         var date = formatter.dateFromString("2013-09-18T00:00:00-06:00")
         XCTAssertEqual(calendarEvent.startAt!, date, "Calendar Event startAt was not parsed correctly")
         XCTAssertEqual(calendarEvent.endAt!, date, "Calendar Event endAt was not parsed correctly")
-        XCTAssertEqual(calendarEvent.description!, "Secret Meeting of Super Persons", "Calendar Event description was not parsed correctly")
+        XCTAssertEqual(calendarEvent.description, "Secret Meeting of Super Persons", "Calendar Event description was not parsed correctly")
         XCTAssertEqual(calendarEvent.locationName!, "The Bat Cave", "Calendar Event locationName was not parsed correctly")
         XCTAssertEqual(calendarEvent.locationAddress!, "300 E Super Cool Dr", "Calendar Event locationAddress was not parsed correctly")
         XCTAssertEqual(calendarEvent.contextCode!, "user_4621806", "Calendar Event contextCode was not parsed correctly")
@@ -40,13 +40,13 @@ class CKICalendarEventTests: XCTestCase {
         XCTAssertEqual(calendarEvent.parentEventID!, "1", "Calendar Event parentEventID was not parsed correctly")
         XCTAssertEqual(calendarEvent.childEventsCount, 0, "Calendar Event childEventsCount was not parsed correctly")
 
-        var url = NSURL.URLWithString("https://mobiledev.instructure.com/api/v1/calendar_events/1194491")
+        var url = NSURL(string:"https://mobiledev.instructure.com/api/v1/calendar_events/1194491")!
         XCTAssertEqual(calendarEvent.url!, url, "Calendar Event url was not parsed correctly")
         
-        url = NSURL.URLWithString("https://mobiledev.instructure.com/calendar?event_id=1194491&include_contexts=user_4621806#7b2273686f77223a2267726f75705f757365725f34363231383036227d")
+        url = NSURL(string:"https://mobiledev.instructure.com/calendar?event_id=1194491&include_contexts=user_4621806#7b2273686f77223a2267726f75705f757365725f34363231383036227d")!
         XCTAssertEqual(calendarEvent.htmlURL!, url, "Calendar Event htmlURL was not parsed correctly")
         
-        url = NSURL.URLWithString("https://example.com/api/v1/appointment_groups/543")
+        url = NSURL(string:"https://example.com/api/v1/appointment_groups/543")!
         XCTAssertEqual(calendarEvent.appointmentGroupURL!, url,"Calendar Event appointmentGroupURL was not parsed correctly")
         
         formatter.includeTime = false
@@ -68,12 +68,4 @@ class CKICalendarEventTests: XCTestCase {
         
         XCTAssertEqual(calendarEvent.path!, "/api/v1/calendar_events/1194491", "Calendar Event path was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

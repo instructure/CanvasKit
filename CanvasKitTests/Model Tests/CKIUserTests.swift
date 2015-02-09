@@ -32,7 +32,7 @@ class CKIUserTests: XCTestCase {
         XCTAssertEqual(user.sisUserID!, "scooper", "User sis user id was not parsed correctly")
         XCTAssertEqual(user.loginID!, "sheldon@caltech.example.com", "user login id was not parsed correctly")
         XCTAssertEqual(user.email!, "sheldon@caltech.example.com", "user email was not parsed correctly")
-        XCTAssertEqual(user.avatarURL!, NSURL(string: "http://instructure.com/sheldon.png"), "user avatar url was not parsed correctly")
+        XCTAssertEqual(user.avatarURL!, NSURL(string: "http://instructure.com/sheldon.png")!, "user avatar url was not parsed correctly")
         XCTAssertEqual(user.locale!, "tlh", "user local was not parsed correctly")
         XCTAssertNil(user.calendar, "user calendar was not parsed correctly")
         

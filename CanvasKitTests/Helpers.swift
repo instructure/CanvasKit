@@ -15,15 +15,14 @@ class Helpers: NSObject {
         
         var bundle = NSBundle(forClass: Helpers.self)
         var filePath = bundle.pathForResource(fixtureName, ofType: "json")
+        println("filePath: \(filePath)")
         
-        var data = NSData(contentsOfFile: filePath)
+        var data = NSData(contentsOfFile: filePath!)
         
-        var error: NSError? = nil
-        var result: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
+        println("data = \(NSString(data: data!, encoding:NSUTF8StringEncoding))")
+        var result: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
         
-        if(error != nil) {
-            return nil;
-        }
+        println("result = \(result)")
         
         return result
     }

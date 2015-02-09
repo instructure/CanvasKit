@@ -28,13 +28,4 @@ class CKIAssignmentGroupNetworkingTests: XCTestCase {
         client.fetchAssignmentGroupsForContext(course)
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/assignment_groups", "CKIAssignmentGroups returned API path for testFetchAssignmentGroupsForContext was incorrect")
     }
-    
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

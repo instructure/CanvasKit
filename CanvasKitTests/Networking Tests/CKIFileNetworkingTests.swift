@@ -45,12 +45,4 @@ class CKIFileNetworkingTests: XCTestCase {
         client.uploadFile(nil, ofType: "jpg", withName: "test", inFolder: folder)
         //TODO figure out how to capture the path by possibly overloading the fileUploadTokenSignalForPath method. Currently not possible.
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

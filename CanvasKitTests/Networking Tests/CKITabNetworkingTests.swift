@@ -28,12 +28,4 @@ class CKITabNetworkingTests: XCTestCase {
         client.fetchTabsForContext(course)
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/tabs", "CKITab returned API path for testFetchTabsForContext was incorrect")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

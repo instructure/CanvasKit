@@ -10,6 +10,7 @@
 
 #import "CKIGroupCategory.h"
 #import "CKIUser.h"
+#import "CKICourse.h"
 
 @implementation CKIClient (CKIGroupCategory)
 

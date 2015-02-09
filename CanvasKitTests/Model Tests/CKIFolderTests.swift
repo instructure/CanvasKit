@@ -31,10 +31,10 @@ class CKIFolderTests: XCTestCase {
         XCTAssertEqual(folder.filesCount, 10, "Folder filesCount did not parse correctly")
         XCTAssertEqual(folder.foldersCount, 0, "Folder foldersCount did not parse correctly")
         
-        var url = NSURL.URLWithString("https://www.example.com/api/v1/folders/2937/folders")
-        XCTAssertEqual(folder.foldersURL!, url, "Folder foldersURL did not parse correctly")
-        url = NSURL.URLWithString("https://www.example.com/api/v1/folders/2937/files")
-        XCTAssertEqual(folder.filesURL!, url, "Folder filesURL did not parse correctly")
+        var url = NSURL(string:"https://www.example.com/api/v1/folders/2937/folders")
+        XCTAssertEqual(folder.foldersURL!, url!, "Folder foldersURL did not parse correctly")
+        url = NSURL(string:"https://www.example.com/api/v1/folders/2937/files")
+        XCTAssertEqual(folder.filesURL!, url!, "Folder filesURL did not parse correctly")
         
         let formatter = ISO8601DateFormatter()
         formatter.includeTime = true

@@ -30,14 +30,14 @@ class CKITodoItemTests: XCTestCase {
         
         XCTAssertNotNil(todoItem.assignment, "Todo Item assignment was not parsed correctly")
         
-        var url = NSURL.URLWithString("https://mobiledev.instructure.com/api/v1/users/self/todo/assignment_3493245/grading?permanent=0")
-        XCTAssertEqual(todoItem.ignore!, url, "Todo Item ignore was not parsed correctly")
+        var url = NSURL(string:"https://mobiledev.instructure.com/api/v1/users/self/todo/assignment_3493245/grading?permanent=0")
+        XCTAssertEqual(todoItem.ignore!, url!, "Todo Item ignore was not parsed correctly")
         
-        url = NSURL.URLWithString("https://mobiledev.instructure.com/api/v1/users/self/todo/assignment_3493245/grading?permanent=1")
-        XCTAssertEqual(todoItem.ignorePermanently!, url, "Todo Item ignorePermanently was not parsed correctly")
+        url = NSURL(string:"https://mobiledev.instructure.com/api/v1/users/self/todo/assignment_3493245/grading?permanent=1")!
+        XCTAssertEqual(todoItem.ignorePermanently!, url!, "Todo Item ignorePermanently was not parsed correctly")
         
-        url = NSURL.URLWithString("https://mobiledev.instructure.com/courses/1111375/gradebook/speed_grader?assignment_id=3493245")
-        XCTAssertEqual(todoItem.htmlUrl!, url, "Todo Item htmlUrl was not parsed correctly")
+        url = NSURL(string:"https://mobiledev.instructure.com/courses/1111375/gradebook/speed_grader?assignment_id=3493245")!
+        XCTAssertEqual(todoItem.htmlUrl!, url!, "Todo Item htmlUrl was not parsed correctly")
         
         XCTAssertEqual(todoItem.needsGradingCount, 1, "Todo Item needsGradingCount was not parsed correctly")
         
@@ -49,12 +49,4 @@ class CKITodoItemTests: XCTestCase {
         
         XCTAssertEqual(todoItem.path!, "/api/v1/users/self/todo/1", "Todo Item Path was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

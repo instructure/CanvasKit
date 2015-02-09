@@ -55,12 +55,4 @@ class CKIPollNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/polls/1023", "CKIPoll returned API path for testDeletePoll was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Delete, "CKIPoll API Interaction Method was incorrect")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

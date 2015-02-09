@@ -40,12 +40,4 @@ class CKIModuleNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/modules/768", "CKIModule returned API path for testFetchModuleWithIDForCourse was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKIModule API Interaction Method was incorrect ")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

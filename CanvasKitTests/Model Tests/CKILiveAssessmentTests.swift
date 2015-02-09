@@ -23,6 +23,7 @@ class CKILiveAssessmentTests: XCTestCase {
 
     func testJSONModelConversion() {
         let liveAssessmentDictionary = Helpers.loadJSONFixture("live_assessment") as NSDictionary
+        var live: CKILiveAssessment? = nil
         let liveAssessment = CKILiveAssessment(fromJSONDictionary: liveAssessmentDictionary)
         
         XCTAssertEqual(liveAssessment.id!, "42", "LiveAssessment id did not parse correctly")
@@ -30,12 +31,4 @@ class CKILiveAssessmentTests: XCTestCase {
         XCTAssertEqual(CKILiveAssessment.keyForJSONAPIContent()!, "assessments", "LiveAssessment keyForJSONAPIContent was not parsed correctly")
         XCTAssertEqual(liveAssessment.path!, "/api/v1/live_assessments/42", "LiveAssessment path did not parse correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

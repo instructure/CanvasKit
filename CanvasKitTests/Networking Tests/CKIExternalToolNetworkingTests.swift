@@ -51,12 +51,4 @@ class CKIExternalToolNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/external_tools/24506", "CKIExternalTool returned API path for testFetchExternalToolForCourseWithExternalToolID was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKIExternalTool API Interaction Method was incorrect")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -37,13 +37,5 @@ class CKILiveAssessmentResultsTests: XCTestCase {
         XCTAssertEqual(liveAssessmentResult.assessorUserID!, "23", "LiveAssessmentResult assessorUserID did not parse correctly")
         XCTAssertEqual(CKILiveAssessmentResult.keyForJSONAPIContent()!, "results", "LiveAssessmentResult keyForJSONAPIContent was not parsed correctly")
         XCTAssertEqual(liveAssessmentResult.path!, "/api/v1/results/42", "LiveAssessmentResult path did not parse correctly")
-}
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
     }
-
 }

@@ -50,14 +50,4 @@ class CKIPageNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/front_page", "CKIPage returned API path for testFetchFrontPageForContext was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKIPage API Interaction Method was incorrect")
     }
-    
-//    - (RACSignal *)fetchFrontPageForContext:(id<CKIContext>)context;
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

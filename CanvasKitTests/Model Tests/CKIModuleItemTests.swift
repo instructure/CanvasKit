@@ -32,14 +32,14 @@ class CKIModuleItemTests: XCTestCase {
         XCTAssertEqual(moduleItem.itemID!, "1337", "Module Item itemID was not parsed correctly")
         XCTAssertEqual(moduleItem.pageID!, "my-page-title", "Module Item pageID was not parsed correctly")
         
-        var url = NSURL.URLWithString("https://canvas.example.edu/courses/222/modules/items/768")
-        XCTAssertEqual(moduleItem.htmlURL!, url, "Module Item htmlURL was not parsed correctly")
+        var url = NSURL(string:"https://canvas.example.edu/courses/222/modules/items/768")
+        XCTAssertEqual(moduleItem.htmlURL!, url!, "Module Item htmlURL was not parsed correctly")
         
-        url = NSURL.URLWithString("https://canvas.example.edu/api/v1/courses/222/assignments/1337")
-        XCTAssertEqual(moduleItem.apiURL!, url, "Module Item url was not parsed correctly")
+        url = NSURL(string:"https://canvas.example.edu/api/v1/courses/222/assignments/1337")
+        XCTAssertEqual(moduleItem.apiURL!, url!, "Module Item url was not parsed correctly")
         
-        url = NSURL.URLWithString("https://www.example.com/externalurl")
-        XCTAssertEqual(moduleItem.externalURL!, url, "Module Item externalURL was not parsed correctly")
+        url = NSURL(string:"https://www.example.com/externalurl")
+        XCTAssertEqual(moduleItem.externalURL!, url!, "Module Item externalURL was not parsed correctly")
         
         XCTAssertEqual(moduleItem.completionRequirement!, "min_score", "Module Item completionRequirement was not parsed correctly")
         XCTAssertEqual(moduleItem.minimumScore, 10, "Module Item minimumScore was not parsed correctly")

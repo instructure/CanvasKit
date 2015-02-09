@@ -28,12 +28,4 @@ class CKIFavoriteTests: XCTestCase {
         XCTAssertEqual(favorite.contextID!, "1170", "Favorite contextID did not parse correctly")
         XCTAssertEqual(favorite.contextType!, "Course", "Favorite contextType did not parse correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

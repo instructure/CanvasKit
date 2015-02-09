@@ -77,12 +77,4 @@ class CKIConversationNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/conversations/2/add_recipients", "CKIConversation returned API path for testCreateMessageInConversationWithAttachmentIDs was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Create, "CKIConversation API Interaction Method was incorrect")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

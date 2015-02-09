@@ -50,12 +50,4 @@ class CKIDiscussionTopicNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/discussion_topics", "CKIDiscussionTopic returned API path for testFetchAnnouncementsForContext was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKIDiscussionTopic API Interaction Method was incorrect")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

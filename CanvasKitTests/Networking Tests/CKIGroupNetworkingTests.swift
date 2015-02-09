@@ -69,12 +69,4 @@ class CKIGroupNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/courses/1/groups", "CKIGroup returned API path for testFetchGroupsForContext was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKIGroup API Interaction Method was incorrect ")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

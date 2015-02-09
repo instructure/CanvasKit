@@ -8,6 +8,7 @@
 
 #import "CKIClient+CKIConversationRecipient.h"
 #import "CKIConversationRecipient.h"
+#import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 @implementation CKIClient (CKIConversationRecipient)
 

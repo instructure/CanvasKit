@@ -27,8 +27,8 @@ class CKIDiscussionTopicTests: XCTestCase {
         XCTAssertEqual(topic.title!, "Topic 1", "Discussion Topic title was not parsed correctly")
         XCTAssertEqual(topic.messageHTML!, "<p>content here</p>", "Discussion Topic messageHTML was not parsed correctly")
         
-        var url = NSURL.URLWithString("https://canvas.instructure.com/courses/1/discussion_topics/2")
-        XCTAssertEqual(topic.htmlURL!, url, "Discussion Topic htmlURL was not parsed correctly")
+        var url = NSURL(string:"https://canvas.instructure.com/courses/1/discussion_topics/2")
+        XCTAssertEqual(topic.htmlURL!, url!, "Discussion Topic htmlURL was not parsed correctly")
         
         var formatter = ISO8601DateFormatter()
         formatter.includeTime = true
@@ -61,8 +61,8 @@ class CKIDiscussionTopicTests: XCTestCase {
         XCTAssertEqual(topic.childrenTopicIDs.count, 3, "Discussion Topic childrenTopicIDs was not parsed correctly")
         XCTAssertEqual(topic.rootTopicID!, "1236", "Discussion Topic rootTopicID was not parsed correctly")
         
-        url = NSURL.URLWithString("/feeds/topics/1/enrollment_1XAcepje4u228rt4mi7Z1oFbRpn3RAkTzuXIGOPe.rss")
-        XCTAssertEqual(topic.podcastURL!, url, "Discussion Topic podcastURL was not parsed correctly")
+        url = NSURL(string:"/feeds/topics/1/enrollment_1XAcepje4u228rt4mi7Z1oFbRpn3RAkTzuXIGOPe.rss")
+        XCTAssertEqual(topic.podcastURL!, url!, "Discussion Topic podcastURL was not parsed correctly")
         XCTAssertEqual(topic.type, CKIDiscussionTopicType.SideComment, "Discussion Topic topic.type was not parsed correctly")
         XCTAssertNotNil(topic.attachments[0], "Discussion Topic topic.attachments[0] was not parsed correctly")
 //        XCTAssertEqualObjects((topic.attachments[0] as CKIAttachment).self, CKIAttachment().self, "Discussion Topic topic.attachments[0] was not parsed correctly")

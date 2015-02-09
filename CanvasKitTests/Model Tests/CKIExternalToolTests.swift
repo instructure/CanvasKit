@@ -25,7 +25,7 @@ class CKIExternalToolTests: XCTestCase {
         let extTool = CKIExternalTool(fromJSONDictionary: externalToolDictionary)
         
         XCTAssertEqual(extTool.consumerKey!, "test", "External Tool consumer key was not parsed correctly")
-        XCTAssertEqual(extTool.description!, "This example LTI Tool Provider supports LIS Outcome pass-back and the content extension.", "External Tool description was not parsed correctly")
+        XCTAssertEqual(extTool.description, "This example LTI Tool Provider supports LIS Outcome pass-back and the content extension.", "External Tool description was not parsed correctly")
         XCTAssertEqual(extTool.id!, "24506", "External Tool id was not parsed correctly")
         XCTAssertEqual(extTool.name!, "LTI Test Tool", "External Tool name was not parsed correctly")
         XCTAssertEqual(extTool.privacyLevel!, "public", "External Tool privacyLevel was not parsed correctly")
@@ -37,14 +37,14 @@ class CKIExternalToolTests: XCTestCase {
         date = formatter.dateFromString("2013-07-29T21:28:47Z")
         XCTAssertEqual(extTool.updatedAt!, date, "External Tool updatedAt was not parsed correctly")
         
-        var url = NSURL.URLWithString("lti-tool-provider.herokuapp.com")
-        XCTAssertEqual(extTool.domain!, url, "External Tool domain was not parsed correctly")
-        url = NSURL.URLWithString("http://lti-tool-provider.herokuapp.com/lti_tool")
-        XCTAssertEqual(extTool.url!, url, "External Tool url was not parsed correctly")
-        url = NSURL.URLWithString("http://lti-tool-provider.herokuapp.com/lti_tool/help")
-        XCTAssertEqual(extTool.vendorHelpLink!, url, "External Tool vendorHelpLink was not parsed correctly")
-        url = NSURL.URLWithString("http://lti-tool-provider.herokuapp.com/selector.png")
-        XCTAssertEqual(extTool.iconURL!, url, "External Tool iconURL was not parsed correctly")
+        var url = NSURL(string:"lti-tool-provider.herokuapp.com")
+        XCTAssertEqual(extTool.domain!, url!, "External Tool domain was not parsed correctly")
+        url = NSURL(string:"http://lti-tool-provider.herokuapp.com/lti_tool")
+        XCTAssertEqual(extTool.url!, url!, "External Tool url was not parsed correctly")
+        url = NSURL(string:"http://lti-tool-provider.herokuapp.com/lti_tool/help")
+        XCTAssertEqual(extTool.vendorHelpLink!, url!, "External Tool vendorHelpLink was not parsed correctly")
+        url = NSURL(string:"http://lti-tool-provider.herokuapp.com/selector.png")
+        XCTAssertEqual(extTool.iconURL!, url!, "External Tool iconURL was not parsed correctly")
         
         var customFields = ["key": "value", "key2": "value2"]
         XCTAssertEqual(extTool.customFields.count, 2, "External Tool customFields was not parsed correctly")
