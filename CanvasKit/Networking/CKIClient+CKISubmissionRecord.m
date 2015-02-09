@@ -12,6 +12,7 @@
 #import "CKIAssignment.h"
 #import "CKISubmission.h"
 #import "CKIRubricAssessment.h"
+#import "CKISubmissionRecord.h"
 
 static const NSString *CKISubmissionHistory = @"submission_history";
 static const NSString *CKISubmissionComments = @"submission_comments";

@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-#import <CanvasKit/CanvasKit.h>
+#import "CKIClient.h"
 
 @class CKICourse;
+@class CKIGroupCategory;
 
 @interface CKIClient (CKIGroupCategory)
 

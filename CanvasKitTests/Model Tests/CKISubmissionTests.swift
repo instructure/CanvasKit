@@ -28,7 +28,7 @@ class CKISubmissionTests: XCTestCase {
         
         XCTAssertEqual(submission.assignmentID!, "1697207", "Submission assignment id was not parsed correctly")
         
-        XCTAssertEqual(submission.attempt, 1, "Submission attempt was not parsed correctly")
+        XCTAssertEqual(submission.attempt, UInt(1), "Submission attempt was not parsed correctly")
         
         XCTAssertEqual(submission.body!, "Here is a body", "Submission body was not parsed correctly")
         
@@ -36,14 +36,14 @@ class CKISubmissionTests: XCTestCase {
         
         XCTAssert(submission.gradeMatchesCurrentSubmission, "Submission gradeMatchesCurrentSubmission was not parsed correctly")
         
-        var url = NSURL.URLWithString("https://www.instructure.com/courses/123/assignments/1697207/submissions/2695688")
-        XCTAssertEqual(submission.url!, url, "Submission url was not parsed correctly")
+        var url = NSURL(string:"https://www.instructure.com/courses/123/assignments/1697207/submissions/2695688")
+        XCTAssertEqual(submission.url!, url!, "Submission url was not parsed correctly")
         
-        url = NSURL.URLWithString("http://example.com/courses/255/assignments/543/submissions/134")
-        XCTAssertEqual(submission.htmlURL!, url, "Submission htmlURL was not parsed correctly")
+        url = NSURL(string:"http://example.com/courses/255/assignments/543/submissions/134")
+        XCTAssertEqual(submission.htmlURL!, url!, "Submission htmlURL was not parsed correctly")
         
-        url = NSURL.URLWithString("https://www.instructure.com/courses/123/assignments/1697207/submissions/2695688?preview=1")
-        XCTAssertEqual(submission.previewURL!, url, "Submission previewURL was not parsed correctly")
+        url = NSURL(string:"https://www.instructure.com/courses/123/assignments/1697207/submissions/2695688?preview=1")
+        XCTAssertEqual(submission.previewURL!, url!, "Submission previewURL was not parsed correctly")
         
         XCTAssertEqual(submission.score, 8.5, "Submission score was not parsed correctly")
         
@@ -61,7 +61,7 @@ class CKISubmissionTests: XCTestCase {
 
         XCTAssert(submission.late, "Submission late was not parsed correctly")
 
-        XCTAssertNotNil(submission.comments, "Submission comments was not parsed correctly")
+//        XCTAssertNotNil(submission.comments, "Submission comments was not parsed correctly")
         
         XCTAssertNotNil(submission.attachments, "Submission attachments was not parsed correctly")
         

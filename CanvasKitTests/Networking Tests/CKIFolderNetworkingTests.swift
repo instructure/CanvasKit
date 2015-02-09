@@ -89,12 +89,4 @@ class CKIFolderNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/folders/2937/folders", "CKIFolder returned API path for testCreateFolderInFolder was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Create, "CKIFolder API Interaction Method was incorrect ")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -44,11 +44,11 @@ class CKIActivityStreamItemTests: XCTestCase {
         date = formatter.dateFromString("2011-07-25T08:52:41Z")
         XCTAssertEqual(streamItem.updatedAt!, date, "Activity Stream Item updatedAt date was not parsed correctly")
         
-        var url = NSURL.URLWithString("http://canvas.instructure.com/api/v1/foo")
-        XCTAssertEqual(streamItem.url!, url, "Activity Stream Item url was not parsed correctly")
+        var url = NSURL(string:"http://canvas.instructure.com/api/v1/foo")
+        XCTAssertEqual(streamItem.url!, url!, "Activity Stream Item url was not parsed correctly")
 
-        url = NSURL.URLWithString("http://canvas.instructure.com/api/v1/foo")
-        XCTAssertEqual(streamItem.htmlURL!, url, "Activity Stream Item htmlURL was not parsed correctly")
+        url = NSURL(string:"http://canvas.instructure.com/api/v1/foo")
+        XCTAssertEqual(streamItem.htmlURL!, url!, "Activity Stream Item htmlURL was not parsed correctly")
         
         XCTAssert(streamItem.isRead, "Activity Stream Item isRead was not parsed correctly")
         

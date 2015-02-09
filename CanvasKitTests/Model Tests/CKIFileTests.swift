@@ -31,7 +31,7 @@ class CKIFileTests: XCTestCase {
         XCTAssertEqual(file.size, 4, "File size was not parsed correctly")
         XCTAssertEqual(file.contentType!, "text/plain", "File content type was not parsed correctly")
         XCTAssertEqual(file.name!, "file.txt", "File name was not parsed correctly")
-        XCTAssertEqual(file.url!, NSURL(string: "http://www.example.com/files/569/download?download_frd=1/u0026verifier=c6HdZmxOZa0Fiin2cbvZeI8I5ry7yqD7RChQzb6P"), "File url was not parsed correctly")
+        XCTAssertEqual(file.url!, NSURL(string: "http://www.example.com/files/569/download?download_frd=1/u0026verifier=c6HdZmxOZa0Fiin2cbvZeI8I5ry7yqD7RChQzb6P")!, "File url was not parsed correctly")
         
         let formatter = ISO8601DateFormatter()
         formatter.includeTime = true
@@ -43,7 +43,7 @@ class CKIFileTests: XCTestCase {
         XCTAssertEqual(file.unlockAt!, date, "File unlock at date was not parsed correctly")
         
         XCTAssert(file.hiddenForUser, "File is hidden for user not parsed correctly")
-        XCTAssertEqual(file.thumbnailURL!, NSURL(string: "http://www.instructure.testing/this/url"), "File thumbnail url not parsed correctly")
+        XCTAssertEqual(file.thumbnailURL!, NSURL(string: "http://www.instructure.testing/this/url")!, "File thumbnail url not parsed correctly")
         XCTAssertEqual(file.path!, "/api/v1/files/569", "File path was not parsed correctly")
     }
 

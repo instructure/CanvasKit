@@ -32,12 +32,4 @@ class CKIOutcomeLinkTests: XCTestCase {
         XCTAssertNil(outcomeLink.outcome, "outcomeLink outcome did not parse correctly")
         XCTAssertNil(outcomeLink.outcomeGroup, "outcomeGroup details did not parse correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

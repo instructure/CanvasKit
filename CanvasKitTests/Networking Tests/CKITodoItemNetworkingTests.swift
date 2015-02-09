@@ -35,12 +35,4 @@ class CKITodoItemNetworkingTests: XCTestCase {
         client.fetchTodoItemsForCurrentUser()
         XCTAssertEqual(client.capturedPath!, "/api/v1/users/self/todo", "CKITodoItem returned API path for testFetchTodoItemsForCurrentUser was incorrect")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

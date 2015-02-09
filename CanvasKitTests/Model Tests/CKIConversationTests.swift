@@ -34,7 +34,7 @@ class CKIConversationTests: XCTestCase {
         formatter.includeTime = true
         var date = formatter.dateFromString("2011-09-02T12:00:00-06:00")
         XCTAssertEqual(conversation.lastMessageAt!, date, "conversation lastMessageAt was not parsed correctly")
-        XCTAssertEqual(conversation.messageCount, 2, "conversation messageCount was not parsed correctly")
+        XCTAssertEqual(conversation.messageCount, UInt(2), "conversation messageCount was not parsed correctly")
         XCTAssert(conversation.isSubscribed, "conversation isSubscribed was not parsed correctly")
         XCTAssert(conversation.isPrivate, "conversation isPrivate was not parsed correctly")
         XCTAssertEqual(conversation.properties.count, 3, "conversation properties was not parsed correctly")
@@ -43,8 +43,8 @@ class CKIConversationTests: XCTestCase {
         XCTAssert(conversation.containsMediaObjects, "conversation containsMediaObjects was not parsed correctly")
         XCTAssertEqual(conversation.audienceContexts.count, 2, "conversation audienceContexts was not parsed correctly")
 
-        var url = NSURL.URLWithString("https://canvas.instructure.com/images/messages/avatar-50.png")
-        XCTAssertEqual(conversation.avatarURL!, url, "conversation avatarURL was not parsed correctly")
+        var url = NSURL(string:"https://canvas.instructure.com/images/messages/avatar-50.png")
+        XCTAssertEqual(conversation.avatarURL!, url!, "conversation avatarURL was not parsed correctly")
         XCTAssertEqual(conversation.participants.count, 3, "conversation participants was not parsed correctly")
         XCTAssertEqual(conversation.messages.count, 2, "conversation messages was not parsed correctly")
         XCTAssertEqual(conversation.path!, "/api/v1/conversations/2", "conversation path was not parsed correctly")

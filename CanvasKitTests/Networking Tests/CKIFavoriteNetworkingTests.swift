@@ -44,12 +44,4 @@ class CKIFavoriteNetworkingTests: XCTestCase {
         client.removeCourseFromFavorites(course)
         XCTAssertEqual(client.capturedPath!, "/api/v1/users/self/favorites/courses/1", "CKIFavorite returned API path for testAddCourseToFavoritesWithSuccessFailure was incorrect")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

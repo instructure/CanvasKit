@@ -37,12 +37,12 @@ class CKIModuleTests: XCTestCase {
         XCTAssertEqual(module.unlockAt!, date, "Module unlockAt was not parsed correctly")
         XCTAssert(module.requireSequentialProgress, "Module requireSequentialProgress was not parsed correctly")
         
-        XCTAssertEqual(module.itemsCount, 10, "Module itemsCount was not parsed correctly")
+        XCTAssertEqual(module.itemsCount, UInt(10), "Module itemsCount was not parsed correctly")
         
         XCTAssertNotNil(module.items, "Module items was not parsed correctly")
         
-        let url = NSURL.URLWithString("https://canvas.example.com/api/v1/modules/123/items")
-        XCTAssertEqual(module.itemsAPIURL!, url, "Module itemAPIURL was not parsed correctly")
+        let url = NSURL(string:"https://canvas.example.com/api/v1/modules/123/items")
+        XCTAssertEqual(module.itemsAPIURL!, url!, "Module itemAPIURL was not parsed correctly")
         
         date = formatter.dateFromString("2012-12-31T06:00:00-06:00")
         XCTAssertEqual(module.completedAt!, date, "Module completedAt was not parsed correctly")

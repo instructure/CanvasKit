@@ -30,9 +30,9 @@ class CKIGroupTests: XCTestCase {
         XCTAssertEqual(group.groupDescription!, "An awesome group about math", "Group description was not parsed correctly")
         XCTAssert(group.isPublic, "Group is public was not parsed correctly")
         XCTAssert(group.followedByUser, "Group followed by user was not parsed correctly")
-        XCTAssertEqual(group.membersCount, 7, "Group members count was not parsed correctly")
+        XCTAssertEqual(group.membersCount, UInt(7), "Group members count was not parsed correctly")
         XCTAssertEqual(group.joinLevel!, CKIGroupJoinLevelInvitationOnly, "Group join level was not parsed correctly")
-        XCTAssertEqual(group.avatarURL!, NSURL(string: "https://instructure.com/files/avatar_image.png"), "Group avatar url was not parsed correctly")
+        XCTAssertEqual(group.avatarURL!, NSURL(string: "https://instructure.com/files/avatar_image.png")!, "Group avatar url was not parsed correctly")
         XCTAssertEqual(group.courseID!, "3", "Group course id was not parsed correctly")
         XCTAssertEqual(group.path!, "/api/v1/groups/17", "Group path was not parsed correctly")
     }

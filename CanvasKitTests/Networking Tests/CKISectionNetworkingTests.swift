@@ -38,12 +38,4 @@ class CKISectionNetworkingTests: XCTestCase {
         XCTAssertEqual(client.capturedPath!, "/api/v1/sections/1", "CKISection returned API path for testFetchSectionWithID was incorrect")
         XCTAssertEqual(client.capturedMethod!, MockCKIClient.Method.Fetch, "CKISection API Interaction Method was incorrect")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

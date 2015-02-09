@@ -7,6 +7,7 @@
 //
 
 #import "CKIGroupCategory.h"
+#import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 @implementation CKIGroupCategory
 

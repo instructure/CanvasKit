@@ -22,7 +22,7 @@ class CKIAssignmentGroupTests: XCTestCase {
     }
 
     func testJSONModelConversion() {
-        let assignmentGroupDictionary = Helpers.loadJSONFixture("assignment_group_with_assignments") as NSDictionary
+        let assignmentGroupDictionary = Helpers.loadJSONFixture("assignment_group_with_assignments") as NSDictionary?
         let assignmentGroup = CKIAssignmentGroup(fromJSONDictionary: assignmentGroupDictionary)
         
         XCTAssertEqual(assignmentGroup.id!, "1030331", "Assignment Group id did not parse correctly")
@@ -32,12 +32,4 @@ class CKIAssignmentGroupTests: XCTestCase {
         XCTAssertEqual(assignmentGroup.assignments.count, 5, "Assignment Group assignments did not parse correctly")
         XCTAssertEqual(assignmentGroup.rules.count, 0, "Assignment Group rules did not parse correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

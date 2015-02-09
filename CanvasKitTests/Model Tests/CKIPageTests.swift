@@ -40,12 +40,4 @@ class CKIPageTests: XCTestCase {
         XCTAssert(page.frontPage, "Page frontPage did not parse correctly")
         XCTAssertEqual(page.path!, "/api/v1/pages/my-page-title", "Page path did not parse correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

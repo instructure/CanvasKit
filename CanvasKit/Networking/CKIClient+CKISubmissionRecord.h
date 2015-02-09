@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-#import <CanvasKit/CanvasKit.h>
+#import "CKIClient.h"
+#import "CKIAssignment.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKIClient (CKISubmissionRecord)
 

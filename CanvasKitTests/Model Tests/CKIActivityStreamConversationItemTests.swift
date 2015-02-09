@@ -26,16 +26,8 @@ class CKIActivityStreamConversationItemTests: XCTestCase {
         
         XCTAssert(streamConversationItem.isPrivate, "Stream Conversation Item isPrivate was not parsed correctly")
         
-        XCTAssertEqual(streamConversationItem.participantCount, 3, "Stream Discussion Item participantCount was not parsed correctly")
+        XCTAssertEqual(streamConversationItem.participantCount, UInt(3), "Stream Discussion Item participantCount was not parsed correctly")
         
         XCTAssertEqual(streamConversationItem.conversationID!, "1234", "Stream Discussion Item conversationID was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

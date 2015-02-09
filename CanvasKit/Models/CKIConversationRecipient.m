@@ -8,6 +8,7 @@
 
 #import "CKIConversationRecipient.h"
 #import "NSArray+CKIAdditions.h"
+#import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
 
 NSString *const CKIRecipientTypeUser = @"user";
 NSString *const CKIRecipientTypeContext = @"context";

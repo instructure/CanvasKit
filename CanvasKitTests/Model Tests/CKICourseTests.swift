@@ -42,8 +42,8 @@ class CKICourseTests: XCTestCase {
         XCTAssertNil(course.enrollments, "course enrollments was not parsed correctly")
         XCTAssertNil(course.term, "course term was not parsed correctly")
         
-        let url = NSURL.URLWithString("https://mobiledev.instructure.com/feeds/calendars/course_56093f00-e060-012d-6ee9-4040654c8f83.ics")
-        XCTAssertEqual(course.calendar!, url, "course calendar was not parsed correctly")
+        let url = NSURL(string:"https://mobiledev.instructure.com/feeds/calendars/course_56093f00-e060-012d-6ee9-4040654c8f83.ics")
+        XCTAssertEqual(course.calendar!, url!, "course calendar was not parsed correctly")
         XCTAssertEqual(course.defaultView!, "wiki", "course defaultView was not parsed correctly")
         XCTAssertEqual(course.syllabusBody!, "<p>syllabus html goes here</p>", "course syllabusBody was not parsed correctly")
         XCTAssertEqual(course.needsGradingCount, 17, "course needsGradingCount was not parsed correctly")

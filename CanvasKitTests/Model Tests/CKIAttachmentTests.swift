@@ -29,12 +29,12 @@ class CKIAttachmentTests: XCTestCase {
         XCTAssertEqual(attachment.displayName!, "profilePic-1.jpg", "Attachment displayName did not parse correctly")
         XCTAssertEqual(attachment.fileName!, "profilePic.jpg", "Attachment fileName did not parse correctly")
         
-        var url = NSURL.URLWithString("https://mobiledev.instructure.com/images/thumbnails/43444064/z5y5XR4cxQjd1VTvteYgdgp8M38eNcftbN7fG2UJ")
-        XCTAssertEqual(attachment.URL!, url, "Attachment URL did not parse correctly")
-        url = NSURL.URLWithString("https://instructure-uploads.s3.amazonaws.com/thumbnails/43444064/profilePic_thumb.jpg?AWSAccessKeyId=AKIAJBQ7MOX3B5WFZGBA&Expires=1406490315&Signature=j%2BFIlGfvzsLYUCVmNwwwZMrWNMY%3D")
-        XCTAssertEqual(attachment.thumbnailURL!, url, "Attachment thumbnailURL did not parse correctly")
+        var url = NSURL(string:"https://mobiledev.instructure.com/images/thumbnails/43444064/z5y5XR4cxQjd1VTvteYgdgp8M38eNcftbN7fG2UJ")
+        XCTAssertEqual(attachment.URL!, url!, "Attachment URL did not parse correctly")
+        url = NSURL(string:"https://instructure-uploads.s3.amazonaws.com/thumbnails/43444064/profilePic_thumb.jpg?AWSAccessKeyId=AKIAJBQ7MOX3B5WFZGBA&Expires=1406490315&Signature=j%2BFIlGfvzsLYUCVmNwwwZMrWNMY%3D")
+        XCTAssertEqual(attachment.thumbnailURL!, url!, "Attachment thumbnailURL did not parse correctly")
         
-        XCTAssertEqual(attachment.size, 7105, "Attachment size did not parse correctly")
+        XCTAssertEqual(attachment.size, UInt(7105), "Attachment size did not parse correctly")
 
         let formatter = ISO8601DateFormatter()
         formatter.includeTime = true

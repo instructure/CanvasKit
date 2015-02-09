@@ -30,12 +30,4 @@ class CKIActivityStreamSubmissionItemTests: XCTestCase {
         XCTAssertEqual(streamItem.submissionID!, "1234", "Stream Submission Item id was not parsed correctly")
         XCTAssertEqual(streamItem.assignmentID!, "1234", "Stream Submission Item id was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

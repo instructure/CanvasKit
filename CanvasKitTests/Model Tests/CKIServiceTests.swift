@@ -26,18 +26,10 @@ class CKIServiceTests: XCTestCase {
         let serviceDictionary = Helpers.loadJSONFixture("service") as NSDictionary
         let service = CKIService(fromJSONDictionary: serviceDictionary)
         
-        XCTAssertEqual(service.domain!, NSURL(string: "kaltura.example.com"), "service domain not parsed correctly")
+        XCTAssertEqual(service.domain!, NSURL(string: "kaltura.example.com")!, "service domain not parsed correctly")
         XCTAssert(service.enabled, "service enabled not parsed correctly")
         XCTAssertEqual(service.partnerID!, "123456", "service partner id not parsed correctly")
-        XCTAssertEqual(service.resourceDomain!, NSURL(string: "cdn.kaltura.example.com"), "service resource domain not parsed correctly")
-        XCTAssertEqual(service.rtmp!, NSURL(string: "rtmp.example.com"), "service rmtp domain not parsed correctly")
+        XCTAssertEqual(service.resourceDomain!, NSURL(string: "cdn.kaltura.example.com")!, "service resource domain not parsed correctly")
+        XCTAssertEqual(service.rtmp!, NSURL(string: "rtmp.example.com")!, "service rmtp domain not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

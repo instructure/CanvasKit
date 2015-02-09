@@ -21,13 +21,13 @@ class CKITabTests: XCTestCase {
         let tabDictionary = Helpers.loadJSONFixture("tab") as NSDictionary
         let tab = CKITab(fromJSONDictionary: tabDictionary)
         
-        var url = NSURL.URLWithString("/courses/1/external_tools/4")
-        XCTAssertEqual(tab.htmlURL!, url, "Tab url was not parsed correctly")
+        var url = NSURL(string:"/courses/1/external_tools/4")
+        XCTAssertEqual(tab.htmlURL!, url!, "Tab url was not parsed correctly")
         XCTAssertEqual(tab.label!, "WordPress", "Tab label was not parsed correctly")
         XCTAssertEqual(tab.type!, "external", "Tab external was not parsed correctly")
         
-        url = NSURL.URLWithString("https://canvas.instructure.com/courses/1/external_tools/4")
-        XCTAssertEqual(tab.url!, url, "Tab url was not parsed correctly")
+        url = NSURL(string:"https://canvas.instructure.com/courses/1/external_tools/4")
+        XCTAssertEqual(tab.url!, url!, "Tab url was not parsed correctly")
         
         XCTAssertEqual(tab.path!, "/api/v1/context_external_tool_4", "Tab path was not parsed correctly")
     }

@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
-#import <CanvasKit/CanvasKit.h>
+#import "CKIClient.h"
+#import "CKIModel.h"
 
 extern NSString *const CKIRecipientTypeUser;
 extern NSString *const CKIRecipientTypeContext;

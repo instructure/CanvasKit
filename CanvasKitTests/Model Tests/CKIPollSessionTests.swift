@@ -43,12 +43,4 @@ class CKIPollSessionTests: XCTestCase {
         XCTAssertEqual(CKIPollSession.keyForJSONAPIContent()!, "poll_sessions", "CKIPollSession keyForJSONAPIContent was not parsed correctly")
         XCTAssertEqual(pollSession.path!, "/api/v1/poll_sessions/1023", "pollSession path was not parsed correctly")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

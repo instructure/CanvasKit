@@ -9,6 +9,7 @@
 #import "CKISubmission+DiscussionSubmissionHTMLFile.h"
 
 #import "CKIDiscussionEntry.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CKIDiscussionEntry (JSONFormattingForSubmission)
 
