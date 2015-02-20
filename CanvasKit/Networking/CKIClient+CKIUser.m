@@ -28,7 +28,25 @@
             [user.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
                 enrollment.context = context;
             }];
-            
+
+            return user;
+        }].array;
+    }];
+}
+
+- (RACSignal *)fetchStudentsForContext:(id<CKIContext>)context {
+    return [self fetchStudentsWithParameters:@{@"include" : @[@"avatar_url", @"enrollments"]} context:context];
+}
+
+- (RACSignal *)fetchStudentsWithParameters:(NSDictionary *)parameters context:(id <CKIContext>)context
+{
+    NSString *path = [context.path stringByAppendingPathComponent:@"students"];
+    return [[self fetchResponseAtPath:path parameters:parameters modelClass:[CKIUser class] context:context] map:^id(NSArray *users) {
+        return [users.rac_sequence map:^id(CKIUser *user) {
+            [user.enrollments enumerateObjectsUsingBlock:^(CKIEnrollment *enrollment, NSUInteger idx, BOOL *stop) {
+                enrollment.context = context;
+            }];
+
             return user;
         }].array;
     }];
