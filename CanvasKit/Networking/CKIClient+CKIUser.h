@@ -20,6 +20,13 @@
 - (RACSignal *)fetchUsersForContext:(id<CKIContext>)context;
 
 /**
+ Fetch all the students for the current course.
+
+ @param course the course to fetch the students for
+ */
+- (RACSignal *)fetchStudentsForContext:(id<CKIContext>)context;
+
+/**
  Fetch users for the current course filtered by parameters.
  
  @param parameters the parameters for fetching users in the course
