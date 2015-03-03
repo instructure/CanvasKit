@@ -14,6 +14,7 @@
 
 #pragma mark - Models
 
+#import "CKIAccountDomain.h"
 #import "CKIActivityStreamItem.h"
 #import "CKIActivityStreamDiscussionTopicItem.h"
 #import "CKIActivityStreamAnnouncementItem.h"
@@ -72,6 +73,7 @@
 #pragma mark - Networking
 
 #import "CKIClient.h"
+#import "CKIClient+CKIAccountDomain.h"
 #import "CKIClient+CKIActivityStreamItem.h"
 #import "CKIClient+CKIAssignment.h"
 #import "CKIClient+CKIAssignmentGroup.h"

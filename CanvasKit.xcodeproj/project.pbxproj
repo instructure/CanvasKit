@@ -245,6 +245,8 @@
 		49B660AE1A8570A100E17B0C /* media_comment.json in Resources */ = {isa = PBXBuildFile; fileRef = B589119719943AC40027C0E2 /* media_comment.json */; };
 		49B660AF1A857A2E00E17B0C /* libCanvasKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B65F441A85654B00E17B0C /* libCanvasKit.a */; };
 		91E9D2E19A99F27D715216BC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 787B40771FC1418D99B1736D /* libPods.a */; };
+		AD981EAC819D2F0195E32009 /* CKIAccountDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = AD98102A1779FF57ADA02180 /* CKIAccountDomain.m */; };
+		AD981F30687D6882C0FBE0FD /* CKIClient+CKIAccountDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9819C487FF9FB63CDD147B /* CKIClient+CKIAccountDomain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -306,6 +308,10 @@
 		760CC08987C2FE44935E9769 /* Pods-CanvasKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasKitTests/Pods-CanvasKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		787B40771FC1418D99B1736D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC98BD553723BA1B48533EC /* Pods-CanvasKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasKitTests/Pods-CanvasKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD98102A1779FF57ADA02180 /* CKIAccountDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKIAccountDomain.m; sourceTree = "<group>"; };
+		AD98133105E7E22D1D3F3D85 /* CKIClient+CKIAccountDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKIClient+CKIAccountDomain.h"; sourceTree = "<group>"; };
+		AD9815328BDC269223DB8B32 /* CKIAccountDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKIAccountDomain.h; sourceTree = "<group>"; };
+		AD9819C487FF9FB63CDD147B /* CKIClient+CKIAccountDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKIClient+CKIAccountDomain.m"; sourceTree = "<group>"; };
 		B50050EB1986E2E4009CB9F5 /* CKIPollChoiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIPollChoiceTests.swift; sourceTree = "<group>"; };
 		B50050EC1986E2E4009CB9F5 /* CKIPollSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIPollSessionTests.swift; sourceTree = "<group>"; };
 		B50050ED1986E2E4009CB9F5 /* CKIPollSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKIPollSubmissionTests.swift; sourceTree = "<group>"; };
@@ -961,6 +967,8 @@
 				BDC2C3861965F5EF0017CCA4 /* Rubric */,
 				5E0594D91A364E850042B46F /* CKIGroupCategory.h */,
 				5E0594DA1A364E850042B46F /* CKIGroupCategory.m */,
+				AD98102A1779FF57ADA02180 /* CKIAccountDomain.m */,
+				AD9815328BDC269223DB8B32 /* CKIAccountDomain.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1087,6 +1095,8 @@
 				BDAE93811A252C9D00F7B009 /* CKIMediaServer.m */,
 				5E0594DD1A36528A0042B46F /* CKIClient+CKIGroupCategory.h */,
 				5E0594DE1A36528A0042B46F /* CKIClient+CKIGroupCategory.m */,
+				AD9819C487FF9FB63CDD147B /* CKIClient+CKIAccountDomain.m */,
+				AD98133105E7E22D1D3F3D85 /* CKIClient+CKIAccountDomain.h */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1491,6 +1501,8 @@
 				49B660201A85659200E17B0C /* CKIMediaServer.m in Sources */,
 				49B65F5E1A85657200E17B0C /* NSString+CKIAdditions.m in Sources */,
 				49B65F6C1A85657A00E17B0C /* CKIActivityStreamDiscussionTopicItem.m in Sources */,
+				AD981EAC819D2F0195E32009 /* CKIAccountDomain.m in Sources */,
+				AD981F30687D6882C0FBE0FD /* CKIClient+CKIAccountDomain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
