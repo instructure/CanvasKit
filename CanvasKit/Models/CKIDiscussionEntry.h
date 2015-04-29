@@ -8,7 +8,7 @@
 
 #import "CKIModel.h"
 
-@class CKIFile;
+@class CKIAttachment;
 
 @interface CKIDiscussionEntry : CKIModel
 /**
@@ -54,7 +54,7 @@ Whether the read_state was forced (was set manually)
 /**
  JSON representation of the attachment for the entry, if any. Present only if there is an attachment.
  */
-@property (nonatomic) CKIFile *attachment;
+@property (nonatomic) CKIAttachment *attachment;
 
 /**
  The 10 most recent replies for the entry, newest first. Present only if there is at least one reply.

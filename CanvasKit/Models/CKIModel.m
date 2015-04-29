@@ -42,7 +42,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 { 
-    return @{};
+    return @{@"context": [NSNull null]};
 }
 
 + (NSValueTransformer *)idJSONTransformer
