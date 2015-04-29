@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Instructure. All rights reserved.
 //
 
+#import "CKIAttachment.h"
 #import "CKIDiscussionEntry.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
@@ -57,6 +58,11 @@ CKIJSONTransformerForName(CKINumberStringTransformerName, userID, editorID);
 
 + (NSValueTransformer *)recentRepliesJSONTransformer {
     return [MTLValueTransformer mtl_JSONArrayTransformerWithModelClass:[CKIDiscussionEntry class]];
+}
+
++ (NSValueTransformer *)attachmentJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIAttachment class]];
 }
 
 @end
