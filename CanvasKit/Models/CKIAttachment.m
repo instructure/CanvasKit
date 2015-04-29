@@ -24,7 +24,8 @@
                                @"unlockAt": @"unlock_at",
                                @"hiddenForUser": @"hidden_for_user",
                                @"lockedForUser": @"locked_for_user",
-                               @"thumbnailURL": @"thumbnail_url"
+                               @"thumbnailURL": @"thumbnail_url",
+                               @"context": [NSNull null]
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
