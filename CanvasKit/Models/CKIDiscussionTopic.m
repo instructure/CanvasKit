@@ -56,7 +56,8 @@ return (tx); \
         @"rootTopicID": @"root_topic_id",
         @"podcastURL": @"podcast_url",
         @"type": @"discussion_type",
-        @"canAttachPermission": @"permissions.attach"
+        @"canAttachPermission": @"permissions.attach",
+        @"position" : @"position"
     };
     
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];

@@ -150,4 +150,9 @@ typedef NS_ENUM(NSInteger, CKIDiscussionTopicSubscriptionHold) {
  */
 @property (nonatomic) BOOL canAttachPermission;
 
+/**
+ The position of this discussion. Position is only given if it's a "pinned" discussion.
+ */
+@property (nonatomic) NSInteger position;
+
 @end
