@@ -16,6 +16,8 @@ NSString *CKIStringForConversationScope(CKIConversationScope scope) {
             return @"archived";
         case CKIConversationScopeUnread:
             return @"unread";
+        case CKIConversationScopeSent:
+            return @"sent";
         case CKIConversationScopeStarred:
             return @"starred";
         default:

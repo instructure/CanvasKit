@@ -25,6 +25,8 @@
         @"workflowState": @"workflow_state",
         @"lastMessage": @"last_message",
         @"lastMessageAt": @"last_message_at",
+        @"lastAuthoredMessage": @"last_authored_message",
+        @"lastAuthoredMessageAt": @"last_authored_message_at",
         @"messageCount": @"message_count",
         @"isSubscribed": @"subscribed",
         @"isPrivate": @"private",
@@ -60,6 +62,11 @@
 }
 
 + (NSValueTransformer *)lastMessageAtJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
+}
+
++ (NSValueTransformer *)lastAuthoredMessageAtJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:CKIDateTransformerName];
 }
