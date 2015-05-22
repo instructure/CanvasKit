@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, CKIConversationScope) {
     CKIConversationScopeInbox,
     CKIConversationScopeUnread,
     CKIConversationScopeArchived,
+    CKIConversationScopeSent,
     CKIConversationScopeStarred,
 };
 

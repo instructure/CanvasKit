@@ -38,6 +38,16 @@ typedef NS_ENUM(NSInteger, CKIConversationWorkflowState) {
 @property (nonatomic, copy) NSDate *lastMessageAt;
 
 /**
+ The last message that the user authored
+*/
+@property (nonatomic, copy) NSString *lastAuthoredMessage;
+
+/** 
+ The time the last message the user authored
+*/
+@property (nonatomic, copy) NSDate *lastAuthoredMessageAt;
+
+/**
  The total number of messages
  */
 @property (nonatomic) NSUInteger messageCount;
