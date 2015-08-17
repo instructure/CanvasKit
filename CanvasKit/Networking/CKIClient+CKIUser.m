@@ -40,6 +40,10 @@
 
 - (RACSignal *)fetchCurrentUser
 {
+    if (self.accessToken == nil) {
+        return [RACSignal empty];
+    }
+    
     NSString *path = [CKIRootContext.path stringByAppendingPathComponent:@"users/self/profile"];
     return [self fetchResponseAtPath:path parameters:nil modelClass:[CKIUser class] context:nil];
 }
