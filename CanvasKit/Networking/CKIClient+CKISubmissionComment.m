@@ -10,7 +10,7 @@
 #import "CKISubmissionRecord.h"
 #import "CKIMediaFileUPloadTokenParser.h"
 #import "CKIMediaServer.h"
-#import <AFHTTPRequestOperationManager.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 
 @implementation CKIClient (CKISubmissionComment)
 
