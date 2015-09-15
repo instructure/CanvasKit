@@ -7,7 +7,7 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <AFHTTPRequestOperationManager.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "CKIClient+CKIFile.h"
 #import "CKIFile.h"
 #import "CKIFolder.h"
