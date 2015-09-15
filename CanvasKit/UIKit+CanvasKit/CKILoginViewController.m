@@ -138,7 +138,8 @@
         return NO;
     }
     
-    if ([self getValueFromRequest:request withKey:@"code"]  ) {
+    // I dunno why, but we have to wait for the code to be the first param cuz it can keep changing as we follow redirects
+    if ([request.URL.absoluteString containsString:@"/login/oauth2/auth?code="]) {
         self.successBlock([self getValueFromRequest:request withKey:@"code"]);
         return NO;
     } else if ([self getValueFromRequest:request withKey:@"error"]) {
