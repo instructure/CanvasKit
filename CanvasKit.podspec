@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.resources = 'CanvasKit/**/*.{js}','CanvasKit/**/*.{css}'
 
   s.dependency 'AFNetworking', '~> 2.5.1'
-  s.dependency 'Mantle', '~> 1.0'
+  s.dependency 'Mantle', '1.5.5'
   s.dependency 'ISO8601DateFormatter', '~> 0.7'
   s.dependency 'ReactiveCocoa', '~> 2.4.2'
 end
