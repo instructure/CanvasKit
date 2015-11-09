@@ -98,6 +98,11 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     dup.accessToken = self.accessToken;
     dup.currentUser = [self.currentUser copy];
     dup.actAsUserID = self.actAsUserID;
+    @weakify(dup);
+    [self setSessionDidBecomeInvalidBlock:^(NSURLSession *session, NSError *error) {
+        @strongify(dup);
+        dup.invalidated = true;
+    }];
     return dup;
 }
 
