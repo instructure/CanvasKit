@@ -8,6 +8,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
 #import <Mantle/Mantle.h>
+#import <Mantle/EXTScope.h>
 
 #import "CKIClient.h"
 #import "CKIClient+CKIUser.h"
@@ -27,6 +28,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) CKIUser *currentUser;
+@property (nonatomic, assign) BOOL invalidated;
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 @property (nonatomic, weak) UIViewController *webLoginViewController;
@@ -46,6 +48,13 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 
         [self setRequestSerializer:[AFJSONRequestSerializer serializer]];
         [self setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
+        
+        @weakify(self);
+        [self setSessionDidBecomeInvalidBlock:^(NSURLSession *session, NSError *error) {
+            @strongify(self);
+            
+            self.invalidated = true;
+        }];
     }
     return self;
 }
@@ -250,6 +259,11 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSDictionary *newParameters = [@{@"per_page": @50} dictionaryByAddingObjectsFromDictionary:parameters];
 
     return [[[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        if (self.invalidated) {
+            [subscriber sendCompleted];
+            return [RACDisposable disposableWithBlock:^{}];
+        }
+        
         NSDictionary *finalParameters = newParameters;
         if ([self.actAsUserID length]) {
             finalParameters = [@{@"as_user_id": self.actAsUserID} dictionaryByAddingObjectsFromDictionary:finalParameters];
@@ -359,6 +373,11 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
 
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if (self.invalidated) {
+            [subscriber sendCompleted];
+            return [RACDisposable disposableWithBlock:^{}];
+        }
+        
         NSURLSessionDataTask *task = [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
             
             NSString *jsonContentKey = [modelClass keyForJSONAPIContent];
@@ -383,6 +402,11 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 - (RACSignal *)updateModel:(CKIModel *)model parameters:(NSDictionary *)parameters
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if (self.invalidated) {
+            [subscriber sendCompleted];
+            return [RACDisposable disposableWithBlock:^{}];
+        }
+        
         NSURLSessionDataTask *task = [self PUT:model.path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
             Class modelClass = model.class;
             NSAssert([modelClass isSubclassOfClass:[CKIModel class]], @"Can only create CKIModels");
