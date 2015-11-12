@@ -28,6 +28,7 @@ NSString * const CKISubmissionTypeMediaRecording = @"media_recording";
 NSString * const CKISubmissionTypeQuiz = @"online_quiz";
 NSString * const CKISubmissionTypeDiscussion = @"discussion_topic";
 NSString * const CKISubmissionTypeExternalTool = @"external_tool";
+NSString * const CKISubmissionTypePaper = @"on_paper";
 
 
 @implementation CKISubmission
@@ -142,6 +143,9 @@ NSString * const CKISubmissionTypeExternalTool = @"external_tool";
     }
     else if ([submissionType isEqual:CKISubmissionTypeExternalTool]) {
         type = CKISubmissionEnumTypeExternalTool;
+    }
+    else if ([submissionType isEqual:CKISubmissionTypePaper]) {
+        type = CKISubmissionTypePaper;
     }
     return type;
 }
