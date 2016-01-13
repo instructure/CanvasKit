@@ -100,7 +100,18 @@
 
 + (NSValueTransformer *)submissionJSONTransformer
 {
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKISubmission class]];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id obj) {
+        NSDictionary *submissionDictionary = obj;
+
+        // chooses the first submission if it is an array (which is the case for observers)
+        if ([obj isKindOfClass:[NSArray class]]) {
+            submissionDictionary = [obj firstObject];
+        }
+
+        return [MTLJSONAdapter modelOfClass:[CKISubmission class] fromJSONDictionary:submissionDictionary error:nil];
+    } reverseBlock:^id(CKISubmission *submission) {
+        return [MTLJSONAdapter JSONDictionaryFromModel:submission];
+    }];
 }
 
 + (NSValueTransformer *)discussionTopicIDJSONValueTransformer
