@@ -110,7 +110,7 @@
 
         return [MTLJSONAdapter modelOfClass:[CKISubmission class] fromJSONDictionary:submissionDictionary error:nil];
     } reverseBlock:^id(CKISubmission *submission) {
-        return [MTLJSONAdapter JSONDictionaryFromModel:submission];
+        return submission != nil ? [MTLJSONAdapter JSONDictionaryFromModel:submission] : nil;
     }];
 }
 
