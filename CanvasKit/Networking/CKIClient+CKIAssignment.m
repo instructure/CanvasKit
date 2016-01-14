@@ -27,7 +27,7 @@ static const NSString *CKIAssignmentMutedParameter = @"muted";
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignments"];
     NSDictionary *params = nil;
     if (includeSubmissions) {
-        params = @{@"include": @[@"submission", @"needs_grading_count"], @"needs_grading_count_by_section":@"true"};
+        params = @{@"include": @[@"submission", @"needs_grading_count", @"observed_users"], @"needs_grading_count_by_section":@"true"};
     } else {
         params = @{@"include": @[@"needs_grading_count"], @"needs_grading_count_by_section": @"true"};
     }
