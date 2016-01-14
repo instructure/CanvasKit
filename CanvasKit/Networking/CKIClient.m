@@ -477,6 +477,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
+        [button setAccessibilityIdentifier:@"cancelLoginButton"];
+        [button setAccessibilityLabel:NSLocalizedString(@"Cancel", nil)];
         [loginViewController.navigationItem setRightBarButtonItem:button];
 
         UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
