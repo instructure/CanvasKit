@@ -81,6 +81,11 @@ extern NSString * const CKIModuleItemCompletionRequirementMustContribute;
 extern NSString * const CKIModuleItemCompletionRequirementMinimumScore;
 
 /**
+ Must manually mark the module as done.
+ */
+extern NSString * const CKIModuleItemCompletionRequirementMustMarkDone;
+
+/**
  An individual item inside a CKIModule. Can be a file, wiki page,
  discussion, assignment, quiz, text subheader, external URL, or
  external LTI tool.
