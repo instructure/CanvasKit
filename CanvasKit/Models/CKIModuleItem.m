@@ -25,6 +25,7 @@ NSString * const CKIModuleItemCompletionRequirementMustView = @"must_view";
 NSString * const CKIModuleItemCompletionRequirementMustSubmit = @"must_submit";
 NSString * const CKIModuleItemCompletionRequirementMustContribute = @"must_contribute";
 NSString * const CKIModuleItemCompletionRequirementMinimumScore = @"min_score";
+NSString * const CKIModuleItemCompletionRequirementMustMarkDone = @"must_mark_done";
 
 @interface CKIModuleItem ()
 

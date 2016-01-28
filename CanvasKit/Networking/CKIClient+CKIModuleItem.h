@@ -18,4 +18,6 @@
 
 - (RACSignal *)fetchModuleItemsForModule:(CKIModule *)module;
 
+- (RACSignal *)markModuleItemAsDone:(CKIModuleItem *)item;
+
 @end
