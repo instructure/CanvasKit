@@ -37,6 +37,10 @@ static NSString *const DESIGNER_ENROLLMENT_KEY2 = @"DesignerEnrollment";
                                @"computedCurrentScore": @"computed_current_score",
                                @"computedFinalGrade": @"computed_final_grade",
                                @"computedCurrentGrade": @"computed_current_grade",
+                               @"currentGradingPeriodID": @"current_grading_period_id",
+                               @"currentGradingPeriodScore": @"current_period_computed_current_score",
+                               @"currentGradingPeriodGrade": @"current_period_computed_current_grade",
+                               @"multipleGradingPeriodsEnabled": @"multiple_grading_periods_enabled",
                                @"sectionID": @"course_section_id",
                                @"state": @"enrollment_state"
                                };
