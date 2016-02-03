@@ -18,38 +18,22 @@
 
 @implementation CKIClient (CKIAssignmentGroup)
 
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context gradingPeriodID:(NSString *)gradingPeriodID
 {
-    return [self fetchAssignmentGroupsForContext:context includeAssignments:YES];
+    return [self fetchAssignmentGroupsForContext:context includeAssignments:YES gradingPeriodID:gradingPeriodID];
 }
 
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments gradingPeriodID:(NSString *)gradingPeriodID
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignment_groups"];
 
-    // handle multiple grading periods
-    NSString *gradingPeriodID = nil;
-    if ([context isKindOfClass:[CKICourse class]]) {
-        CKICourse *course = (CKICourse *)context;
-        gradingPeriodID = [[[course.enrollments.rac_sequence filter:^BOOL(CKIEnrollment *enrollment) {
-            return enrollment.multipleGradingPeriodsEnabled &&
-                (enrollment.isStudent || enrollment.type == CKIEnrollmentTypeObserver);
-        }] map:^id(CKIEnrollment *studentEnrollment) {
-            return studentEnrollment.currentGradingPeriodID;
-        }].array firstObject];
-    }
-
-    NSDictionary *parameters;
-    if (!includeAssignments) {
-        parameters = nil;
-    } else if (!gradingPeriodID) {
-        parameters = @{@"include": @[@"assignments"]};
-    } else {
-        parameters = @{
-                          @"include" : @[@"assignments"],
-                          @"grading_period_id": gradingPeriodID,
-                          @"scope_assignments_to_student": @(YES)
-                      };
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:1];
+    if (includeAssignments) {
+        [parameters setObject:@[@"assignments"] forKey:@"include"];
+        if (gradingPeriodID) {
+            [parameters setObject:gradingPeriodID forKey:@"grading_period_id"];
+            [parameters setObject:@(YES) forKey:@"scope_assignments_to_student"];
+        }
     }
 
     return [[self fetchResponseAtPath:path parameters:parameters modelClass:[CKIAssignmentGroup class] context:context] map:^id(NSArray *assignmentGroups) {

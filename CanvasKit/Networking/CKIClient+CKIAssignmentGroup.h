@@ -13,7 +13,13 @@
 
 @interface CKIClient (CKIAssignmentGroup)
 
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context;
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments;
+/**
+ Fetches the assignment groups for the given context.
+
+ @param gradingPeriodID the id of the desired grading period. Pass nil for all.
+ */
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context gradingPeriodID:(NSString *)gradingPeriodID;
+
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments gradingPeriodID:(NSString *)gradingPeriodID;
 
 @end

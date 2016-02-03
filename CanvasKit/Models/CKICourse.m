@@ -75,4 +75,14 @@
         return enrollment.type == CKIEnrollmentTypeStudent || enrollment.type == CKIEnrollmentTypeObserver;
     }].array.count > 0;
 }
+
+- (NSString *)currentGradingPeriodID {
+    return [[[self.enrollments.rac_sequence filter:^BOOL(CKIEnrollment *enrollment) {
+        return enrollment.multipleGradingPeriodsEnabled &&
+            (enrollment.isStudent || enrollment.type == CKIEnrollmentTypeObserver);
+    }] map:^id(CKIEnrollment *studentEnrollment) {
+            return studentEnrollment.currentGradingPeriodID;
+    }].array firstObject];
+}
+
 @end
