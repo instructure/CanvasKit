@@ -42,7 +42,7 @@
     NSDictionary *parameters;
     if (!includeAssignments) {
         parameters = nil;
-    } else if (gradingPeriodID == nil) {
+    } else if (!gradingPeriodID) {
         parameters = @{@"include": @[@"assignments"]};
     } else {
         parameters = @{
