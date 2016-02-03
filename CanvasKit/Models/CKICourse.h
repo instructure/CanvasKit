@@ -109,6 +109,8 @@
 
 @property (nonatomic, readonly) BOOL currentUserEnrolledAsStudentOrObserver;
 
+@property (nonatomic, readonly) NSString *currentGradingPeriodID;
+
 @end
 
 
