@@ -81,7 +81,7 @@
         return enrollment.multipleGradingPeriodsEnabled &&
             (enrollment.isStudent || enrollment.type == CKIEnrollmentTypeObserver);
     }] map:^id(CKIEnrollment *studentEnrollment) {
-            return studentEnrollment.currentGradingPeriodID;
+        return studentEnrollment.currentGradingPeriodID;
     }].array firstObject];
 }
 
