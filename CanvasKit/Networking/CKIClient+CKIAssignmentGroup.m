@@ -18,23 +18,28 @@
 
 @implementation CKIClient (CKIAssignmentGroup)
 
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context gradingPeriodID:(NSString *)gradingPeriodID
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context gradingPeriodID:(NSString *)gradingPeriodID scopeAssignmentsToStudent:(BOOL)scopeAssignmentsToStudent
 {
-    return [self fetchAssignmentGroupsForContext:context includeAssignments:YES gradingPeriodID:gradingPeriodID];
+    return [self fetchAssignmentGroupsForContext:context includeAssignments:YES gradingPeriodID:gradingPeriodID includeSubmissions:YES scopeAssignmentsToStudent:scopeAssignmentsToStudent];
 }
 
-- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments gradingPeriodID:(NSString *)gradingPeriodID
+- (RACSignal *)fetchAssignmentGroupsForContext:(id <CKIContext>)context includeAssignments:(BOOL)includeAssignments gradingPeriodID:(NSString *)gradingPeriodID includeSubmissions:(BOOL)includeSubmissions scopeAssignmentsToStudent:(BOOL)scopeAssignmentsToStudent
 {
     NSString *path = [[context path] stringByAppendingPathComponent:@"assignment_groups"];
 
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:1];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObject:@(YES) forKey:@"override_assignment_dates"];
+    NSMutableArray *include = [NSMutableArray arrayWithObjects:@"discussion_topic", nil];
     if (includeAssignments) {
-        [parameters setObject:@[@"assignments"] forKey:@"include"];
-        if (gradingPeriodID) {
-            [parameters setObject:gradingPeriodID forKey:@"grading_period_id"];
-            [parameters setObject:@(YES) forKey:@"scope_assignments_to_student"];
-        }
+        [include addObject:@"assignments"];
     }
+    if (includeSubmissions) {
+        [include addObject:@"submission"];
+    }
+    if (gradingPeriodID) {
+        [parameters setObject:gradingPeriodID forKey:@"grading_period_id"];
+        [parameters setObject:@(scopeAssignmentsToStudent) forKey:@"scope_assignments_to_student"];
+    }
+    [parameters setObject:include forKey:@"include"];
 
     return [[self fetchResponseAtPath:path parameters:parameters modelClass:[CKIAssignmentGroup class] context:context] map:^id(NSArray *assignmentGroups) {
         if (!includeAssignments) {
