@@ -78,8 +78,7 @@
 
 - (NSString *)currentGradingPeriodID {
     return [[[self.enrollments.rac_sequence filter:^BOOL(CKIEnrollment *enrollment) {
-        return enrollment.multipleGradingPeriodsEnabled &&
-            (enrollment.isStudent || enrollment.type == CKIEnrollmentTypeObserver);
+        return enrollment.multipleGradingPeriodsEnabled;
     }] map:^id(CKIEnrollment *studentEnrollment) {
         return studentEnrollment.currentGradingPeriodID;
     }].array firstObject];
