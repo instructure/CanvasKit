@@ -9,7 +9,7 @@
 #import "CKIClient+CKIOutcomeGroup.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <ReactiveCocoa/RACEXTScope.h>
+#import "EXTScope.h"
 #import "CKIOutcomeGroup.h"
 #import "CKICourse.h"
 

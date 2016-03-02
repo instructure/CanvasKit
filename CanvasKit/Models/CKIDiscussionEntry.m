@@ -10,7 +10,7 @@
 #import "CKIDiscussionEntry.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
-#import <Mantle/metamacros.h>
+#import "metamacros.h"
 
 #define CKIJSONTransformer(property, tx) + (NSValueTransformer *) property ## JSONTransformer \
 { \

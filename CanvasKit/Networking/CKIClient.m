@@ -6,9 +6,8 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <AFNetworking/AFHTTPRequestOperation.h>
+@import AFNetworking;
 #import <Mantle/Mantle.h>
-#import <Mantle/EXTScope.h>
 
 #import "CKIClient.h"
 #import "CKIClient+CKIUser.h"
