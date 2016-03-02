@@ -7,7 +7,7 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
+@import AFNetworking;
 #import "CKIClient+CKIFile.h"
 #import "CKIFile.h"
 #import "CKIFolder.h"
@@ -56,17 +56,17 @@
 - (RACSignal *)uploadFile:(NSData *)fileData ofType:(NSString *)fileType withName:(NSString *)fileName withFileUploadInfo:(NSDictionary *)uploadInfo inFolder:(CKIFolder *)folder
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        AFHTTPRequestOperationManager *uploadOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:uploadInfo[@"upload_url"]]];
+        AFHTTPSessionManager *uploadOperationManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:uploadInfo[@"upload_url"]]];
         uploadOperationManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        AFHTTPRequestOperation *uploadOperation = [uploadOperationManager POST:@"" parameters:uploadInfo[@"upload_params"] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSURLSessionDataTask *uploadOperation = [uploadOperationManager POST:@"" parameters:uploadInfo[@"upload_params"] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:@"application/octet-stream"];
-        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        } success:^(NSURLSessionDataTask *operation, id responseObject) {
             
             CKIFile *newFile = (CKIFile *) [self parseModel:[NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIFile class]] fromJSON:responseObject context:folder.context];
             [subscriber sendNext:newFile];
             [subscriber sendCompleted];
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLSessionDataTask *operation, NSError *error) {
             [subscriber sendError:error];
             [subscriber sendCompleted];
         }];

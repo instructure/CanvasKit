@@ -1,0 +1,5 @@
+github "AFNetworking/AFNetworking" "3.0.4"
+github "Mantle/Mantle" "1.5.5"
+github "antitypical/Result" "1.0.2"
+github "boredzo/iso-8601-date-formatter" "0.7"
+github "ReactiveCocoa/ReactiveCocoa" "v4.0.1"

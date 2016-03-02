@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Instructure. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+@import Mantle;
 #import "CKIContext.h"
 
 @interface CKIModel : MTLModel <MTLJSONSerializing, CKIContext>
