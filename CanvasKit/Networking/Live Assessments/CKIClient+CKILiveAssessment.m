@@ -35,6 +35,9 @@
     NSMutableDictionary *assessmentsByCourseID = [NSMutableDictionary dictionary];
     for (CKILiveAssessment *assessment in assessments) {
         NSString *courseID = ((CKICourse *)assessment.context).id;
+        if (courseID == nil) {
+            continue; // prevent a crash
+        }
         NSMutableArray *assessmentsForCourse = assessmentsByCourseID[courseID];
         if (!assessmentsForCourse) {
             assessmentsForCourse = [NSMutableArray array];
