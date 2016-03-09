@@ -1,5 +1,4 @@
 github "Mantle/Mantle" == 1.5.5
 github "ReactiveCocoa/ReactiveCocoa" ~> 4.0.1
 github "AFNetworking/AFNetworking" ~> 3.0.0
-github "boredzo/iso-8601-date-formatter" == 0.7
 
