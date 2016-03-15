@@ -398,8 +398,8 @@
 		499D1BB61C8646B4005A86D2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499D1BAE1C8646B4005A86D2 /* Result.framework */; };
 		499D1BBA1C864835005A86D2 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB81C864835005A86D2 /* EXTScope.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D1BBB1C864835005A86D2 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB91C864835005A86D2 /* metamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		499D1BBE1C864A7A005A86D2 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BBC1C864A7A005A86D2 /* ISO8601DateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		499D1BBF1C864A7A005A86D2 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D1BBD1C864A7A005A86D2 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B1CF2FC51C90B8780035612B /* CKISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B1CF2FC31C90B8780035612B /* CKISO8601DateFormatter.h */; };
+		B1CF2FC61C90B8780035612B /* CKISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CF2FC41C90B8780035612B /* CKISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -808,8 +808,8 @@
 		499D1BAE1C8646B4005A86D2 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		499D1BB81C864835005A86D2 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		499D1BB91C864835005A86D2 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
-		499D1BBC1C864A7A005A86D2 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISO8601DateFormatter.h; path = "Carthage/Checkouts/iso-8601-date-formatter/ISO8601DateFormatter.h"; sourceTree = "<group>"; };
-		499D1BBD1C864A7A005A86D2 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISO8601DateFormatter.m; path = "Carthage/Checkouts/iso-8601-date-formatter/ISO8601DateFormatter.m"; sourceTree = "<group>"; };
+		B1CF2FC31C90B8780035612B /* CKISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKISO8601DateFormatter.h; sourceTree = "<group>"; };
+		B1CF2FC41C90B8780035612B /* CKISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKISO8601DateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -861,6 +861,7 @@
 		499D18891C8643E6005A86D2 /* CanvasKit */ = {
 			isa = PBXGroup;
 			children = (
+				B1CF2FC21C90B8430035612B /* ISO8601DateFormatter */,
 				499D1BB71C86481C005A86D2 /* extobjc */,
 				499D18A11C8644A3005A86D2 /* Constants.h */,
 				499D18A21C8644A3005A86D2 /* Helpers */,
@@ -1375,8 +1376,6 @@
 		499D1BAA1C8645F4005A86D2 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				499D1BBC1C864A7A005A86D2 /* ISO8601DateFormatter.h */,
-				499D1BBD1C864A7A005A86D2 /* ISO8601DateFormatter.m */,
 				499D1BAB1C8646B4005A86D2 /* AFNetworking.framework */,
 				499D1BAC1C8646B4005A86D2 /* Mantle.framework */,
 				499D1BAD1C8646B4005A86D2 /* ReactiveCocoa.framework */,
@@ -1392,6 +1391,15 @@
 				499D1BB91C864835005A86D2 /* metamacros.h */,
 			);
 			path = extobjc;
+			sourceTree = "<group>";
+		};
+		B1CF2FC21C90B8430035612B /* ISO8601DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				B1CF2FC31C90B8780035612B /* CKISO8601DateFormatter.h */,
+				B1CF2FC41C90B8780035612B /* CKISO8601DateFormatter.m */,
+			);
+			path = ISO8601DateFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1509,7 +1517,7 @@
 				499D19B61C8644A3005A86D2 /* CKIDiscussionTopic.h in Headers */,
 				499D1A521C8644A3005A86D2 /* CKIMediaServer.h in Headers */,
 				499D1A1E1C8644A3005A86D2 /* CKIClient+CKIFavorite.h in Headers */,
-				499D1BBE1C864A7A005A86D2 /* ISO8601DateFormatter.h in Headers */,
+				B1CF2FC51C90B8780035612B /* CKISO8601DateFormatter.h in Headers */,
 				499D1A3C1C8644A3005A86D2 /* CKIClient+CKIPollSubmission.h in Headers */,
 				499D1A121C8644A3005A86D2 /* CKIClient+CKICalendarEvent.h in Headers */,
 			);
@@ -1705,7 +1713,7 @@
 				499D1A151C8644A3005A86D2 /* CKIClient+CKIConversation.m in Sources */,
 				499D19AA1C8644A3005A86D2 /* CKICalendarEvent.m in Sources */,
 				499D1A271C8644A3005A86D2 /* CKIClient+CKIGroupCategory.m in Sources */,
-				499D1BBF1C864A7A005A86D2 /* ISO8601DateFormatter.m in Sources */,
+				B1CF2FC61C90B8780035612B /* CKISO8601DateFormatter.m in Sources */,
 				499D198A1C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.m in Sources */,
 				499D19CB1C8644A3005A86D2 /* CKIModel.m in Sources */,
 				499D19B71C8644A3005A86D2 /* CKIDiscussionTopic.m in Sources */,
@@ -1996,10 +2004,13 @@
 		499D189C1C8643E6005A86D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = CanvasKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2007,16 +2018,20 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.instructure.CanvasKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		499D189D1C8643E6005A86D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = CanvasKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2024,6 +2039,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.instructure.CanvasKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
