@@ -18,11 +18,10 @@
 - (RACSignal *)fetchOutcomeLinksForOutcomeGroup:(CKIOutcomeGroup *)group
 {
     NSString *path = [group.path stringByAppendingPathComponent:@"outcomes"];
-    return [[self fetchResponseAtPath:path parameters:nil modelClass:[CKIOutcomeLink class] context:group.context] map:^id(NSArray *outcomes) {
+    return [[self fetchResponseAtPath:path parameters:@{@"outcome_style": @"full"} modelClass:[CKIOutcomeLink class] context:group.context] map:^id(NSArray *outcomes) {
         
         [outcomes enumerateObjectsUsingBlock:^(CKIOutcomeLink *outcomeLink, NSUInteger idx, BOOL *stop) {
             outcomeLink.outcomeGroup = group;
-            outcomeLink.id = [NSString stringWithFormat:@"%@-link-%@", @(idx), group.id];
         }];
         return outcomes;
     }];

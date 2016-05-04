@@ -22,6 +22,7 @@
                                @"contextID": @"context_id",
                                @"contextType": @"context_type",
                                @"outcomeGroup": @"outcome_group",
+                               @"id": @"url"
                                };
     NSDictionary *superPaths = [super JSONKeyPathsByPropertyKey];
     return [superPaths dictionaryByAddingObjectsFromDictionary:keyPaths];
@@ -41,6 +42,17 @@
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[CKIOutcome class]];
 }
+
++ (NSValueTransformer *)idJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(id theStringID) {
+        return theStringID;
+    } reverseBlock:^id(id theStringID) {
+        return theStringID;
+    }];
+}
+
+
 
 - (NSString *)path
 {

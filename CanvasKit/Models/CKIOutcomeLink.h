@@ -24,11 +24,6 @@
 @property (nonatomic, copy) NSString *contextID;
 
 /**
- The URL for fetching/updating the outcome
- */
-@property (nonatomic, copy) NSString *url;
-
-/**
  OutcomeGroup object representing the outcome group of this outcome link
  */
 @property (nonatomic, copy) CKIOutcomeGroup *outcomeGroup;
