@@ -10,15 +10,15 @@
 		499D188B1C8643E6005A86D2 /* CanvasKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D188A1C8643E6005A86D2 /* CanvasKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D18921C8643E6005A86D2 /* CanvasKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499D18871C8643E6005A86D2 /* CanvasKit.framework */; };
 		499D19821C8644A3005A86D2 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A11C8644A3005A86D2 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		499D19831C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A31C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D19831C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A31C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		499D19841C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18A41C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.m */; };
-		499D19851C8644A3005A86D2 /* NSArray+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A51C8644A3005A86D2 /* NSArray+CKIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D19851C8644A3005A86D2 /* NSArray+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A51C8644A3005A86D2 /* NSArray+CKIAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		499D19861C8644A3005A86D2 /* NSArray+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18A61C8644A3005A86D2 /* NSArray+CKIAdditions.m */; };
 		499D19871C8644A3005A86D2 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A71C8644A3005A86D2 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D19881C8644A3005A86D2 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18A81C8644A3005A86D2 /* NSDictionary+DictionaryByAddingObjectsFromDictionary.m */; };
-		499D19891C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A91C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D19891C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18A91C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		499D198A1C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18AA1C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.m */; };
-		499D198B1C8644A3005A86D2 /* NSString+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18AB1C8644A3005A86D2 /* NSString+CKIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D198B1C8644A3005A86D2 /* NSString+CKIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18AB1C8644A3005A86D2 /* NSString+CKIAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		499D198C1C8644A3005A86D2 /* NSString+CKIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18AC1C8644A3005A86D2 /* NSString+CKIAdditions.m */; };
 		499D198D1C8644A3005A86D2 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D18AD1C8644A3005A86D2 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D198E1C8644A3005A86D2 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D18AE1C8644A3005A86D2 /* NSValueTransformer+CKIPredefinedTransformerAdditions.m */; };
@@ -217,7 +217,7 @@
 		499D1A4F1C8644A3005A86D2 /* CKIClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D19751C8644A3005A86D2 /* CKIClient+Login.m */; };
 		499D1A501C8644A3005A86D2 /* CKIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D19761C8644A3005A86D2 /* CKIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D1A511C8644A3005A86D2 /* CKIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D19771C8644A3005A86D2 /* CKIClient.m */; };
-		499D1A521C8644A3005A86D2 /* CKIMediaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D19781C8644A3005A86D2 /* CKIMediaServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D1A521C8644A3005A86D2 /* CKIMediaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D19781C8644A3005A86D2 /* CKIMediaServer.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		499D1A531C8644A3005A86D2 /* CKIMediaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D19791C8644A3005A86D2 /* CKIMediaServer.m */; };
 		499D1A541C8644A3005A86D2 /* CKIClient+CKILiveAssessment.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D197B1C8644A3005A86D2 /* CKIClient+CKILiveAssessment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499D1A551C8644A3005A86D2 /* CKIClient+CKILiveAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 499D197C1C8644A3005A86D2 /* CKIClient+CKILiveAssessment.m */; };
@@ -396,8 +396,8 @@
 		499D1BB41C8646B4005A86D2 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499D1BAD1C8646B4005A86D2 /* ReactiveCocoa.framework */; };
 		499D1BB51C8646B4005A86D2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499D1BAE1C8646B4005A86D2 /* Result.framework */; };
 		499D1BB61C8646B4005A86D2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499D1BAE1C8646B4005A86D2 /* Result.framework */; };
-		499D1BBA1C864835005A86D2 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB81C864835005A86D2 /* EXTScope.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		499D1BBB1C864835005A86D2 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB91C864835005A86D2 /* metamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499D1BBA1C864835005A86D2 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB81C864835005A86D2 /* EXTScope.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		499D1BBB1C864835005A86D2 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 499D1BB91C864835005A86D2 /* metamacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B1CF2FC51C90B8780035612B /* CKISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B1CF2FC31C90B8780035612B /* CKISO8601DateFormatter.h */; };
 		B1CF2FC61C90B8780035612B /* CKISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CF2FC41C90B8780035612B /* CKISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
@@ -1413,18 +1413,14 @@
 				499D19F01C8644A3005A86D2 /* CKISubmissionComment.h in Headers */,
 				499D1A301C8644A3005A86D2 /* CKIClient+CKIOutcomeGroup.h in Headers */,
 				499D19E61C8644A3005A86D2 /* CKIService.h in Headers */,
-				499D19891C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h in Headers */,
 				499D19F21C8644A3005A86D2 /* CKISubmissionRecord.h in Headers */,
 				499D19AC1C8644A3005A86D2 /* CKIConversation.h in Headers */,
 				499D199F1C8644A3005A86D2 /* CKIActivityStreamSubmissionItem.h in Headers */,
-				499D1BBA1C864835005A86D2 /* EXTScope.h in Headers */,
 				499D1A0A1C8644A3005A86D2 /* CKIClient+CKIAccountDomain.h in Headers */,
 				499D1A021C8644A3005A86D2 /* CKILiveAssessmentResult.h in Headers */,
 				499D19D21C8644A3005A86D2 /* CKIOutcomeGroup.h in Headers */,
 				499D19911C8644A3005A86D2 /* CKIActivityStreamAnnouncementItem.h in Headers */,
-				499D19831C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h in Headers */,
 				499D199B1C8644A3005A86D2 /* CKIActivityStreamItem.h in Headers */,
-				499D19851C8644A3005A86D2 /* NSArray+CKIAdditions.h in Headers */,
 				499D1A501C8644A3005A86D2 /* CKIClient.h in Headers */,
 				499D1A481C8644A3005A86D2 /* CKIClient+CKITab.h in Headers */,
 				499D19FC1C8644A3005A86D2 /* CKITodoItem.h in Headers */,
@@ -1448,7 +1444,6 @@
 				499D19EC1C8644A3005A86D2 /* CKISubmission+TextEntrySubmissionHTMLFile.h in Headers */,
 				499D1A361C8644A3005A86D2 /* CKIClient+CKIPoll.h in Headers */,
 				499D1A581C8644A3005A86D2 /* CKILoginViewController.h in Headers */,
-				499D198B1C8644A3005A86D2 /* NSString+CKIAdditions.h in Headers */,
 				499D19821C8644A3005A86D2 /* Constants.h in Headers */,
 				499D19CE1C8644A3005A86D2 /* CKIModuleItem.h in Headers */,
 				499D19D61C8644A3005A86D2 /* CKIPage.h in Headers */,
@@ -1487,7 +1482,6 @@
 				499D19E21C8644A3005A86D2 /* CKIRubricAssessment.h in Headers */,
 				499D198D1C8644A3005A86D2 /* NSValueTransformer+CKIPredefinedTransformerAdditions.h in Headers */,
 				499D19951C8644A3005A86D2 /* CKIActivityStreamConferenceItem.h in Headers */,
-				499D1BBB1C864835005A86D2 /* metamacros.h in Headers */,
 				499D19C21C8644A3005A86D2 /* CKIGroup.h in Headers */,
 				499D19BA1C8644A3005A86D2 /* CKIExternalTool.h in Headers */,
 				499D1A221C8644A3005A86D2 /* CKIClient+CKIFolder.h in Headers */,
@@ -1515,10 +1509,16 @@
 				499D19A51C8644A3005A86D2 /* CKIAssignmentGroup.h in Headers */,
 				499D19AB1C8644A3005A86D2 /* CKIContext.h in Headers */,
 				499D19B61C8644A3005A86D2 /* CKIDiscussionTopic.h in Headers */,
-				499D1A521C8644A3005A86D2 /* CKIMediaServer.h in Headers */,
 				499D1A1E1C8644A3005A86D2 /* CKIClient+CKIFavorite.h in Headers */,
 				B1CF2FC51C90B8780035612B /* CKISO8601DateFormatter.h in Headers */,
 				499D1A3C1C8644A3005A86D2 /* CKIClient+CKIPollSubmission.h in Headers */,
+				499D1BBA1C864835005A86D2 /* EXTScope.h in Headers */,
+				499D1BBB1C864835005A86D2 /* metamacros.h in Headers */,
+				499D19851C8644A3005A86D2 /* NSArray+CKIAdditions.h in Headers */,
+				499D19891C8644A3005A86D2 /* NSHTTPURLResponse+Pagination.h in Headers */,
+				499D1A521C8644A3005A86D2 /* CKIMediaServer.h in Headers */,
+				499D19831C8644A3005A86D2 /* CKIMediaFileUploadTokenParser.h in Headers */,
+				499D198B1C8644A3005A86D2 /* NSString+CKIAdditions.h in Headers */,
 				499D1A121C8644A3005A86D2 /* CKIClient+CKICalendarEvent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

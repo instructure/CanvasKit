@@ -77,6 +77,13 @@ FOUNDATION_EXPORT const unsigned char CanvasKitVersionString[];
 #import <CanvasKit/CKIEnrollment.h>
 #import <CanvasKit/CKILiveAssessment.h>
 #import <CanvasKit/CKILiveAssessmentResult.h>
+#import <CanvasKit/CKIConversationMessage.h>
+#import <CanvasKit/CKIConversationRecipient.h>
+
+#pragma mark - Login
+
+#import <CanvasKit/CKILoginViewController.h>
+#import <CanvasKit/CKIClient+Login.h>
 
 #pragma mark - Networking
 
