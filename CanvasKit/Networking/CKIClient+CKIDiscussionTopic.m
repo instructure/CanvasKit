@@ -10,7 +10,7 @@
 #import "CKICourse.h"
 #import "CKIDiscussionTopic.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <Mantle/EXTScope.h>
+#import <Mantle/MTLEXTScope.h>
 
 @implementation CKIClient (CKIDiscussionTopic)
 
