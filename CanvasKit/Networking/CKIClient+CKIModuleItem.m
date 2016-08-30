@@ -56,4 +56,33 @@
     }];
 }
 
+- (RACSignal *)markModuleItemAsRead:(CKIModuleItem *)item
+{
+    NSParameterAssert(item);
+
+    NSString *path = [item.path stringByAppendingPathComponent:@"mark_read"];
+
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        if (self) {
+            NSURLSessionDataTask *task = [self POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                [subscriber sendCompleted];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [subscriber sendError:error];
+            }];
+
+            return [RACDisposable disposableWithBlock:^{
+                [task cancel];
+            }];
+        }
+
+        [subscriber sendError:[NSError errorWithDomain:@"com.instructure.icanvas" code:item.id.integerValue userInfo:@{NSLocalizedDescriptionKey: @"The client died before you got around to marking this item \"done\""}]];
+
+        return [RACDisposable disposableWithBlock:^{
+            // empty on purpose yo
+        }];
+    }];
+}
+
 @end
