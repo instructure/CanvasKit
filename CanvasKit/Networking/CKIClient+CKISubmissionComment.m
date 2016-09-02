@@ -10,7 +10,7 @@
 #import "CKISubmissionRecord.h"
 #import "CKIMediaFileUPloadTokenParser.h"
 #import "CKIMediaServer.h"
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
+@import AFNetworking;
 
 @implementation CKIClient (CKISubmissionComment)
 
@@ -22,7 +22,7 @@
         commentDictionary[@"media_comment_type"] = comment.mediaComment.mediaType;
     }
     NSDictionary *params = @{@"comment" : commentDictionary};
-    return [self updateModel:comment.context parameters:params];
+    return [self updateModel:(CKIModel *)comment.context parameters:params];
 }
 
 - (void)createCommentWithMedia:(CKIMediaComment *)mediaComment forSubmissionRecord:(CKISubmissionRecord *)submissionRecord success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
@@ -33,8 +33,6 @@
         }
         return;
     }
-    
-    NSData *data = [NSData dataWithContentsOfURL:mediaComment.url];
     
     [self postMediaCommentAtPath:mediaComment.url.absoluteString ofMediaType:mediaComment.mediaType success:^(NSString *mediaUploadID){
         
@@ -66,21 +64,22 @@
     [self configureMediaServerWithSuccess:^{
         NSString *urlString = [NSString stringWithFormat:@"p/%@/thumbnail/entry_id/%@/width/%@/height/%@/bgcolor/000000/type/1/vid_sec/5", self.mediaServer.partnerId, mediaComment.mediaID, @(size.width), @(size.height)];
         
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:self.mediaServer.resourceDomain];
+        AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:self.mediaServer.resourceDomain];
+        
         manager.responseSerializer = [AFImageResponseSerializer serializer];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-        [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             UIImage *image = responseObject;
             if (success) {
                 success(image);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if (failure) {
                 failure(error);
             }
         }];
-
+        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
@@ -135,7 +134,7 @@
     NSURL *url = [self.mediaServer apiURLAdd];
     NSDictionary *parameters = @{@"ks": sessionID};
     
-    [[self xmlReauestManager] POST:url.absoluteString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self xmlReauestManager] POST:url.absoluteString parameters:parameters success:^(NSURLSessionDataTask *operation, id responseObject) {
         // Handle failure to parse
         // Get the token id from the XML
         CKIMediaFileUploadTokenParser *parser = [[CKIMediaFileUploadTokenParser alloc] initWithXMLParser:responseObject];
@@ -149,7 +148,7 @@
             }
         }];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         if (failure) {
             failure(error);
         }
@@ -164,12 +163,12 @@
         NSString *fileName = mediaType == CKIMediaCommentMediaTypeVideo ? @"videocomment.mp4" : @"audiocomment.wav";
         NSString *mimeType = mediaType == CKIMediaCommentMediaTypeVideo ? @"video/mp4" : @"audio/x-aiff";
         [formData appendPartWithFileURL:[NSURL URLWithString:path] name:@"fileData" fileName:fileName mimeType:mimeType error:nil];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } success:^(NSURLSessionDataTask *operation, id responseObject) {
         // Should get some XML back here. Might want to check it.
         if (success) {
             success();
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         if (failure) {
             failure(error);
         }
@@ -181,7 +180,7 @@
     NSString *mediaTypeString = ([mediaType isEqualToString:CKIMediaCommentMediaTypeVideo] ? @"1" : @"5");
     NSDictionary *parameters = @{@"mediaEntry:name": @"Media Comment", @"mediaEntry:mediaType": mediaTypeString};
     
-    [[self xmlReauestManager] POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self xmlReauestManager] POST:urlString parameters:parameters success:^(NSURLSessionDataTask *operation, id responseObject) {
         CKIMediaFileUploadTokenParser *parser = [[CKIMediaFileUploadTokenParser alloc] initWithXMLParser:responseObject];
         [parser parseWithSuccess:^(NSString *uploadID) {
             if (success) {
@@ -193,7 +192,7 @@
             }
         }];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         if (failure) {
             failure(error);
         }
@@ -202,8 +201,8 @@
 
 #pragma mark - XML Operation Manager
 
-- (AFHTTPRequestOperationManager *)xmlReauestManager {
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:self.baseURL];
+- (AFHTTPSessionManager *)xmlReauestManager {
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:self.baseURL];
     manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     return manager;

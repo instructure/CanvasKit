@@ -4,7 +4,20 @@
    <FileRef
       location = "group:CanvasKit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:Carthage/Checkouts/AFNetworking/AFNetworking.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/Mantle/Mantle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/ReactiveCocoa/ReactiveCocoa.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/Result/Result.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>

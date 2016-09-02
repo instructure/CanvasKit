@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import CanvasKit
 
 class CKILiveAssessmentTests: XCTestCase {
 

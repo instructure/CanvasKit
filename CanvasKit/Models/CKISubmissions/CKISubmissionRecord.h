@@ -8,6 +8,7 @@
 
 #import "CanvasKit.h"
 #import "CKIAssignment.h"
+#import "CKISubmission.h"
 
 @interface CKISubmissionRecord : CKISubmission
 

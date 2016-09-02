@@ -17,7 +17,7 @@
 
 - (NSDictionary *)parametersForFetchingCourses
 {
-    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions"]};
+    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions", @"current_grading_period_scores"]};
 }
 
 - (RACSignal *)fetchCoursesForCurrentUser
@@ -37,7 +37,7 @@
 
 - (NSDictionary *)parametersForFetchingCoursesCurrentDomain
 {
-    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions"],
+    return @{@"include": @[@"needs_grading_count", @"syllabus_body", @"total_scores", @"term", @"permissions", @"current_grading_period_scores"],
              @"current_domain_only": @"true"};
 }
 

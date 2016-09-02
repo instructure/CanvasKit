@@ -9,7 +9,7 @@
 #import "CKIDiscussionTopic.h"
 #import "NSValueTransformer+CKIPredefinedTransformerAdditions.h"
 #import "NSDictionary+DictionaryByAddingObjectsFromDictionary.h"
-#import <Mantle/metamacros.h>
+#import "metamacros.h"
 #import "CKILockInfo.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CKIAttachment.h"

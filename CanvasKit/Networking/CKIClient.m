@@ -6,9 +6,8 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <AFNetworking/AFHTTPRequestOperation.h>
+@import AFNetworking;
 #import <Mantle/Mantle.h>
-#import <Mantle/EXTScope.h>
 
 #import "CKIClient.h"
 #import "CKIClient+CKIUser.h"
@@ -99,7 +98,7 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     dup.currentUser = [self.currentUser copy];
     dup.actAsUserID = self.actAsUserID;
     @weakify(dup);
-    [self setSessionDidBecomeInvalidBlock:^(NSURLSession *session, NSError *error) {
+    [dup setSessionDidBecomeInvalidBlock:^(NSURLSession *session, NSError *error) {
         @strongify(dup);
         dup.invalidated = true;
     }];
@@ -477,6 +476,8 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:loginViewController action:@selector(cancelOAuth)];
+        [button setAccessibilityIdentifier:@"cancelLoginButton"];
+        [button setAccessibilityLabel:NSLocalizedString(@"Cancel", nil)];
         [loginViewController.navigationItem setRightBarButtonItem:button];
 
         UIViewController *presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
