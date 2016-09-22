@@ -20,4 +20,6 @@
 
 - (RACSignal *)markModuleItemAsDone:(CKIModuleItem *)item;
 
+- (RACSignal *)markModuleItemAsRead:(CKIModuleItem *)item;
+
 @end

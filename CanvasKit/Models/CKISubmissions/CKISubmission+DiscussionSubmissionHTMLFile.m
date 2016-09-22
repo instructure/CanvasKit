@@ -76,7 +76,7 @@
 
 - (NSString *)relativePathToResourcesDir
 {
-    NSMutableArray *resourcePathComponents = [[[[NSBundle mainBundle] resourcePath] pathComponents] mutableCopy];
+    NSMutableArray *resourcePathComponents = [[[[NSBundle bundleForClass:[CKISubmission class]] resourcePath] pathComponents] mutableCopy];
     NSMutableArray *cachePathComponents = [[[[self urlForCachedDiscussionEntriesHTMLFile] URLByDeletingLastPathComponent] pathComponents] mutableCopy];
 
     while ([resourcePathComponents.firstObject isEqualToString:cachePathComponents.firstObject]) {
