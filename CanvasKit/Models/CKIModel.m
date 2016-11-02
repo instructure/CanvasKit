@@ -47,8 +47,14 @@
 
 + (NSValueTransformer *)idJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:CKINumberStringTransformerName];
-}
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^ id (id someNumber) {
+        if ([someNumber isKindOfClass:[NSString class]]) {
+            return someNumber;
+        }
+        return [someNumber stringValue];
+    } reverseBlock:^ id (NSString *stringifiedNumber) {
+        return [NSNumber numberWithLongLong:[stringifiedNumber longLongValue]];
+    }];}
 
 // Overridden to prevent NSInvalidArgumentException in cases where the API
 // is returning 'null' for integral types. Mantle does not check to see if
