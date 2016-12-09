@@ -167,9 +167,10 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
 {
     NSAssert(method < CKIAuthenticationMethodCount, @"Invalid authentication method");
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1"
-                           , self.baseURL.absoluteString
-                           , self.clientID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/login/oauth2/auth?client_id=%@&response_type=code&redirect_uri=urn:ietf:wg:oauth:2.0:oob&mobile=1&session_locale=%@",
+                           self.baseURL.absoluteString,
+                           self.clientID,
+                           [self sessionLocale]];
     
     if (method == CKIAuthenticationMethodForcedCanvasLogin) {
         urlString = [urlString stringByAppendingString:@"&canvas_login=1"];
@@ -180,6 +181,19 @@ NSString *const CKIClientAccessTokenExpiredNotification = @"CKIClientAccessToken
     [request setValue:@"CanvasKit/1.0" forHTTPHeaderField:@"User-Agent"];
     
     return request;
+}
+
+- (NSString *)sessionLocale
+{
+    NSString *language = [[NSLocale preferredLanguages] firstObject];
+
+    // strip region
+    NSRange dash = [language rangeOfString:@"-"];
+    if (dash.location != NSNotFound) {
+        language = [language substringToIndex:dash.location];
+    }
+
+    return language;
 }
 
 #pragma mark - Caching & Cookies
